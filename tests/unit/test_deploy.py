@@ -46,6 +46,8 @@ class DeployTargets(unittest.TestCase):
         self.write('index.html', (ROOT / 'index.html').read_text())
         self.write('src/main.js', '// working renderer')
         self.write('src/notes.txt', 'not runtime')
+        self.write('src/agents/world.js', '// nested runtime module')
+        self.write('src/agents/README.md', 'not runtime')
         self.write('_headers', '/*\n  Cache-Control: no-cache\n')
         for name in ('favicon.svg', 'social-preview.jpg'):
             self.write(name, 'root ' + name)
@@ -165,6 +167,9 @@ class DeployTargets(unittest.TestCase):
                          ['compact.html', 'hill.html', 'hillview.html', 'index.html', 'lakeside.html'])
         self.assertEqual((destination / 'src/main.js').read_text(), '// working renderer')
         self.assertFalse((destination / 'src/notes.txt').exists())
+        # Nested modules (src/agents/) ship; the suffix rule still drops notes.
+        self.assertEqual((destination / 'src/agents/world.js').read_text(), '// nested runtime module')
+        self.assertFalse((destination / 'src/agents/README.md').exists())
         self.assertEqual((destination / '_headers').read_bytes(), (self.root / '_headers').read_bytes())
         self.assertEqual((destination / 'favicon.svg').read_text(), 'root favicon.svg')
         self.assertEqual((destination / 'social-preview.jpg').read_text(), 'root social-preview.jpg')

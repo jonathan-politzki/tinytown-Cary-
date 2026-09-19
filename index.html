@@ -147,6 +147,13 @@
   <script defer src="./src/bootstrap.js?v=fef137a8407ec17b"></script>
   <script type="module" src="./src/site-data.js?v=fef137a8407ec17b" data-startup></script>
   <script type="module" src="./src/main.js?v=fef137a8407ec17b" data-startup></script>
+  <!-- The agent world, off unless ?agents=1. It lives under src/agents/ so it
+       stays outside the surface bake and viewer-stamp file lists (src/*.js, no
+       subdirectories), and adding it cannot make a committed bake stale. It has
+       no `data-startup` because the miniature must finish loading without it. -->
+  <script type="module">
+    if (new URLSearchParams(location.search).get('agents')) import('./src/agents/attach.js');
+  </script>
   <style>
     html, body {
       margin: 0;

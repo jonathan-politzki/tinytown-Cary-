@@ -91,7 +91,9 @@ Docs: [ARCHITECTURE.md](docs/ARCHITECTURE.md) · [pipeline.md](docs/pipeline.md)
 [data-format.md](docs/data-format.md) · [authoring.md](docs/authoring.md) ·
 [fixing.md](docs/fixing.md) · [rendering.md](docs/rendering.md) ·
 [deploy.md](docs/deploy.md) · [landmarks.md](docs/landmarks.md) ·
-[chautauqua.md](docs/chautauqua.md) · [BLUEPRINT_SCHEMA.md](docs/BLUEPRINT_SCHEMA.md) ·
+[chautauqua.md](docs/chautauqua.md) · [cary.md](docs/cary.md) ·
+[agents.md](docs/agents.md) ·
+[BLUEPRINT_SCHEMA.md](docs/BLUEPRINT_SCHEMA.md) ·
 [STYLE_SCHEMA.md](docs/STYLE_SCHEMA.md) · [MINIATURE_KIT.md](docs/MINIATURE_KIT.md)
 
 ## Tests
