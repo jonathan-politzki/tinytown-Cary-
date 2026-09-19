@@ -4,8 +4,8 @@
 // watch the simulation, test a planner, or check a new site has enough places to
 // support a population.
 //
-//   node tools/agents-sim.mjs                          # Avon, 40 villagers, one day
-//   node tools/agents-sim.mjs cary --agents 25
+//   node tools/agents-sim.mjs                          # Cary, 40 villagers, one day
+//   node tools/agents-sim.mjs avon-extended --agents 25
 //   node tools/agents-sim.mjs --hours 72 --quiet        # three days, summary only
 //   node tools/agents-sim.mjs --who                     # the cast, then the day
 //   node tools/agents-sim.mjs --describe a7             # one villager's context
@@ -17,22 +17,45 @@ import { buildPlaces } from '../src/agents/places.js';
 import { createWorld, hhmm } from '../src/agents/world.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const argv = process.argv.slice(2);
-const flag = (name, fallback) => {
-  const i = argv.indexOf(`--${name}`);
-  return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : fallback;
-};
-const has = (name) => argv.includes(`--${name}`);
-const site = argv.find((a) => !a.startsWith('--')
-  && argv[argv.indexOf(a) - 1] !== `--agents`
-  && argv[argv.indexOf(a) - 1] !== `--hours`
-  && argv[argv.indexOf(a) - 1] !== `--seed`
-  && argv[argv.indexOf(a) - 1] !== `--start`
-  && argv[argv.indexOf(a) - 1] !== `--describe`) || 'avon-extended';
+
+// Flags that take a value; everything else bare is a switch. Parsed in one pass
+// so a value that happens to repeat a word elsewhere cannot be mistaken for the
+// site name.
+const VALUED = new Set(['agents', 'hours', 'seed', 'start', 'describe']);
+const values = new Map();
+const switches = new Set();
+const bare = [];
+const args = process.argv.slice(2);
+for (let i = 0; i < args.length; i++) {
+  const arg = args[i];
+  if (!arg.startsWith('--')) { bare.push(arg); continue; }
+  const name = arg.slice(2);
+  const next = args[i + 1];
+  if (VALUED.has(name) && next !== undefined && !next.startsWith('--')) {
+    values.set(name, next);
+    i++; // consume the value so it is never read as the site name
+  } else {
+    switches.add(name);
+  }
+}
+const flag = (name, fallback) => (values.has(name) ? values.get(name) : fallback);
+const has = (name) => switches.has(name);
+
+// This repository is a miniature of Cary, Illinois, so that is the default even
+// before it has been fetched: a missing scene should say so loudly rather than
+// quietly simulate a different town.
+const site = bare[0] || 'cary';
 
 const scene = path.join(ROOT, 'data', site, 'site.json');
 if (!fs.existsSync(scene)) {
-  console.error(`no scene at data/${site}/site.json — run \`./town fetch ${site} …\` and \`./town build ${site}\` first`);
+  console.error(`no scene at data/${site}/site.json`);
+  console.error(`  ./town fetch ${site} --center LAT,LON --size W,H   # see docs/cary.md`);
+  console.error(`  ./town build ${site}`);
+  const built = fs.existsSync(path.join(ROOT, 'data'))
+    ? fs.readdirSync(path.join(ROOT, 'data'))
+      .filter((n) => fs.existsSync(path.join(ROOT, 'data', n, 'site.json')))
+    : [];
+  if (built.length) console.error(`already built: ${built.join(', ')}`);
   process.exit(1);
 }
 

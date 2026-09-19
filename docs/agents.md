@@ -6,12 +6,21 @@ street network the scene was built from. It is the substrate a
 generative-agents layer sits on, not that layer itself — nothing here calls a
 model.
 
-Try it without a browser:
+**There is no `data/cary/` yet**, so nothing below has been run on Cary. The
+worked examples in this file are Avon, the one committed scene with a `roads`
+array, used as a test fixture. Nothing in `src/agents/` refers to a site: the
+simulation reads whatever `data/<site>/site.json` it is given, so the same
+commands produce Cary once `./town fetch cary` and `./town build cary` have run
+on a machine with network access ([cary.md](cary.md)).
+
+Try it without a browser — the site defaults to `cary` and says so when the
+scene is missing:
 
 ```sh
-node tools/agents-sim.mjs --agents 12 --hours 18
-node tools/agents-sim.mjs --who --quiet
-node tools/agents-sim.mjs --describe a5
+node tools/agents-sim.mjs                              # cary, once it is fetched
+node tools/agents-sim.mjs avon-extended --agents 12 --hours 18
+node tools/agents-sim.mjs avon-extended --who --quiet
+node tools/agents-sim.mjs avon-extended --describe a5
 ```
 
 and in the viewer, `?agents=1` (see **In the viewer** below).
@@ -176,6 +185,9 @@ quickly and the walking look brisk. 4 is a compromise; 1 is real time.
 
 ## Limits worth knowing
 
+- **Cary has no scene yet**, so the world has only ever been run against Avon.
+  The code is site-agnostic, but that is an argument from the code, not a
+  demonstration.
 - **Chautauqua has no `roads` array**, so it has no walkable graph and the world
   cannot run there yet. It would need its footpath network exported into the
   scene.
