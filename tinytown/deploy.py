@@ -274,8 +274,13 @@ def build(target, root=ROOT, check=True):
     with tempfile.TemporaryDirectory(dir=destination.parent, prefix=f'.{destination.name}-') as tmp:
         staged = Path(tmp) / destination.name
         staged.mkdir()
+        # Only runtime modules ship, never stray notes beside them — but keep
+        # walking into subdirectories (src/agents/) so nested modules are served
+        # too. The same suffix rule applies again at each level.
         shutil.copytree(root / 'src', staged / 'src',
-                        ignore=lambda path, names: [n for n in names if Path(n).suffix not in ('.js', '.css')])
+                        ignore=lambda path, names: [n for n in names
+                                                    if not Path(path, n).is_dir()
+                                                    and Path(n).suffix not in ('.js', '.css')])
         for route, site in table.items():
             name = 'index.html' if route == '/' else route[1:] + '.html'
             (staged / name).write_text(route_document(site, root, target))
