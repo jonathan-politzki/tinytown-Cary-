@@ -13,10 +13,17 @@
 //   &agentseed=x     reseed the population
 //   &agentclock=8:30 start the clock at a time of day
 //   &agentspeed=4    simulated minutes per real second
+//   &cars=10         through-traffic on the road (0 turns cars off)
+//   &inside=ID       start already inside a building that has an interior
 import { buildGraph } from './graph.js';
 import { buildPlaces } from './places.js';
 import { createWorld } from './world.js';
 import { createAvatars } from './avatars.js';
+import { buildRoadGraph, createTraffic } from './traffic.js';
+import { createVehicles } from './vehicles.js';
+import { installInteriors } from '../interiors/attach.js';
+import { castFor } from './cast.js';
+import { exchange, lineFor, who } from './talk.js';
 
 const params = new URLSearchParams(location.search);
 const raw = params.get('agents');
@@ -37,19 +44,29 @@ async function waitForScene(timeoutMs = 45000) {
   }
 }
 
-export async function start() {
+// `site` may be passed in: the streaming loader publishes a slim index without
+// roads or style kinds, so a caller that fetched the full site.json hands it over.
+export async function start({ site: given, timeScale: pace, population: size, cars: fleet, startMin: clock } = {}) {
   const town = await waitForScene();
-  const site = town.siteData;
+  let site = given || town.siteData;
+  if (!site.roads?.length && site.name) {
+    // The streaming loader publishes a slim index: no roads, no style kinds.
+    // The world needs both, so take the full scene the same way src/ui does.
+    const response = await fetch(`./data/${encodeURIComponent(site.name)}/site.json`);
+    if (!response.ok) throw new Error(`site.json for ${site.name}: HTTP ${response.status}`);
+    site = await response.json();
+  }
 
   const graph = buildGraph(site.roads);
   const places = buildPlaces(site, { graph });
-  const population = Math.max(1, Math.min(400, Number(raw) > 1 ? Number(raw) : 40));
+  const population = Math.max(1, Math.min(400, size || (Number(raw) > 1 ? Number(raw) : 40)));
   const world = createWorld({
     places, graph,
     seed: params.get('agentseed') || site.name || 'town',
     population,
-    startMin: minutesOf(params.get('agentclock'), 8 * 60),
-    timeScale: Number(params.get('agentspeed')) > 0 ? Number(params.get('agentspeed')) : 4,
+    startMin: clock ?? minutesOf(params.get('agentclock'), 8 * 60),
+    timeScale: pace || (Number(params.get('agentspeed')) > 0 ? Number(params.get('agentspeed')) : 4),
+    cast: castFor(site.name),
   });
 
   // The viewer's own terrain sampler, so villagers share the roads' grade.
@@ -69,6 +86,18 @@ export async function start() {
   const avatars = createAvatars(world, { groundAt });
   town.scene.add(avatars.group);
 
+  // Cars: a directed graph over the same roads, through-traffic at the box
+  // edges, and villagers driving when the walk would be long.
+  const roadGraph = buildRoadGraph(site.roads);
+  const ambient = fleet ?? (params.get('cars') !== null ? Math.max(0, Number(params.get('cars')) || 0) : 10);
+  const traffic = createTraffic({ roadGraph, world, places, seed: params.get('agentseed') || site.name || 'town', ambient });
+  const vehicles = createVehicles(traffic, { groundAt });
+  town.scene.add(vehicles.group);
+
+  // Buildings you can walk into (src/interiors/): a pennant over each, and
+  // the room itself when you click one.
+  const interiors = await installInteriors(town, { world, places, site, groundAt });
+
   // The viewer's render loop is built to fall asleep after 5 s of no input
   // (src/render-loop.js) — right for a still diorama, wrong for a living town.
   // Waking it every frame is the documented way to keep frames coming, and it
@@ -79,25 +108,42 @@ export async function start() {
     const dt = Math.min((now - last) / 1000, 0.1);
     last = now;
     world.tick(dt);
+    traffic.tick(dt);
     avatars.update(dt);
+    vehicles.update();
+    interiors.update(dt);
     town.renderLoop?.wake();
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
 
   const handle = {
-    world, graph, places, avatars,
-    stop: () => { running = false; town.scene.remove(avatars.group); avatars.dispose(); },
+    world, graph, places, avatars, roadGraph, traffic, vehicles, interiors,
+    stop: () => {
+      running = false;
+      interiors.dispose();
+      town.scene.remove(avatars.group); avatars.dispose();
+      town.scene.remove(vehicles.group); vehicles.dispose();
+    },
     follow: (agentId) => {
       const agent = world.agent(agentId) || world.agents[0];
       if (agent && town.lookAtBuilding && agent.placeId != null) town.lookAtBuilding(agent.placeId, 'front', 40, 8);
       return agent;
     },
     who: () => world.agents.map((a) => `${a.id} ${a.name} (${a.occupation}) — ${a.activity}`),
+    // What people are saying, for anything outside the room that wants it.
+    talk: {
+      exchange: (idA, idB, zone = null) => exchange(world, places, world.agent(idA), world.agent(idB), { zone }),
+      lineFor: (id, zone = null) => lineFor(world, places, world.agent(id), { zone }),
+      who: (id) => who(world.agent(id)),
+    },
   };
   window.__agents = handle;
+  if (params.get('inside')) interiors.enter(params.get('inside')).catch((error) => console.error('[interiors]', error));
   console.info(`[agents] ${world.agents.length} villagers over ${places.all.length} places, ` +
-    `${graph.count} graph nodes; clock ${world.clock()}. Inspect window.__agents.`);
+    `${graph.count} graph nodes; ${roadGraph.count} road nodes, ${roadGraph.portals.length} portals, ` +
+    `${roadGraph.junctionCount} junctions, ${traffic.drivers.size} drivers, ${ambient} through cars; ` +
+    `clock ${world.clock()}. Inspect window.__agents.`);
   return handle;
 }
 

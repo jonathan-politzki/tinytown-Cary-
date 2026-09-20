@@ -132,7 +132,7 @@ class OverpassTests(SourcesCase):
 
         with patch.object(sources.urllib.request, "urlopen", side_effect=urlopen):
             record = sources.fetch_osm(sources.bbox_for(42, -77, 100, 100), self.root / "osm.json", cache=self.cache)
-        self.assertEqual(calls, list(sources.OVERPASS_HOSTS))
+        self.assertEqual(calls, list(sources.OVERPASS_HOSTS[:2]))
         self.assertEqual(record, payload)
         self.assertEqual(json.loads((self.root / "osm.json").read_text()), payload)
 
@@ -156,7 +156,116 @@ class OverpassTests(SourcesCase):
         self.assertEqual(json.loads((self.root / "lake-osm.json").read_text())["elements"][0]["id"], 5)
 
 
+class StructureTests(SourcesCase):
+    def feature(self, build_id, ring, **props):
+        return {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [ring]},
+                "properties": {"BUILD_ID": build_id, "UUID": "{abc-123}", "OCC_CLS": "Residential",
+                               "PRIM_OCC": "Single Family Dwelling", "PROP_ADDR": "319 HIGH ROAD",
+                               "OUTBLDG": None, "HEIGHT": None, **props}}
+
+    def test_features_become_building_ways_with_namespaced_ids_and_osm_tags(self):
+        ring = [[-88.1, 42.1], [-88.1, 42.2], [-88.0, 42.2], [-88.1, 42.1]]
+        house = sources.structure_element(self.feature(7, ring, HEIGHT=6.25))
+        self.assertEqual(house["id"], sources.STRUCTURE_ID_BASE + 7)
+        self.assertEqual(house["type"], "way")
+        self.assertEqual(house["source"], sources.STRUCTURES_SOURCE)
+        self.assertEqual(house["tags"], {"building": "house", "addr:housenumber": "319", "addr:street": "High Road",
+                                         "occupancy": "Single Family Dwelling", "height": "6.2",
+                                         "ref:usa_structures": "abc-123"})
+        self.assertEqual(house["geometry"][0], {"lat": 42.1, "lon": -88.1})
+        shop = sources.structure_element(self.feature(8, ring, OCC_CLS="Commercial", PRIM_OCC="Retail Trade",
+                                                      PROP_ADDR=None))
+        self.assertEqual(shop["tags"], {"building": "retail", "occupancy": "Retail Trade", "ref:usa_structures": "abc-123"})
+        unknown = sources.structure_element(self.feature(9, ring, OCC_CLS="Unclassified", PRIM_OCC="Unclassified"))
+        self.assertEqual(unknown["tags"]["building"], "yes")
+        self.assertNotIn("occupancy", unknown["tags"])
+        self.assertEqual(sources._address_tags("200 NORTH 2ND STREET")["addr:street"], "North 2nd Street")
+        self.assertEqual(sources._address_tags("MAIN STREET"), {})
+        shed = sources.structure_element(self.feature(10, ring, OUTBLDG="Y"))
+        self.assertEqual(shed["tags"]["building"], "shed")
+        self.assertIsNone(sources.structure_element(self.feature(11, ring[:2])))
+        self.assertIsNone(sources.structure_element(self.feature("x", ring)))
+
+    def test_multipolygons_keep_their_largest_outer_ring(self):
+        small = [[0, 0], [0, .001], [.001, .001], [0, 0]]
+        large = [[1, 1], [1, 1.01], [1.01, 1.01], [1, 1]]
+        feature = self.feature(3, small)
+        feature["geometry"] = {"type": "MultiPolygon", "coordinates": [[small], [large]]}
+        self.assertEqual(sources.structure_element(feature)["geometry"][0], {"lat": 1, "lon": 1})
+
+    def test_fetch_pages_through_the_service_and_writes_one_record(self):
+        ring = [[-88.1, 42.1], [-88.1, 42.2], [-88.0, 42.2], [-88.1, 42.1]]
+        calls = []
+
+        def urlopen(request, timeout=None):
+            query = sources.urllib.parse.parse_qs(sources.urllib.parse.urlparse(request.full_url).query)
+            offset = int(query["resultOffset"][0])
+            calls.append(offset)
+            if offset == 0:
+                page = {"type": "FeatureCollection", "exceededTransferLimit": True,
+                        "features": [self.feature(i, ring) for i in range(sources.STRUCTURES_PAGE)]}
+            else:
+                page = {"type": "FeatureCollection", "features": [self.feature(offset, ring)]}
+            return response(json.dumps(page).encode())
+
+        bb = sources.bbox_for(42, -88, 100, 100)
+        with patch.object(sources.urllib.request, "urlopen", side_effect=urlopen):
+            record = sources.fetch_structures(bb, self.root / "structures.json", cache=self.cache)
+        self.assertEqual(calls, [0, sources.STRUCTURES_PAGE])
+        self.assertEqual(len(record["elements"]), sources.STRUCTURES_PAGE + 1)
+        self.assertEqual(record["id_base"], sources.STRUCTURE_ID_BASE)
+        self.assertEqual(record["bounds"], bb)
+        self.assertEqual(json.loads((self.root / "structures.json").read_text())["elements"][-1]["id"],
+                         sources.STRUCTURE_ID_BASE + sources.STRUCTURES_PAGE)
+
+    def test_service_errors_are_not_cached(self):
+        with patch.object(sources.urllib.request, "urlopen",
+                          return_value=response(b'{"error": {"code": 400, "message": "bad"}}')):
+            with self.assertRaises(ValueError):
+                sources.fetch_structures(sources.bbox_for(42, -88, 100, 100), self.root / "structures.json",
+                                         cache=self.cache)
+        self.assertFalse(list((self.root / "cache").glob("*.bin")))
+
+
 class FetchTests(SourcesCase):
+    def test_structures_are_opt_in_recorded_and_resumed(self):
+        self.fake_downloads()
+        structures = self.enterContext(patch.object(sources, "fetch_structures",
+                                                    side_effect=lambda bb, path, *a, **k: Path(path).write_bytes(b"s")))
+        self.fetch()
+        self.assertFalse(self.paths.structures.exists())
+        self.assertNotIn("structures", json.loads(self.paths.request.read_text()))
+        self.fetch(structures=True)
+        self.assertEqual(self.paths.structures.read_bytes(), b"s")
+        self.assertEqual(json.loads(self.paths.request.read_text())["structures"], sources.STRUCTURES_SOURCE)
+        self.assertEqual(structures.call_args[0][0], sources.bbox_for(42.91201, -77.74548, 420, 380, sources.OSM_MARGIN))
+        self.paths.structures.unlink()
+        sources.fetch(self.paths, cache=self.cache)   # a bare resume remembers the choice
+        self.assertTrue(self.paths.structures.exists())
+        self.assertEqual(structures.call_count, 2)
+
+    def test_first_fetch_keeps_completed_downloads_and_the_request_when_one_service_fails(self):
+        self.fake_downloads()
+        with patch.object(sources, "fetch_osm", side_effect=OSError("overpass down")):
+            with self.assertRaises(OSError):
+                self.fetch(title="Trial")
+        self.assertFalse(self.paths.osm.exists())
+        self.assertEqual(self.paths.elevation.read_bytes(), b"new data")
+        self.assertEqual(self.paths.satellite.read_bytes(), b"new data")
+        self.assertEqual(json.loads(self.paths.request.read_text())["title"], "Trial")
+        self.assertFalse(list(self.paths.source.glob(".fetch-*")))
+        sources.fetch(self.paths, cache=self.cache)   # resume needs no coordinates
+        self.assertEqual(self.paths.osm.read_bytes(), b"new data")
+
+    def test_forced_refetch_of_a_different_box_is_all_or_nothing(self):
+        self.setup_cache()
+        before = self.snapshot()
+        self.fake_downloads()
+        with patch.object(sources, "fetch_osm", side_effect=OSError("overpass down")):
+            with self.assertRaises(OSError):
+                self.fetch(size="500,500", force=True)
+        self.assertEqual(self.snapshot(), before)
+
     def test_matching_request_reuses_cache(self):
         self.setup_cache()
         downloads = self.fake_downloads()

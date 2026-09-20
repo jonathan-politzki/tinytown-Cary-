@@ -81,9 +81,12 @@ export function createAvatars(world, { groundAt = () => 0, capacity = null } = {
       }
       const ground = groundAt(agent.x, agent.z);
       const walking = agent.state === 'travel';
-      // A 2 Hz bob while walking; asleep villagers sink out of sight indoors.
+      // A 2 Hz bob while walking; asleep villagers sink out of sight indoors,
+      // and so does anyone riding in a car (src/agents/traffic.js).
       const bob = walking ? Math.abs(Math.sin((phase + i * 0.7) * 6.3)) * 0.045 : 0;
-      const hidden = agent.activity === 'asleep';
+      // ...and anyone indoors at a place with a room (src/interiors/), unless
+      // they have stepped out for a cigarette.
+      const hidden = agent.activity === 'asleep' || agent.state === 'ride' || agent.indoors === true;
       const y = hidden ? -1000 : ground + bob;
       q.setFromAxisAngle(up, agent.heading);
       m.compose(pos.set(agent.x, y + BODY_Y, agent.z), q, one);

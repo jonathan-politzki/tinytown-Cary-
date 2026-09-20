@@ -21,7 +21,7 @@ codex login                                           # only for `town author` (
 
 | Verb | One line |
 | --- | --- |
-| `fetch <site> [--center LAT,LON --size W,H --title T] [--no-satellite] [--force] [--aerials [ID…]]` | OSM, USGS elevation, Esri imagery into `data/<site>/source/`; crops aerials |
+| `fetch <site> [--center LAT,LON --size W,H --title T] [--structures] [--no-satellite] [--force] [--aerials [ID…]]` | OSM, USGS elevation, Esri imagery into `data/<site>/source/`; `--structures` adds USA Structures footprints where OSM is thin; crops aerials |
 | `scope <site> [--ids…] [--ids-file F] [--bounds S,W,N,E] [--exclude…] [--source SITE]` | freeze `sites/<site>/scope.json`; `--source` seeds a site from another's downloads |
 | `build <site>` | `source/` + `overrides.json` -> `data/<site>/site.json` (milliseconds) |
 | `refs <site> [ids…] [--all] [--list F] [--faces=+u,-v\|all\|road] [--force] [--missing] [--aerials] [--web] [--extra-views N]` | Street View fronts, aerials, model packet into `buildings/<id>/` |
@@ -34,7 +34,8 @@ codex login                                           # only for `town author` (
 | `accept <site> [ids…] [--all-reviewed] [--force] [--no-rebuild]` | reviewed drafts -> `overrides.json`, then `build`; the only writer of blueprints |
 | `status <site> [--ids…]` | derived per-building status |
 | `bake <site> [--check] [--surfaces-only\|--stream-only]`, `bake --viewer [--check]` | surfaces + stream chunks for a site; `?v=` stamps in `index.html` |
-| `deploy [--target avon\|chautauqua\|all] [--no-check]` | stage `dist/<target>/` after `bake --check` and viewer checks |
+| `brand <site>\|--default [--preview] [--force] [--check]` | the town's own icons (and `--preview`: its social card) from `site.json`; `--default` redraws the repository's mark |
+| `stage [--target TARGET\|all] [--no-check]` | stage `dist/<target>/` (documents, assets, generated cache rules) after `bake --check` and viewer checks |
 | `serve [--port 8734] [--dist [TARGET]]` | dev server: `/`, `/avon`, `/chautauqua`, `/?site=<name>`; or a built dist |
 | `verify <target> <domain> [site]` | live files match `dist/<target>/` |
 | `browser setup\|status\|cleanup\|stop` | the private headless Chromium |
@@ -64,8 +65,10 @@ codex login                                           # only for `town author` (
 | `tinytown/plugins/<site>.py` | per-site hooks: `extra_sources`, `landmarks`, `outline`, `refine_building`, `scope_filter` |
 | `tinytown/web/` | `precompute.html` (surfaces), `prepare_streaming.mjs` + `stream-export.*` (chunks) |
 | `index.html`, `src/` | the viewer, served as-is |
-| `sites/<site>/site.json` | title, description, domain, `deploy` placements, `plugin`, `scope`, `landmarks`, `outline`, `social_image` |
-| `sites/deploy.json` | target -> `{dist, wrangler}` |
+| `src/ui/`, `src/agents/` | viewer extras attached through `window.__town` (hover card + aerial toggle; the agent world). Nested on purpose: `bake` fingerprints only top-level `src/*.js`, so adding here leaves committed surfaces and stamps current |
+| `sites/<site>/site.json` | title, description, domain, `deploy` placements, `plugin`, `scope`, `landmarks`, `outline`, `social_image`, `icon`, `viewer` |
+| `sites/<site>/favicon.*`, `apple-touch-icon.png`, `social-preview.jpg` | the town's identity, written by `town brand`; the repo root holds the default mark |
+| `sites/deploy.json` | target -> `{dist, wrangler}` (Cloudflare) or `{dist, vercel}` (Vercel; the file is staged as `vercel.json`) |
 | `data/<site>/source/` | stage-1 inputs (`satellite.jpg` gitignored; cache in `data/.town-cache/`) |
 | `data/<site>/overrides.json` | the authored truth: `buildings`, `blueprints`, `blueprint_frames`, `miniature_review`, `roads`, `extras`, `areas`, `landmarks`, `footprints`, `authored_buildings`, `authored_roads`, `notes`, `seed`, `title` |
 | `data/<site>/site.json`, `surfaces*`, `stream/`, `textures/` | built scene and runtime assets (committed, deployed) |
@@ -95,9 +98,15 @@ codex login                                           # only for `town author` (
   their fingerprint is stale (or with `bake --force`); when they are, chunk
   names change and you commit the deletions with the additions.
 - `/` on avon.town is `avon-extended`; `/avon` and `/extended` are aliases of the same
-  larger miniature. Routes come from `sites/*/site.json`,
-  `_headers` still lists them by hand.
+  larger miniature. Routes come from `sites/*/site.json`, and so do the
+  `no-cache` rules for them: `town stage` generates those above the checked-in
+  `_headers` (and into `vercel.json` for a Vercel target), so a new route needs
+  no hand edit.
 - `--faces=-u`, `--face=-u`: the `=` keeps argparse from reading `-u` as an option.
+- OSM building coverage varies wildly by town (Cary: 35 mapped footprints where
+  the ground holds ~550). `town fetch <site> --structures` fills the gap from
+  FEMA/ORNL USA Structures; ids are `10000000000 + BUILD_ID` and buildings carry
+  `"source": "usa-structures"` in `site.json`. Mapped OSM footprints always win.
 - Keep `town refs --workers` at 2; 3+ makes Google flaky.
 - `town author` with no ids means `--all`. On a scoped site (Chautauqua) keep
   `sites/<site>/scope.json` in place and named in `site.json` before `--all`,
@@ -110,6 +119,15 @@ codex login                                           # only for `town author` (
 - `town author` and `town render` start the dev server on 8734 and the
   private browser themselves; `town browser cleanup` disposes leaked contexts.
 - `sites/<site>/site.json` needs `title` and `description` to deploy.
+- Nothing in `src/*.js` names a site either: what the viewer must know before
+  it fetches (whether the stream is baked, `viewer.opening_view`) rides in the
+  document as `<meta name="town-viewer">` from `config.viewer_settings`. A page
+  served outside `town serve`/`town stage` has no meta and falls back to the
+  original loader and the fitted overview.
+- A site links its own icons when it has any and the repository's default mark
+  when it has none — never a mix, and never another town's social card. Run
+  `town brand <site>` for a new miniature; `town stage` prints a note while a
+  site is still on the default mark.
 - Env: `PIPELINE_PYTHON`, `PIPELINE_BROWSER_STATE_DIR`, `CODEX_HOME`, `TOWN_BENCH_*`.
 
 ## Tests
@@ -130,12 +148,12 @@ stamps. `tests/browser/chautauqua-browser.py` needs
 
 ## Deploy checklist
 
-1. `for s in avon-extended chautauqua; do ./town bake "$s" --check; done`
+1. `for s in sites/*/; do ./town bake "$(basename "$s")" --check; done   # every site`
 2. `./town bake --viewer --check`
-3. `./town stage` (stages both targets; same checks Cloudflare runs)
+3. `./town stage` (every target; same checks the hosts run)
 4. `tests/run.sh`
 5. Commit `data/`, `index.html`, `sites/`, `_headers`; push to `main`.
-6. `./town verify town https://avon.town` and
+6. `./town verify avon https://avon.town` and
    `./town verify chautauqua https://chautauqua.town`.
 
 Do not commit `dist/`, `runs/`, `.venv/`, or any image under

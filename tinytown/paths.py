@@ -62,6 +62,7 @@ class SitePaths:
     source = property(lambda self: self.data / 'source')
     request = property(lambda self: self.source / 'site_request.json')
     osm = property(lambda self: self.source / 'osm.json')
+    structures = property(lambda self: self.source / 'structures.json')
     elevation = property(lambda self: self.source / 'elevation.json')
     satellite = property(lambda self: self.source / 'satellite.jpg')
     satellite_meta = property(lambda self: self.source / 'satellite.json')

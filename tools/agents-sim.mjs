@@ -15,6 +15,9 @@ import { fileURLToPath } from 'node:url';
 import { buildGraph } from '../src/agents/graph.js';
 import { buildPlaces } from '../src/agents/places.js';
 import { createWorld, hhmm } from '../src/agents/world.js';
+import { buildRoadGraph, createTraffic } from '../src/agents/traffic.js';
+import { castFor } from '../src/agents/cast.js';
+import { exchange } from '../src/agents/talk.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -48,7 +51,9 @@ const siteData = JSON.parse(fs.readFileSync(scene, 'utf8'));
 const t0 = Date.now();
 const graph = buildGraph(siteData.roads);
 const places = buildPlaces(siteData, { graph });
-const world = createWorld({ places, graph, seed, population, startMin, timeScale: 60 });
+const world = createWorld({ places, graph, seed, population, startMin, timeScale: 60, cast: castFor(site) });
+const roadGraph = buildRoadGraph(siteData.roads);
+const traffic = createTraffic({ roadGraph, world, places, seed, ambient: Number(flag('cars', 8)) });
 const setup = Date.now() - t0;
 
 console.log(`${siteData.name || site}: ${graph.count} graph nodes `
@@ -56,6 +61,9 @@ console.log(`${siteData.name || site}: ${graph.count} graph nodes `
   + `${places.all.length} places, ${world.agents.length} villagers — built in ${setup} ms`);
 const census = places.categories().map((c) => `${c} ${places.of(c).length}`).join(', ');
 console.log(`places: ${census}`);
+console.log(`roads: ${roadGraph.count} drivable nodes, ${roadGraph.junctionCount} junctions, `
+  + `${roadGraph.portals.length} portals at the box edge, ${traffic.drivers.size} villagers own a car`);
+if (roadGraph.portals.length < 2) console.log('warning: fewer than two portals — no through-traffic');
 if (!places.of('commerce').length && !places.of('civic').length) {
   console.log('warning: nowhere to work — everyone will be unemployed');
 }
@@ -77,12 +85,14 @@ let shown = 0;
 for (let i = 0; i < ticks; i++) {
   const before = world.events.length;
   world.tick(1);
+  traffic.tick(1);
   if (quiet) continue;
   for (const e of world.events.slice(before)) {
     let line;
     if (e.kind === 'arrive') line = `${e.agentName} reaches ${e.placeName} (${e.activity})`;
     else if (e.kind === 'depart') line = `${e.agentName} leaves ${e.placeName} for ${e.toPlaceName}`;
     else if (e.kind === 'meet') line = `${e.agentName} runs into ${e.withName} at ${e.placeName}`;
+    else if (e.kind === 'drive') line = `${e.agentName} drives from ${e.placeName || 'home'} to ${e.toPlaceName}`;
     else line = `${e.agentName} ${e.kind} ${e.placeName || ''}`;
     // Meetings are the interesting ones; mark them so they are findable.
     console.log(`  d${e.day + 1} ${e.clock} ${e.kind === 'meet' ? '*' : ' '} ${line}`);
@@ -98,6 +108,20 @@ console.log(`\n${hours} h simulated in ${Date.now() - t0 - setup} ms. `
 console.log(`distance walked: ${(walked / 1000).toFixed(1)} km total, `
   + `${(walked / world.agents.length / 1000).toFixed(2)} km per villager per ${hours} h`);
 if (tally.stranded) console.log(`note: ${tally.stranded} stranded event(s) — a place the street graph cannot reach`);
+const t = traffic.stats;
+console.log(`cars: ${t.through} through trips, ${t.commutes} commutes${t.aborted ? `, ${t.aborted} abandoned mid-trip` : ''}, `
+  + `${(t.metres / 1000).toFixed(1)} km driven; ${traffic.cars.length} on the road now`);
+if (t.noRoutes) console.log(`note: ${t.noRoutes} through trip(s) had no route between portals — check one-way streets at the edge`);
+
+// --overhear ID: what that villager and whoever is next to them are saying now.
+const overhear = flag('overhear', null);
+if (overhear) {
+  const a = world.agent(overhear);
+  const b = a && world.agents.find((o) => o.id !== a.id && o.placeId === a.placeId && o.state === 'dwell');
+  console.log(`\n--- overheard at ${places.get(a?.placeId)?.name || '?'} ---`);
+  for (const l of exchange(world, places, a, b)) console.log(`  ${l.name}: ${l.text}`);
+  if (!b) console.log(`  (${a ? a.name : overhear} is alone)`);
+}
 
 const describe = flag('describe', null);
 if (describe) {

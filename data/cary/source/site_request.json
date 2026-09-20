@@ -1,0 +1,18 @@
+{
+ "center": {
+  "lat": 42.209,
+  "lon": -88.2415
+ },
+ "size_m": {
+  "w": 900.0,
+  "h": 900.0
+ },
+ "bounds": {
+  "south": 42.20495759971254,
+  "north": 42.21304240028746,
+  "west": -88.24695754737917,
+  "east": -88.23604245262084
+ },
+ "title": "Cary, Illinois",
+ "structures": "usa-structures"
+}

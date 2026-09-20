@@ -1,0 +1,121 @@
+{
+ "id": "206196358",
+ "addr": "100 West Main Street",
+ "name": "Cary Metra Station",
+ "frame": "b23a182fdce43cd20f7bd84718f69f237cda8652ce1035fc11d342579365bfa9",
+ "faces": {
+  "+u": {
+   "bearing": 305,
+   "width": 5.5,
+   "road": false,
+   "photos": [
+    {
+     "face": "+u",
+     "file": "fronts/+u.png",
+     "pano": "Nz9kBIGsX5uU8gmkWFXo2w",
+     "dist": 15.2,
+     "off_axis_deg": 56,
+     "fov": 55,
+     "tilt": 99,
+     "heading": 180,
+     "date": "May 2026",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2093132,-88.2413514,249a,55y,180h,99t/data=!3m7!1e1!3m5!1sNz9kBIGsX5uU8gmkWFXo2w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-9%26panoid%3DNz9kBIGsX5uU8gmkWFXo2w%26yaw%3D180!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2093132,
+      "lon": -88.2413514
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-u": {
+   "bearing": 125,
+   "width": 5.5,
+   "road": false,
+   "photos": [
+    {
+     "face": "-u",
+     "file": "fronts/-u.png",
+     "pano": "tNv6oNe5Ov3HJy8lIotGZA",
+     "dist": 19.5,
+     "off_axis_deg": 46,
+     "fov": 55,
+     "tilt": 97,
+     "heading": 258,
+     "date": "May 2026",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2090238,-88.240754,248a,55y,258h,97t/data=!3m7!1e1!3m5!1stNv6oNe5Ov3HJy8lIotGZA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-7%26panoid%3DtNv6oNe5Ov3HJy8lIotGZA%26yaw%3D258!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2090238,
+      "lon": -88.240754
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "+v": {
+   "bearing": 35,
+   "width": 36.8,
+   "road": true,
+   "photos": [
+    {
+     "face": "+v",
+     "file": "fronts/+v.png",
+     "pano": "8y8PJdKMcYhgHldxQJW_LQ",
+     "dist": 27.8,
+     "off_axis_deg": 17,
+     "fov": 79,
+     "tilt": 95,
+     "heading": 232,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2092575,-88.2408846,248a,79y,232h,95t/data=!3m7!1e1!3m5!1s8y8PJdKMcYhgHldxQJW_LQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3D8y8PJdKMcYhgHldxQJW_LQ%26yaw%3D232!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2092575,
+      "lon": -88.2408846
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-v": {
+   "bearing": 215,
+   "width": 36.8,
+   "road": false,
+   "photos": [
+    {
+     "face": "-v",
+     "file": "fronts/-v.png",
+     "pano": "5SlUGba46bl16rS8y9sLag",
+     "dist": 30.7,
+     "off_axis_deg": 3,
+     "fov": 74,
+     "tilt": 94,
+     "heading": 37,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2088428,-88.2414134,249a,74y,37h,94t/data=!3m7!1e1!3m5!1s5SlUGba46bl16rS8y9sLag!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4%26panoid%3D5SlUGba46bl16rS8y9sLag%26yaw%3D37!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2088428,
+      "lon": -88.2414134
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  }
+ },
+ "captured": "2026-09-20 15:11"
+}

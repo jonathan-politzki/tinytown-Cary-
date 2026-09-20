@@ -1,0 +1,306 @@
+{
+ "version": 3,
+ "id": "1374307058",
+ "name": "Cary Ale House",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "commercial",
+  "building:levels": "2"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 23.365,
+  "depth_v": 16.058,
+  "footprint_uv": [
+   [
+    -11.5,
+    -8.0
+   ],
+   [
+    11.7,
+    -8.0
+   ],
+   [
+    11.4,
+    7.8
+   ],
+   [
+    -11.7,
+    8.0
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 182,
+    "compass": "S",
+    "left_bearing": 272,
+    "right_bearing": 92,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 30.8
+    },
+    "nearest_road_hint": true
+   },
+   "-u": {
+    "bearing": 2,
+    "compass": "N",
+    "left_bearing": 92,
+    "right_bearing": 272,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 115.5
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 272,
+    "compass": "W",
+    "left_bearing": 2,
+    "right_bearing": 182,
+    "nearest_road_outward": {
+     "name": "North Seebert Street",
+     "circular": false,
+     "distance_m": 129.5
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 92,
+    "compass": "E",
+    "left_bearing": 182,
+    "right_bearing": 2,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 191.9
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2088088,
+    "lon": -88.2430833,
+    "position_xz": [
+     -130.55,
+     21.28
+    ],
+    "position_uv": [
+     23.21,
+     2.95
+    ],
+    "looking_bearing": 16.0,
+    "looking_compass": "NNE",
+    "image_left_bearing": 286.0,
+    "image_right_bearing": 106.0,
+    "target_center_offset_deg": -7.0,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 14,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 19.5
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2088088,-88.2430833,3a,80y,16h,100t/data=!3m7!1e1!3m5!1sr3-7BUCXWkJSTf9-YQ43ew!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3Dr3-7BUCXWkJSTf9-YQ43ew%26yaw%3D16!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "r3-7BUCXWkJSTf9-YQ43ew",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "5818b7c1280b38504c4f1d1e284662625e1c0c4e2f44109f1a35fc42f370520b"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2093273,
+    "lon": -88.2430211,
+    "position_xz": [
+     -125.42,
+     -36.44
+    ],
+    "position_uv": [
+     -34.64,
+     -0.37
+    ],
+    "looking_bearing": 183.0,
+    "looking_compass": "S",
+    "image_left_bearing": 93.0,
+    "image_right_bearing": 273.0,
+    "target_center_offset_deg": -0.6,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 1,
+    "fov": 55,
+    "tilt": 96,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 76.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2093273,-88.2430211,3a,55y,183h,96t/data=!3m7!1e1!3m5!1s-i87ut6_D3eofWU0u0SQeg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-6%26panoid%3D-i87ut6_D3eofWU0u0SQeg%26yaw%3D183!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "-i87ut6_D3eofWU0u0SQeg",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "e06be900551123bafef239414dafbeda08cf12126714cc5f3097a9b3ae84b323"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2090539,
+    "lon": -88.243247,
+    "position_xz": [
+     -144.05,
+     -6.0
+    ],
+    "position_uv": [
+     -3.64,
+     17.3
+    ],
+    "looking_bearing": 113.0,
+    "looking_compass": "ESE",
+    "image_left_bearing": 23.0,
+    "image_right_bearing": 203.0,
+    "target_center_offset_deg": -9.3,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 21,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 47.4
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2090539,-88.243247,3a,80y,113h,100t/data=!3m7!1e1!3m5!1sZaWBQj_Nr2vXUwtdSyzAxA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3DZaWBQj_Nr2vXUwtdSyzAxA%26yaw%3D113!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "ZaWBQj_Nr2vXUwtdSyzAxA",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "65b292ca7c29b9f0e44552a3c09947fced6eb9b25cedd4805b5d445538ed4c3c"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2089526,
+    "lon": -88.2426454,
+    "position_xz": [
+     -94.44,
+     5.28
+    ],
+    "position_uv": [
+     6.08,
+     -32.64
+    ],
+    "looking_bearing": 286.0,
+    "looking_compass": "WNW",
+    "image_left_bearing": 196.0,
+    "image_right_bearing": 16.0,
+    "target_center_offset_deg": -3.7,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 14,
+    "fov": 61,
+    "tilt": 95,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 33.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2089526,-88.2426454,3a,61y,286h,95t/data=!3m7!1e1!3m5!1sPpfgWSWKlTQtgPPb4n3pVg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DPpfgWSWKlTQtgPPb4n3pVg%26yaw%3D286!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "PpfgWSWKlTQtgPPb4n3pVg",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "bec78d31413b55cceb7b0c43f4584b4dc1a15b69bcea4bae79b2b363fad734ac"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "4a42d2cbef47cda9f98f1741acaf5e9b58154d1f352a4f4fb1215258a2cdbb07"
+  }
+ ],
+ "search_query": "Cary Ale House Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

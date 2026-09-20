@@ -605,6 +605,44 @@ def authored_building_elements(records, mapped):
     return result
 
 
+def structure_building_elements(record, mapped):
+    """Supplemental footprints (source/structures.json) that no mapped building covers.
+
+    A structure is covered when its centroid lies inside a mapped building's
+    ring or a mapped building's centroid lies inside the structure's, so the
+    hand-mapped footprint wins and nothing is drawn twice.
+    """
+    elements = (record or {}).get('elements') or []
+    if not elements:
+        return []
+    rings = []
+    for e in mapped:
+        ring = building_ring(e) if 'building' in e.get('tags', {}) else None
+        if ring:
+            pts = [(p['lon'], p['lat']) for p in ring]
+            if pts[0] != pts[-1]:
+                pts.append(pts[0])
+            lons, lats = [p[0] for p in pts], [p[1] for p in pts]
+            rings.append((pts, (min(lons), max(lons), min(lats), max(lats)), _ring_centroid(ring)))
+
+    def covered(ring):
+        pts = [(p['lon'], p['lat']) for p in ring]
+        if pts[0] != pts[-1]:
+            pts.append(pts[0])
+        lon, lat = _ring_centroid(ring)
+        lons, lats = [p[0] for p in pts], [p[1] for p in pts]
+        box = (min(lons), max(lons), min(lats), max(lats))
+        for other, (west, east, south, north), (olon, olat) in rings:
+            if west <= lon <= east and south <= lat <= north and contains(other, lon, lat):
+                return True
+            if box[0] <= olon <= box[1] and box[2] <= olat <= box[3] and contains(pts, olon, olat):
+                return True
+        return False
+
+    return [e for e in elements if 'building' in e.get('tags', {}) and building_ring(e)
+            and not covered(building_ring(e))]
+
+
 def building_ring(element):
     """The outer [{'lat','lon'}] ring of a building element, or None."""
     if element["type"] == "way" and "geometry" in element:
@@ -644,6 +682,7 @@ def build(paths, *, write=True):
     for value, path in ((req, paths.request), (osm, paths.osm), (elev, paths.elevation)):
         if value is None:
             raise FileNotFoundError(f"missing source file {path}")
+    structures = structure_building_elements(read_json(paths.structures), osm['elements'])
     ov = load_overrides(paths)
 
     lat0, lon0 = req["center"]["lat"], req["center"]["lon"]
@@ -810,7 +849,8 @@ def build(paths, *, write=True):
     include_ids = scoped_ids(paths, req, config)
     refine = hook(plugin, 'refine_building')
     buildings = []
-    building_sources = osm['elements'] + authored_building_elements(ov.get('authored_buildings', []), osm['elements'])
+    mapped = osm['elements'] + structures
+    building_sources = mapped + authored_building_elements(ov.get('authored_buildings', []), mapped)
     for e in building_sources:
         t = e.get("tags", {})
         if "building" not in t:
@@ -880,12 +920,14 @@ def build(paths, *, write=True):
             continue
         building = {
             "id": e["id"], "addr": addr, "name": display_name,
-            "tags": {k: v for k, v in t.items() if k in ("building", "amenity", "shop", "historic", "building:levels", "roof:shape", "height", "miniature:open_lane")},
+            "tags": {k: v for k, v in t.items() if k in ("building", "amenity", "shop", "historic", "building:levels", "roof:shape", "height", "miniature:open_lane", "occupancy")},
             "pts": [list(p) for p in pts] if saved_frame else [[rnd(x), rnd(z)] for x, z in pts],
             "centroid": [rnd(cx), rnd(cz)], "area": rnd(area, 1),
             "obb": dict(obb) if saved_frame else {k: rnd(v, 3) for k, v in obb.items()}, "fill": rnd(fill, 3),
             "front": front, "style": style, "blueprint": blueprint,
         }
+        if e.get("source"):
+            building["source"] = e["source"]
         if refine:
             refine(building)
         buildings.append(building)
@@ -909,7 +951,7 @@ def build(paths, *, write=True):
 
     site = {
         "name": paths.name,
-        "title": ov.get("title"),
+        "title": ov.get("title") or req.get("title"),   # authored first, then the one fetch recorded
         "center": {"lat": lat0, "lon": lon0}, "frame": "x=east z=south y=up, metres, origin at centre",
         "size": {"w": W, "h": H},
         "terrain": terrain, "roads": roads, "areas": areas, "buildings": buildings, "pois": pois,
@@ -1016,10 +1058,12 @@ def request_bounds(request):
 
 
 def source_elements(paths):
-    """Every cached OSM element: osm.json plus the plugin extras (*-osm.json)."""
+    """Every cached element: osm.json, the plugin extras (*-osm.json), then the
+    supplemental structures no mapped building covers."""
     elements = list((read_json(paths.osm) or {}).get("elements", []))
     for extra in sorted(paths.source.glob("*-osm.json")):
         elements.extend((read_json(extra) or {}).get("elements", []))
+    elements.extend(structure_building_elements(read_json(paths.structures), elements))
     return elements
 
 
@@ -1096,7 +1140,7 @@ def import_source(paths, source, ids, bounds=None, padding=24, title=None):
         ids = [str(e["id"]) for e in select_buildings(paths, elements, bounds, {**request, "center": center})]
     new_request = {"center": center, "size_m": size, "bounds": bounds}
     paths.source.mkdir(parents=True, exist_ok=True)
-    for name in ("elevation.json", "satellite.json", "satellite.jpg"):
+    for name in ("structures.json", "elevation.json", "satellite.json", "satellite.jpg"):
         if (source.source / name).exists():
             shutil.copy2(source.source / name, paths.source / name)
     for extra in source.source.glob("*-osm.json"):

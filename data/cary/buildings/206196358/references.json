@@ -1,0 +1,332 @@
+{
+ "version": 3,
+ "id": "206196358",
+ "name": "Cary Metra Station",
+ "location": "Cary, Illinois",
+ "address": "100 West Main Street",
+ "source_tags": {
+  "building": "train_station"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 36.765,
+  "depth_v": 5.535,
+  "footprint_uv": [
+   [
+    -18.0,
+    2.7
+   ],
+   [
+    -18.4,
+    -2.8
+   ],
+   [
+    18.2,
+    -2.8
+   ],
+   [
+    18.4,
+    2.8
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 305,
+    "compass": "NW",
+    "left_bearing": 35,
+    "right_bearing": 215,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 125,
+    "compass": "SE",
+    "left_bearing": 215,
+    "right_bearing": 35,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 51.7
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 35,
+    "compass": "NE",
+    "left_bearing": 125,
+    "right_bearing": 305,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 11.7
+    },
+    "nearest_road_hint": true
+   },
+   "-v": {
+    "bearing": 215,
+    "compass": "SW",
+    "left_bearing": 305,
+    "right_bearing": 125,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 51.7
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  },
+  {
+   "id": "WEB1",
+   "kind": "web-image",
+   "path": "images/reference-6.jpg",
+   "caption": "Downtown Cary, IL: Culinary Delights and Metra Convenience (unlocated detail reference; verify identity and locate the facade using geolocated photographs before placing features)"
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2093132,
+    "lon": -88.2413514,
+    "position_xz": [
+     12.25,
+     -34.87
+    ],
+    "position_uv": [
+     27.0,
+     12.57
+    ],
+    "looking_bearing": 180.0,
+    "looking_compass": "S",
+    "image_left_bearing": 90.0,
+    "image_right_bearing": 270.0,
+    "target_center_offset_deg": -30.4,
+    "geometrically_facing_camera": [
+     "+u",
+     "+v"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 56,
+    "fov": 55,
+    "tilt": 99,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 1.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2093132,-88.2413514,249a,55y,180h,99t/data=!3m7!1e1!3m5!1sNz9kBIGsX5uU8gmkWFXo2w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-9%26panoid%3DNz9kBIGsX5uU8gmkWFXo2w%26yaw%3D180!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "Nz9kBIGsX5uU8gmkWFXo2w",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "449dfb18aa5a04ed66e8e1e24b5fece4f3230aa43c9ee499bb566b2cc84b475d"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2090238,
+    "lon": -88.240754,
+    "position_xz": [
+     61.51,
+     -2.65
+    ],
+    "position_uv": [
+     -31.84,
+     14.06
+    ],
+    "looking_bearing": 258.0,
+    "looking_compass": "WSW",
+    "image_left_bearing": 168.0,
+    "image_right_bearing": 348.0,
+    "target_center_offset_deg": 22.8,
+    "geometrically_facing_camera": [
+     "-u",
+     "+v"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 46,
+    "fov": 55,
+    "tilt": 97,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 0.6
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2090238,-88.240754,248a,55y,258h,97t/data=!3m7!1e1!3m5!1stNv6oNe5Ov3HJy8lIotGZA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-7%26panoid%3DtNv6oNe5Ov3HJy8lIotGZA%26yaw%3D258!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "tNv6oNe5Ov3HJy8lIotGZA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "704c2f20d64c500f72c93139db1ae641e351b10c8053c363f5cc3d751c0b7a82"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2092575,
+    "lon": -88.2408846,
+    "position_xz": [
+     50.74,
+     -28.66
+    ],
+    "position_uv": [
+     -8.19,
+     29.34
+    ],
+    "looking_bearing": 232.0,
+    "looking_compass": "SW",
+    "image_left_bearing": 142.0,
+    "image_right_bearing": 322.0,
+    "target_center_offset_deg": -1.8,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 17,
+    "fov": 79,
+    "tilt": 95,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 14.8
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2092575,-88.2408846,248a,79y,232h,95t/data=!3m7!1e1!3m5!1s8y8PJdKMcYhgHldxQJW_LQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3D8y8PJdKMcYhgHldxQJW_LQ%26yaw%3D232!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "8y8PJdKMcYhgHldxQJW_LQ",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "3133d35c4552a439e5f2089aa6853eab005f90c09977db6b0315fd169cad2ef6"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2088428,
+    "lon": -88.2414134,
+    "position_xz": [
+     7.14,
+     17.5
+    ],
+    "position_uv": [
+     1.44,
+     -33.42
+    ],
+    "looking_bearing": 37.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 307.0,
+    "image_right_bearing": 127.0,
+    "target_center_offset_deg": 0.1,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 3,
+    "fov": 74,
+    "tilt": 94,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 17.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2088428,-88.2414134,249a,74y,37h,94t/data=!3m7!1e1!3m5!1s5SlUGba46bl16rS8y9sLag!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4%26panoid%3D5SlUGba46bl16rS8y9sLag%26yaw%3D37!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "5SlUGba46bl16rS8y9sLag",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "0e22fc8b8a2891410a54952a92867ac495b932e12845e9361fc191789ed6ff98"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "278857fe5dd9372643fd4b720476b9d24cebcbcfd933f93d946f1a33cf1e6cdd"
+  },
+  {
+   "url": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_588,q_65,w_639/v1/clients/mchenryil/DJI_20240901091813_0318_D_3e0f6738-0e2f-4b70-af72-78c74dffe629.jpg",
+   "page_url": "https://www.naturallymchenrycounty.com/things-to-do/downtowns/downtown-cary/",
+   "title": "Downtown Cary, IL: Culinary Delights and Metra Convenience",
+   "query": "Cary Metra Station Cary, Illinois building exterior",
+   "provider": "bing-images",
+   "id": "WEB1",
+   "source_path": "images/web-original-b13db3a1be188ede",
+   "kind": "web-image",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Web photo has no verified capture pose."
+   },
+   "caption": "Downtown Cary, IL: Culinary Delights and Metra Convenience (unlocated detail reference; verify identity and locate the facade using geolocated photographs before placing features)",
+   "path": "images/reference-6.jpg",
+   "sha256": "bb0aacde9e5fc49c62f6cb2749eaf6cd79f966a9d340da144cb2e34497e5719e"
+  }
+ ],
+ "search_query": "Cary Metra Station Cary, Illinois building exterior",
+ "search_candidates": [
+  {
+   "url": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_588,q_65,w_639/v1/clients/mchenryil/DJI_20240901091813_0318_D_3e0f6738-0e2f-4b70-af72-78c74dffe629.jpg",
+   "page_url": "https://www.naturallymchenrycounty.com/things-to-do/downtowns/downtown-cary/",
+   "title": "Downtown Cary, IL: Culinary Delights and Metra Convenience",
+   "query": "Cary Metra Station Cary, Illinois building exterior",
+   "provider": "bing-images"
+  }
+ ],
+ "warnings": []
+}

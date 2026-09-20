@@ -2,7 +2,7 @@
 // Run: node tests/browser/run.mjs (or node tests/browser/viewer-browser.mjs). Every test page is an owned private headless Chromium tab.
 // TOWN_VIEWER_PHASE=desktop|mobile selects an independent phase for targeted reruns.
 import assert from 'node:assert/strict';
-import { privateBrowser } from '../../tinytown/browser.mjs';
+import { privateBrowser, routeDocuments } from '../../tinytown/browser.mjs';
 import { once } from 'node:events';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -15,6 +15,7 @@ import { viewerFixture } from './viewer-fixture.mjs';
 
 const root = fileURLToPath(new URL('../../',import.meta.url));
 const fixture = viewerFixture(JSON.parse(await readFile(root+'data/avon-extended/site.json','utf8')));
+const documentFor = routeDocuments(root);
 let fixtureSurfaces, fixtureBytes;
 let fault;
 const server = createServer(async (req, res) => {
@@ -41,6 +42,12 @@ const server = createServer(async (req, res) => {
   }
   if (fixtureSurfaces && path === '/data/avon-extended/'+fixtureSurfaces.file) {
     res.end(fixtureBytes); return;
+  }
+  // Documents come from the deploy stage, as on the dev server and in dist:
+  // the page under test carries the site and viewer settings a visitor's does.
+  const routed = await documentFor(new URL(req.url, 'http://localhost'));
+  if (routed && routed.document) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8'); res.end(routed.document); return;
   }
   const file = resolve(root, '.' + (path === '/' ? '/index.html' : path));
   if (!file.startsWith(root)) { res.writeHead(403); res.end(); return; }

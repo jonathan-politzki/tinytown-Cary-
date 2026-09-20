@@ -3,18 +3,20 @@ import assert from 'node:assert/strict';
 import { packSceneJSON, unpackSceneJSON } from '../../src/stream-format.js';
 import { selectDetailTiles, detailVisible, groundSampler, useStreaming } from '../../src/stream-policy.js';
 
-test('Every published miniature streams with explicit opt-out and complete authoring views',()=>{
-  const mode=(query='',site='avon-extended')=>useStreaming(new URLSearchParams(query),site);
+test('Every miniature with baked chunks streams, with explicit opt-out and complete authoring views',()=>{
+  // `prepared` is the document's town-viewer setting: config.viewer_settings
+  // reports a site as streaming as soon as `town bake` has written its chunks,
+  // so no site name reaches this policy.
+  const mode=(query='',prepared=true)=>useStreaming(new URLSearchParams(query),prepared);
   assert.equal(mode(),true);
-  assert.equal(mode('','avon-extended'),true);
-  assert.equal(mode('','chautauqua'),true);
-  assert.equal(mode('stream=0','chautauqua'),false);
-  assert.equal(mode('stream=0','avon-extended'),false);
-  assert.equal(mode('time=night&quality=mobile'),true);
   assert.equal(mode('stream=0'),false);
+  assert.equal(mode('time=night&quality=mobile'),true);
   assert.equal(mode('stream=1'),true);
-  assert.equal(mode('','unprepared'),false);
-  assert.equal(mode('stream=1','prepared-neighbor'),true);
+  assert.equal(mode('',false),false,'a site with no prepared stream builds from blueprints');
+  assert.equal(useStreaming(new URLSearchParams(''),undefined),false,
+    'a document without the setting stays on the original loader');
+  assert.equal(mode('stream=0',true),false);
+  assert.equal(mode('stream=1',false),true,'an authoring preview can ask for chunks anyway');
   for(const option of ['bp=123','isolate=123','stage=detail','procedural','notrees','nobake']) {
     assert.equal(mode(option),false,option);
     assert.equal(mode('stream=1&'+option),false,option+' keeps authoring complete');

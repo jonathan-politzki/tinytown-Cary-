@@ -1,0 +1,289 @@
+{
+ "thread_id": "01a0c074-0e4c-7b02-8d38-6785346569d1",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12237,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 841,
+  "reasoning_output_tokens": 85,
+  "total_tokens": 13078
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#aa7960\",\"trim\":\"#e2d6bf\",\"roofColor\":\"#58635d\",\"volumes\":[{\"id\":\"station\",\"u\":[-18.2,18.2],\"v\":[-2.75,2.75],\"height\":3.4,\"bottom\":-0.3,\"roof\":{\"type\":\"gable\",\"ridge\":\"u\",\"pitch\":0.28,\"maxH\":1.55,\"overhang\":0.5},\"plinth\":{\"height\":0.3,\"color\":\"#999286\"},\"faces\":{\"-v\":{\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.8,\"h\":2.45,\"color\":\"#405950\",\"surround\":\"#e2d6bf\",\"surroundW\":0.14}],\"storeys\":[{\"y\":0.85,\"windows\":{\"type\":\"rect\",\"w\":1.65,\"h\":1.75,\"at\":[0.09,0.2,0.31,0.4,0.6,0.69,0.8,0.91],\"trim\":\"#e2d6bf\",\"glass\":\"#758b8c\",\"interior\":false}}],\"signs\":[{\"text\":\"CARY\",\"style\":\"green\",\"at\":0.5,\"y\":2.85,\"w\":2.7,\"h\":0.42}]},\"+v\":{\"storeys\":[{\"y\":0.85,\"windows\":{\"type\":\"rect\",\"w\":1.65,\"h\":1.75,\"at\":[0.1,0.23,0.36,0.5,0.64,0.77,0.9],\"trim\":\"#e2d6bf\",\"glass\":\"#758b8c\",\"interior\":false}}]},\"+u\":{\"storeys\":[{\"y\":0.85,\"windows\":{\"type\":\"rect\",\"w\":1.1,\"h\":1.75,\"at\":[0.3,0.7],\"trim\":\"#e2d6bf\",\"glass\":\"#758b8c\",\"interior\":false}}]},\"-u\":{\"storeys\":[{\"y\":0.85,\"windows\":{\"type\":\"rect\",\"w\":1.1,\"h\":1.75,\"at\":[0.3,0.7],\"trim\":\"#e2d6bf\",\"glass\":\"#758b8c\",\"interior\":false}}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Long, narrow station footprint aligned NW\u2013SE.",
+   "Low roof with generous eaves; provisional roof form.",
+   "Warm walls, cream trim and muted green accents; assumed palette.",
+   "Readable window rhythm and a small CARY identification board."
+  ],
+  "references_used": [
+   "206196358 frame footprint and face bearings",
+   "SV4 camera metadata only"
+  ],
+  "uncertainties": [
+   "Reference images were unavailable; architecture, cladding, roof, heights, windows and colors cannot be visually verified.",
+   "The single southwest entrance is a provisional modeling choice, not an observed placement. SV4 locates a southwest-facing view but does not establish an entry.",
+   "Sign appearance and position are interpretive; secondary entries are omitted rather than invented."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "station",
+    "face": "-v",
+    "role": "principal (provisional)",
+    "evidence": [
+     "206196358 frame: -v faces southwest",
+     "SV4: camera faces -v; image unavailable, entrance uncorroborated"
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author/response.json",
+ "started_at": 1789935226.300561,
+ "finished_at": 1789935256.645396,
+ "elapsed_seconds": 30.34483504295349,
+ "duration": 30.34483504295349,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-6.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-151346-10bb26-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "206196358",
+ "model_alias": "astra",
+ "run": "20260920-150958-47d79d",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "88f16c5c1294014da45c41b965935243eb3a9c4275312924c55c199921f72bc1",
+ "frame": "b23a182fdce43cd20f7bd84718f69f237cda8652ce1035fc11d342579365bfa9",
+ "timestamp": 1789935256.6471858,
+ "blueprint": {
+  "wall": "#aa7960",
+  "trim": "#e2d6bf",
+  "roofColor": "#58635d",
+  "volumes": [
+   {
+    "id": "station",
+    "u": [
+     -18.2,
+     18.2
+    ],
+    "v": [
+     -2.75,
+     2.75
+    ],
+    "height": 3.4,
+    "bottom": -0.3,
+    "roof": {
+     "type": "gable",
+     "ridge": "u",
+     "pitch": 0.28,
+     "maxH": 1.55,
+     "overhang": 0.5
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#999286"
+    },
+    "faces": {
+     "-v": {
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.8,
+        "h": 2.45,
+        "color": "#405950",
+        "surround": "#e2d6bf",
+        "surroundW": 0.14
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.85,
+        "windows": {
+         "type": "rect",
+         "w": 1.65,
+         "h": 1.75,
+         "at": [
+          0.09,
+          0.2,
+          0.31,
+          0.4,
+          0.6,
+          0.69,
+          0.8,
+          0.91
+         ],
+         "trim": "#e2d6bf",
+         "glass": "#758b8c",
+         "interior": false
+        }
+       }
+      ],
+      "signs": [
+       {
+        "text": "CARY",
+        "style": "green",
+        "at": 0.5,
+        "y": 2.85,
+        "w": 2.7,
+        "h": 0.42
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.85,
+        "windows": {
+         "type": "rect",
+         "w": 1.65,
+         "h": 1.75,
+         "at": [
+          0.1,
+          0.23,
+          0.36,
+          0.5,
+          0.64,
+          0.77,
+          0.9
+         ],
+         "trim": "#e2d6bf",
+         "glass": "#758b8c",
+         "interior": false
+        }
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.85,
+        "windows": {
+         "type": "rect",
+         "w": 1.1,
+         "h": 1.75,
+         "at": [
+          0.3,
+          0.7
+         ],
+         "trim": "#e2d6bf",
+         "glass": "#758b8c",
+         "interior": false
+        }
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.85,
+        "windows": {
+         "type": "rect",
+         "w": 1.1,
+         "h": 1.75,
+         "at": [
+          0.3,
+          0.7
+         ],
+         "trim": "#e2d6bf",
+         "glass": "#758b8c",
+         "interior": false
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Long, narrow station footprint aligned NW\u2013SE.",
+  "Low roof with generous eaves; provisional roof form.",
+  "Warm walls, cream trim and muted green accents; assumed palette.",
+  "Readable window rhythm and a small CARY identification board."
+ ],
+ "uncertainties": [
+  "Reference images were unavailable; architecture, cladding, roof, heights, windows and colors cannot be visually verified.",
+  "The single southwest entrance is a provisional modeling choice, not an observed placement. SV4 locates a southwest-facing view but does not establish an entry.",
+  "Sign appearance and position are interpretive; secondary entries are omitted rather than invented."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "station",
+   "face": "-v",
+   "role": "principal (provisional)",
+   "evidence": [
+    "206196358 frame: -v faces southwest",
+    "SV4: camera faces -v; image unavailable, entrance uncorroborated"
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "22b0a99239b79c392d5e5e44c7db882d42dd2cd81177c4b59eb7e9d3ede3c7e0"
+}

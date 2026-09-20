@@ -6,5 +6,9 @@
   "chautauqua": {
     "dist": "dist/chautauqua",
     "wrangler": "wrangler.chautauqua.jsonc"
+  },
+  "cary": {
+    "dist": "dist/cary",
+    "vercel": "vercel.cary.json"
   }
 }

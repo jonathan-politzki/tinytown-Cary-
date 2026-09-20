@@ -14,9 +14,10 @@ node_modules/
 *.pem
 *.key
 
-# Build output and Cloudflare state
+# Build output, Cloudflare and Vercel state
 /dist/
 .wrangler/
+.vercel/
 
 # Private headless browser runtime, model transcripts, scratch runs
 /runs/
@@ -42,3 +43,4 @@ data/*/buildings/*/web-original-*
 # Streaming build scratch
 data/*/stream/.prepare-*
 *.egg-info/
+.vercel

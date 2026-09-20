@@ -24,8 +24,8 @@ import subprocess
 from .paths import ROOT, site_paths
 from .state import atomic_json
 
-SOURCE_FILES = ('osm.json', 'elevation.json', 'satellite.json', 'satellite.jpg', 'site_request.json',
-                'composition.json')
+SOURCE_FILES = ('osm.json', 'structures.json', 'elevation.json', 'satellite.json', 'satellite.jpg',
+                'site_request.json', 'composition.json')
 MINIATURE_FILES = {
     'author-response.json': 'author.json',
     'review.json': 'review.json',

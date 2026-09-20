@@ -6,8 +6,31 @@
 // usable society falls out of those: houses to live in, commercial frontage to
 // work behind, churches and civic halls to gather in.
 //
-// Anything hand-authored beats a guess, so a labels sidecar can name a building
-// and set its category outright. No THREE, no DOM.
+// Bars, cafes and shops are usually mapped as *points*, not as named
+// buildings, so a named point of interest inside a footprint names the
+// building and sets its category (the same rule the hover card uses). Anything
+// hand-authored beats all of that: a labels sidecar can name a building and
+// set its category outright. No THREE, no DOM.
+import { pointsOfInterest } from '../ui/poi.js';
+import { pointInPolygon } from '../ui/geo.js';
+
+/**
+ * How far from (cx, cz) along (nx, nz) the footprint polygon ends: the last
+ * crossing of a ray with the outline, or null if the ray never leaves it.
+ */
+function reachOfFootprint(pts, cx, cz, nx, nz) {
+  let best = null;
+  for (let i = 0; i < pts.length; i++) {
+    const [ax, az] = pts[i], [bx, bz] = pts[(i + 1) % pts.length];
+    const ex = bx - ax, ez = bz - az;
+    const den = nx * ez - nz * ex;
+    if (Math.abs(den) < 1e-9) continue;
+    const t = ((ax - cx) * ez - (az - cz) * ex) / den;   // along the ray
+    const u = ((ax - cx) * nz - (az - cz) * nx) / den;   // along the edge
+    if (t > 0 && u >= -1e-9 && u <= 1 + 1e-9 && (best === null || t > best)) best = t;
+  }
+  return best;
+}
 
 // style.kind -> category. Categories are what schedules ask for by name.
 const KIND_CATEGORY = {
@@ -34,6 +57,37 @@ const TAG_CATEGORY = [
   ['office', { '*': 'commerce' }],
   ['craft', { '*': 'commerce' }],
 ];
+
+// A point of interest's kind -> category.
+const POI_CATEGORY = {
+  bar: 'eatery', pub: 'eatery', restaurant: 'eatery', cafe: 'eatery', fast_food: 'eatery', ice_cream: 'eatery', bakery: 'eatery',
+  convenience: 'shop', supermarket: 'shop', florist: 'shop', pharmacy: 'shop', hairdresser: 'shop', bank: 'commerce',
+  car_repair: 'commerce', fuel: 'commerce', dentist: 'commerce', doctors: 'commerce',
+  school: 'school', place_of_worship: 'worship', library: 'civic', post_office: 'civic', townhall: 'civic',
+  fire_station: 'civic', police: 'civic',
+};
+/**
+ * Labels derived from the site's points of interest: {buildingId: {name, category, poi}}.
+ * A building keeps its own OSM name if it has one; the POI still sets the category.
+ */
+export function poiLabels(siteData) {
+  const labels = {};
+  const pois = siteData.pois || [];
+  if (!pois.length) return labels;
+  for (const building of siteData.buildings || []) {
+    // One rule with the hover card (src/ui/poi.js): named, not street furniture,
+    // inside the footprint or within a few metres of it.
+    const inside = pointsOfInterest(building, pois).filter((p) => p.kind);
+    if (!inside.length) continue;
+    const poi = inside[0];
+    labels[building.id] = {
+      name: building.name || poi.name,
+      category: POI_CATEGORY[poi.kind] ?? undefined,
+      poi,
+    };
+  }
+  return labels;
+}
 
 function categoryFor(building) {
   const tags = building.tags || {};
@@ -66,9 +120,10 @@ const TITLE = {
 export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
   const places = [];
   const byId = new Map();
+  const fromPois = poiLabels(siteData);
 
   for (const building of siteData.buildings || []) {
-    const override = labels[building.id] || labels[String(building.id)] || {};
+    const override = { ...(fromPois[building.id] || {}), ...(labels[building.id] || labels[String(building.id)] || {}) };
     const category = override.category ?? categoryFor(building);
     if (!category) continue;
 
@@ -82,10 +137,20 @@ export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
     const nx = Math.cos(dir), nz = Math.sin(dir);
     const halfDepth = Math.max(obb.w || 0, obb.d || 0) / 2;
 
-    // Two points per place: the doorway on the facade, and the spot out at the
-    // street where the path from the network ends.
-    const door = [cx + nx * (halfDepth * 0.65 + 0.6), cz + nz * (halfDepth * 0.65 + 0.6)];
-    const reach = Math.max(halfDepth * 0.65 + 1.5, Math.min(front.dist ?? 12, halfDepth + 30));
+    // Two points per place: the doorway just outside the facade, and the spot
+    // out at the street where the path from the network ends. The facade is
+    // where the front normal leaves the footprint; the OBB is only a fallback,
+    // since on a building whose long side faces the road it puts the door
+    // inside the walls.
+    const pts = building.pts && building.pts.length >= 3 ? building.pts : null;
+    // The oriented box's true half-extent along the normal, for footprints the
+    // ray cannot resolve (a centre outside an L-shape, a degenerate outline).
+    const ang = obb.angle ?? 0, ux = Math.cos(ang), uz = Math.sin(ang);
+    const boxReach = Math.abs(nx * ux + nz * uz) * (obb.w || 0) / 2 + Math.abs(-nx * uz + nz * ux) * (obb.d || 0) / 2;
+    const wall = (pts && reachOfFootprint(pts, cx, cz, nx, nz)) ?? (boxReach || halfDepth * 0.65);
+    const step = wall + 0.5;
+    const door = [cx + nx * step, cz + nz * step];
+    const reach = Math.max(step + 1.0, Math.min(front.dist ?? 12, halfDepth + 30));
     const approach = [cx + nx * reach, cz + nz * reach];
 
     // An unnamed building still reads better with its street than as "a house".
@@ -97,6 +162,7 @@ export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
       named: Boolean(override.name || labelFor(building)),
       category,
       kind: building.style?.kind || null,
+      poi: override.poi?.kind || null,
       street: front.road || null,
       area: building.area ?? null,
       centroid: [cx, cz],

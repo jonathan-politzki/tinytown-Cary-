@@ -1,0 +1,232 @@
+{
+ "wall": "#a47760",
+ "wallMaterial": "brick",
+ "trim": "#dfd4bd",
+ "roofColor": "#60635e",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -12.5,
+    12.5
+   ],
+   "v": [
+    -15.3,
+    0.8
+   ],
+   "height": 4.8,
+   "bottom": -0.3,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.25,
+    "overhang": 0.18,
+    "color": "#dfd4bd",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.35,
+    "color": "#918d80"
+   },
+   "faces": {
+    "-v": {
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 2,
+       "h": 2.65,
+       "color": "#435a60",
+       "surround": "#dfd4bd",
+       "surroundW": 0.2
+      }
+     ],
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 2,
+        "h": 2.2,
+        "at": [
+         0.12,
+         0.27,
+         0.73,
+         0.88
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ],
+     "signs": [
+      {
+       "text": "CARY BANK & TRUST",
+       "style": "bronze",
+       "at": 0.5,
+       "y": 3.8,
+       "w": 7.5,
+       "h": 0.55
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.65,
+        "h": 2.2,
+        "at": [
+         0.18,
+         0.39,
+         0.61,
+         0.82
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-u": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.6,
+        "h": 2.2,
+        "at": [
+         0.3,
+         0.52,
+         0.75
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "+v": {}
+   }
+  },
+  {
+   "id": "north_shoulder",
+   "u": [
+    -12.4,
+    -3.1
+   ],
+   "v": [
+    0.5,
+    2.8
+   ],
+   "height": 4.8,
+   "bottom": -0.3,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.25,
+    "overhang": 0.18,
+    "color": "#dfd4bd",
+    "dentils": false
+   },
+   "faces": {
+    "+v": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.5,
+        "h": 2.2,
+        "at": [
+         0.25,
+         0.75
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "west_wing",
+   "u": [
+    -3.15,
+    4.1
+   ],
+   "v": [
+    0.6,
+    15.25
+   ],
+   "height": 3.8,
+   "bottom": -0.3,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.2,
+    "overhang": 0.15,
+    "color": "#dfd4bd",
+    "dentils": false
+   },
+   "faces": {
+    "+u": {
+     "storeys": [
+      {
+       "y": 0.9,
+       "windows": {
+        "type": "rect",
+        "w": 1.3,
+        "h": 1.7,
+        "at": [
+         0.22,
+         0.5,
+         0.78
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-u": {
+     "storeys": [
+      {
+       "y": 0.9,
+       "windows": {
+        "type": "rect",
+        "w": 1.3,
+        "h": 1.7,
+        "at": [
+         0.35,
+         0.6,
+         0.83
+        ],
+        "trim": "#dfd4bd",
+        "glass": "#788e91",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "+v": {}
+   }
+  }
+ ],
+ "details": []
+}

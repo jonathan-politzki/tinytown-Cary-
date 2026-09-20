@@ -209,6 +209,31 @@ class BuildTests(TempRoot):
         with self.assertRaises(ValueError):
             S.authored_building_elements([authored, authored], [mapped])
 
+    def test_fetched_title_shows_until_one_is_authored(self):
+        paths = self.make(request={**REQUEST, "title": "Trial, New York"})
+        self.assertEqual(S.build(paths, write=False)["title"], "Trial, New York")
+        self.write(paths.overrides, {"title": "Trial Village"})
+        self.assertEqual(S.build(paths, write=False)["title"], "Trial Village")
+
+    def test_structures_fill_gaps_without_duplicating_mapped_buildings(self):
+        c = REQUEST["center"]
+        mapped = way(1, {"building": "commercial", "name": "Depot"}, square(c["lon"], c["lat"], .0004))
+        inside = way(10_000_000_001, {"building": "house"}, square(c["lon"] + .0001, c["lat"] + .0001, .0001))
+        around = way(10_000_000_002, {"building": "house"}, square(c["lon"] - .0002, c["lat"] - .0002, .0008))
+        clear = way(10_000_000_003, {"building": "retail", "addr:housenumber": "5", "addr:street": "Main Street"},
+                    square(c["lon"] + .001, c["lat"] + .001, .0003))
+        for e in (inside, around, clear):
+            e["source"] = "usa-structures"
+        paths = self.make(osm={"elements": [mapped]})
+        self.write(paths.structures, {"elements": [inside, around, clear]})
+        scene = S.build(paths, write=False)
+        self.assertEqual([b["id"] for b in scene["buildings"]], [1, 10_000_000_003])
+        added = scene["buildings"][1]
+        self.assertEqual((added["source"], added["addr"], added["style"]["kind"]),
+                         ("usa-structures", "5 Main Street", "commercial"))
+        self.assertNotIn("source", scene["buildings"][0])
+        self.assertEqual([e["id"] for e in S.source_elements(paths)], [1, 10_000_000_003])
+
     def test_scope_file_wins_over_request_and_reports_missing_structures(self):
         lon, lat = REQUEST["center"]["lon"], REQUEST["center"]["lat"]
         osm = {"elements": [way(1, {"building": "house"}, square(lon, lat)),

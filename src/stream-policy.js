@@ -1,9 +1,9 @@
 import {axisFraction} from './terrain-grid.js';
 // Pure selection policy, shared by the viewer and budget/boundary tests.
-export function useStreaming(params, siteName) {
+export function useStreaming(params, prepared) {
   const requested=params.get('stream');
   const authoring=['bp','isolate','stage','procedural','notrees','nobake'].some(key=>params.has(key));
-  return !authoring && requested!=='0' && (['avon-extended','chautauqua'].includes(siteName) || requested==='1');
+  return !authoring && requested!=='0' && (prepared===true || requested==='1');
 }
 
 // Use the projected span of a nominal 100 m sector, as a fraction of the

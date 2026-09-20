@@ -1,12 +1,14 @@
 """Deploy targets share one renderer, derive routes from site config, and publish only runtime assets."""
 import hashlib
+import html
 import json
+import re
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from tinytown.deploy import Handler, build, preview_document, route_document
+from tinytown.deploy import Handler, build, icon_set, preview_document, route_document
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -111,6 +113,44 @@ class DeployTargets(unittest.TestCase):
         self.assertIn('<meta property="og:image:alt" content="The lake" />', lakeside)
         self.assertIn('<meta property="og:image:width" content="1200" />', lakeside)
 
+    def test_documents_carry_the_viewer_settings_their_site_configures(self):
+        import json as _json
+        from tinytown import config
+        settings = _json.loads(html.unescape(re.search(r'name="town-viewer" content="([^"]*)"',
+                                                       preview_document('/', self.root)).group(1)))
+        self.assertEqual(settings, {'stream': True})
+        # A site streams as soon as its chunks are baked, and nothing else.
+        (self.root / 'data/hillview/stream/manifest.json').unlink()
+        self.assertEqual(config.viewer_settings('hillview', self.root), {'stream': False})
+        self.write('sites/hillview/site.json', _json.dumps({**SITES['hillview'],
+                   'viewer': {'opening_view': {'target': [1, 2], 'distance': 300}}}))
+        self.assertEqual(config.viewer_settings('hillview', self.root),
+                         {'opening_view': {'target': [1, 2], 'distance': 300}, 'stream': False})
+
+    def test_one_town_mark_is_never_mixed_with_another(self):
+        # lakeside has a favicon.svg of its own and nothing else: it links that
+        # one file rather than completing the set from the repository default.
+        self.assertEqual(icon_set('lakeside', self.root), (['favicon.svg'], True))
+        lakeside = preview_document('/lakeside', self.root)
+        self.assertIn('href="/sites/lakeside/favicon.svg"', lakeside)
+        self.assertNotIn('favicon.ico', lakeside)
+        # A site with no icons of its own falls back to the default mark as a set.
+        self.write('favicon.ico', 'root favicon.ico')
+        self.assertEqual(icon_set('compact', self.root), (['favicon.ico', 'favicon.svg'], False))
+        compact = preview_document('/compact', self.root)
+        self.assertIn('href="/favicon.svg"', compact)
+        self.assertIn('href="/favicon.ico"', compact)
+
+    def test_configured_sites_preview_with_their_own_identity_before_they_deploy(self):
+        self.write('sites/ridgeway/site.json', json.dumps({'title': 'Ridgeway', 'description': 'not deployed yet'}))
+        self.write('sites/ridgeway/favicon.svg', '<svg>ridgeway</svg>')
+        document = preview_document('/?site=ridgeway', self.root)
+        self.assertIn('<title>Ridgeway</title>', document)
+        self.assertIn('name="town-site" content="ridgeway"', document)
+        self.assertIn('href="/sites/ridgeway/favicon.svg"', document)
+        self.assertIn('<base href="/"', document)
+        self.assertNotIn('town-route', document)
+
     def test_standalone_target_serves_the_plain_document_at_its_own_domain(self):
         document = route_document('lakeside', self.root, target='lakeside')
         self.assertIn('name="town-site" content="lakeside"', document)
@@ -170,7 +210,13 @@ class DeployTargets(unittest.TestCase):
         # Nested modules (src/agents/) ship; the suffix rule still drops notes.
         self.assertEqual((destination / 'src/agents/world.js').read_text(), '// nested runtime module')
         self.assertFalse((destination / 'src/agents/README.md').exists())
-        self.assertEqual((destination / '_headers').read_bytes(), (self.root / '_headers').read_bytes())
+        # Document cache rules are generated from the routes; the checked-in
+        # file holds only the shared asset rules and follows them.
+        headers = (destination / '_headers').read_text()
+        self.assertTrue(headers.endswith((self.root / '_headers').read_text()))
+        self.assertEqual([line for line in headers.splitlines() if not line.startswith((' ', '#'))],
+                         ['/', '/index.html', '/compact', '/hill', '/hillview', '/lakeside', '/*'])
+        self.assertEqual(headers.count('Cache-Control: no-cache'), 7)
         self.assertEqual((destination / 'favicon.svg').read_text(), 'root favicon.svg')
         self.assertEqual((destination / 'social-preview.jpg').read_text(), 'root social-preview.jpg')
         self.assertEqual((destination / 'sites/lakeside/favicon.svg').read_text(), '<svg>lakeside</svg>')
@@ -186,6 +232,18 @@ class DeployTargets(unittest.TestCase):
             self.assertEqual((destination / f'data/{site}/stream/base-part-0-aabb.bin.gz').read_bytes(), b'prepared stream')
             for excluded in ('overrides.json', 'source', 'buildings', 'surfaces-deadbeef.bin.gz'):
                 self.assertFalse((destination / f'data/{site}/{excluded}').exists(), excluded)
+
+    def test_vercel_target_ships_its_headers_file_as_vercel_json(self):
+        self.write('vercel.town.json', '{"headers": []}')
+        self.write('sites/deploy.json', json.dumps({'town': {'dist': 'dist/town', 'vercel': 'vercel.town.json'},
+                                                    'lakeside': {'dist': 'dist/lakeside'}}))
+        destination = build('town', self.root, check=False)
+        rules = json.loads((destination / 'vercel.json').read_text())['headers']
+        self.assertEqual([rule['source'] for rule in rules],
+                         ['/', '/index.html', '/compact', '/hill', '/hillview', '/lakeside'])
+        self.assertEqual(rules[0]['headers'], [{'key': 'Cache-Control', 'value': 'no-cache'}])
+        self.assertTrue((destination / '_headers').is_file())
+        self.assertFalse((build('lakeside', self.root, check=False) / 'vercel.json').exists())
 
     def test_standalone_build_publishes_only_its_site_with_its_own_assets(self):
         destination = build('lakeside', self.root, check=False)

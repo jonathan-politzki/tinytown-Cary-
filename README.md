@@ -12,7 +12,7 @@ Live: **[avon.town](https://avon.town)** (Avon, New York, 3.3 × 3.6 km, 1,644
 structures) and **[chautauqua.town](https://chautauqua.town)**
 (Chautauqua Institution, 946 structures).
 
-![Avon, New York as a miniature](social-preview.jpg)
+![Avon, New York as a miniature](sites/avon-extended/social-preview.jpg)
 
 ## Quickstart
 
@@ -116,7 +116,7 @@ chautauqua.town. Routes derive from `sites/*/site.json`. On push to `main`,
 Workers Builds runs `python3 -m tinytown stage --target …` with bare Python
 and Node; it only checks that the committed surfaces, streams and viewer stamps
 are current, so bake before you push. Verify with
-`./town verify town https://avon.town`. Details: [docs/deploy.md](docs/deploy.md).
+`./town verify avon https://avon.town`. Details: [docs/deploy.md](docs/deploy.md).
 
 ## Credits and attribution
 

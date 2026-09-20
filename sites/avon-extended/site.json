@@ -2,6 +2,21 @@
   "title": "Avon, New York",
   "description": "Explore a miniature of Avon, New York, from the village center to the Genesee River and Driving Park.",
   "domain": "https://avon.town",
+  "viewer": {
+    "opening_view": {
+      "target": [
+        -25,
+        25
+      ],
+      "lift": 3,
+      "azimuth": 2,
+      "distance": 320,
+      "aspect": [
+        1752,
+        1408
+      ]
+    }
+  },
   "deploy": [
     {
       "target": "avon",

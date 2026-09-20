@@ -141,16 +141,22 @@ Edit `sites/mytown/site.json` (created by `town scope`, or write it):
   "scope": "scope.json",
   "landmarks": "landmarks.json",
   "outline": "outline.json",
-  "social_image": {"alt": "…", "width": 1200, "height": 630}
+  "social_image": {"alt": "…", "width": 1200, "height": 630},
+  "icon": {"letter": "M"},
+  "viewer": {"opening_view": {"target": [0, 0], "lift": 3, "azimuth": 2,
+                              "distance": 260, "aspect": [1200, 630]}}
 }
 ```
 
 `title`, `description` and at least one `deploy` placement are required to
 deploy; the rest is optional. `route: "/"` makes the site the target's root;
-`aliases` adds redirect-free extra routes. Optional per-site
-`favicon.*`, `apple-touch-icon.png` and `social-preview.jpg` beside it replace
-the repository-root ones. Add a `no-cache` line for the new route to
-`_headers`. A new *target* (its own Worker and domain) needs an entry in
+`aliases` adds redirect-free extra routes. The route's `no-cache` rule is
+generated at stage time, so nothing has to be added to `_headers` by hand.
+`./town brand <site>` then draws the town's own mark beside `site.json`
+(`favicon.*`, `apple-touch-icon.png`) and, with `--preview`, its
+`social-preview.jpg`; until it is run the site links the repository's default
+mark, never another town's ([deploy.md](deploy.md#branding)).
+A new *target* (its own Worker and domain) needs an entry in
 `sites/deploy.json` and a `wrangler.<target>.jsonc`; see
 [deploy.md](deploy.md).
 
@@ -166,7 +172,7 @@ A plugin is optional: `tinytown/plugins/mytown.py` with any of
 tests/run.sh
 git add data/mytown sites/mytown index.html _headers && git commit
 git push                                  # Cloudflare Workers Builds runs `python3 -m tinytown stage --target avon`
-./town verify town https://avon.town mytown
+./town verify avon https://avon.town mytown
 ```
 
 ## Growing an existing town
