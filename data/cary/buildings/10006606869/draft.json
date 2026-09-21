@@ -1,0 +1,74 @@
+{
+ "wall": "#ad7560",
+ "trim": "#e4d8bf",
+ "roofColor": "#626460",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -10.5,
+    10.5
+   ],
+   "v": [
+    -9.9,
+    9.9
+   ],
+   "height": 4.5,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.16,
+    "color": "#e4d8bf",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#918b7d"
+   },
+   "faces": {
+    "-v": {
+     "storefronts": [
+      {
+       "range": [
+        0.08,
+        0.41
+       ],
+       "y": 0.4,
+       "h": 2.7,
+       "frame": "#42594f",
+       "kick": "#42594f"
+      },
+      {
+       "range": [
+        0.59,
+        0.92
+       ],
+       "y": 0.4,
+       "h": 2.7,
+       "frame": "#42594f",
+       "kick": "#42594f"
+      }
+     ],
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.8,
+       "h": 2.7,
+       "color": "#42594f",
+       "surround": "#e4d8bf",
+       "surroundW": 0.12
+      }
+     ]
+    },
+    "+u": {},
+    "-u": {},
+    "+v": {}
+   }
+  }
+ ],
+ "details": []
+}

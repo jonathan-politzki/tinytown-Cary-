@@ -1,0 +1,61 @@
+{
+ "draft_hash": "00431feb38288741dfff5c7f181e4e737ba9a67930b69bf94e41b19200b5ee65",
+ "frame": "41580ab75c643fe4ad2a7fb92ef6481117ac6210f4bded1627cde065d6215148",
+ "passed": false,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "main/west_wing/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The miniature has a coherent low retail silhouette, mapped recessed wing, warm walls, and green storefront trim, but the missing map and Street View references prevent a reliable recognizability and entrance-placement review.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The actual inventory contains one principal door on +v, the south-facing Cary Street face (outward bearing 172\u00b0). The labeled +v render is substantially occluded and does not clearly verify that portal, while no supplied reference view establishes the real entrance face. The nearest-road relationship and postal address are not sufficient evidence; there is no duplicated principal portal in the inventory."
+  },
+  "issues": [
+   {
+    "severity": "broken",
+    "problem": "Principal-entry orientation is unresolved because the orientation map and geolocated Street Views are unavailable.",
+    "fix": "Supply the missing map and labeled SV images, then compare the documented entrance directly with the single rendered +v door; relocate it if another face is evidenced."
+   },
+   {
+    "severity": "major",
+    "problem": "Characteristic architectural fidelity cannot be confirmed from model renders alone, so the generic retail-box treatment cannot yet be judged recognizable.",
+    "fix": "Restore at least one clear appearance reference showing the real massing, storefront composition, parapet or roofline, and distinctive facade details."
+   },
+   {
+    "severity": "minor",
+    "problem": "The storefront glazing shows conspicuous dark diagonal/triangulated lines that read as rendering artifacts rather than charming miniature mullions.",
+    "fix": "Replace the diagonal patterns with clean, regular mullions and slightly clearer glazing."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789956828.743358,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-211323-1d3271-review",
+  "usage": {
+   "input_tokens": 9748,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 789,
+   "reasoning_output_tokens": 471,
+   "total_tokens": 10537
+  },
+  "usage_complete": true,
+  "duration": 25.66874599456787,
+  "run": "20260920-210821-86d5e3",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006605729/renders/initial-overview.png",
+  "faces": "data/cary/buildings/10006605729/renders/initial-faces.jpg"
+ }
+}
