@@ -1,7 +1,7 @@
 {
- "key": "aae0040bbe26f315fad0fdc30d445fedfad516c248530eb859891228f1bb0b74",
+ "key": "691e00ed940901ed799b9b80fcabd6214bd1db7ab0d8ab036dd04a0080ab7208",
  "url": "http://localhost:8734/?site=cary&focus=1396245221&side=front&dist=90&height=8&stage=detail&bp=1396245214,1396245221&notrees=1",
- "blueprint": "d262b47abf8802c6fe4759a3e9ea51717675adafcb77bf2abf299ce7f48bb9c7",
+ "blueprint": "82b523d7dd53d99c34686c320d5baded10185c35755a1d73aeb9de92216dcabb",
  "frame": "9457e07e8e8e06c85865f13226f4a074063ac1c8cc2aa32eca373973e579a7c8",
  "context": "ac1e880873b582c8cdf96518b1e069506bfa5138c4b496ea0f49a2165e1bd661",
  "renderer": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
@@ -102,7 +102,7 @@
   "1396245214": {
    "draft": true,
    "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
-   "blueprint": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e"
+   "blueprint": "f1189cb1b81e5eae03923ab675061f53237b03f16d665eb2ae6cbfbd63ffd8b6"
   },
   "1396245215": {
    "draft": false,

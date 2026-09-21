@@ -1,53 +1,84 @@
 {
- "draft_hash": "b4956298e3166b659f55bdd7f117f9e37f8751c454ce202d759457f3bebc1e07",
+ "draft_hash": "99fdc1a417d41b0a22208556b35c78c877a6069b8dbb08eb1a60d5654cc61ba1",
  "frame": "038ed10a2a5b97b7f3fa12016f753f962137080189179029117a0652c9760694",
- "passed": false,
+ "passed": true,
  "findings": [],
- "geometry": [],
+ "geometry": [
+  {
+   "id": "main/-v/capital-roof",
+   "finding": "Pilaster capitals extend into the roof; lower them or use fitUnderEave."
+  },
+  {
+   "id": "south_west_bay/+u/capital-roof",
+   "finding": "Pilaster capitals extend into the roof; lower them or use fitUnderEave."
+  },
+  {
+   "id": "south_east_bay/+u/capital-roof",
+   "finding": "Pilaster capitals extend into the roof; lower them or use fitUnderEave."
+  },
+  {
+   "id": "main/south_east_bay/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "south_west_bay/south_recess/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "south_east_bay/south_recess/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
  "report": {
-  "verdict": "insufficient-evidence",
-  "summary": "The miniature is coherent and charming, with a readable asymmetric brick silhouette, pale coping, restrained glazing, and bank signage. No obvious duplicate portals or severe rendering defects are visible, but the missing map and Street View reference images prevent a defensible recognition and entrance-placement review.",
+  "verdict": "ready",
+  "summary": "Recognizable, charming bank miniature: paired south gabled bays, pale siding, arched window groups, shallow rear roof, west drive-through canopy, and restrained east sign/window elevation read coherently. No obvious broken geometry is visible.",
   "orientation": {
-   "status": "uncertain",
-   "summary": "The four-face sheet places the sole visible double door on face -v, the east-facing facade (outward bearing 90\u00b0), and the actual door inventory independently confirms exactly one door there. Located SV4 was east of the building looking west and geometrically faced -v, but its image is unavailable; that camera geometry proves which face was observed, not that the real principal entrance occupies it. The author entrance plan is not evidence, and neither the North 2nd Street proximity nor the postal address resolves the entrance."
+   "status": "correct",
+   "summary": "The located SV1 camera is south of the building looking north and directly supports the +u face: it shows two distinct columned street-facing portals, matching the two +u double doors in the inventory and render\u2014not an unsupported duplicated entrance. SV2\u2019s north/northeast oblique view supports the single secondary -u parking-side door. SV4 shows the east (-v) window-and-sign elevation without a principal portal, matching the render; the west (+v) face appropriately carries the drive-through canopy and no door. Thus the door inventory\u2014two +u, one -u, none on \u00b1v\u2014is source-consistent."
   },
   "issues": [
    {
-    "severity": "broken",
-    "problem": "Principal-entry orientation cannot be verified because the orientation map and all geolocated Street View imagery are missing.",
-    "fix": "Restore the labeled map and Street View atlas, then compare the real principal portal directly with the rendered -v east face; move the model\u2019s sole entrance if another face is evidenced."
-   },
-   {
-    "severity": "major",
-    "problem": "The available model reads as a generic low brick commercial building; without the reference photographs, its facade proportions and signature Cary Bank & Trust details cannot be validated.",
-    "fix": "Provide the missing appearance references and revise the entrance surround, signage, coping, and window rhythm to preserve the most recognizable documented features."
+    "severity": "minor",
+    "problem": "The oversized main hipped roof visually dominates the paired front gables more than in SV1, slightly weakening the characteristic shallow-roof silhouette.",
+    "fix": "Lower or visually flatten the main roof ridge while retaining the two prominent south gables."
    }
   ]
  },
- "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
  "model": "sol",
  "stage": "detail",
- "repairs": 0,
- "timestamp": 1789952223.344558,
+ "repairs": 1,
+ "timestamp": 1789957832.211735,
  "call": {
-  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/751189890/20260920-195648-4d62ab-review",
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/751189890/20260920-213010-2949e6-review",
   "usage": {
-   "input_tokens": 9837,
+   "input_tokens": 12936,
    "cached_input_tokens": 0,
    "cache_write_input_tokens": 0,
-   "output_tokens": 554,
-   "reasoning_output_tokens": 226,
-   "total_tokens": 10391
+   "output_tokens": 725,
+   "reasoning_output_tokens": 464,
+   "total_tokens": 13661
   },
   "usage_complete": true,
-  "duration": 14.463692665100098,
-  "run": "20260920-194654-13161b",
+  "duration": 21.30408239364624,
+  "run": "20260920-211711-9833ef",
   "model": "gpt-5.6-sol"
  },
  "renders": {
-  "overview": "data/cary/buildings/751189890/renders/initial-overview.png",
-  "faces": "data/cary/buildings/751189890/renders/initial-faces.jpg"
+  "overview": "data/cary/buildings/751189890/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/751189890/renders/repaired-faces.jpg"
  },
- "repairs_exhausted": true,
- "repair_limit": 2
+ "scene_review": {
+  "id": "751189890",
+  "verdict": "ready",
+  "summary": "The paired gabled front bays, pale siding, arched upper windows, long drive-through canopy, and regular signed elevation produce a recognizable, appealing Cary Bank & Trust. The main roof remains somewhat visually dominant, but this is a silhouette simplification rather than a defect; no broken faces or obvious repair failures are visible.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The prior independent view identifies the two distinct +u/S street-facing portals, and the actual inventory contains one double door in each paired south bay. A third double door on -u/N matches the independently supported secondary parking-side entrance. There are no doors on the canopy or signed side faces, so the paired principal arrangement is supported rather than accidental duplication."
+  },
+  "draft_hash": "99fdc1a417d41b0a22208556b35c78c877a6069b8dbb08eb1a60d5654cc61ba1",
+  "model": "sol",
+  "run": "20260920-211711-9833ef",
+  "timestamp": 1789957885.8042371
+ }
 }

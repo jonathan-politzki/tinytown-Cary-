@@ -1,11 +1,11 @@
 {
- "key": "a46deec73cc38ddfc562d476ab4a20a2ae524125e4ee5031c64da557a1971b2e",
- "url": "http://localhost:8734/?site=cary&focus=1396245214&side=%2Bv&dist=109.0518&height=8&stage=detail&free=1&bp=1396245214,1396245221&notrees=1",
- "blueprint": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e",
- "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
- "context": "7a37dae639f022661a72524bf20c8b07cfe0f156d0312b5ca3a68bdf43c3863d",
+ "key": "3824c9bd7e9788c07673f5bd118c567c1afb363d1b459ae35d67a848490512a1",
+ "url": "http://localhost:8734/?site=cary&focus=751189890&side=-u&dist=90&height=8&stage=detail&free=1&bp=1396245214,1396245221,751189890&notrees=1",
+ "blueprint": "99fdc1a417d41b0a22208556b35c78c877a6069b8dbb08eb1a60d5654cc61ba1",
+ "frame": "038ed10a2a5b97b7f3fa12016f753f962137080189179029117a0652c9760694",
+ "context": "de99fb6a518598b028e24c33b6cc323e254841799fd3d31988d6f993bb358e80",
  "renderer": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
- "view": "+v",
+ "view": "-u",
  "stage": "detail",
  "pose": null,
  "neighbors": {
@@ -18,11 +18,6 @@
    "draft": false,
    "frame": "50518b0073e479884a424be42e04c720c4ab4caa5feb6b515b0fc693134f50cb",
    "blueprint": "42a31068a81320dc4e1456d07e8bacabccc27b9a0a6b191751c85798ff1f0c75"
-  },
-  "751189890": {
-   "draft": false,
-   "frame": "038ed10a2a5b97b7f3fa12016f753f962137080189179029117a0652c9760694",
-   "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
   },
   "982767709": {
    "draft": false,
@@ -99,6 +94,11 @@
    "frame": "5eec58b631ba452418ba23d16139735137e648eac52dd8836607b62982ae64c8",
    "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
   },
+  "1396245214": {
+   "draft": true,
+   "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
+   "blueprint": "f1189cb1b81e5eae03923ab675061f53237b03f16d665eb2ae6cbfbd63ffd8b6"
+  },
   "1396245215": {
    "draft": false,
    "frame": "7a6b02b19bfa2ca17396fb7ecdc6db1d44b9642dc350e5cbd5ef63f2dcb7b826",
@@ -132,7 +132,7 @@
   "1396245221": {
    "draft": true,
    "frame": "9457e07e8e8e06c85865f13226f4a074063ac1c8cc2aa32eca373973e579a7c8",
-   "blueprint": "d262b47abf8802c6fe4759a3e9ea51717675adafcb77bf2abf299ce7f48bb9c7"
+   "blueprint": "82b523d7dd53d99c34686c320d5baded10185c35755a1d73aeb9de92216dcabb"
   },
   "1396245222": {
    "draft": false,
@@ -1756,5 +1756,5 @@
   "headless": true,
   "graphics": "swiftshader"
  },
- "batch_phase": "repaired-2"
+ "batch_phase": "repaired"
 }

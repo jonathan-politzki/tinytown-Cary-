@@ -1,79 +1,62 @@
 {
- "draft_hash": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e",
+ "draft_hash": "f1189cb1b81e5eae03923ab675061f53237b03f16d665eb2ae6cbfbd63ffd8b6",
  "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
- "passed": false,
+ "passed": true,
  "findings": [],
  "geometry": [
   {
-   "id": "main/north_wing/u-coplanar",
+   "id": "bank/shoulder/u-coplanar",
    "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
   },
   {
-   "id": "main/recess_entry/u-coplanar",
-   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
-  },
-  {
-   "id": "north_wing/recess_entry/v-coplanar",
+   "id": "shoulder/north_banking_wing/u-coplanar",
    "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
   }
  ],
  "report": {
-  "verdict": "insufficient-evidence",
-  "summary": "The stepped brick massing, flat roofs, pale coping, and cream-trimmed windows form a coherent miniature, but the principal entrance cannot be verified because the orientation map and Street View references are unavailable.",
+  "verdict": "ready",
+  "summary": "Recognizable and charming: the low stepped red-brick massing, pale flat roofs, narrow north wing, broad post-supported canopy, blue-green entrance, and mostly blank service elevations form a coherent miniature caricature. No obvious visible defects undermine the silhouette or identity.",
   "orientation": {
-   "status": "uncertain",
-   "summary": "The actual inventory contains one recessed blue double door on face -v (268\u00b0/west). The labeled sheet shows +u/north at upper left, -u/south at upper right, +v/east at lower left, and -v/west at lower right; however, the -v target face is poorly exposed/partly obscured. Without MAP and located SV1\u2013SV4 imagery, there is no source-to-face evidence confirming that west is the real principal-entry side."
+   "status": "correct",
+   "summary": "The map defines +u as the north-facing side. Located SV1, north of the building and looking SSE, shows the characteristic blue-green principal doors beneath the canopy; the labeled +u render reproduces that entrance. The actual inventory contains one double door on +u and only a single secondary door on west-facing -v, so there is no duplicated principal portal. SV4 and the -v render are consistent with a mostly blank west service wall. This conclusion comes from the located views and face labels, not the nearer south road."
   },
-  "issues": [
-   {
-    "severity": "major",
-    "problem": "Principal-entry orientation is unresolved: only the model inventory supports the -v placement, while the required map and geolocated street views are missing.",
-    "fix": "Supply the MAP and SV atlas, then compare the visible real entrance directly with the corresponding labeled outward face; relocate the sole principal portal if it does not match."
-   },
-   {
-    "severity": "minor",
-    "problem": "The recessed blue-accent entrance\u2014the strongest identifying feature\u2014is difficult to read in both the overview and four-face sheet.",
-    "fix": "Provide an unobstructed -v face render and strengthen the recess, blue surround, glazing, and entry paving so the entrance reads clearly at miniature scale."
-   }
-  ]
+  "issues": []
  },
  "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
  "model": "sol",
  "stage": "detail",
- "repairs": 2,
- "timestamp": 1789956306.216738,
+ "repairs": 1,
+ "timestamp": 1789957433.788865,
  "call": {
-  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245214/20260920-210441-9932df-review",
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245214/20260920-212337-d94681-review",
   "usage": {
-   "input_tokens": 9755,
+   "input_tokens": 12704,
    "cached_input_tokens": 0,
    "cache_write_input_tokens": 0,
-   "output_tokens": 827,
-   "reasoning_output_tokens": 516,
-   "total_tokens": 10582
+   "output_tokens": 556,
+   "reasoning_output_tokens": 363,
+   "total_tokens": 13260
   },
   "usage_complete": true,
-  "duration": 24.235471963882446,
-  "run": "20260920-205910-70a9d3",
+  "duration": 16.28651714324951,
+  "run": "20260920-211711-9833ef",
   "model": "gpt-5.6-sol"
  },
  "renders": {
-  "overview": "data/cary/buildings/1396245214/renders/repaired-2-overview.png",
-  "faces": "data/cary/buildings/1396245214/renders/repaired-2-faces.jpg"
+  "overview": "data/cary/buildings/1396245214/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/1396245214/renders/repaired-faces.jpg"
  },
- "repairs_exhausted": true,
- "repair_limit": 2,
  "scene_review": {
   "id": "1396245214",
-  "verdict": "needs-attention",
-  "summary": "The stepped single-storey brick footprint, layered flat roofs, pale coping, and varied window groupings give BMO the stronger and more recognizable silhouette. Materials and scale fit the scene, with no conspicuous texture failure or broken massing. However, the characteristic recessed blue entrance is almost impossible to identify in both the aerial scene and labeled sheet; the -v view is obstructed by a large foreground building. The inventory reports one double door, not a duplicated entrance, but its role and side cannot be validated.",
+  "verdict": "ready",
+  "summary": "The low stepped brick silhouette, pale flat roofs, projecting north wing, slender-post canopy, and blue-green entry form a clear bank miniature. Brick, glazing, and roof treatments remain coherent with neighboring buildings, with no conspicuous rendering defects.",
   "orientation": {
-   "status": "uncertain",
-   "summary": "The sole actual blue double door is on the recessed -v face, facing 268\u00b0 west. That matches the author claim but not verified independent evidence: the prior source-to-face audit explicitly could not confirm the real entrance side. The nearest-road face is -u toward West Main Street, but that fact alone does not prove an entrance there. With the relevant west face obscured and no independent confirmation, principal-entry orientation remains unresolved and needs attention."
+   "status": "correct",
+   "summary": "Independent face findings place the principal entrance on +u/N, and the actual inventory confirms one blue-green double door on that face beneath the canopy. The separate -v/W single service door does not read as a competing principal entrance; the south and east elevations remain appropriately doorless."
   },
-  "draft_hash": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e",
+  "draft_hash": "f1189cb1b81e5eae03923ab675061f53237b03f16d665eb2ae6cbfbd63ffd8b6",
   "model": "sol",
-  "run": "20260920-205910-70a9d3",
-  "timestamp": 1789956360.887393
+  "run": "20260920-211711-9833ef",
+  "timestamp": 1789957885.802943
  }
 }
