@@ -1,0 +1,332 @@
+{
+ "version": 3,
+ "id": "751189890",
+ "name": "Cary Bank & Trust",
+ "location": "Cary, Illinois",
+ "address": "60 East Main Street",
+ "source_tags": {
+  "amenity": "bank",
+  "building": "commercial"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 25.047,
+  "depth_v": 30.591,
+  "footprint_uv": [
+   [
+    -12.5,
+    -15.3
+   ],
+   [
+    12.5,
+    -15.3
+   ],
+   [
+    12.5,
+    0.7
+   ],
+   [
+    3.7,
+    1.0
+   ],
+   [
+    4.1,
+    9.2
+   ],
+   [
+    4.2,
+    15.2
+   ],
+   [
+    -3.1,
+    15.3
+   ],
+   [
+    -3.2,
+    9.1
+   ],
+   [
+    -3.1,
+    2.8
+   ],
+   [
+    -12.4,
+    2.8
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 180,
+    "compass": "S",
+    "left_bearing": 270,
+    "right_bearing": 90,
+    "nearest_road_outward": {
+     "name": "South Northwest Highway",
+     "circular": false,
+     "distance_m": 19.8
+    },
+    "nearest_road_hint": true
+   },
+   "-u": {
+    "bearing": 0,
+    "compass": "N",
+    "left_bearing": 90,
+    "right_bearing": 270,
+    "nearest_road_outward": {
+     "name": "East Pearl Street",
+     "circular": false,
+     "distance_m": 159.5
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 270,
+    "compass": "W",
+    "left_bearing": 0,
+    "right_bearing": 180,
+    "nearest_road_outward": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 90.6
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 90,
+    "compass": "E",
+    "left_bearing": 180,
+    "right_bearing": 0,
+    "nearest_road_outward": {
+     "name": "North 2nd Street",
+     "circular": false,
+     "distance_m": 32.4
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2087142,
+    "lon": -88.2370095,
+    "position_xz": [
+     370.26,
+     31.82
+    ],
+    "position_uv": [
+     39.66,
+     2.8
+    ],
+    "looking_bearing": 6.0,
+    "looking_compass": "N",
+    "image_left_bearing": 276.0,
+    "image_right_bearing": 96.0,
+    "target_center_offset_deg": -2.0,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 6,
+    "fov": 71,
+    "tilt": 95,
+    "near_road": {
+     "name": "South Northwest Highway",
+     "circular": false,
+     "distance_m": 7.3
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2087142,-88.2370095,3a,71y,6h,95t/data=!3m7!1e1!3m5!1sJcY0jzYVgTbQDnM8Wlh0wA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DJcY0jzYVgTbQDnM8Wlh0wA%26yaw%3D6!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "JcY0jzYVgTbQDnM8Wlh0wA",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "13562e8e33263caa3771d6e8eac285da48c6b42a642911ff8a9b8c63a4bef3b3"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.209329,
+    "lon": -88.2367029,
+    "position_xz": [
+     395.54,
+     -36.62
+    ],
+    "position_uv": [
+     -28.78,
+     -22.47
+    ],
+    "looking_bearing": 234.0,
+    "looking_compass": "SW",
+    "image_left_bearing": 144.0,
+    "image_right_bearing": 324.0,
+    "target_center_offset_deg": -16.0,
+    "geometrically_facing_camera": [
+     "-u",
+     "-v"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 54,
+    "fov": 70,
+    "tilt": 95,
+    "near_road": {
+     "name": "North 2nd Street",
+     "circular": false,
+     "distance_m": 24.3
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.209329,-88.2367029,3a,70y,234h,95t/data=!3m7!1e1!3m5!1sXqq3yLP_VVivnASWgRpkRA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DXqq3yLP_VVivnASWgRpkRA%26yaw%3D234!7i13312!8i6656?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "Xqq3yLP_VVivnASWgRpkRA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "d9dc1a170be4ad7e28505c716c38795f6df527eefaea26bb0105807784bcb685"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.208839,
+    "lon": -88.2374573,
+    "position_xz": [
+     333.34,
+     17.92
+    ],
+    "position_uv": [
+     25.78,
+     39.72
+    ],
+    "looking_bearing": 43.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 313.0,
+    "image_right_bearing": 133.0,
+    "target_center_offset_deg": 14.0,
+    "geometrically_facing_camera": [
+     "+u",
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 47,
+    "fov": 55,
+    "tilt": 94,
+    "near_road": {
+     "name": "South Northwest Highway",
+     "circular": false,
+     "distance_m": 6.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.208839,-88.2374573,3a,55y,43h,94t/data=!3m7!1e1!3m5!1s6VQi5cgr-rUdUJwRW1UNRQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4%26panoid%3D6VQi5cgr-rUdUJwRW1UNRQ%26yaw%3D43!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "6VQi5cgr-rUdUJwRW1UNRQ",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "96d5a8eb73d7f3b1fa72d8f061846a57b4edcefbc7896c8e9f977da3e6cf0e5f"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2090576,
+    "lon": -88.236446,
+    "position_xz": [
+     416.73,
+     -6.41
+    ],
+    "position_uv": [
+     1.43,
+     -43.66
+    ],
+    "looking_bearing": 273.0,
+    "looking_compass": "W",
+    "image_left_bearing": 183.0,
+    "image_right_bearing": 3.0,
+    "target_center_offset_deg": -1.1,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 3,
+    "fov": 60,
+    "tilt": 95,
+    "near_road": {
+     "name": "North 2nd Street",
+     "circular": false,
+     "distance_m": 4.1
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2090576,-88.236446,3a,60y,273h,95t/data=!3m7!1e1!3m5!1sqIzOs69Mk7Xa0twV_3eu1A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DqIzOs69Mk7Xa0twV_3eu1A%26yaw%3D273!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "qIzOs69Mk7Xa0twV_3eu1A",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "98f98473a123decd35b0600e787bf74aeaa737cb59964cabb06b13087ea63421"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "cb33a66ba12a0e03474ef1cd182582ebf7480792d6d31a2d30778609f5018b7c"
+  }
+ ],
+ "search_query": "Cary Bank & Trust Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

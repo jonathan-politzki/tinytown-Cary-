@@ -1,0 +1,258 @@
+{
+ "thread_id": "01a0c1b8-b45d-7850-ba5e-d111536d6965",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12095,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 739,
+  "reasoning_output_tokens": 99,
+  "total_tokens": 12834
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#aa7861\",\"trim\":\"#e1d6be\",\"roofColor\":\"#626462\",\"volumes\":[{\"id\":\"main\",\"u\":[-15.5,6.8],\"v\":[-8,8],\"height\":4.2,\"roof\":{\"type\":\"flat\",\"lip\":false},\"cornice\":{\"height\":0.22,\"overhang\":0.14,\"color\":\"#e1d6be\",\"dentils\":false},\"plinth\":{\"height\":0.25,\"color\":\"#89857b\"},\"faces\":{\"-u\":{\"storefronts\":[{\"range\":[0.08,0.4],\"y\":0.45,\"h\":2.5,\"frame\":\"#425c55\",\"kick\":\"#425c55\"},{\"range\":[0.6,0.92],\"y\":0.45,\"h\":2.5,\"frame\":\"#425c55\",\"kick\":\"#425c55\"}],\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.7,\"h\":2.6,\"color\":\"#425c55\",\"surround\":\"#e1d6be\",\"surroundW\":0.12}]},\"+v\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.5,\"h\":1.6,\"at\":[0.18,0.4,0.62,0.84],\"trim\":\"#e1d6be\",\"glass\":\"#7b9292\"}}]},\"-v\":{},\"+u\":{}}},{\"id\":\"rear_wing\",\"u\":[6.8,15.5],\"v\":[-8,0.6],\"height\":4.2,\"roof\":{\"type\":\"flat\",\"lip\":false},\"cornice\":{\"height\":0.22,\"overhang\":0.14,\"color\":\"#e1d6be\",\"dentils\":false},\"faces\":{\"+u\":{},\"+v\":{},\"-v\":{}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Mapped L-shaped footprint with northeast recess.",
+   "Restrained single-storey retail massing, provisionally inferred.",
+   "Paired display windows framing one provisional entrance.",
+   "Muted charcoal roof, warm walls and painted green trim; palette inferred."
+  ],
+  "references_used": [
+   "REFERENCE PACKET: footprint_uv, frame.faces, source_tags"
+  ],
+  "uncertainties": [
+   "All three image attachments were unavailable; no photographic architectural features could be verified.",
+   "Height, flat roof, palette, cladding and openings are unverified approximations; wall material remains unspecified.",
+   "Principal entrance is provisionally modeled on -u, not established by the address or nearby road. Camera poses alone cannot identify an entrance; secondary entries are omitted."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "-u",
+    "role": "principal (provisional placement)",
+    "evidence": [],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author/response.json",
+ "started_at": 1789956502.537317,
+ "finished_at": 1789956528.8047519,
+ "elapsed_seconds": 26.26743483543396,
+ "duration": 26.26743483543396,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-210822-ac3ba4-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006606618",
+ "model_alias": "astra",
+ "run": "20260920-210821-86d5e3",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "4d7b85d693662d0075643e5a50d3e85cfb00d377cee80d1fd4f524977b880884",
+ "frame": "d04a0c9fef32b0fdfc832bfe17acdbc4c50af13ed3e5ba05650c762214dbb657",
+ "timestamp": 1789956528.806208,
+ "blueprint": {
+  "wall": "#aa7861",
+  "trim": "#e1d6be",
+  "roofColor": "#626462",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -15.5,
+     6.8
+    ],
+    "v": [
+     -8,
+     8
+    ],
+    "height": 4.2,
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.14,
+     "color": "#e1d6be",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.25,
+     "color": "#89857b"
+    },
+    "faces": {
+     "-u": {
+      "storefronts": [
+       {
+        "range": [
+         0.08,
+         0.4
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#425c55",
+        "kick": "#425c55"
+       },
+       {
+        "range": [
+         0.6,
+         0.92
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#425c55",
+        "kick": "#425c55"
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.7,
+        "h": 2.6,
+        "color": "#425c55",
+        "surround": "#e1d6be",
+        "surroundW": 0.12
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.5,
+         "h": 1.6,
+         "at": [
+          0.18,
+          0.4,
+          0.62,
+          0.84
+         ],
+         "trim": "#e1d6be",
+         "glass": "#7b9292"
+        }
+       }
+      ]
+     },
+     "-v": {},
+     "+u": {}
+    }
+   },
+   {
+    "id": "rear_wing",
+    "u": [
+     6.8,
+     15.5
+    ],
+    "v": [
+     -8,
+     0.6
+    ],
+    "height": 4.2,
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.14,
+     "color": "#e1d6be",
+     "dentils": false
+    },
+    "faces": {
+     "+u": {},
+     "+v": {},
+     "-v": {}
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Mapped L-shaped footprint with northeast recess.",
+  "Restrained single-storey retail massing, provisionally inferred.",
+  "Paired display windows framing one provisional entrance.",
+  "Muted charcoal roof, warm walls and painted green trim; palette inferred."
+ ],
+ "uncertainties": [
+  "All three image attachments were unavailable; no photographic architectural features could be verified.",
+  "Height, flat roof, palette, cladding and openings are unverified approximations; wall material remains unspecified.",
+  "Principal entrance is provisionally modeled on -u, not established by the address or nearby road. Camera poses alone cannot identify an entrance; secondary entries are omitted."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "-u",
+   "role": "principal (provisional placement)",
+   "evidence": [],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "fa8bc7474d7c96c6102505f9653aed7643543a6a2eb85f2efd7144c8e83bea03"
+}

@@ -1,0 +1,316 @@
+{
+ "version": 3,
+ "id": "10006606618",
+ "name": "218 West Main Street",
+ "location": "Cary, Illinois",
+ "address": "218 West Main Street",
+ "source_tags": {
+  "building": "retail",
+  "occupancy": "Retail Trade"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 31.029,
+  "depth_v": 16.069,
+  "footprint_uv": [
+   [
+    15.5,
+    0.6
+   ],
+   [
+    6.8,
+    0.6
+   ],
+   [
+    6.8,
+    8.0
+   ],
+   [
+    -15.5,
+    8.0
+   ],
+   [
+    -15.5,
+    -8.0
+   ],
+   [
+    15.5,
+    -8.0
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 10,
+    "compass": "N",
+    "left_bearing": 100,
+    "right_bearing": 280,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 152.2
+    },
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 190,
+    "compass": "S",
+    "left_bearing": 280,
+    "right_bearing": 100,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 8.9
+    },
+    "nearest_road_hint": true
+   },
+   "+v": {
+    "bearing": 100,
+    "compass": "E",
+    "left_bearing": 190,
+    "right_bearing": 10,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 100.8
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 280,
+    "compass": "W",
+    "left_bearing": 10,
+    "right_bearing": 190,
+    "nearest_road_outward": {
+     "name": "North Seebert Street",
+     "circular": false,
+     "distance_m": 79.3
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2091465,
+    "lon": -88.2432442,
+    "position_xz": [
+     -143.82,
+     -16.31
+    ],
+    "position_uv": [
+     40.81,
+     27.43
+    ],
+    "looking_bearing": 238.0,
+    "looking_compass": "WSW",
+    "image_left_bearing": 148.0,
+    "image_right_bearing": 328.0,
+    "target_center_offset_deg": -13.9,
+    "geometrically_facing_camera": [
+     "+u",
+     "+v"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 47,
+    "fov": 55,
+    "tilt": 93,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 57.6
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2091465,-88.2432442,3a,55y,238h,93t/data=!3m7!1e1!3m5!1sdrovsre_5LAmck0Rra-zWA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-3%26panoid%3Ddrovsre_5LAmck0Rra-zWA%26yaw%3D238!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "drovsre_5LAmck0Rra-zWA",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "ebabdd690162ceededf2932141bb65d0c0b9f2f0b29837e1db38963f24259f36"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.208589,
+    "lon": -88.2437038,
+    "position_xz": [
+     -181.71,
+     45.75
+    ],
+    "position_uv": [
+     -26.97,
+     1.1
+    ],
+    "looking_bearing": 5.0,
+    "looking_compass": "N",
+    "image_left_bearing": 275.0,
+    "image_right_bearing": 95.0,
+    "target_center_offset_deg": 2.8,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 6,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 2.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.208589,-88.2437038,3a,80y,5h,100t/data=!3m7!1e1!3m5!1s2cmQlSOjl6iI4FLJ0NSqSA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3D2cmQlSOjl6iI4FLJ0NSqSA%26yaw%3D5!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "2cmQlSOjl6iI4FLJ0NSqSA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "018006927ec0c0ebccf9f93051e2874ad77ebe87b14e11b72b3ba417a087bdb0"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2088601,
+    "lon": -88.2432366,
+    "position_xz": [
+     -143.19,
+     15.57
+    ],
+    "position_uv": [
+     9.54,
+     33.68
+    ],
+    "looking_bearing": 260.0,
+    "looking_compass": "W",
+    "image_left_bearing": 170.0,
+    "image_right_bearing": 350.0,
+    "target_center_offset_deg": 4.4,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 20,
+    "fov": 71,
+    "tilt": 95,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 25.8
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2088601,-88.2432366,3a,71y,260h,95t/data=!3m7!1e1!3m5!1saNTxFskxoUk1DDjgA4a0gg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DaNTxFskxoUk1DDjgA4a0gg%26yaw%3D260!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "aNTxFskxoUk1DDjgA4a0gg",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "b0a56b284120ddef0e5f82b5ba16bca4c9ea3e6c18ee171ab3ebaf8aac7011f1"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2085756,
+    "lon": -88.2440717,
+    "position_xz": [
+     -212.05,
+     47.24
+    ],
+    "position_uv": [
+     -33.81,
+     -28.49
+    ],
+    "looking_bearing": 41.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 311.0,
+    "image_right_bearing": 131.0,
+    "target_center_offset_deg": 9.3,
+    "geometrically_facing_camera": [
+     "-u",
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 59,
+    "fov": 55,
+    "tilt": 93,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 2.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2085756,-88.2440717,3a,55y,41h,93t/data=!3m7!1e1!3m5!1sGyroTouDPuWgvYu1LqUaBA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-3%26panoid%3DGyroTouDPuWgvYu1LqUaBA%26yaw%3D41!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "GyroTouDPuWgvYu1LqUaBA",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "a6d5edc9ff72c3bb25d76e953f1302b85d7d004648ac4d12843526beb68d623f"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "1c36f83e53c928804d7d7a37de709e54743f1e0dede1fabd79d4feb65225f4de"
+  }
+ ],
+ "search_query": "218 West Main Street Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

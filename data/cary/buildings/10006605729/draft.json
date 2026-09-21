@@ -1,0 +1,136 @@
+{
+ "wall": "#ad8065",
+ "trim": "#e2d7c2",
+ "roofColor": "#626563",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -9.9,
+    21
+   ],
+   "v": [
+    -9.3,
+    9.3
+   ],
+   "height": 4.4,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.14,
+    "color": "#e2d7c2",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#89857b"
+   },
+   "faces": {
+    "+v": {
+     "storefronts": [
+      {
+       "range": [
+        0.08,
+        0.4
+       ],
+       "y": 0.45,
+       "h": 2.5,
+       "frame": "#455c55",
+       "kick": "#455c55"
+      },
+      {
+       "range": [
+        0.6,
+        0.92
+       ],
+       "y": 0.45,
+       "h": 2.5,
+       "frame": "#455c55",
+       "kick": "#455c55"
+      }
+     ],
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.8,
+       "h": 2.5,
+       "color": "#455c55",
+       "surround": "#e2d7c2",
+       "surroundW": 0.12
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 1,
+       "windows": {
+        "type": "rect",
+        "w": 1.5,
+        "h": 1.7,
+        "at": [
+         0.22,
+         0.5,
+         0.78
+        ],
+        "trim": "#e2d7c2",
+        "glass": "#7a8d8b"
+       }
+      }
+     ]
+    },
+    "-v": {},
+    "-u": {}
+   }
+  },
+  {
+   "id": "west_wing",
+   "u": [
+    -21,
+    -9.9
+   ],
+   "v": [
+    -9.3,
+    4.3
+   ],
+   "height": 4.4,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.14,
+    "color": "#e2d7c2",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#89857b"
+   },
+   "faces": {
+    "+v": {
+     "storefronts": [
+      {
+       "range": [
+        0.15,
+        0.85
+       ],
+       "y": 0.45,
+       "h": 2.5,
+       "frame": "#455c55",
+       "kick": "#455c55"
+      }
+     ]
+    },
+    "-u": {},
+    "-v": {}
+   }
+  }
+ ],
+ "details": []
+}

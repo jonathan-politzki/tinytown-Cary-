@@ -19,48 +19,61 @@
  ],
  "report": {
   "verdict": "insufficient-evidence",
-  "summary": "The low, stepped flat-roof brick massing is coherent and charming at miniature scale, with clean coping and glazing. However, the supplied render views do not expose the modeled entrance or its BMO-specific treatment, and the map and geolocated Street View reference images are unavailable, so recognizability and entrance placement cannot be validated.",
+  "summary": "The stepped brick massing, flat roofs, pale coping, and cream-trimmed windows form a coherent miniature, but the principal entrance cannot be verified because the orientation map and Street View references are unavailable.",
   "orientation": {
    "status": "uncertain",
-   "summary": "The door inventory records one double principal door on the -v face, outward bearing 268\u00b0 (west), at the recessed footprint segment. The labeled -v render is obstructed by the large foreground building, while the overview and other face views do not reveal that recess. Because the orientation map and all geolocated Street View images failed to load, there is no visible source-to-face evidence confirming that the real principal entrance belongs on west/-v rather than another face."
+   "summary": "The actual inventory contains one recessed blue double door on face -v (268\u00b0/west). The labeled sheet shows +u/north at upper left, -u/south at upper right, +v/east at lower left, and -v/west at lower right; however, the -v target face is poorly exposed/partly obscured. Without MAP and located SV1\u2013SV4 imagery, there is no source-to-face evidence confirming that west is the real principal-entry side."
   },
   "issues": [
    {
     "severity": "major",
-    "problem": "Principal-entry orientation is unresolved: the sole -v door is hidden in the provided render coverage and cannot be compared with the missing map and Street View references.",
-    "fix": "Provide the missing orientation map and labeled Street View atlas, plus an unobstructed close render of the west/-v recess showing the actual door, canopy, and sign."
+    "problem": "Principal-entry orientation is unresolved: only the model inventory supports the -v placement, while the required map and geolocated street views are missing.",
+    "fix": "Supply the MAP and SV atlas, then compare the visible real entrance directly with the corresponding labeled outward face; relocate the sole principal portal if it does not match."
    },
    {
-    "severity": "major",
-    "problem": "The visible model reads as a generic brick commercial block; no BMO sign, blue entrance canopy, or principal portal is visible in either deliverable.",
-    "fix": "Include a clear presentation angle that makes the single branded entrance a prominent identifying feature without adding duplicate principal portals."
+    "severity": "minor",
+    "problem": "The recessed blue-accent entrance\u2014the strongest identifying feature\u2014is difficult to read in both the overview and four-face sheet.",
+    "fix": "Provide an unobstructed -v face render and strengthen the recess, blue surround, glazing, and entry paving so the entrance reads clearly at miniature scale."
    }
   ]
  },
- "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
  "model": "sol",
  "stage": "detail",
- "repairs": 1,
- "timestamp": 1789952123.809549,
+ "repairs": 2,
+ "timestamp": 1789956306.216738,
  "call": {
-  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245214/20260920-195504-1ef3a4-review",
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245214/20260920-210441-9932df-review",
   "usage": {
-   "input_tokens": 9774,
+   "input_tokens": 9755,
    "cached_input_tokens": 0,
    "cache_write_input_tokens": 0,
-   "output_tokens": 632,
-   "reasoning_output_tokens": 298,
-   "total_tokens": 10406
+   "output_tokens": 827,
+   "reasoning_output_tokens": 516,
+   "total_tokens": 10582
   },
   "usage_complete": true,
-  "duration": 19.562955141067505,
-  "run": "20260920-194654-13161b",
+  "duration": 24.235471963882446,
+  "run": "20260920-205910-70a9d3",
   "model": "gpt-5.6-sol"
  },
  "renders": {
-  "overview": "data/cary/buildings/1396245214/renders/repaired-overview.png",
-  "faces": "data/cary/buildings/1396245214/renders/repaired-faces.jpg"
+  "overview": "data/cary/buildings/1396245214/renders/repaired-2-overview.png",
+  "faces": "data/cary/buildings/1396245214/renders/repaired-2-faces.jpg"
  },
  "repairs_exhausted": true,
- "repair_limit": 2
+ "repair_limit": 2,
+ "scene_review": {
+  "id": "1396245214",
+  "verdict": "needs-attention",
+  "summary": "The stepped single-storey brick footprint, layered flat roofs, pale coping, and varied window groupings give BMO the stronger and more recognizable silhouette. Materials and scale fit the scene, with no conspicuous texture failure or broken massing. However, the characteristic recessed blue entrance is almost impossible to identify in both the aerial scene and labeled sheet; the -v view is obstructed by a large foreground building. The inventory reports one double door, not a duplicated entrance, but its role and side cannot be validated.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The sole actual blue double door is on the recessed -v face, facing 268\u00b0 west. That matches the author claim but not verified independent evidence: the prior source-to-face audit explicitly could not confirm the real entrance side. The nearest-road face is -u toward West Main Street, but that fact alone does not prove an entrance there. With the relevant west face obscured and no independent confirmation, principal-entry orientation remains unresolved and needs attention."
+  },
+  "draft_hash": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e",
+  "model": "sol",
+  "run": "20260920-205910-70a9d3",
+  "timestamp": 1789956360.887393
+ }
 }

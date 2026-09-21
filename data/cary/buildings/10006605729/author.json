@@ -1,0 +1,279 @@
+{
+ "thread_id": "01a0c1b8-b1e1-7a92-afe0-c3bfb033cce6",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12083,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 860,
+  "reasoning_output_tokens": 152,
+  "total_tokens": 12943
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#ad8065\",\"trim\":\"#e2d7c2\",\"roofColor\":\"#626563\",\"volumes\":[{\"id\":\"main\",\"u\":[-9.9,21],\"v\":[-9.3,9.3],\"height\":4.4,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.14,\"color\":\"#e2d7c2\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#89857b\"},\"faces\":{\"+v\":{\"storefronts\":[{\"range\":[0.08,0.4],\"y\":0.45,\"h\":2.5,\"frame\":\"#455c55\",\"kick\":\"#455c55\"},{\"range\":[0.6,0.92],\"y\":0.45,\"h\":2.5,\"frame\":\"#455c55\",\"kick\":\"#455c55\"}],\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.8,\"h\":2.5,\"color\":\"#455c55\",\"surround\":\"#e2d7c2\",\"surroundW\":0.12}]},\"+u\":{\"storeys\":[{\"y\":1,\"windows\":{\"type\":\"rect\",\"w\":1.5,\"h\":1.7,\"at\":[0.22,0.5,0.78],\"trim\":\"#e2d7c2\",\"glass\":\"#7a8d8b\"}}]},\"-v\":{},\"-u\":{}}},{\"id\":\"west_wing\",\"u\":[-21,-9.9],\"v\":[-9.3,4.3],\"height\":4.4,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.14,\"color\":\"#e2d7c2\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#89857b\"},\"faces\":{\"+v\":{\"storefronts\":[{\"range\":[0.15,0.85],\"y\":0.45,\"h\":2.5,\"frame\":\"#455c55\",\"kick\":\"#455c55\"}]},\"-u\":{},\"-v\":{}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Broad retail footprint with a southwest setback.",
+   "Two joined masses preserve the mapped recess.",
+   "Provisional low, flat-roof silhouette.",
+   "Muted green storefront trim against warm walls."
+  ],
+  "references_used": [
+   "10006605729:frame",
+   "10006605729:source_tags"
+  ],
+  "uncertainties": [
+   "All supplied image files were unavailable; this is a footprint-based approximation, not a visually verified likeness.",
+   "Height, roof form, palette, cladding and openings are unverified design assumptions.",
+   "The principal entrance cannot be located from camera poses alone. Its single modeled +v placement is provisional, not established by the address or nearby road."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "+v",
+    "role": "principal",
+    "evidence": [
+     "10006605729:source_tags (retail use only; no entrance-location evidence)"
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author/response.json",
+ "started_at": 1789956501.841762,
+ "finished_at": 1789956531.7677078,
+ "elapsed_seconds": 29.92594575881958,
+ "duration": 29.92594575881958,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006605729/20260920-210821-da3551-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006605729",
+ "model_alias": "astra",
+ "run": "20260920-210821-86d5e3",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "e7f75d508a1bddc067c92947d5a8f78d6bced2bad8b0d06d780a9b788a86c658",
+ "frame": "41580ab75c643fe4ad2a7fb92ef6481117ac6210f4bded1627cde065d6215148",
+ "timestamp": 1789956531.7686322,
+ "blueprint": {
+  "wall": "#ad8065",
+  "trim": "#e2d7c2",
+  "roofColor": "#626563",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -9.9,
+     21
+    ],
+    "v": [
+     -9.3,
+     9.3
+    ],
+    "height": 4.4,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.14,
+     "color": "#e2d7c2",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#89857b"
+    },
+    "faces": {
+     "+v": {
+      "storefronts": [
+       {
+        "range": [
+         0.08,
+         0.4
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#455c55",
+        "kick": "#455c55"
+       },
+       {
+        "range": [
+         0.6,
+         0.92
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#455c55",
+        "kick": "#455c55"
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.8,
+        "h": 2.5,
+        "color": "#455c55",
+        "surround": "#e2d7c2",
+        "surroundW": 0.12
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 1,
+        "windows": {
+         "type": "rect",
+         "w": 1.5,
+         "h": 1.7,
+         "at": [
+          0.22,
+          0.5,
+          0.78
+         ],
+         "trim": "#e2d7c2",
+         "glass": "#7a8d8b"
+        }
+       }
+      ]
+     },
+     "-v": {},
+     "-u": {}
+    }
+   },
+   {
+    "id": "west_wing",
+    "u": [
+     -21,
+     -9.9
+    ],
+    "v": [
+     -9.3,
+     4.3
+    ],
+    "height": 4.4,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.14,
+     "color": "#e2d7c2",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#89857b"
+    },
+    "faces": {
+     "+v": {
+      "storefronts": [
+       {
+        "range": [
+         0.15,
+         0.85
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#455c55",
+        "kick": "#455c55"
+       }
+      ]
+     },
+     "-u": {},
+     "-v": {}
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Broad retail footprint with a southwest setback.",
+  "Two joined masses preserve the mapped recess.",
+  "Provisional low, flat-roof silhouette.",
+  "Muted green storefront trim against warm walls."
+ ],
+ "uncertainties": [
+  "All supplied image files were unavailable; this is a footprint-based approximation, not a visually verified likeness.",
+  "Height, roof form, palette, cladding and openings are unverified design assumptions.",
+  "The principal entrance cannot be located from camera poses alone. Its single modeled +v placement is provisional, not established by the address or nearby road."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "+v",
+   "role": "principal",
+   "evidence": [
+    "10006605729:source_tags (retail use only; no entrance-location evidence)"
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "00431feb38288741dfff5c7f181e4e737ba9a67930b69bf94e41b19200b5ee65"
+}

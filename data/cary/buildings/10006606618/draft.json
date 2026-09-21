@@ -1,0 +1,120 @@
+{
+ "wall": "#aa7861",
+ "trim": "#e1d6be",
+ "roofColor": "#626462",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -15.5,
+    6.8
+   ],
+   "v": [
+    -8,
+    8
+   ],
+   "height": 4.2,
+   "roof": {
+    "type": "flat",
+    "lip": false
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.14,
+    "color": "#e1d6be",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.25,
+    "color": "#89857b"
+   },
+   "faces": {
+    "-u": {
+     "storefronts": [
+      {
+       "range": [
+        0.08,
+        0.4
+       ],
+       "y": 0.45,
+       "h": 2.5,
+       "frame": "#425c55",
+       "kick": "#425c55"
+      },
+      {
+       "range": [
+        0.6,
+        0.92
+       ],
+       "y": 0.45,
+       "h": 2.5,
+       "frame": "#425c55",
+       "kick": "#425c55"
+      }
+     ],
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.7,
+       "h": 2.6,
+       "color": "#425c55",
+       "surround": "#e1d6be",
+       "surroundW": 0.12
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.5,
+        "h": 1.6,
+        "at": [
+         0.18,
+         0.4,
+         0.62,
+         0.84
+        ],
+        "trim": "#e1d6be",
+        "glass": "#7b9292"
+       }
+      }
+     ]
+    },
+    "-v": {},
+    "+u": {}
+   }
+  },
+  {
+   "id": "rear_wing",
+   "u": [
+    6.8,
+    15.5
+   ],
+   "v": [
+    -8,
+    0.6
+   ],
+   "height": 4.2,
+   "roof": {
+    "type": "flat",
+    "lip": false
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.14,
+    "color": "#e1d6be",
+    "dentils": false
+   },
+   "faces": {
+    "+u": {},
+    "+v": {},
+    "-v": {}
+   }
+  }
+ ],
+ "details": []
+}
