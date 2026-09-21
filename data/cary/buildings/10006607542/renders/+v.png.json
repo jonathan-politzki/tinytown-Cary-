@@ -1,11 +1,11 @@
 {
- "key": "ac34d828e7ba7e541d888e0ef583d37e6b5ae6eb035891e6abce7bdb4bbb4e4b",
- "url": "http://localhost:8734/?site=cary&focus=988201370&side=%2Bu&dist=60&height=8&stage=detail&free=1&bp=988201370&notrees=1",
- "blueprint": "773f2f50c861b72de19ad9c3129a6e9e452bcd49a5b86231240f1477ef57a892",
- "frame": "2faecc507b7fda22589e1814e3a4c95219cb12c638ae37609c4b6fc68ecd19f1",
- "context": "e56eb3329e76a6339c4dc2b907033649bf22e8d3083fc3f01c6bc30eea9f3d3d",
+ "key": "7fd5d486657a753b496b6d0015ee8029e953ae450ccd383997fc75108e00eb7a",
+ "url": "http://localhost:8734/?site=cary&focus=10006607542&side=%2Bv&dist=60&height=8&stage=detail&free=1&bp=10006607542&notrees=1",
+ "blueprint": "a30026c4c1cc4f768de55c40122720adb9ee66f2fa7663a1039f38a5b784ccec",
+ "frame": "a82d44243f1f0cebf14bdd5e3e8132f83a71f646f7da476ce8711de036f50545",
+ "context": "3b3afe03b14627badc46f7e713ab10aa105fd6bd49f0bffbc87bba4c141724d3",
  "renderer": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
- "view": "+u",
+ "view": "+v",
  "stage": "detail",
  "pose": null,
  "neighbors": {
@@ -27,6 +27,11 @@
   "982767709": {
    "draft": false,
    "frame": "6d9657b872c4e4ec81b41ebf1460dcc2378aaf123a7798200e7d175fa00afab4",
+   "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "988201370": {
+   "draft": false,
+   "frame": "2faecc507b7fda22589e1814e3a4c95219cb12c638ae37609c4b6fc68ecd19f1",
    "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
   },
   "988201371": {
@@ -1082,11 +1087,6 @@
   "10006607513": {
    "draft": false,
    "frame": "9336b6264de8cd40754c0fd6e02113709150a887356aa0db4e076c3d7c51fda3",
-   "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-  },
-  "10006607542": {
-   "draft": false,
-   "frame": "a82d44243f1f0cebf14bdd5e3e8132f83a71f646f7da476ce8711de036f50545",
    "blueprint": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
   },
   "10006607579": {

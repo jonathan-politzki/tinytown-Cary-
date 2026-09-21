@@ -1,46 +1,13 @@
 {
- "draft_hash": "7007eb9694a8edefc616b6a5379c90addba57005c55e8f4b45aa7fa8e6aed958",
+ "draft_hash": "34b114a3075b9902f1b417527b21d5c178cc71cd664cadcd4c2211077d8ad928",
  "frame": "d700b7071a489ef893459ea3963c13cf148afb7962d80338d79e8f45793b9c2e",
- "passed": false,
+ "passed": true,
  "findings": [],
  "geometry": [],
- "report": {
-  "verdict": "insufficient-evidence",
-  "summary": "The model is a clean, charming two-storey brick commercial miniature with a readable Cary Ale House sign, restrained cornice, storefront glazing, and coherent window rhythm. Its simple rectangular silhouette is recognizable at diorama scale, with no obvious severe geometry defects. However, the principal-entry placement cannot be verified from the supplied evidence.",
-  "orientation": {
-   "status": "uncertain",
-   "summary": "The actual door inventory contains one double principal-looking door only on +u, the south-facing (182\u00b0) facade shown at upper-left in the labeled four-face sheet. The other three rendered faces show no visible doors, so portals are not duplicated. Yet the orientation map, labeled Street View images, and aerial reference failed to load; the remaining camera metadata only says SV1 geometrically faces +u and does not describe whether a principal entrance is visible there. West Main Street being nearest to +u is explicitly only a hint, not proof. Therefore the source-to-face entrance match remains unresolved."
-  },
-  "issues": [
-   {
-    "severity": "major",
-    "problem": "Principal-entry orientation is unverified because the map and geolocated Street View atlas are unavailable; proximity to West Main Street cannot establish that +u is correct.",
-    "fix": "Restore the labeled map and Street View reference images, then confirm that the documented principal portal appears on the +u/south face; otherwise move the sole entrance to the evidenced face."
-   }
-  ]
- },
- "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
- "model": "sol",
+ "report": null,
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": null,
  "stage": "detail",
- "repairs": 0,
- "timestamp": 1789952297.486086,
- "call": {
-  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1374307058/20260920-195802-8b58f2-review",
-  "usage": {
-   "input_tokens": 9714,
-   "cached_input_tokens": 3200,
-   "cache_write_input_tokens": 0,
-   "output_tokens": 499,
-   "reasoning_output_tokens": 201,
-   "total_tokens": 10213
-  },
-  "usage_complete": true,
-  "duration": 15.441468954086304,
-  "run": "20260920-194654-13161b",
-  "model": "gpt-5.6-sol"
- },
- "renders": {
-  "overview": "data/cary/buildings/1374307058/renders/initial-overview.png",
-  "faces": "data/cary/buildings/1374307058/renders/initial-faces.jpg"
- }
+ "repairs": 2,
+ "timestamp": 1789955905.150541
 }

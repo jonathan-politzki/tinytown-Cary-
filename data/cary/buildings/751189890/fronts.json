@@ -1,0 +1,37 @@
+{
+ "id": "751189890",
+ "addr": "60 East Main Street",
+ "name": "Cary Bank & Trust",
+ "frame": "038ed10a2a5b97b7f3fa12016f753f962137080189179029117a0652c9760694",
+ "faces": {
+  "+u": {
+   "bearing": 180,
+   "width": 30.6,
+   "road": true,
+   "photos": [
+    {
+     "face": "+u",
+     "file": "fronts/+u.png",
+     "pano": "JcY0jzYVgTbQDnM8Wlh0wA",
+     "dist": 27.3,
+     "off_axis_deg": 6,
+     "fov": 71,
+     "tilt": 95,
+     "heading": 6,
+     "date": "Dec 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2087142,-88.2370095,3a,71y,6h,95t/data=!3m7!1e1!3m5!1sJcY0jzYVgTbQDnM8Wlh0wA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DJcY0jzYVgTbQDnM8Wlh0wA%26yaw%3D6!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2087142,
+      "lon": -88.2370095
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  }
+ },
+ "captured": "2026-09-20 20:59"
+}

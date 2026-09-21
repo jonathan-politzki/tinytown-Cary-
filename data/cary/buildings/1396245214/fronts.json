@@ -1,0 +1,37 @@
+{
+ "id": "1396245214",
+ "addr": null,
+ "name": "BMO",
+ "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
+ "faces": {
+  "+u": {
+   "bearing": 358,
+   "width": 26.5,
+   "road": false,
+   "photos": [
+    {
+     "face": "+u",
+     "file": "fronts/+u.png",
+     "pano": "U9ASbMRNjI7wvEQWlQQbDg",
+     "dist": 26.7,
+     "off_axis_deg": 13,
+     "fov": 65,
+     "tilt": 95,
+     "heading": 165,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2093702,-88.2422965,250a,65y,165h,95t/data=!3m7!1e1!3m5!1sU9ASbMRNjI7wvEQWlQQbDg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DU9ASbMRNjI7wvEQWlQQbDg%26yaw%3D165!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2093702,
+      "lon": -88.2422965
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  }
+ },
+ "captured": "2026-09-20 20:59"
+}
