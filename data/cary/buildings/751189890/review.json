@@ -1,0 +1,53 @@
+{
+ "draft_hash": "b4956298e3166b659f55bdd7f117f9e37f8751c454ce202d759457f3bebc1e07",
+ "frame": "038ed10a2a5b97b7f3fa12016f753f962137080189179029117a0652c9760694",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The miniature is coherent and charming, with a readable asymmetric brick silhouette, pale coping, restrained glazing, and bank signage. No obvious duplicate portals or severe rendering defects are visible, but the missing map and Street View reference images prevent a defensible recognition and entrance-placement review.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The four-face sheet places the sole visible double door on face -v, the east-facing facade (outward bearing 90\u00b0), and the actual door inventory independently confirms exactly one door there. Located SV4 was east of the building looking west and geometrically faced -v, but its image is unavailable; that camera geometry proves which face was observed, not that the real principal entrance occupies it. The author entrance plan is not evidence, and neither the North 2nd Street proximity nor the postal address resolves the entrance."
+  },
+  "issues": [
+   {
+    "severity": "broken",
+    "problem": "Principal-entry orientation cannot be verified because the orientation map and all geolocated Street View imagery are missing.",
+    "fix": "Restore the labeled map and Street View atlas, then compare the real principal portal directly with the rendered -v east face; move the model\u2019s sole entrance if another face is evidenced."
+   },
+   {
+    "severity": "major",
+    "problem": "The available model reads as a generic low brick commercial building; without the reference photographs, its facade proportions and signature Cary Bank & Trust details cannot be validated.",
+    "fix": "Provide the missing appearance references and revise the entrance surround, signage, coping, and window rhythm to preserve the most recognizable documented features."
+   }
+  ]
+ },
+ "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789952223.344558,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/751189890/20260920-195648-4d62ab-review",
+  "usage": {
+   "input_tokens": 9837,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 554,
+   "reasoning_output_tokens": 226,
+   "total_tokens": 10391
+  },
+  "usage_complete": true,
+  "duration": 14.463692665100098,
+  "run": "20260920-194654-13161b",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/751189890/renders/initial-overview.png",
+  "faces": "data/cary/buildings/751189890/renders/initial-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

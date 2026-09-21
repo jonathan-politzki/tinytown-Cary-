@@ -1,0 +1,53 @@
+{
+ "draft_hash": "d262b47abf8802c6fe4759a3e9ea51717675adafcb77bf2abf299ce7f48bb9c7",
+ "frame": "9457e07e8e8e06c85865f13226f4a074063ac1c8cc2aa32eca373973e579a7c8",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The miniature has a coherent low brick-box silhouette, pale cornice, regular cream-trimmed windows, and a muted-green double door, but principal-entry placement cannot be verified from the supplied evidence.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The actual door inventory places the sole double entrance on +v, outward bearing 125\u00b0 (SE), and the labeled +v render visibly shows it. However, the orientation map and geolocated Street View images needed to identify the real principal facade are unavailable; camera metadata alone does not establish a doorway. The -u face merely being closest to Northwest Highway is not entrance evidence."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "Principal-entry orientation remains unverified, so the +v entrance may be on the wrong face.",
+    "fix": "Restore the north-up orientation map and labeled geolocated Street View atlas, then match visible real-world entrance features to a blueprint face and retain exactly one principal portal."
+   },
+   {
+    "severity": "minor",
+    "problem": "The -u panel is framed almost entirely by a foreground roof or wall, preventing inspection of that face.",
+    "fix": "Recapture the -u view with the full facade unobstructed and centered."
+   }
+  ]
+ },
+ "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789951998.500473,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-195302-bed17a-review",
+  "usage": {
+   "input_tokens": 9697,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 407,
+   "reasoning_output_tokens": 146,
+   "total_tokens": 10104
+  },
+  "usage_complete": true,
+  "duration": 16.06570792198181,
+  "run": "20260920-194654-13161b",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/1396245221/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/1396245221/renders/repaired-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

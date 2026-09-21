@@ -1,0 +1,258 @@
+{
+ "wall": "#aa7960",
+ "trim": "#e1d5bf",
+ "roofColor": "#626563",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -5,
+    27.3
+   ],
+   "v": [
+    -11.8,
+    11.8
+   ],
+   "height": 4.7,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.16,
+    "color": "#e1d5bf",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#91897b"
+   },
+   "faces": {
+    "-v": {
+     "storefronts": [
+      {
+       "range": [
+        0.08,
+        0.39
+       ],
+       "y": 0.4,
+       "h": 2.5,
+       "frame": "#40574f",
+       "kick": "#40574f"
+      },
+      {
+       "range": [
+        0.61,
+        0.92
+       ],
+       "y": 0.4,
+       "h": 2.5,
+       "frame": "#40574f",
+       "kick": "#40574f"
+      }
+     ],
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.9,
+       "h": 2.6,
+       "color": "#40574f",
+       "surround": "#e1d5bf",
+       "surroundW": 0.15
+      }
+     ],
+     "awnings": [
+      {
+       "range": [
+        0.43,
+        0.57
+       ],
+       "y": 3.1,
+       "depth": 1.1,
+       "color": "#596e61"
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 0.9,
+       "windows": {
+        "type": "rect",
+        "w": 2.1,
+        "h": 1.7,
+        "at": [
+         0.2,
+         0.5,
+         0.8
+        ],
+        "trim": "#e1d5bf",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.7,
+        "h": 1.5,
+        "at": [
+         0.18,
+         0.4,
+         0.62,
+         0.84
+        ],
+        "trim": "#e1d5bf",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "rear_wing",
+   "u": [
+    -17.3,
+    -5
+   ],
+   "v": [
+    -0.6,
+    11.8
+   ],
+   "height": 4.3,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.18,
+    "overhang": 0.12,
+    "color": "#e1d5bf",
+    "dentils": false
+   },
+   "faces": {
+    "+v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.6,
+        "h": 1.5,
+        "at": [
+         0.25,
+         0.75
+        ],
+        "trim": "#e1d5bf",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    },
+    "-v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.5,
+        "h": 1.5,
+        "at": [
+         0.25,
+         0.75
+        ],
+        "trim": "#e1d5bf",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "link",
+   "u": [
+    -18.6,
+    -17.3
+   ],
+   "v": [
+    -0.6,
+    0.6
+   ],
+   "height": 3.6,
+   "roof": {
+    "type": "flat",
+    "lip": false
+   },
+   "faces": {}
+  },
+  {
+   "id": "return_wing",
+   "u": [
+    -27.25,
+    -18.6
+   ],
+   "v": [
+    -10.5,
+    0.6
+   ],
+   "height": 4.1,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.18,
+    "overhang": 0.12,
+    "color": "#e1d5bf",
+    "dentils": false
+   },
+   "faces": {
+    "-v": {
+     "storeys": [
+      {
+       "y": 0.7,
+       "windows": {
+        "type": "shop",
+        "w": 2.3,
+        "h": 2.1,
+        "at": [
+         0.25,
+         0.75
+        ],
+        "trim": "#40574f",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.4,
+        "h": 1.5,
+        "at": [
+         0.3,
+         0.7
+        ],
+        "trim": "#e1d5bf",
+        "glass": "#7b9291"
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "details": []
+}

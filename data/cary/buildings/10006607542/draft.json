@@ -1,0 +1,170 @@
+{
+ "wall": "#ac7760",
+ "trim": "#e3d7c1",
+ "roofColor": "#606460",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -16.7,
+    11.7
+   ],
+   "v": [
+    -14.9,
+    14.9
+   ],
+   "height": 4.8,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.15,
+    "color": "#e3d7c1",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#89867b"
+   },
+   "faces": {
+    "-u": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 2.2,
+        "h": 1.8,
+        "at": [
+         0.2,
+         0.5,
+         0.8
+        ],
+        "trim": "#e3d7c1",
+        "glass": "#788785"
+       }
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 0.65,
+       "windows": {
+        "type": "shop",
+        "w": 3.2,
+        "h": 2.6,
+        "at": [
+         0.15,
+         0.38,
+         0.61,
+         0.84
+        ],
+        "trim": "#425b56",
+        "glass": "#788785",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-v": {}
+   }
+  },
+  {
+   "id": "east_wing",
+   "u": [
+    11.7,
+    16.75
+   ],
+   "v": [
+    -6.2,
+    14.9
+   ],
+   "height": 4.8,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.15,
+    "color": "#e3d7c1",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#89867b"
+   },
+   "faces": {
+    "+u": {
+     "storefronts": [
+      {
+       "range": [
+        0.08,
+        0.4
+       ],
+       "y": 0.45,
+       "h": 2.8,
+       "frame": "#425b56",
+       "kick": "#425b56"
+      },
+      {
+       "range": [
+        0.6,
+        0.92
+       ],
+       "y": 0.45,
+       "h": 2.8,
+       "frame": "#425b56",
+       "kick": "#425b56"
+      }
+     ],
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.8,
+       "h": 2.7,
+       "color": "#425b56",
+       "surround": "#e3d7c1",
+       "surroundW": 0.13
+      }
+     ],
+     "awnings": [
+      {
+       "range": [
+        0.41,
+        0.59
+       ],
+       "y": 3.2,
+       "depth": 1.1,
+       "color": "#536b61"
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 0.65,
+       "windows": {
+        "type": "shop",
+        "w": 3.2,
+        "h": 2.6,
+        "at": [
+         0.5
+        ],
+        "trim": "#425b56",
+        "glass": "#788785",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-v": {}
+   }
+  }
+ ],
+ "details": []
+}

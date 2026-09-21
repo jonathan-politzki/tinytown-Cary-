@@ -1,0 +1,353 @@
+{
+ "version": 3,
+ "id": "1396245216",
+ "name": "Structure 1396245216",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "yes"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 85.274,
+  "depth_v": 44.873,
+  "footprint_uv": [
+   [
+    42.7,
+    -22.4
+   ],
+   [
+    42.6,
+    8.9
+   ],
+   [
+    30.4,
+    8.9
+   ],
+   [
+    30.4,
+    17.6
+   ],
+   [
+    24.2,
+    22.4
+   ],
+   [
+    19.8,
+    16.8
+   ],
+   [
+    19.7,
+    8.9
+   ],
+   [
+    12.5,
+    9.0
+   ],
+   [
+    12.2,
+    -5.0
+   ],
+   [
+    4.3,
+    -4.9
+   ],
+   [
+    0.6,
+    -13.2
+   ],
+   [
+    -24.1,
+    5.9
+   ],
+   [
+    -42.6,
+    -18.1
+   ],
+   [
+    -41.5,
+    -21.3
+   ],
+   [
+    -32.8,
+    -21.3
+   ],
+   [
+    -32.8,
+    -22.5
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 126,
+    "compass": "SE",
+    "left_bearing": 216,
+    "right_bearing": 36,
+    "nearest_road_outward": {
+     "name": "Cary Street",
+     "circular": false,
+     "distance_m": 27.8
+    },
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 306,
+    "compass": "NW",
+    "left_bearing": 36,
+    "right_bearing": 216,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 47.7
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 216,
+    "compass": "SW",
+    "left_bearing": 306,
+    "right_bearing": 126,
+    "nearest_road_outward": {
+     "name": "Spring Street",
+     "circular": false,
+     "distance_m": 28.3
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 36,
+    "compass": "NE",
+    "left_bearing": 126,
+    "right_bearing": 306,
+    "nearest_road_outward": {
+     "name": "Jandus Road",
+     "circular": false,
+     "distance_m": 9.9
+    },
+    "nearest_road_hint": true
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2078303,
+    "lon": -88.2402397,
+    "position_xz": [
+     103.92,
+     130.21
+    ],
+    "position_uv": [
+     69.13,
+     -0.3
+    ],
+    "looking_bearing": 305.0,
+    "looking_compass": "NW",
+    "image_left_bearing": 215.0,
+    "image_right_bearing": 35.0,
+    "target_center_offset_deg": 0.8,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 1,
+    "fov": 80,
+    "tilt": 91,
+    "near_road": {
+     "name": "Cary Street",
+     "circular": false,
+     "distance_m": 1.1
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2078303,-88.2402397,245a,80y,305h,91t/data=!3m7!1e1!3m5!1sSILW_LXN0VifKZa8cnX7sg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DSILW_LXN0VifKZa8cnX7sg%26yaw%3D305!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "SILW_LXN0VifKZa8cnX7sg",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "8ab0624060b6926aed7aadcde241e5b0d2cdb5e89800304fd2392c5106465d1c"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2085777,
+    "lon": -88.2416917,
+    "position_xz": [
+     -15.81,
+     47.01
+    ],
+    "position_uv": [
+     -76.63,
+     3.01
+    ],
+    "looking_bearing": 121.0,
+    "looking_compass": "ESE",
+    "image_left_bearing": 31.0,
+    "image_right_bearing": 211.0,
+    "target_center_offset_deg": 2.8,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 5,
+    "fov": 79,
+    "tilt": 91,
+    "near_road": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 10.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2085777,-88.2416917,249a,79y,121h,91t/data=!3m7!1e1!3m5!1s2NOjj3sK2qanAD6Ute_iyg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3D2NOjj3sK2qanAD6Ute_iyg%26yaw%3D121!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "2NOjj3sK2qanAD6Ute_iyg",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "8463f439eac7212ea6567872a96068134c6cf8afe63b3e61230a8bc565e96c43"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2078538,
+    "lon": -88.2413082,
+    "position_xz": [
+     15.81,
+     127.59
+    ],
+    "position_uv": [
+     -3.6,
+     49.49
+    ],
+    "looking_bearing": 44.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 314.0,
+    "image_right_bearing": 134.0,
+    "target_center_offset_deg": -3.7,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 8,
+    "fov": 80,
+    "tilt": 91,
+    "near_road": {
+     "name": "Spring Street",
+     "circular": false,
+     "distance_m": 2.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2078538,-88.2413082,248a,80y,44h,91t/data=!3m7!1e1!3m5!1ss_Ekf_PoA-_IswrHEOTT4w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3Ds_Ekf_PoA-_IswrHEOTT4w%26yaw%3D44!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "s_Ekf_PoA-_IswrHEOTT4w",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "fa0b9eaf74c4920c9f5dbf32ca054d69f76dafc084514575161dce7580b239f7"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2085146,
+    "lon": -88.2406071,
+    "position_xz": [
+     73.62,
+     54.03
+    ],
+    "position_uv": [
+     -0.23,
+     -44.0
+    ],
+    "looking_bearing": 215.0,
+    "looking_compass": "SW",
+    "image_left_bearing": 125.0,
+    "image_right_bearing": 305.0,
+    "target_center_offset_deg": 0.8,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 1,
+    "fov": 80,
+    "tilt": 92,
+    "near_road": {
+     "name": "Jandus Road",
+     "circular": false,
+     "distance_m": 11.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2085146,-88.2406071,248a,80y,215h,92t/data=!3m7!1e1!3m5!1sUJ0cOJEbUzxjxKKtdvNyPw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-2%26panoid%3DUJ0cOJEbUzxjxKKtdvNyPw%26yaw%3D215!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "UJ0cOJEbUzxjxKKtdvNyPw",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "342b064d261a6da65a6af9f97f3a2443d3c62bac00d64444d48d63fd4bdd3732"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "3d05943c5bcfd61a1ff4b90b09c78c9c3b7191d1fb9e08dacfef233684d6a4e7"
+  }
+ ],
+ "search_query": "Structure 1396245216 Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

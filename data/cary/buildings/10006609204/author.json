@@ -1,0 +1,258 @@
+{
+ "thread_id": "01a0c18c-a67d-77b3-8a5d-92934bcb7cd6",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12077,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 783,
+  "reasoning_output_tokens": 137,
+  "total_tokens": 12860
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#b18b72\",\"trim\":\"#e0d6c2\",\"roofColor\":\"#616463\",\"volumes\":[{\"id\":\"main\",\"u\":[-43.4,43.4],\"v\":[-9.9,9.9],\"height\":4.4,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.15,\"color\":\"#e0d6c2\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#8c857a\"},\"faces\":{\"+v\":{\"storefronts\":[{\"range\":[0.05,0.22],\"y\":0.45,\"h\":2.65,\"frame\":\"#52635c\",\"kick\":\"#52635c\"},{\"range\":[0.26,0.44],\"y\":0.45,\"h\":2.65,\"frame\":\"#52635c\",\"kick\":\"#52635c\"},{\"range\":[0.56,0.74],\"y\":0.45,\"h\":2.65,\"frame\":\"#52635c\",\"kick\":\"#52635c\"},{\"range\":[0.78,0.95],\"y\":0.45,\"h\":2.65,\"frame\":\"#52635c\",\"kick\":\"#52635c\"}],\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":2,\"h\":2.65,\"color\":\"#52635c\",\"surround\":\"#e0d6c2\",\"surroundW\":0.15}]},\"-v\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":2.4,\"h\":1.6,\"at\":[0.1,0.26,0.42,0.58,0.74,0.9],\"trim\":\"#e0d6c2\",\"glass\":\"#81908d\"}}]},\"+u\":{},\"-u\":{}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Very long rectangular footprint, approximately 87 \u00d7 20 metres.",
+   "North\u2013south long axis preserved.",
+   "Provisional low, flat-roofed retail silhouette.",
+   "Assumed warm walls, muted green frames and broad display glazing."
+  ],
+  "references_used": [
+   "REFERENCE PACKET: frame",
+   "REFERENCE PACKET: source_tags"
+  ],
+  "uncertainties": [
+   "All supplied image files were unavailable; photographic recognition could not be verified.",
+   "Height, roof, cladding, palette and glazing are generic retail assumptions, not observed features.",
+   "The single west-facing entrance is a provisional modeling choice. Its location and principal status are uncorroborated; camera poses alone cannot identify an entrance."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "+v",
+    "role": "principal (provisional)",
+    "evidence": [
+     "Frame establishes +v as west; no available image establishes entry placement."
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author/response.json",
+ "started_at": 1789953615.085851,
+ "finished_at": 1789953642.5845828,
+ "elapsed_seconds": 27.49873185157776,
+ "duration": 27.49873185157776,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609204/20260920-202015-cd39d4-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006609204",
+ "model_alias": "astra",
+ "run": "20260920-194654-13161b",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "59830af13ee34749c5ea3845b8ee110ff5184dc5d116de8eeebc3b6b735fa64f",
+ "frame": "bb79e1acd9b977dc71eefcaef25a81968068b0b407592b51ecce2702c4f036d8",
+ "timestamp": 1789953642.587169,
+ "blueprint": {
+  "wall": "#b18b72",
+  "trim": "#e0d6c2",
+  "roofColor": "#616463",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -43.4,
+     43.4
+    ],
+    "v": [
+     -9.9,
+     9.9
+    ],
+    "height": 4.4,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.15,
+     "color": "#e0d6c2",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#8c857a"
+    },
+    "faces": {
+     "+v": {
+      "storefronts": [
+       {
+        "range": [
+         0.05,
+         0.22
+        ],
+        "y": 0.45,
+        "h": 2.65,
+        "frame": "#52635c",
+        "kick": "#52635c"
+       },
+       {
+        "range": [
+         0.26,
+         0.44
+        ],
+        "y": 0.45,
+        "h": 2.65,
+        "frame": "#52635c",
+        "kick": "#52635c"
+       },
+       {
+        "range": [
+         0.56,
+         0.74
+        ],
+        "y": 0.45,
+        "h": 2.65,
+        "frame": "#52635c",
+        "kick": "#52635c"
+       },
+       {
+        "range": [
+         0.78,
+         0.95
+        ],
+        "y": 0.45,
+        "h": 2.65,
+        "frame": "#52635c",
+        "kick": "#52635c"
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 2,
+        "h": 2.65,
+        "color": "#52635c",
+        "surround": "#e0d6c2",
+        "surroundW": 0.15
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 2.4,
+         "h": 1.6,
+         "at": [
+          0.1,
+          0.26,
+          0.42,
+          0.58,
+          0.74,
+          0.9
+         ],
+         "trim": "#e0d6c2",
+         "glass": "#81908d"
+        }
+       }
+      ]
+     },
+     "+u": {},
+     "-u": {}
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Very long rectangular footprint, approximately 87 \u00d7 20 metres.",
+  "North\u2013south long axis preserved.",
+  "Provisional low, flat-roofed retail silhouette.",
+  "Assumed warm walls, muted green frames and broad display glazing."
+ ],
+ "uncertainties": [
+  "All supplied image files were unavailable; photographic recognition could not be verified.",
+  "Height, roof, cladding, palette and glazing are generic retail assumptions, not observed features.",
+  "The single west-facing entrance is a provisional modeling choice. Its location and principal status are uncorroborated; camera poses alone cannot identify an entrance."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "+v",
+   "role": "principal (provisional)",
+   "evidence": [
+    "Frame establishes +v as west; no available image establishes entry placement."
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "40cc9078269718248b0e1650b8090e8c662559f8af36d06cfda23998906fa869"
+}

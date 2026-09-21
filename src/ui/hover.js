@@ -8,8 +8,8 @@
 // as named buildings. The chosen footprint is outlined on the ground.
 import * as THREE from 'three';
 import { rayPrism } from './geo.js';
-import { pointsOfInterest } from './poi.js';
-export { pointsOfInterest } from './poi.js';
+import { poiTenants } from './poi.js';
+export { pointsOfInterest, poiTenants } from './poi.js';
 
 const BUILDING = {
   house: 'House', apartments: 'Apartments', retail: 'Shop', commercial: 'Commercial building',
@@ -30,10 +30,11 @@ const ROOF_LIFT = { flat: 1.2, gable: 3.2, hip: 2.8 };
 
 const label = (table, key) => table[key] || (key ? key.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()) : '');
 
-/** {title, lines} for the card: OSM name, else the first point of interest, else the address, else the kind. */
-export function describe(building, pois) {
+/** {title, lines} for the card: OSM name, else the building's first tenant, else the address, else the kind.
+ * `tenants` is poiTenants(site): each point of interest counts for one building only. */
+export function describe(building, tenants) {
   const tags = building.tags || {};
-  const inside = pointsOfInterest(building, pois);
+  const inside = tenants[building.id] || tenants[String(building.id)] || [];
   const ownKind = tags.amenity ? label(POI, tags.amenity) : tags.shop ? label(POI, tags.shop)
     : tags.occupancy || label(BUILDING, tags.building);
   // A named building keeps its own kind; an unnamed one takes the name and kind of what is inside it.
@@ -56,7 +57,7 @@ export function installHover(town, siteData = town.siteData, { root = document.b
   const { camera, renderer, scene } = town;
   const canvas = renderer.domElement;
   const buildings = siteData.buildings || [];
-  const pois = siteData.pois || [];
+  const tenants = poiTenants(siteData);
   const grade = town.street?.surfaces?.grade || (() => 0);
   const bases = new Map((town.street?.surfaces?.floors || []).map(f => [String(f.id), f.base]));
   const baseOf = b => bases.has(String(b.id)) ? bases.get(String(b.id)) : grade(b.centroid[0], b.centroid[1]);
@@ -106,7 +107,7 @@ export function installHover(town, siteData = town.siteData, { root = document.b
     if (building !== current) {
       current = building;
       if (!building) { card.hidden = true; outline.visible = false; return; }
-      const { title, lines } = describe(building, pois);
+      const { title, lines } = describe(building, tenants);
       card.querySelector('.title').textContent = title;
       card.querySelector('.lines').textContent = lines.join(' · ');
       const y = baseOf(building) + 0.25;
@@ -143,5 +144,5 @@ export function installHover(town, siteData = town.siteData, { root = document.b
   });
   canvas.addEventListener('pointercancel', () => { down = null; });
   canvas.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') show(null); });
-  return { pick, describe: b => describe(b, pois), show };
+  return { pick, describe: b => describe(b, tenants), show };
 }

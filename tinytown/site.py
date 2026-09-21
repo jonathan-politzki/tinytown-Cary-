@@ -605,12 +605,42 @@ def authored_building_elements(records, mapped):
     return result
 
 
+COVERED_FRACTION = 0.5     # a structure mostly under mapped footprints is the same building
+COVERAGE_SAMPLES = 24      # grid per side when estimating that overlap
+
+
+def _covered_fraction(pts, rings, samples=COVERAGE_SAMPLES):
+    """Share of a closed [lon, lat] ring's area lying under any of `rings`.
+
+    Estimated on a point grid over the ring's box: footprints are small and
+    only ever compared with their neighbours, so a fixed grid is exact enough
+    and needs no polygon clipping (the shapes are often concave).
+    """
+    lons, lats = [p[0] for p in pts], [p[1] for p in pts]
+    west, east, south, north = min(lons), max(lons), min(lats), max(lats)
+    inside = covered = 0
+    for i in range(samples):
+        lon = west + (east - west) * (i + 0.5) / samples
+        for j in range(samples):
+            lat = south + (north - south) * (j + 0.5) / samples
+            if not contains(pts, lon, lat):
+                continue
+            inside += 1
+            for other, (w, e, s_, n), _ in rings:
+                if w <= lon <= e and s_ <= lat <= n and contains(other, lon, lat):
+                    covered += 1
+                    break
+    return covered / inside if inside else 0.0
+
+
 def structure_building_elements(record, mapped):
     """Supplemental footprints (source/structures.json) that no mapped building covers.
 
     A structure is covered when its centroid lies inside a mapped building's
-    ring or a mapped building's centroid lies inside the structure's, so the
-    hand-mapped footprint wins and nothing is drawn twice.
+    ring, a mapped building's centroid lies inside the structure's, or more
+    than COVERED_FRACTION of its area lies under mapped footprints (two
+    interlocking L-shapes can miss both centroid tests), so the hand-mapped
+    footprint wins and nothing is drawn twice.
     """
     elements = (record or {}).get('elements') or []
     if not elements:
@@ -632,12 +662,16 @@ def structure_building_elements(record, mapped):
         lon, lat = _ring_centroid(ring)
         lons, lats = [p[0] for p in pts], [p[1] for p in pts]
         box = (min(lons), max(lons), min(lats), max(lats))
+        near = []
         for other, (west, east, south, north), (olon, olat) in rings:
+            if east < box[0] or west > box[1] or north < box[2] or south > box[3]:
+                continue
             if west <= lon <= east and south <= lat <= north and contains(other, lon, lat):
                 return True
             if box[0] <= olon <= box[1] and box[2] <= olat <= box[3] and contains(pts, olon, olat):
                 return True
-        return False
+            near.append((other, (west, east, south, north), (olon, olat)))
+        return bool(near) and _covered_fraction(pts, near) > COVERED_FRACTION
 
     return [e for e in elements if 'building' in e.get('tags', {}) and building_ring(e)
             and not covered(building_ring(e))]

@@ -1,0 +1,66 @@
+{
+ "draft_hash": "c008b57544ceb39decb50b095a6bdb541653b473e399d67ddc9ef63ca0137b6e",
+ "frame": "d79e1ab97bd62c066d3534b8e27d2b914006648b254ac632dfd6505523c2f2eb",
+ "passed": false,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "main/north_wing/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "main/recess_entry/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "north_wing/recess_entry/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The low, stepped flat-roof brick massing is coherent and charming at miniature scale, with clean coping and glazing. However, the supplied render views do not expose the modeled entrance or its BMO-specific treatment, and the map and geolocated Street View reference images are unavailable, so recognizability and entrance placement cannot be validated.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The door inventory records one double principal door on the -v face, outward bearing 268\u00b0 (west), at the recessed footprint segment. The labeled -v render is obstructed by the large foreground building, while the overview and other face views do not reveal that recess. Because the orientation map and all geolocated Street View images failed to load, there is no visible source-to-face evidence confirming that the real principal entrance belongs on west/-v rather than another face."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "Principal-entry orientation is unresolved: the sole -v door is hidden in the provided render coverage and cannot be compared with the missing map and Street View references.",
+    "fix": "Provide the missing orientation map and labeled Street View atlas, plus an unobstructed close render of the west/-v recess showing the actual door, canopy, and sign."
+   },
+   {
+    "severity": "major",
+    "problem": "The visible model reads as a generic brick commercial block; no BMO sign, blue entrance canopy, or principal portal is visible in either deliverable.",
+    "fix": "Include a clear presentation angle that makes the single branded entrance a prominent identifying feature without adding duplicate principal portals."
+   }
+  ]
+ },
+ "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789952123.809549,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245214/20260920-195504-1ef3a4-review",
+  "usage": {
+   "input_tokens": 9774,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 632,
+   "reasoning_output_tokens": 298,
+   "total_tokens": 10406
+  },
+  "usage_complete": true,
+  "duration": 19.562955141067505,
+  "run": "20260920-194654-13161b",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/1396245214/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/1396245214/renders/repaired-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

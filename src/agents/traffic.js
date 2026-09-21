@@ -3,9 +3,10 @@
 // Three things live here: a *directed* road graph (one-way streets matter to a
 // car and not to a walker), through-traffic that enters and leaves at the box
 // edges, and villagers who drive to work when the walk would be long. Cars
-// keep their distance from the car ahead and yield at junctions; there are no
-// signals, turn lanes or level crossings, and there do not need to be at this
-// camera distance.
+// keep their distance from the car ahead, yield at junctions, and hold at a
+// closed barrier — `traffic.barriers`, which the railroad fills with its level
+// crossings. There are no signals or turn lanes, and there do not need to be
+// at this camera distance.
 //
 // Same rules as world.js: no THREE, no DOM, no network. The same tick runs in
 // the viewer, under `node --test`, and in a service later.
@@ -26,11 +27,27 @@ const JUNCTION_CLEAR = 12;  // release once this far past it
 const HOLD_STALE = 20;      // a claim older than this is a stuck car; ignore it
 const PATIENCE = 6;         // seconds waited at a held junction before going anyway
 const ACCEL = 2.5, BRAKE = 6;
+const BARRIER_LOOK = 70;    // how far ahead a driver reads a closed crossing
+const BARRIER_BACK = 7;     // stop this far short of the stop line, clear of both rails
 const DRIVE_MIN_WALK = 300;  // a villager drives when the walk would exceed this
 const DRIVE_MIN_ROUTE = 120; // ...and the drive itself is at least this
 const SNAP_RADIUS = 80;      // how far a villager will go to reach a road
 
 const key = (x, z) => `${x.toFixed(2)},${z.toFixed(2)}`;
+
+/**
+ * Where the step a -> b crosses the barrier's stop line, as a fraction of the
+ * step, or null. Shared by the drivers here and the walkers in world.js.
+ */
+export function crossesAt(a, b, barrier) {
+  const rx = b[0] - a[0], rz = b[1] - a[1];
+  const sx = barrier.bx - barrier.ax, sz = barrier.bz - barrier.az;
+  const d = rx * sz - rz * sx;
+  if (Math.abs(d) < 1e-12) return null;
+  const t = ((barrier.ax - a[0]) * sz - (barrier.az - a[1]) * sx) / d;
+  const u = ((barrier.ax - a[0]) * rz - (barrier.az - a[1]) * rx) / d;
+  return t >= 0 && t <= 1 && u >= 0 && u <= 1 ? t : null;
+}
 
 class Heap {
   constructor() { this.a = []; }
@@ -239,6 +256,10 @@ export function createTraffic({
   const stats = { through: 0, commutes: 0, aborted: 0, metres: 0, noRoutes: 0 };
   let nextId = 1, simTime = 0, nextSpawn = 0;
 
+  // Closed stop lines across the road: {ax, az, bx, bz, closed}. The railroad
+  // mutates these as its gates fall; nothing here knows what a train is.
+  const barriers = [];
+
   const drivers = new Set();
   for (const a of world?.agents || []) {
     if (a.workId != null && a.age >= 17 && rng.chance(driverChance)) drivers.add(a.id);
@@ -296,6 +317,32 @@ export function createTraffic({
     car.hold = -1; car.holdLeg = -1;
   }
 
+  /**
+   * Metres along this car's remaining route to the nearest closed stop line, or
+   * null for a clear road. A car already over the line has nothing left to
+   * cross and simply carries on: stopping on the rails is worse than clearing
+   * them.
+   */
+  function barrierAhead(car) {
+    const closed = barriers.filter((b) => b.closed);
+    if (!closed.length) return null;
+    const poly = car.poly;
+    let best = null, base = -car.legT;
+    for (let i = car.leg; i < poly.length - 1 && base < BARRIER_LOOK; i++) {
+      const a = poly[i], q = poly[i + 1];
+      const len = Math.hypot(q[0] - a[0], q[1] - a[1]);
+      if (len < 1e-9) continue;
+      for (const b of closed) {
+        const t = crossesAt(a, q, b);
+        if (t === null) continue;
+        const d = base + t * len;
+        if (d >= 0 && (best === null || d < best)) best = d;
+      }
+      base += len;
+    }
+    return best;
+  }
+
   function step(car, s, byEdge) {
     const edge = roadGraph.edgeBetween(car.nodes[car.leg], car.nodes[car.leg + 1]);
     let target = Math.min(car.vmax, edge ? edge.speed : 8);
@@ -336,6 +383,13 @@ export function createTraffic({
         else target = Math.min(target, Math.sqrt(2 * BRAKE * room));
       }
     }
+    // A closed level crossing: come to a stand before the rails, not on them.
+    const gate = barrierAhead(car);
+    if (gate !== null) {
+      const room = gate - BARRIER_BACK;
+      target = room <= 0.3 ? 0 : Math.min(target, Math.sqrt(2 * BRAKE * room));
+    }
+
     // Past a held junction: give it up.
     if (car.hold >= 0 && (car.leg > car.holdLeg + 1 || (car.leg === car.holdLeg + 1 && car.legT > JUNCTION_CLEAR))) release(car);
 
@@ -425,7 +479,7 @@ export function createTraffic({
   }
 
   const traffic = {
-    cars, drivers, stats, holds, pairs,
+    cars, drivers, stats, holds, pairs, barriers,
     portals: roadGraph.portals,
     get simTime() { return simTime; },
     launch,
@@ -474,4 +528,4 @@ export function createTraffic({
   return traffic;
 }
 
-export { CLASS_SPEED, CAR_LENGTH, GAP_STOP, polylineLength };
+export { CLASS_SPEED, CAR_LENGTH, GAP_STOP, BARRIER_BACK, polylineLength };

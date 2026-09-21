@@ -1,0 +1,10 @@
+{
+ "buildings": {
+  "10006606744": {
+   "demolished": true
+  }
+ },
+ "notes": {
+  "10006606744": "USA Structures traced the depot passenger shelter and its plaza as a building; the shelter is a landmark (sites/cary/landmarks.json), so the footprint is dropped."
+ }
+}

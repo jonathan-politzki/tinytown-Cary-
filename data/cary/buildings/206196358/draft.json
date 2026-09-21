@@ -1,5 +1,6 @@
 {
  "wall": "#aa7960",
+ "wallMaterial": "brick",
  "trim": "#e2d6bf",
  "roofColor": "#58635d",
  "volumes": [
@@ -68,8 +69,8 @@
        "style": "green",
        "at": 0.5,
        "y": 2.85,
-       "w": 2.7,
-       "h": 0.42
+       "w": 3.8,
+       "h": 0.6
       }
      ]
     },

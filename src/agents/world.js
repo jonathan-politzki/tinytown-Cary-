@@ -15,6 +15,7 @@
 // Nothing here calls a model. Swap `planDay` and the town starts improvising.
 
 import { makeRng } from '../rng.js';
+import { crossesAt } from './traffic.js';
 
 const DAY = 1440; // minutes
 const FIRST = ['Ada','Beth','Cal','Dora','Eli','Faye','Gus','Hana','Ira','Jude','Kit','Lena',
@@ -140,7 +141,7 @@ export function planDay(agent, { places, rng, day }) {
  * Create a world over a site's places and walkable graph.
  *
  * options.planner  replaces planDay (the LLM seam)
- * options.timeScale  simulated minutes per real second (1 = real time)
+ * options.timeScale  simulated seconds per real one (1 = real time)
  */
 export function createWorld({
   places, graph, seed = 'town', population = 40,
@@ -255,8 +256,10 @@ export function createWorld({
     if (!agents.some((a) => a.workId === bar.id)) {
       const staffCount = new Map();
       for (const a of agents) if (a.workId != null) staffCount.set(a.workId, (staffCount.get(a.workId) || 0) + 1);
-      const hire = agents.find((a) => a.workId != null && staffCount.get(a.workId) > 1 && a.age >= 21)
-        || agents.find((a) => a.workId == null && a.age >= 21 && a.age < 66);
+      // Never poach someone the site named: the Tipsy Goat's own bartender was
+      // being hired away to another bar because he counted as spare staff.
+      const hire = agents.find((a) => !a.role && a.workId != null && staffCount.get(a.workId) > 1 && a.age >= 21)
+        || agents.find((a) => !a.role && a.workId == null && a.age >= 21 && a.age < 66);
       if (!hire) continue;
       hire.workId = bar.id;
       if (!hire.haunts.includes(bar.id)) hire.haunts.push(bar.id);
@@ -281,6 +284,7 @@ export function createWorld({
     places,
     graph,
     events: [],
+    barriers: [],
     agent: (id) => byId.get(id) || null,
     clock: () => hhmm(world.minutes),
   };
@@ -309,20 +313,31 @@ export function createWorld({
     return true;
   }
 
+  // Closed stop lines on foot: the same list the traffic holds at, filled by
+  // whatever owns them (the railroad's level crossings). Somebody already over
+  // the line walks clear rather than freezing on the rails.
+  function barred(from, to) {
+    for (const b of world.barriers) if (b.closed && crossesAt(from, to, b) !== null) return true;
+    return false;
+  }
+
   function advance(agent, seconds) {
     let remaining = agent.speed * seconds;
     const path = agent.path;
+    const gates = world.barriers.some((b) => b.closed);
     while (remaining > 0 && agent.leg < path.length - 1) {
       const a = path[agent.leg], b = path[agent.leg + 1];
       const legLen = Math.hypot(b[0] - a[0], b[1] - a[1]);
       if (legLen <= 1e-6) { agent.leg++; agent.legT = 0; continue; }
       const step = Math.min(remaining, legLen - agent.legT);
+      const t = (agent.legT + step) / legLen;
+      const nx = a[0] + (b[0] - a[0]) * t, nz = a[1] + (b[1] - a[1]) * t;
+      if (gates && barred([agent.x, agent.z], [nx, nz])) break;
       agent.legT += step;
       remaining -= step;
       agent.metresWalked += step;
-      const t = agent.legT / legLen;
-      agent.x = a[0] + (b[0] - a[0]) * t;
-      agent.z = a[1] + (b[1] - a[1]) * t;
+      agent.x = nx;
+      agent.z = nz;
       agent.heading = Math.atan2(b[0] - a[0], b[1] - a[1]);
       if (agent.legT >= legLen - 1e-6) { agent.leg++; agent.legT = 0; }
     }

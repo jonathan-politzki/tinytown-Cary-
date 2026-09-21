@@ -27,5 +27,7 @@
       "target": "cary",
       "route": "/"
     }
-  ]
+  ],
+  "plugin": "cary",
+  "landmarks": "landmarks.json"
 }

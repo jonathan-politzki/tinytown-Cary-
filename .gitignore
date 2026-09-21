@@ -38,6 +38,7 @@ data/*/buildings/*/*.gif
 data/*/buildings/*/*.avif
 data/*/buildings/*/*.sha256
 data/*/buildings/*/renders/*.png
+data/*/buildings/*/renders/*.jpg
 data/*/buildings/*/web-original-*
 
 # Streaming build scratch

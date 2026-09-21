@@ -234,6 +234,23 @@ class BuildTests(TempRoot):
         self.assertNotIn("source", scene["buildings"][0])
         self.assertEqual([e["id"] for e in S.source_elements(paths)], [1, 10_000_000_003])
 
+    def test_structure_mostly_under_an_interlocking_mapped_footprint_is_dropped(self):
+        # Two L-shapes tracing the same strip: neither centroid falls inside the
+        # other, but most of the structure's area is under the mapped building.
+        c = REQUEST["center"]
+        lon, lat, u = c["lon"], c["lat"], .0002
+        mapped_L = [[lon, lat], [lon + 3 * u, lat], [lon + 3 * u, lat + u], [lon + u, lat + u], [lon + u, lat + 3 * u], [lon, lat + 3 * u], [lon, lat]]
+        structure_L = [[lon + .1 * u, lat + .1 * u], [lon + 3.1 * u, lat + .1 * u], [lon + 3.1 * u, lat + 1.1 * u],
+                       [lon + 1.1 * u, lat + 1.1 * u], [lon + 1.1 * u, lat + 3.1 * u], [lon + .1 * u, lat + 3.1 * u], [lon + .1 * u, lat + .1 * u]]
+        beside = [[lon + 4 * u, lat], [lon + 5 * u, lat], [lon + 5 * u, lat + u], [lon + 4 * u, lat + u], [lon + 4 * u, lat]]
+        mapped = way(1, {"building": "yes"}, mapped_L)
+        twin = way(10_000_000_001, {"building": "retail"}, structure_L)
+        neighbour = way(10_000_000_002, {"building": "house"}, beside)
+        kept = S.structure_building_elements({"elements": [twin, neighbour]}, [mapped])
+        self.assertEqual([e["id"] for e in kept], [10_000_000_002])
+        self.assertGreater(S._covered_fraction([(p[0], p[1]) for p in structure_L],
+                                               [([(p[0], p[1]) for p in mapped_L], (lon, lon + 3 * u, lat, lat + 3 * u), (0, 0))]), .8)
+
     def test_scope_file_wins_over_request_and_reports_missing_structures(self):
         lon, lat = REQUEST["center"]["lon"], REQUEST["center"]["lat"]
         osm = {"elements": [way(1, {"building": "house"}, square(lon, lat)),

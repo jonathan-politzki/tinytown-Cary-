@@ -1,0 +1,460 @@
+{
+ "thread_id": "01a0c186-405d-7d12-b2fa-6e8589f9ce5e",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12163,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1696,
+  "reasoning_output_tokens": 451,
+  "total_tokens": 13859
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#aa7961\",\"trim\":\"#ded5c2\",\"roofColor\":\"#626765\",\"volumes\":[{\"id\":\"east_hall\",\"u\":[12.3,42.7],\"v\":[-22.4,8.9],\"height\":6,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.25,\"overhang\":0.18,\"color\":\"#ded5c2\"},\"plinth\":{\"height\":0.35,\"color\":\"#918d82\"},\"faces\":{\"+u\":{\"storeys\":[{\"y\":1.4,\"windows\":{\"type\":\"rect\",\"w\":2.2,\"h\":2,\"at\":[0.15,0.32,0.49,0.66,0.83],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]},\"-v\":{\"storeys\":[{\"y\":1.4,\"windows\":{\"type\":\"rect\",\"w\":2.2,\"h\":2,\"at\":[0.15,0.33,0.51,0.69,0.87],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]},\"+v\":{\"storeys\":[{\"y\":1.4,\"windows\":{\"type\":\"rect\",\"w\":1.8,\"h\":2,\"at\":[0.12,0.86],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}},{\"id\":\"rear_link\",\"u\":[-41,12.5],\"v\":[-22.4,-13.2],\"height\":4.3,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"-v\":{\"storeys\":[{\"y\":1.2,\"windows\":{\"type\":\"rect\",\"w\":1.7,\"h\":1.7,\"at\":[0.1,0.24,0.38,0.52,0.66,0.8,0.94],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}},{\"id\":\"west_wing\",\"u\":[-36,-17],\"v\":[-16,-5],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"+v\":{\"storeys\":[{\"y\":1.3,\"windows\":{\"type\":\"rect\",\"w\":1.6,\"h\":1.8,\"at\":[0.15,0.38,0.62,0.85],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]},\"-u\":{\"storeys\":[{\"y\":1.3,\"windows\":{\"type\":\"rect\",\"w\":1.5,\"h\":1.8,\"at\":[0.24,0.72],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}},{\"id\":\"west_tip\",\"u\":[-28,-21],\"v\":[-6,2.5],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"+v\":{\"storeys\":[{\"y\":1.3,\"windows\":{\"type\":\"rect\",\"w\":1.5,\"h\":1.8,\"at\":[0.27,0.73],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}},{\"id\":\"west_connector\",\"u\":[-17,-5],\"v\":[-14,-8],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"+v\":{\"storeys\":[{\"y\":1.3,\"windows\":{\"type\":\"rect\",\"w\":1.6,\"h\":1.8,\"at\":[0.2,0.5,0.8],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}},{\"id\":\"projecting_entry\",\"u\":[19.8,30.4],\"v\":[8.7,18.5],\"height\":4.5,\"roof\":{\"type\":\"hip\",\"ridge\":\"v\",\"pitch\":0.2,\"maxH\":1.3,\"overhang\":0.3},\"faces\":{\"+v\":{\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":2.2,\"h\":2.7,\"color\":\"#405c5a\",\"surround\":\"#ded5c2\",\"surroundW\":0.18}],\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.3,\"h\":1.8,\"at\":[0.17,0.83],\"trim\":\"#ded5c2\",\"glass\":\"#78898b\"}}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Broad eastern block with a lower connecting wing.",
+   "Stepped western massing approximates the diagonal footprint.",
+   "Southwest projection retained beside the deep open recess.",
+   "Restrained warm walls, pale trim and muted roofs; appearance provisional."
+  ],
+  "references_used": [
+   "1396245216.frame.footprint_uv",
+   "1396245216.frame.faces"
+  ],
+  "uncertainties": [
+   "All supplied image files were unavailable; photographic architectural features could not be assessed.",
+   "Heights, roofs, colors, cladding and openings are unverified design assumptions.",
+   "Axis-aligned volumes simplify the diagonal western boundary and pointed southwest projection.",
+   "The southwest projection is a provisional entrance location, not corroborated by imagery. Camera poses alone do not establish entrances."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "projecting_entry",
+    "face": "+v",
+    "role": "principal, provisional",
+    "evidence": [
+     "1396245216.frame.footprint_uv"
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author/response.json",
+ "started_at": 1789953195.729336,
+ "finished_at": 1789953252.075783,
+ "elapsed_seconds": 56.3464469909668,
+ "duration": 56.3464469909668,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245216/20260920-201315-4fdc06-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "1396245216",
+ "model_alias": "astra",
+ "run": "20260920-194654-13161b",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "3b97ac3b74136b44089900340d017cea91d8767ffefc4cdd6c10cd7cd1622019",
+ "frame": "9a7c33201a629aead54f1957d26de70408e038dac7a629256077549b2b91d8ea",
+ "timestamp": 1789953252.076603,
+ "blueprint": {
+  "wall": "#aa7961",
+  "trim": "#ded5c2",
+  "roofColor": "#626765",
+  "volumes": [
+   {
+    "id": "east_hall",
+    "u": [
+     12.3,
+     42.7
+    ],
+    "v": [
+     -22.4,
+     8.9
+    ],
+    "height": 6,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.25,
+     "overhang": 0.18,
+     "color": "#ded5c2"
+    },
+    "plinth": {
+     "height": 0.35,
+     "color": "#918d82"
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 1.4,
+        "windows": {
+         "type": "rect",
+         "w": 2.2,
+         "h": 2,
+         "at": [
+          0.15,
+          0.32,
+          0.49,
+          0.66,
+          0.83
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 1.4,
+        "windows": {
+         "type": "rect",
+         "w": 2.2,
+         "h": 2,
+         "at": [
+          0.15,
+          0.33,
+          0.51,
+          0.69,
+          0.87
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.4,
+        "windows": {
+         "type": "rect",
+         "w": 1.8,
+         "h": 2,
+         "at": [
+          0.12,
+          0.86
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "rear_link",
+    "u": [
+     -41,
+     12.5
+    ],
+    "v": [
+     -22.4,
+     -13.2
+    ],
+    "height": 4.3,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 1.2,
+        "windows": {
+         "type": "rect",
+         "w": 1.7,
+         "h": 1.7,
+         "at": [
+          0.1,
+          0.24,
+          0.38,
+          0.52,
+          0.66,
+          0.8,
+          0.94
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "west_wing",
+    "u": [
+     -36,
+     -17
+    ],
+    "v": [
+     -16,
+     -5
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.6,
+         "h": 1.8,
+         "at": [
+          0.15,
+          0.38,
+          0.62,
+          0.85
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 1.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.5,
+         "h": 1.8,
+         "at": [
+          0.24,
+          0.72
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "west_tip",
+    "u": [
+     -28,
+     -21
+    ],
+    "v": [
+     -6,
+     2.5
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.5,
+         "h": 1.8,
+         "at": [
+          0.27,
+          0.73
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "west_connector",
+    "u": [
+     -17,
+     -5
+    ],
+    "v": [
+     -14,
+     -8
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.6,
+         "h": 1.8,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "projecting_entry",
+    "u": [
+     19.8,
+     30.4
+    ],
+    "v": [
+     8.7,
+     18.5
+    ],
+    "height": 4.5,
+    "roof": {
+     "type": "hip",
+     "ridge": "v",
+     "pitch": 0.2,
+     "maxH": 1.3,
+     "overhang": 0.3
+    },
+    "faces": {
+     "+v": {
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 2.2,
+        "h": 2.7,
+        "color": "#405c5a",
+        "surround": "#ded5c2",
+        "surroundW": 0.18
+       }
+      ],
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.8,
+         "at": [
+          0.17,
+          0.83
+         ],
+         "trim": "#ded5c2",
+         "glass": "#78898b"
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Broad eastern block with a lower connecting wing.",
+  "Stepped western massing approximates the diagonal footprint.",
+  "Southwest projection retained beside the deep open recess.",
+  "Restrained warm walls, pale trim and muted roofs; appearance provisional."
+ ],
+ "uncertainties": [
+  "All supplied image files were unavailable; photographic architectural features could not be assessed.",
+  "Heights, roofs, colors, cladding and openings are unverified design assumptions.",
+  "Axis-aligned volumes simplify the diagonal western boundary and pointed southwest projection.",
+  "The southwest projection is a provisional entrance location, not corroborated by imagery. Camera poses alone do not establish entrances."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "projecting_entry",
+   "face": "+v",
+   "role": "principal, provisional",
+   "evidence": [
+    "1396245216.frame.footprint_uv"
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "c89089c528840437ff51f66cfeb0290d069ff06d71854ca93eeba67c273d2a0d"
+}

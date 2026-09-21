@@ -1,0 +1,51 @@
+{
+ "draft_hash": "22b0a99239b79c392d5e5e44c7db882d42dd2cd81177c4b59eb7e9d3ede3c7e0",
+ "frame": "b23a182fdce43cd20f7bd84718f69f237cda8652ce1035fc11d342579365bfa9",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The long, low brick form, green gable roof, cream trim, and regular window rhythm make a coherent miniature station, but it remains generic and the principal entrance cannot be validated from the supplied evidence.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The actual inventory places one double principal door at the center of the -v face, outward bearing 215\u00b0 (SW), toward West Main Street. However, the labeled -v render is almost completely blocked by the roof, while the geolocated map and SV4 reference failed to load. The visible +v face toward Northwest Highway appears window-only. Thus neither the placement nor appearance of the sole portal can be compared with source photography."
+  },
+  "issues": [
+   {
+    "severity": "broken",
+    "problem": "Principal-entry orientation is unresolved because the -v facade is hidden in the face sheet and its geolocated SV4/map evidence is unavailable.",
+    "fix": "Provide the missing orientation map and geolocated SV4 image, plus an unobstructed straight-on -v render showing the inventoried double door; relocate it if those sources identify another principal face."
+   },
+   {
+    "severity": "major",
+    "problem": "The model lacks an obvious CARY identification board or similarly distinctive station feature, leaving the long brick structure visually generic.",
+    "fix": "Add a clearly readable, scale-appropriate CARY board on the photographically verified public-facing facade, using the stated cream and muted-green trim language."
+   }
+  ]
+ },
+ "renderer_signature": "fa0d20425d6f7f9318250e62ec39b8a9860d66313afdac82e1510be67c86cc82",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789952377.664053,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/206196358/20260920-195921-59bfa7-review",
+  "usage": {
+   "input_tokens": 9885,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 624,
+   "reasoning_output_tokens": 319,
+   "total_tokens": 10509
+  },
+  "usage_complete": true,
+  "duration": 15.693992137908936,
+  "run": "20260920-194654-13161b",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/206196358/renders/initial-overview.png",
+  "faces": "data/cary/buildings/206196358/renders/initial-faces.jpg"
+ }
+}

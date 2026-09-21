@@ -11,7 +11,8 @@
 // building and sets its category (the same rule the hover card uses). Anything
 // hand-authored beats all of that: a labels sidecar can name a building and
 // set its category outright. No THREE, no DOM.
-import { pointsOfInterest } from '../ui/poi.js';
+// One rule with the hover card for which building a mapped point belongs to.
+import { poiTenants } from '../ui/poi.js';
 import { pointInPolygon } from '../ui/geo.js';
 
 /**
@@ -72,16 +73,11 @@ const POI_CATEGORY = {
  */
 export function poiLabels(siteData) {
   const labels = {};
-  const pois = siteData.pois || [];
-  if (!pois.length) return labels;
-  for (const building of siteData.buildings || []) {
-    // One rule with the hover card (src/ui/poi.js): named, not street furniture,
-    // inside the footprint or within a few metres of it.
-    const inside = pointsOfInterest(building, pois).filter((p) => p.kind);
-    if (!inside.length) continue;
-    const poi = inside[0];
-    labels[building.id] = {
-      name: building.name || poi.name,
+  for (const [id, list] of Object.entries(poiTenants(siteData))) {
+    const building = (siteData.buildings || []).find((b) => String(b.id) === id);
+    const poi = list[0];
+    labels[building ? building.id : id] = {
+      name: building?.name || poi.name,
       category: POI_CATEGORY[poi.kind] ?? undefined,
       poi,
     };
@@ -120,10 +116,22 @@ const TITLE = {
 export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
   const places = [];
   const byId = new Map();
-  const fromPois = poiLabels(siteData);
+  const tenants = poiTenants(siteData);
 
   for (const building of siteData.buildings || []) {
-    const override = { ...(fromPois[building.id] || {}), ...(labels[building.id] || labels[String(building.id)] || {}) };
+    // A big footprint is often a row of businesses, not one: the Cary strip
+    // holding both La Cucina Caffe and 750 Cucina Rustica is one polygon.
+    // Each mapped tenant becomes its own place, sharing the footprint but
+    // with its own name, category and door along the facade.
+    const mapped = tenants[building.id] || [];
+    const hand = labels[building.id] || labels[String(building.id)] || null;
+    const units = mapped.length > 1 && !hand ? mapped : [mapped[0] || null];
+
+    for (let unit = 0; unit < units.length; unit++) {
+    const poi = units[unit];
+    const fromPoi = poi ? { name: building.name && units.length === 1 ? building.name : poi.name,
+      category: POI_CATEGORY[poi.kind] ?? undefined, poi } : {};
+    const override = { ...fromPoi, ...(hand || {}) };
     const category = override.category ?? categoryFor(building);
     if (!category) continue;
 
@@ -149,14 +157,25 @@ export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
     const boxReach = Math.abs(nx * ux + nz * uz) * (obb.w || 0) / 2 + Math.abs(-nx * uz + nz * ux) * (obb.d || 0) / 2;
     const wall = (pts && reachOfFootprint(pts, cx, cz, nx, nz)) ?? (boxReach || halfDepth * 0.65);
     const step = wall + 0.5;
-    const door = [cx + nx * step, cz + nz * step];
+    // Tenants share one facade, so spread their doors along it rather than
+    // stacking every shopfront on the same point. `sx, sz` runs across the
+    // front; the spread is capped to the footprint's own width.
+    const sx = -nz, sz = nx;
+    const spread = units.length > 1
+      ? (unit - (units.length - 1) / 2) * Math.min(12, Math.max(4, (obb.w || 12) / units.length))
+      : 0;
+    const door = [cx + nx * step + sx * spread, cz + nz * step + sz * spread];
     const reach = Math.max(step + 1.0, Math.min(front.dist ?? 12, halfDepth + 30));
-    const approach = [cx + nx * reach, cz + nz * reach];
+    const approach = [cx + nx * reach + sx * spread, cz + nz * reach + sz * spread];
 
     // An unnamed building still reads better with its street than as "a house".
     const fallback = TITLE[category] || category;
     const place = {
-      id: building.id,
+      // The first tenant keeps the building's own id, so anything keyed by
+      // building (blueprints, interiors) still finds it; the rest are suffixed.
+      id: unit === 0 ? building.id : `${building.id}#${unit}`,
+      buildingId: building.id,
+      tenants: units.length,
       name: override.name || labelFor(building)
         || (front.road ? `${fallback} on ${front.road}` : fallback),
       named: Boolean(override.name || labelFor(building)),
@@ -172,6 +191,7 @@ export function buildPlaces(siteData, { graph = null, labels = {} } = {}) {
     };
     places.push(place);
     byId.set(place.id, place);
+    }
   }
 
   const byCategory = new Map();

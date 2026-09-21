@@ -12,8 +12,9 @@
 //   ?agents=1        turn the world on (any count, e.g. ?agents=60)
 //   &agentseed=x     reseed the population
 //   &agentclock=8:30 start the clock at a time of day
-//   &agentspeed=4    simulated minutes per real second
+//   &agentspeed=20   how fast the clock runs (simulated seconds per real one)
 //   &cars=10         through-traffic on the road (0 turns cars off)
+//   &trains=0        turn the commuter trains off
 //   &inside=ID       start already inside a building that has an interior
 import { buildGraph } from './graph.js';
 import { buildPlaces } from './places.js';
@@ -21,12 +22,19 @@ import { createWorld } from './world.js';
 import { createAvatars } from './avatars.js';
 import { buildRoadGraph, createTraffic } from './traffic.js';
 import { createVehicles } from './vehicles.js';
+import { buildRailLine, findCrossings, createRailroad, railroadFor } from './railroad.js';
+import { createTrains } from './trains.js';
 import { installInteriors } from '../interiors/attach.js';
 import { castFor } from './cast.js';
 import { exchange, lineFor, who } from './talk.js';
 
 const params = new URLSearchParams(location.search);
 const raw = params.get('agents');
+
+// How fast the day runs: simulated seconds per real one. Fast enough that the
+// town has somewhere to be and the next train is never far off; ?agentspeed=
+// or the Simulate button's own pace override it.
+const PACE = 20;
 
 function minutesOf(text, fallback) {
   const match = /^(\d{1,2}):?(\d{2})?$/.exec(String(text || '').trim());
@@ -42,6 +50,30 @@ async function waitForScene(timeoutMs = 45000) {
     if (performance.now() - started > timeoutMs) throw new Error('viewer never published __town.siteData');
     await new Promise((resolve) => setTimeout(resolve, 120));
   }
+}
+
+/**
+ * The site's commuter railroad, or null where there isn't one. The line and its
+ * timetable come from railroad.js; the platform is the mapped station, and the
+ * crossings are wherever the roads actually meet the rails.
+ */
+function installRailroad(site, world, { groundAt }) {
+  if (params.get('trains') === '0') return null;
+  const config = railroadFor(site.name);
+  if (!config) return null;
+  const depot = (site.buildings || []).find((b) => config.station.test(b.name || ''));
+  const line = buildRailLine(site.linear_features, config, { station: depot?.centroid || null });
+  if (!line) return null;
+  line.crossings = findCrossings(line, site.roads);
+  const railroad = createRailroad({
+    line, config, world, crossings: line.crossings,
+    // Into the same observation stream the Simulate panel reads.
+    emit: (e) => {
+      world.events.push({ agentName: e.train, ...e });
+      if (world.events.length > 4000) world.events.splice(0, world.events.length - 4000);
+    },
+  });
+  return { line: railroad, trains: createTrains(railroad, { groundAt }) };
 }
 
 // `site` may be passed in: the streaming loader publishes a slim index without
@@ -65,7 +97,7 @@ export async function start({ site: given, timeScale: pace, population: size, ca
     seed: params.get('agentseed') || site.name || 'town',
     population,
     startMin: clock ?? minutesOf(params.get('agentclock'), 8 * 60),
-    timeScale: pace || (Number(params.get('agentspeed')) > 0 ? Number(params.get('agentspeed')) : 4),
+    timeScale: pace || (Number(params.get('agentspeed')) > 0 ? Number(params.get('agentspeed')) : PACE),
     cast: castFor(site.name),
   });
 
@@ -94,6 +126,19 @@ export async function start({ site: given, timeScale: pace, population: size, ca
   const vehicles = createVehicles(traffic, { groundAt });
   town.scene.add(vehicles.group);
 
+  // The railroad: a train every half hour, alternating, each one calling at
+  // the depot. Its level crossings become barriers the cars and walkers hold
+  // at, so nothing drives through a moving train.
+  const railroad = installRailroad(site, world, { groundAt });
+  if (railroad) {
+    town.scene.add(railroad.trains.group);
+    // A crossing *is* the barrier: it carries the stop line and its own gate state.
+    for (const crossing of railroad.line.crossings) {
+      traffic.barriers.push(crossing);
+      world.barriers.push(crossing);
+    }
+  }
+
   // Buildings you can walk into (src/interiors/): a pennant over each, and
   // the room itself when you click one.
   const interiors = await installInteriors(town, { world, places, site, groundAt });
@@ -109,8 +154,10 @@ export async function start({ site: given, timeScale: pace, population: size, ca
     last = now;
     world.tick(dt);
     traffic.tick(dt);
+    railroad?.line.tick(dt);
     avatars.update(dt);
     vehicles.update();
+    railroad?.trains.update(dt);
     interiors.update(dt);
     town.renderLoop?.wake();
     requestAnimationFrame(frame);
@@ -119,11 +166,13 @@ export async function start({ site: given, timeScale: pace, population: size, ca
 
   const handle = {
     world, graph, places, avatars, roadGraph, traffic, vehicles, interiors,
+    railroad: railroad?.line || null, trains: railroad?.trains || null,
     stop: () => {
       running = false;
       interiors.dispose();
       town.scene.remove(avatars.group); avatars.dispose();
       town.scene.remove(vehicles.group); vehicles.dispose();
+      if (railroad) { town.scene.remove(railroad.trains.group); railroad.trains.dispose(); }
     },
     follow: (agentId) => {
       const agent = world.agent(agentId) || world.agents[0];
@@ -143,6 +192,8 @@ export async function start({ site: given, timeScale: pace, population: size, ca
   console.info(`[agents] ${world.agents.length} villagers over ${places.all.length} places, ` +
     `${graph.count} graph nodes; ${roadGraph.count} road nodes, ${roadGraph.portals.length} portals, ` +
     `${roadGraph.junctionCount} junctions, ${traffic.drivers.size} drivers, ${ambient} through cars; ` +
+    (railroad ? `${railroad.line.line} with ${railroad.line.crossings.length} level crossing(s), ` +
+      `next ${railroad.line.next()?.clock} to ${railroad.line.next()?.toward}; ` : 'no railroad; ') +
     `clock ${world.clock()}. Inspect window.__agents.`);
   return handle;
 }

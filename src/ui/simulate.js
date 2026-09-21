@@ -11,7 +11,7 @@ import { interiorsFor } from '../interiors/registry.js';
 
 const POLL_MS = 400;
 const SHOWN = 7;
-const PACE = 10;              // simulated minutes per real second: a working day in about an hour
+const PACE = 20;              // simulated seconds per real one: a day in about 70 minutes, a train every 30 s
 const START_MIN = 17 * 60 + 30;   // Simulate begins after work: commuters heading home, the bar filling
 const TICK_S = 30;            // fallback replay step when the world has no jumpTo
 const LABEL_LIFT = 9.5;       // metres above the roof: just over the pennant (src/interiors/flags.js, POLE_M 7)
@@ -20,6 +20,8 @@ const ROOF_LIFT = { flat: 1.2, gable: 3.2, hip: 2.8 };
 const ACTIVITY = { work: 'at work', home: 'home', errand: 'on an errand', social: 'out', meal: 'eating', school: 'at school', asleep: 'asleep' };
 
 function sentence(e) {
+  // The railroad writes its own line; villagers get one composed from the event.
+  if (e.text) return e.text;
   const what = ACTIVITY[e.activity] || e.activity || '';
   switch (e.kind) {
     case 'arrive': return `${e.agentName} arrives at ${e.placeName}${what ? `, ${what}` : ''}`;

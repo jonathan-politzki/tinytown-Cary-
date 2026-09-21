@@ -1,0 +1,121 @@
+{
+ "id": "10006608080",
+ "addr": "340 West Krenz Avenue",
+ "name": null,
+ "frame": "cf2fb81e903060ce04936cda5f0c53c1e96fb9e160cd5d4b49cfe7b12b35feb0",
+ "faces": {
+  "+u": {
+   "bearing": 88,
+   "width": 19.8,
+   "road": false,
+   "photos": [
+    {
+     "face": "+u",
+     "file": "fronts/+u.png",
+     "pano": "YkJwFejqQ2qqd-NaLRUDJw",
+     "dist": 22.0,
+     "off_axis_deg": 12,
+     "fov": 61,
+     "tilt": 92,
+     "heading": 280,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2104692,-88.2455352,251a,61y,280h,92t/data=!3m7!1e1!3m5!1sYkJwFejqQ2qqd-NaLRUDJw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-2%26panoid%3DYkJwFejqQ2qqd-NaLRUDJw%26yaw%3D280!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2104692,
+      "lon": -88.2455352
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-u": {
+   "bearing": 268,
+   "width": 19.8,
+   "road": false,
+   "photos": [
+    {
+     "face": "-u",
+     "file": "fronts/-u.png",
+     "pano": "yAU8iMwv1-um3DwF5cVTdA",
+     "dist": 60.7,
+     "off_axis_deg": 41,
+     "fov": 55,
+     "tilt": 90,
+     "heading": 47,
+     "date": "Jun 2026",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2101271,-88.246591,252a,55y,47h,90t/data=!3m7!1e1!3m5!1syAU8iMwv1-um3DwF5cVTdA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DyAU8iMwv1-um3DwF5cVTdA%26yaw%3D47!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2101271,
+      "lon": -88.246591
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "+v": {
+   "bearing": 178,
+   "width": 21.0,
+   "road": true,
+   "photos": [
+    {
+     "face": "+v",
+     "file": "fronts/+v.png",
+     "pano": "H2opd2l1cIA3v_I4uoXkDw",
+     "dist": 36.4,
+     "off_axis_deg": 67,
+     "fov": 55,
+     "tilt": 91,
+     "heading": 292,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2102919,-88.245512,252a,55y,292h,91t/data=!3m7!1e1!3m5!1sH2opd2l1cIA3v_I4uoXkDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DH2opd2l1cIA3v_I4uoXkDw%26yaw%3D292!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2102919,
+      "lon": -88.245512
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-v": {
+   "bearing": 358,
+   "width": 21.0,
+   "road": false,
+   "photos": [
+    {
+     "face": "-v",
+     "file": "fronts/-v.png",
+     "pano": "Xfqnd-NNGIcSh8v8ViY_Ww",
+     "dist": 35.3,
+     "off_axis_deg": 62,
+     "fov": 55,
+     "tilt": 91,
+     "heading": 241,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2107462,-88.245556,252a,55y,241h,91t/data=!3m7!1e1!3m5!1sXfqnd-NNGIcSh8v8ViY_Ww!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DXfqnd-NNGIcSh8v8ViY_Ww%26yaw%3D241!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2107462,
+      "lon": -88.245556
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  }
+ },
+ "captured": "2026-09-20 19:39"
+}

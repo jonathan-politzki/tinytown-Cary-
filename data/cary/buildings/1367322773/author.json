@@ -1,0 +1,335 @@
+{
+ "thread_id": "01a0c192-81e3-74f2-b7ba-334c6a343819",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12093,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 954,
+  "reasoning_output_tokens": 61,
+  "total_tokens": 13047
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#ae7860\",\"trim\":\"#d8ceba\",\"roofColor\":\"#626565\",\"volumes\":[{\"id\":\"south_block\",\"u\":[-31.5,-4.3],\"v\":[-9.7,9.4],\"height\":4.5,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.15,\"color\":\"#d8ceba\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#918b80\"},\"faces\":{\"-v\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"shop\",\"w\":3.4,\"h\":2.3,\"at\":[0.13,0.32,0.72,0.9],\"trim\":\"#465b57\",\"glass\":\"#7b9091\"}}],\"doors\":[{\"at\":0.52,\"type\":\"double\",\"w\":1.8,\"h\":2.6,\"color\":\"#465b57\",\"surround\":\"#d8ceba\",\"surroundW\":0.15}]},\"-u\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.8,\"h\":1.8,\"at\":[0.25,0.5,0.75],\"trim\":\"#465b57\"}}]},\"+v\":{\"storeys\":[{\"y\":1.5,\"windows\":{\"type\":\"rect\",\"w\":1.4,\"h\":1.3,\"at\":[0.2,0.5,0.8],\"trim\":\"#d8ceba\"}}]}}},{\"id\":\"north_block\",\"u\":[-4.5,31.5],\"v\":[-9.7,5.1],\"height\":4.5,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.15,\"color\":\"#d8ceba\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#918b80\"},\"faces\":{\"-v\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"shop\",\"w\":3.5,\"h\":2.3,\"at\":[0.1,0.26,0.42,0.58,0.74,0.9],\"trim\":\"#465b57\",\"glass\":\"#7b9091\"}}]},\"+u\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.8,\"h\":1.8,\"at\":[0.25,0.5,0.75],\"trim\":\"#465b57\"}}]},\"+v\":{\"storeys\":[{\"y\":1.5,\"windows\":{\"type\":\"rect\",\"w\":1.4,\"h\":1.3,\"at\":[0.15,0.38,0.62,0.85],\"trim\":\"#d8ceba\"}}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Long north\u2013south commercial footprint.",
+   "Wider southern block with an east-side setback to the north.",
+   "Restrained low roof silhouette, provisionally inferred.",
+   "Warm walls, painted green trim and simplified commercial glazing."
+  ],
+  "references_used": [
+   "REFERENCE PACKET: footprint_uv, frame.faces, source_tags",
+   "SV4: camera metadata only"
+  ],
+  "uncertainties": [
+   "All supplied image files were unavailable; architectural appearance could not be observed.",
+   "Height, flat roofs, palette and opening rhythms are provisional design assumptions; cladding is unknown.",
+   "Principal entrance location is unresolved. The modeled west-facing southern entry is a single placeholder, not corroborated by imagery; SV4 establishes only a west-facing viewing direction.",
+   "Rectangular volumes approximate the footprint's slight edge skew while preserving its east-side setback."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "south_block",
+    "face": "-v",
+    "role": "principal, provisional placement",
+    "evidence": [
+     "SV4: camera faces west elevation; no available image verifies an entrance"
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author/response.json",
+ "started_at": 1789953998.8887098,
+ "finished_at": 1789954038.384737,
+ "elapsed_seconds": 39.49602723121643,
+ "duration": 39.49602723121643,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1367322773/20260920-202638-892c1d-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "1367322773",
+ "model_alias": "astra",
+ "run": "20260920-194654-13161b",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "7df6bd338a9809026c25ebdb20284e72e13714383414c936b37d570b6f85129c",
+ "frame": "cfc733881c684b51b33ee233e8cb5ebbde87de7a817ce746915db12c6aeddc0d",
+ "timestamp": 1789954038.3869922,
+ "blueprint": {
+  "wall": "#ae7860",
+  "trim": "#d8ceba",
+  "roofColor": "#626565",
+  "volumes": [
+   {
+    "id": "south_block",
+    "u": [
+     -31.5,
+     -4.3
+    ],
+    "v": [
+     -9.7,
+     9.4
+    ],
+    "height": 4.5,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.15,
+     "color": "#d8ceba",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#918b80"
+    },
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "shop",
+         "w": 3.4,
+         "h": 2.3,
+         "at": [
+          0.13,
+          0.32,
+          0.72,
+          0.9
+         ],
+         "trim": "#465b57",
+         "glass": "#7b9091"
+        }
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.52,
+        "type": "double",
+        "w": 1.8,
+        "h": 2.6,
+        "color": "#465b57",
+        "surround": "#d8ceba",
+        "surroundW": 0.15
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.8,
+         "h": 1.8,
+         "at": [
+          0.25,
+          0.5,
+          0.75
+         ],
+         "trim": "#465b57"
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.5,
+        "windows": {
+         "type": "rect",
+         "w": 1.4,
+         "h": 1.3,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#d8ceba"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "north_block",
+    "u": [
+     -4.5,
+     31.5
+    ],
+    "v": [
+     -9.7,
+     5.1
+    ],
+    "height": 4.5,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.15,
+     "color": "#d8ceba",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#918b80"
+    },
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "shop",
+         "w": 3.5,
+         "h": 2.3,
+         "at": [
+          0.1,
+          0.26,
+          0.42,
+          0.58,
+          0.74,
+          0.9
+         ],
+         "trim": "#465b57",
+         "glass": "#7b9091"
+        }
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.8,
+         "h": 1.8,
+         "at": [
+          0.25,
+          0.5,
+          0.75
+         ],
+         "trim": "#465b57"
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.5,
+        "windows": {
+         "type": "rect",
+         "w": 1.4,
+         "h": 1.3,
+         "at": [
+          0.15,
+          0.38,
+          0.62,
+          0.85
+         ],
+         "trim": "#d8ceba"
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Long north\u2013south commercial footprint.",
+  "Wider southern block with an east-side setback to the north.",
+  "Restrained low roof silhouette, provisionally inferred.",
+  "Warm walls, painted green trim and simplified commercial glazing."
+ ],
+ "uncertainties": [
+  "All supplied image files were unavailable; architectural appearance could not be observed.",
+  "Height, flat roofs, palette and opening rhythms are provisional design assumptions; cladding is unknown.",
+  "Principal entrance location is unresolved. The modeled west-facing southern entry is a single placeholder, not corroborated by imagery; SV4 establishes only a west-facing viewing direction.",
+  "Rectangular volumes approximate the footprint's slight edge skew while preserving its east-side setback."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "south_block",
+   "face": "-v",
+   "role": "principal, provisional placement",
+   "evidence": [
+    "SV4: camera faces west elevation; no available image verifies an entrance"
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "f0f7c557b3f7962cd41522df42ce9a8519eec06f9cba7f77784fb2aba494db05"
+}

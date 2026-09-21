@@ -1,0 +1,34 @@
+{
+ "source": "data/cary/source/satellite.jpg",
+ "source_metadata": {
+  "z": 19,
+  "px": [
+   4608,
+   4864
+  ],
+  "bounds": {
+   "north": 42.21377085914556,
+   "south": 42.204107493733176,
+   "west": -88.2476806640625,
+   "east": -88.23532104492188
+  },
+  "source": "Esri World Imagery"
+ },
+ "crop_pixels": [
+  3321,
+  2560,
+  3533,
+  2736
+ ],
+ "source_pixels": [
+  4608,
+  4864
+ ],
+ "decoded_pixels": [
+  4608,
+  4864
+ ],
+ "north_up": true,
+ "id": "1042792636",
+ "note": "Yellow outline is the mapped footprint, not an observed roof outline."
+}
