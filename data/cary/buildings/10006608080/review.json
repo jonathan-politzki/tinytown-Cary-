@@ -1,0 +1,58 @@
+{
+ "draft_hash": "fc4bee37fd49e32d290212b6bff5ce65caddcde90b75f5c95b58b702861c1f2f",
+ "frame": "cf2fb81e903060ce04936cda5f0c53c1e96fb9e160cd5d4b49cfe7b12b35feb0",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "repair",
+  "summary": "The squat, nearly square metal-shed silhouette is recognizable and stylistically coherent, but the characteristic service facade and entrance logic need clarification.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "Located SV1 views the +u/east face nearly head-on and supports the broad paired service panels with a center seam; the model\u2019s two +u garage doors are therefore plausibly oriented. However, the only pedestrian door is on -u/west, while oblique SV2 does not verify that opening and no source locates a principal pedestrian entrance. Principal-entry placement remains unresolved."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "The sole personnel door on the -u/west face is unsupported, leaving the principal entrance unverified.",
+    "fix": "Use a clearly evidenced pedestrian entrance face and placement, or omit/de-emphasize the speculative west door until it can be resolved."
+   },
+   {
+    "severity": "major",
+    "problem": "The signature +u/east paired service panels read as a generic segmented wall with small window-like details rather than the broad doors and pronounced rusty center seam seen in SV1.",
+    "fix": "Strengthen the two broad panel outlines, central vertical seam, muted corrugation, and restrained rust accents."
+   },
+   {
+    "severity": "minor",
+    "problem": "The two rooftop boxes appear bright, white-rimmed, and skylight-like.",
+    "fix": "Render them as low, subdued opaque gray-green vent boxes with less contrast."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 2,
+ "timestamp": 1789958666.564977,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-214409-e6553f-review",
+  "usage": {
+   "input_tokens": 12725,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 623,
+   "reasoning_output_tokens": 321,
+   "total_tokens": 13348
+  },
+  "usage_complete": true,
+  "duration": 16.785436153411865,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006608080/renders/repaired-2-overview.png",
+  "faces": "data/cary/buildings/10006608080/renders/repaired-2-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

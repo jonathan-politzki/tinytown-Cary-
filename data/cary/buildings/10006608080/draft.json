@@ -1,0 +1,193 @@
+{
+ "wall": "#b3b7b2",
+ "wallMaterial": "siding",
+ "trim": "#c5c7be",
+ "roofColor": "#777e76",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -10.5,
+    10.5
+   ],
+   "v": [
+    -9.9,
+    9.9
+   ],
+   "bottom": 0,
+   "height": 4.7,
+   "roof": {
+    "type": "flat",
+    "lip": false
+   },
+   "cornice": {
+    "height": 0.1,
+    "overhang": 0.06,
+    "color": "#a2a69c",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.18,
+    "color": "#999a8f"
+   },
+   "beltCourses": [
+    {
+     "y": 2.15,
+     "height": 0.06,
+     "color": "#989f98"
+    },
+    {
+     "y": 4.1,
+     "height": 0.07,
+     "color": "#989f98"
+    }
+   ],
+   "faces": {
+    "+u": {
+     "doors": [
+      {
+       "at": 0.295,
+       "type": "garage",
+       "w": 7.9,
+       "h": 3.95,
+       "color": "#a7afaa",
+       "panels": 0,
+       "lights": false,
+       "surround": "#918777",
+       "surroundW": 0.07
+      },
+      {
+       "at": 0.705,
+       "type": "garage",
+       "w": 7.9,
+       "h": 3.95,
+       "color": "#adb3ac",
+       "panels": 0,
+       "lights": false,
+       "surround": "#918777",
+       "surroundW": 0.07
+      }
+     ],
+     "storeys": [
+      {
+       "y": 2.65,
+       "windows": {
+        "type": "rect",
+        "w": 0.85,
+        "h": 1.05,
+        "at": [
+         0.66,
+         0.75
+        ],
+        "trim": "#bec2b7",
+        "glass": "#a5ada4",
+        "interior": false,
+        "mullions": false
+       }
+      }
+     ],
+     "pilasters": {
+      "at": [
+       0.015,
+       0.5,
+       0.985
+      ],
+      "w": 0.16,
+      "d": 0.09,
+      "height": 4.7,
+      "color": "#a39987",
+      "cap": "#bfc1b7"
+     }
+    },
+    "-u": {
+     "doors": [
+      {
+       "at": 0.79,
+       "type": "rect",
+       "w": 1.1,
+       "h": 2.2,
+       "color": "#758077",
+       "surround": "#c3c5b9",
+       "surroundW": 0.08
+      }
+     ]
+    },
+    "+v": {
+     "pilasters": {
+      "at": [
+       0.02,
+       0.18,
+       0.34,
+       0.5,
+       0.66,
+       0.82,
+       0.98
+      ],
+      "w": 0.11,
+      "d": 0.06,
+      "height": 4.7,
+      "color": "#bdc0b6",
+      "cap": "#bfc1b8"
+     }
+    },
+    "-v": {
+     "pilasters": {
+      "at": [
+       0.02,
+       0.18,
+       0.34,
+       0.5,
+       0.66,
+       0.82,
+       0.98
+      ],
+      "w": 0.11,
+      "d": 0.06,
+      "height": 4.7,
+      "color": "#bdc0b6",
+      "cap": "#bfc1b8"
+     }
+    }
+   }
+  },
+  {
+   "id": "roof_vent_south",
+   "u": [
+    -1.1,
+    1.1
+   ],
+   "v": [
+    3.8,
+    5.1
+   ],
+   "bottom": 4.7,
+   "height": 5.15,
+   "wall": "#8b948a",
+   "roof": {
+    "type": "flat",
+    "lip": false,
+    "color": "#777e76"
+   }
+  },
+  {
+   "id": "roof_vent_north",
+   "u": [
+    -1.1,
+    1.1
+   ],
+   "v": [
+    -3.8,
+    -2.5
+   ],
+   "bottom": 4.7,
+   "height": 5.15,
+   "wall": "#8b948a",
+   "roof": {
+    "type": "flat",
+    "lip": false,
+    "color": "#777e76"
+   }
+  }
+ ],
+ "details": []
+}

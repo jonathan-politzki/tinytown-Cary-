@@ -1,0 +1,403 @@
+{
+ "thread_id": "01a0c1db-c0ef-7c80-a9da-95700be14400",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 14826,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1357,
+  "reasoning_output_tokens": 253,
+  "total_tokens": 16183
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#aa9675\",\"wallMaterial\":\"brick\",\"trim\":\"#665143\",\"roofColor\":\"#626158\",\"volumes\":[{\"id\":\"main\",\"u\":[-17.9,17.9],\"v\":[-9.9,9.9],\"height\":3.1,\"roof\":{\"type\":\"hip\",\"ridge\":\"u\",\"pitch\":0.2,\"maxH\":2.9,\"overhang\":0.5},\"plinth\":{\"height\":0.25,\"color\":\"#8c8474\"},\"faces\":{\"+v\":{\"storeys\":[{\"y\":0.9,\"windows\":{\"type\":\"rect\",\"w\":2.5,\"h\":1.35,\"at\":[0.12,0.21,0.3,0.68,0.77],\"trim\":\"#665143\",\"glass\":\"#626e65\"}}],\"signs\":[{\"text\":\"\",\"style\":\"board\",\"at\":0.9,\"y\":1.85,\"w\":3.2,\"h\":0.8}]},\"-u\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.6,\"h\":1.1,\"at\":[0.25,0.52,0.79],\"trim\":\"#665143\",\"glass\":\"#68756b\"}}]},\"+u\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.6,\"h\":1.1,\"at\":[0.26,0.55,0.8],\"trim\":\"#665143\",\"glass\":\"#68756b\"}}]},\"-v\":{\"storeys\":[{\"y\":1.1,\"windows\":{\"type\":\"rect\",\"w\":1.5,\"h\":1.1,\"at\":[0.18,0.38,0.62,0.82],\"trim\":\"#665143\",\"glass\":\"#68756b\"}}]}}},{\"id\":\"entry\",\"u\":[-2.6,1.8],\"v\":[7.8,10.5],\"height\":2.9,\"wall\":\"#9d896d\",\"roof\":{\"type\":\"gable\",\"ridge\":\"v\",\"pitch\":0.3,\"maxH\":1.3,\"overhang\":0.35},\"faces\":{\"+v\":{\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.8,\"h\":2.35,\"color\":\"#414a41\",\"surround\":\"#bbae91\",\"surroundW\":0.16}],\"pilasters\":{\"at\":[0.08,0.92],\"w\":0.24,\"d\":0.2,\"height\":2.8,\"color\":\"#d0c4a5\",\"cap\":\"#d0c4a5\"}}}},{\"id\":\"cupola\",\"u\":[-0.95,0.15],\"v\":[4.2,5.3],\"bottom\":4.7,\"height\":6.4,\"wall\":\"#a76853\",\"wallMaterial\":\"siding\",\"trim\":\"#ded3b9\",\"roof\":{\"type\":\"hip\",\"ridge\":\"u\",\"pitch\":0.6,\"maxH\":0.7,\"overhang\":0.15},\"faces\":{\"+v\":{\"storeys\":[{\"y\":0.7,\"windows\":{\"type\":\"rect\",\"w\":0.42,\"h\":0.65,\"at\":[0.5],\"trim\":\"#ded3b9\",\"glass\":\"#525b50\",\"interior\":false}}]},\"+u\":{\"storeys\":[{\"y\":0.7,\"windows\":{\"type\":\"rect\",\"w\":0.42,\"h\":0.65,\"at\":[0.5],\"trim\":\"#ded3b9\",\"glass\":\"#525b50\",\"interior\":false}}]},\"-u\":{\"storeys\":[{\"y\":0.7,\"windows\":{\"type\":\"rect\",\"w\":0.42,\"h\":0.65,\"at\":[0.5],\"trim\":\"#ded3b9\",\"glass\":\"#525b50\",\"interior\":false}}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Broad single-storey block beneath a low, spreading hip roof.",
+   "Central front-facing gabled entrance.",
+   "Small reddish cupola with pale trim.",
+   "Warm tan masonry and dark-framed horizontal windows.",
+   "Pale rectangular sign on the right front bay."
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4 exclusive of foreground neighboring building in SV2; AERIAL"
+  ],
+  "uncertainties": [
+   "Side and rear openings are simplified because trees and fencing obscure them.",
+   "Cupola dimensions and entry projection are approximate; sign lettering is unreadable.",
+   "SV2 foreground two-storey brick building is not the target. SV4 actually views the -u side, not -v.",
+   "No secondary entrance can be confidently located."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "entry",
+    "face": "+v",
+    "role": "principal",
+    "evidence": [
+     "MAP",
+     "SV3",
+     "AERIAL"
+    ],
+    "confidence": "observed"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author/response.json",
+ "started_at": 1789958799.502712,
+ "finished_at": 1789958845.602144,
+ "elapsed_seconds": 46.09943199157715,
+ "duration": 46.09943199157715,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006609138/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006609138/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006609138/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214639-b25cbb-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006609138",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "5e8f328f0cc91a2a057682b98a113dc766006ab16020d5cc754740ec81dba67a",
+ "frame": "eac4154e4d39ddea0f3778d1dfc1b4a1e6d3b003813c2cf36ca0030f8803f62d",
+ "timestamp": 1789958845.602855,
+ "blueprint": {
+  "wall": "#aa9675",
+  "wallMaterial": "brick",
+  "trim": "#665143",
+  "roofColor": "#626158",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -17.9,
+     17.9
+    ],
+    "v": [
+     -9.9,
+     9.9
+    ],
+    "height": 3.1,
+    "roof": {
+     "type": "hip",
+     "ridge": "u",
+     "pitch": 0.2,
+     "maxH": 2.9,
+     "overhang": 0.5
+    },
+    "plinth": {
+     "height": 0.25,
+     "color": "#8c8474"
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.9,
+        "windows": {
+         "type": "rect",
+         "w": 2.5,
+         "h": 1.35,
+         "at": [
+          0.12,
+          0.21,
+          0.3,
+          0.68,
+          0.77
+         ],
+         "trim": "#665143",
+         "glass": "#626e65"
+        }
+       }
+      ],
+      "signs": [
+       {
+        "text": "",
+        "style": "board",
+        "at": 0.9,
+        "y": 1.85,
+        "w": 3.2,
+        "h": 0.8
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.6,
+         "h": 1.1,
+         "at": [
+          0.25,
+          0.52,
+          0.79
+         ],
+         "trim": "#665143",
+         "glass": "#68756b"
+        }
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.6,
+         "h": 1.1,
+         "at": [
+          0.26,
+          0.55,
+          0.8
+         ],
+         "trim": "#665143",
+         "glass": "#68756b"
+        }
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 1.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.5,
+         "h": 1.1,
+         "at": [
+          0.18,
+          0.38,
+          0.62,
+          0.82
+         ],
+         "trim": "#665143",
+         "glass": "#68756b"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "entry",
+    "u": [
+     -2.6,
+     1.8
+    ],
+    "v": [
+     7.8,
+     10.5
+    ],
+    "height": 2.9,
+    "wall": "#9d896d",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.3,
+     "maxH": 1.3,
+     "overhang": 0.35
+    },
+    "faces": {
+     "+v": {
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.8,
+        "h": 2.35,
+        "color": "#414a41",
+        "surround": "#bbae91",
+        "surroundW": 0.16
+       }
+      ],
+      "pilasters": {
+       "at": [
+        0.08,
+        0.92
+       ],
+       "w": 0.24,
+       "d": 0.2,
+       "height": 2.8,
+       "color": "#d0c4a5",
+       "cap": "#d0c4a5"
+      }
+     }
+    }
+   },
+   {
+    "id": "cupola",
+    "u": [
+     -0.95,
+     0.15
+    ],
+    "v": [
+     4.2,
+     5.3
+    ],
+    "bottom": 4.7,
+    "height": 6.4,
+    "wall": "#a76853",
+    "wallMaterial": "siding",
+    "trim": "#ded3b9",
+    "roof": {
+     "type": "hip",
+     "ridge": "u",
+     "pitch": 0.6,
+     "maxH": 0.7,
+     "overhang": 0.15
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.7,
+        "windows": {
+         "type": "rect",
+         "w": 0.42,
+         "h": 0.65,
+         "at": [
+          0.5
+         ],
+         "trim": "#ded3b9",
+         "glass": "#525b50",
+         "interior": false
+        }
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.7,
+        "windows": {
+         "type": "rect",
+         "w": 0.42,
+         "h": 0.65,
+         "at": [
+          0.5
+         ],
+         "trim": "#ded3b9",
+         "glass": "#525b50",
+         "interior": false
+        }
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.7,
+        "windows": {
+         "type": "rect",
+         "w": 0.42,
+         "h": 0.65,
+         "at": [
+          0.5
+         ],
+         "trim": "#ded3b9",
+         "glass": "#525b50",
+         "interior": false
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [
+  "volumes[0](main).faces[+v].signs[0]: sign without `text` or `image`"
+ ],
+ "cues": [
+  "Broad single-storey block beneath a low, spreading hip roof.",
+  "Central front-facing gabled entrance.",
+  "Small reddish cupola with pale trim.",
+  "Warm tan masonry and dark-framed horizontal windows.",
+  "Pale rectangular sign on the right front bay."
+ ],
+ "uncertainties": [
+  "Side and rear openings are simplified because trees and fencing obscure them.",
+  "Cupola dimensions and entry projection are approximate; sign lettering is unreadable.",
+  "SV2 foreground two-storey brick building is not the target. SV4 actually views the -u side, not -v.",
+  "No secondary entrance can be confidently located."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "entry",
+   "face": "+v",
+   "role": "principal",
+   "evidence": [
+    "MAP",
+    "SV3",
+    "AERIAL"
+   ],
+   "confidence": "observed"
+  }
+ ]
+}

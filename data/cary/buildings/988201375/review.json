@@ -1,0 +1,56 @@
+{
+ "draft_hash": "c2bb6aa5081a3a535033ee0a3a738c8748298101b793c6eea8e85beb697d09c3",
+ "frame": "0c27dfad4ccb0769b4213e6dcaca57ebb3fb2ab2c72cb0ed638fe209d8714108",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "repair",
+  "summary": "The miniature captures the warm brick/gray-green palette, repeated balconies, red doors, dormers, and the recognizable multi-gabled apartment character. However, several characteristic elevations and the roof silhouette need refinement, and two face renders are too obstructed for useful visual review.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The map assigns the street-facing west elevation to -v. Located SV4 looks east toward that face and shows the principal residential facade with repeated balconies and multiple red unit entries; the labeled -v render matches it, and the inventory records four -v doors. Located SV2 looks north toward the south (-u) face and shows the distinct off-center red portal in a tall pale surround; the inventory records one -u porch door. The +v doors are secondary entries and +u has none, so there is no duplicated principal portal."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "The +u north elevation is reduced to a largely flat brick-and-siding bar, missing the reference\u2019s prominent gabled projection and tall pale masonry bay that help identify the building from SV1.",
+    "fix": "Add the projecting gabled bay and simplified pale vertical masonry surround to +u while retaining the miniature\u2019s restrained detail level."
+   },
+   {
+    "severity": "major",
+    "problem": "The roof reads as an oversized, crowded central hip with many intersecting planes rather than the aerial/reference hierarchy of two dominant cross-gabled wings, recessed center, and small dormers.",
+    "fix": "Clarify the two principal cross-gables, lower/recess the connecting roof mass, and keep dormers subordinate."
+   },
+   {
+    "severity": "minor",
+    "problem": "The labeled -u and +v face views are heavily blocked by foreground roof/building geometry, obscuring the south portal and east elevation.",
+    "fix": "Move or raise those face cameras and hide intervening context so each target elevation is fully visible."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789960250.576662,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221009-9e891b-review",
+  "usage": {
+   "input_tokens": 13639,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 1350,
+   "reasoning_output_tokens": 958,
+   "total_tokens": 14989
+  },
+  "usage_complete": true,
+  "duration": 41.57053995132446,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/988201375/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/988201375/renders/repaired-faces.jpg"
+ }
+}

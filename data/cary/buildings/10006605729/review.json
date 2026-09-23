@@ -57,5 +57,7 @@
  "renders": {
   "overview": "data/cary/buildings/10006605729/renders/initial-overview.png",
   "faces": "data/cary/buildings/10006605729/renders/initial-faces.jpg"
- }
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
 }

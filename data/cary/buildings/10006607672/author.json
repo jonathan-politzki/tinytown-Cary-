@@ -1,0 +1,531 @@
+{
+ "thread_id": "01a0c1d0-597b-7d40-a47f-1e2bd714fc4f",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 14896,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2241,
+  "reasoning_output_tokens": 814,
+  "total_tokens": 17137
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#9ca5a0\",\"wallMaterial\":\"siding\",\"trim\":\"#eee9dc\",\"roofColor\":\"#565954\",\"volumes\":[{\"id\":\"house-core\",\"u\":[-8.6,14],\"v\":[0,14.9],\"height\":6.2,\"roof\":{\"type\":\"hip\",\"ridge\":\"v\",\"pitch\":0.55,\"maxH\":5.8,\"overhang\":0.35},\"chimneys\":[{\"u\":1,\"v\":3}],\"plinth\":{\"height\":0.35,\"color\":\"#b6afa1\"},\"faces\":{\"-u\":{\"storeys\":[{\"y\":1,\"windows\":{\"type\":\"rect\",\"w\":1.3,\"h\":1.8,\"at\":[0.25,0.7]}},{\"y\":4.1,\"windows\":{\"type\":\"rect\",\"w\":1,\"h\":1.5,\"at\":[0.25,0.7]}}]}}},{\"id\":\"front-gable\",\"u\":[-6.7,8.4],\"v\":[7,14.9],\"height\":6.3,\"roof\":{\"type\":\"gable\",\"ridge\":\"v\",\"pitch\":0.5,\"maxH\":4.4,\"overhang\":0.3},\"faces\":{\"+v\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"shop\",\"w\":4.2,\"h\":2.2,\"at\":[0.23,0.75],\"glass\":\"#465354\",\"mullions\":false}},{\"y\":4.5,\"windows\":{\"type\":\"rect\",\"w\":1.05,\"h\":1.5,\"at\":[0.28,0.72]}}],\"porches\":[{\"style\":\"open\",\"at\":0.5,\"w\":14,\"d\":1.6,\"height\":1,\"floorH\":0.25,\"posts\":5,\"postColor\":\"#eee9dc\",\"floorColor\":\"#bab3a4\",\"roof\":\"none\",\"railing\":true,\"steps\":1}]}}},{\"id\":\"side-gable\",\"u\":[8,17.4],\"v\":[0,11.2],\"height\":6.3,\"wall\":\"#934f57\",\"roof\":{\"type\":\"gable\",\"ridge\":\"u\",\"pitch\":0.55,\"maxH\":4.6,\"overhang\":0.3},\"faces\":{\"+u\":{\"storeys\":[{\"y\":4.1,\"windows\":{\"type\":\"rect\",\"w\":1.25,\"h\":1.8,\"at\":[0.23,0.69],\"trim\":\"#eee9dc\"}}]}}},{\"id\":\"side-entry\",\"u\":[14.1,17.4],\"v\":[0,11.2],\"height\":3.15,\"wall\":\"#ddd7c5\",\"roof\":{\"type\":\"flat\",\"lip\":false},\"cornice\":{\"height\":0.18,\"overhang\":0.14,\"color\":\"#eee9dc\",\"dentils\":false},\"faces\":{\"+u\":{\"doors\":[{\"at\":0.14,\"w\":1.3,\"h\":2.55,\"color\":\"#e6e4d9\",\"surround\":\"#f4eee1\",\"surroundW\":0.16,\"steps\":1}]}}},{\"id\":\"rear-annex\",\"u\":[5,17.4],\"v\":[-7.4,0.2],\"height\":3.05,\"wall\":\"#d5cdb9\",\"roof\":{\"type\":\"flat\",\"lip\":false},\"faces\":{\"-v\":{\"doors\":[{\"at\":0.6,\"w\":1.05,\"h\":2.2,\"color\":\"#eee8db\",\"steps\":1}]} }},{\"id\":\"ice-cream-shop\",\"u\":[-17.4,-6.2],\"v\":[-14.9,1.2],\"height\":3.4,\"wall\":\"#b9975e\",\"roof\":{\"type\":\"gable\",\"ridge\":\"v\",\"pitch\":0.18,\"maxH\":1.6,\"overhang\":0.35},\"chimneys\":[{\"u\":-11.5,\"v\":-10}],\"faces\":{\"+v\":{\"storeys\":[{\"y\":0.75,\"windows\":{\"type\":\"shop\",\"w\":2.4,\"h\":1.75,\"at\":[0.2,0.8],\"trim\":\"#eee9dc\",\"glass\":\"#536463\",\"mullions\":false}}],\"doors\":[{\"at\":0.5,\"w\":1.15,\"h\":2.3,\"color\":\"#e7e5d9\"}],\"signs\":[{\"text\":\"DQ\",\"style\":\"navy\",\"at\":0.5,\"y\":3.65,\"w\":9.4,\"h\":1.3}]},\"-v\":{\"doors\":[{\"at\":0.72,\"w\":1.15,\"h\":2.25,\"y\":0.65,\"color\":\"#81898a\",\"steps\":4}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Steep charcoal hip roof with intersecting front and side gables.",
+   "Sage-gray street facade with broad display windows and white railing.",
+   "Burgundy parking-side gable above a cream entry addition.",
+   "Low mustard-colored shop wing with a blue DQ sign.",
+   "Pale trim and a prominent ridge chimney."
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4 \u0905ERIAL"
+  ],
+  "uncertainties": [
+   "The mapped outline appears to include both the house-like retail structure and the separate-looking DQ shop; their connection is unclear.",
+   "House principal-entry status is inferred from the visible parking-side door; the highway facade shows windows and railing rather than a clear entrance.",
+   "Rear annex door position and concealed elevations are approximate.",
+   "Footprint dimensions and photographed proportions do not align cleanly; roof subdivisions are simplified."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "side-entry",
+    "face": "+u",
+    "role": "principal house-retail entrance",
+    "evidence": [
+     "MAP",
+     "SV1"
+    ],
+    "confidence": "inferred"
+   },
+   {
+    "volume": "ice-cream-shop",
+    "face": "+v",
+    "role": "principal shop entrance",
+    "evidence": [
+     "MAP",
+     "SV3"
+    ],
+    "confidence": "inferred"
+   },
+   {
+    "volume": "ice-cream-shop",
+    "face": "-v",
+    "role": "secondary raised service entrance",
+    "evidence": [
+     "MAP",
+     "SV4"
+    ],
+    "confidence": "observed"
+   },
+   {
+    "volume": "rear-annex",
+    "face": "-v",
+    "role": "secondary house-retail service entrance",
+    "evidence": [
+     "MAP",
+     "SV4"
+    ],
+    "confidence": "inferred"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author/response.json",
+ "started_at": 1789958052.136767,
+ "finished_at": 1789958124.091383,
+ "elapsed_seconds": 71.9546160697937,
+ "duration": 71.9546160697937,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006607672/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006607672/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006607672/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-213412-775d65-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006607672",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "d0efd4f45e6480d2778df1bec40973bdfe73d938ef175230c4df3e0570b46362",
+ "frame": "b720476173bd87e7a16f8248a6d7d6c0574c78edf05b3b82755fc9680e6f87f4",
+ "timestamp": 1789958124.093102,
+ "blueprint": {
+  "wall": "#9ca5a0",
+  "wallMaterial": "siding",
+  "trim": "#eee9dc",
+  "roofColor": "#565954",
+  "volumes": [
+   {
+    "id": "house-core",
+    "u": [
+     -8.6,
+     14
+    ],
+    "v": [
+     0,
+     14.9
+    ],
+    "height": 6.2,
+    "roof": {
+     "type": "hip",
+     "ridge": "v",
+     "pitch": 0.55,
+     "maxH": 5.8,
+     "overhang": 0.35
+    },
+    "chimneys": [
+     {
+      "u": 1,
+      "v": 3
+     }
+    ],
+    "plinth": {
+     "height": 0.35,
+     "color": "#b6afa1"
+    },
+    "faces": {
+     "-u": {
+      "storeys": [
+       {
+        "y": 1,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.8,
+         "at": [
+          0.25,
+          0.7
+         ]
+        }
+       },
+       {
+        "y": 4.1,
+        "windows": {
+         "type": "rect",
+         "w": 1,
+         "h": 1.5,
+         "at": [
+          0.25,
+          0.7
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "front-gable",
+    "u": [
+     -6.7,
+     8.4
+    ],
+    "v": [
+     7,
+     14.9
+    ],
+    "height": 6.3,
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.5,
+     "maxH": 4.4,
+     "overhang": 0.3
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "shop",
+         "w": 4.2,
+         "h": 2.2,
+         "at": [
+          0.23,
+          0.75
+         ],
+         "glass": "#465354",
+         "mullions": false
+        }
+       },
+       {
+        "y": 4.5,
+        "windows": {
+         "type": "rect",
+         "w": 1.05,
+         "h": 1.5,
+         "at": [
+          0.28,
+          0.72
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "style": "open",
+        "at": 0.5,
+        "w": 14,
+        "d": 1.6,
+        "height": 1,
+        "floorH": 0.25,
+        "posts": 5,
+        "postColor": "#eee9dc",
+        "floorColor": "#bab3a4",
+        "roof": "none",
+        "railing": true,
+        "steps": 1
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "side-gable",
+    "u": [
+     8,
+     17.4
+    ],
+    "v": [
+     0,
+     11.2
+    ],
+    "height": 6.3,
+    "wall": "#934f57",
+    "roof": {
+     "type": "gable",
+     "ridge": "u",
+     "pitch": 0.55,
+     "maxH": 4.6,
+     "overhang": 0.3
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 4.1,
+        "windows": {
+         "type": "rect",
+         "w": 1.25,
+         "h": 1.8,
+         "at": [
+          0.23,
+          0.69
+         ],
+         "trim": "#eee9dc"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "side-entry",
+    "u": [
+     14.1,
+     17.4
+    ],
+    "v": [
+     0,
+     11.2
+    ],
+    "height": 3.15,
+    "wall": "#ddd7c5",
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "cornice": {
+     "height": 0.18,
+     "overhang": 0.14,
+     "color": "#eee9dc",
+     "dentils": false
+    },
+    "faces": {
+     "+u": {
+      "doors": [
+       {
+        "at": 0.14,
+        "w": 1.3,
+        "h": 2.55,
+        "color": "#e6e4d9",
+        "surround": "#f4eee1",
+        "surroundW": 0.16,
+        "steps": 1
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "rear-annex",
+    "u": [
+     5,
+     17.4
+    ],
+    "v": [
+     -7.4,
+     0.2
+    ],
+    "height": 3.05,
+    "wall": "#d5cdb9",
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "faces": {
+     "-v": {
+      "doors": [
+       {
+        "at": 0.6,
+        "w": 1.05,
+        "h": 2.2,
+        "color": "#eee8db",
+        "steps": 1
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "ice-cream-shop",
+    "u": [
+     -17.4,
+     -6.2
+    ],
+    "v": [
+     -14.9,
+     1.2
+    ],
+    "height": 3.4,
+    "wall": "#b9975e",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.18,
+     "maxH": 1.6,
+     "overhang": 0.35
+    },
+    "chimneys": [
+     {
+      "u": -11.5,
+      "v": -10
+     }
+    ],
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.75,
+        "windows": {
+         "type": "shop",
+         "w": 2.4,
+         "h": 1.75,
+         "at": [
+          0.2,
+          0.8
+         ],
+         "trim": "#eee9dc",
+         "glass": "#536463",
+         "mullions": false
+        }
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.5,
+        "w": 1.15,
+        "h": 2.3,
+        "color": "#e7e5d9"
+       }
+      ],
+      "signs": [
+       {
+        "text": "DQ",
+        "style": "navy",
+        "at": 0.5,
+        "y": 3.65,
+        "w": 9.4,
+        "h": 1.3
+       }
+      ]
+     },
+     "-v": {
+      "doors": [
+       {
+        "at": 0.72,
+        "w": 1.15,
+        "h": 2.25,
+        "y": 0.65,
+        "color": "#81898a",
+        "steps": 4
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Steep charcoal hip roof with intersecting front and side gables.",
+  "Sage-gray street facade with broad display windows and white railing.",
+  "Burgundy parking-side gable above a cream entry addition.",
+  "Low mustard-colored shop wing with a blue DQ sign.",
+  "Pale trim and a prominent ridge chimney."
+ ],
+ "uncertainties": [
+  "The mapped outline appears to include both the house-like retail structure and the separate-looking DQ shop; their connection is unclear.",
+  "House principal-entry status is inferred from the visible parking-side door; the highway facade shows windows and railing rather than a clear entrance.",
+  "Rear annex door position and concealed elevations are approximate.",
+  "Footprint dimensions and photographed proportions do not align cleanly; roof subdivisions are simplified."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "side-entry",
+   "face": "+u",
+   "role": "principal house-retail entrance",
+   "evidence": [
+    "MAP",
+    "SV1"
+   ],
+   "confidence": "inferred"
+  },
+  {
+   "volume": "ice-cream-shop",
+   "face": "+v",
+   "role": "principal shop entrance",
+   "evidence": [
+    "MAP",
+    "SV3"
+   ],
+   "confidence": "inferred"
+  },
+  {
+   "volume": "ice-cream-shop",
+   "face": "-v",
+   "role": "secondary raised service entrance",
+   "evidence": [
+    "MAP",
+    "SV4"
+   ],
+   "confidence": "observed"
+  },
+  {
+   "volume": "rear-annex",
+   "face": "-v",
+   "role": "secondary house-retail service entrance",
+   "evidence": [
+    "MAP",
+    "SV4"
+   ],
+   "confidence": "inferred"
+  }
+ ],
+ "draft_hash": "e3c4e771e269e15d32ec5244827f71ebed746e14ba5864c3380cfc0722eeaf5e"
+}

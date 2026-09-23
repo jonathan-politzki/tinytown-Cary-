@@ -1,0 +1,333 @@
+{
+ "thread_id": "01a0c1d0-5979-73f1-95d1-1a707b0031d5",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 14803,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1060,
+  "reasoning_output_tokens": 191,
+  "total_tokens": 15863
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#aeb2ad\",\"wallMaterial\":\"siding\",\"trim\":\"#d0d0c5\",\"roofColor\":\"#747c79\",\"volumes\":[{\"id\":\"main\",\"u\":[-10.5,10.5],\"v\":[-9.9,9.9],\"bottom\":0,\"height\":6.1,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.18,\"overhang\":0.12,\"color\":\"#888f89\",\"dentils\":false},\"plinth\":{\"height\":0.25,\"color\":\"#999a8f\"},\"beltCourses\":[{\"y\":2.5,\"height\":0.09,\"color\":\"#969e98\"},{\"y\":4.9,\"height\":0.12,\"color\":\"#969e98\"}],\"faces\":{\"+u\":{\"storeys\":[{\"y\":2.9,\"windows\":{\"type\":\"rect\",\"w\":1.25,\"h\":1.5,\"at\":[0.66,0.77],\"trim\":\"#bdbfb2\",\"glass\":\"#959f9b\",\"interior\":false}}],\"pilasters\":{\"at\":[0.015,0.49,0.985],\"w\":0.22,\"d\":0.12,\"height\":6.1,\"color\":\"#babdb4\",\"cap\":\"#bfc1b7\"}},\"-u\":{\"doors\":[{\"at\":0.38,\"type\":\"garage\",\"w\":4.5,\"h\":4.3,\"color\":\"#a3aba5\"},{\"at\":0.79,\"type\":\"rect\",\"w\":1.1,\"h\":2.2,\"color\":\"#6d7c73\",\"surround\":\"#c3c5b9\",\"surroundW\":0.1}]},\"+v\":{\"pilasters\":{\"at\":[0.02,0.98],\"w\":0.2,\"d\":0.1,\"height\":6.1,\"color\":\"#bfc1b8\",\"cap\":\"#bfc1b8\"}},\"-v\":{}}},{\"id\":\"roof_vent_south\",\"u\":[-1.1,1.1],\"v\":[3.8,5.1],\"bottom\":6.1,\"height\":6.4,\"wall\":\"#8b948a\",\"roof\":{\"type\":\"hip\",\"ridge\":\"u\",\"pitch\":0.15,\"maxH\":0.18,\"overhang\":0.15}},{\"id\":\"roof_vent_north\",\"u\":[-1.1,1.1],\"v\":[-3.8,-2.5],\"bottom\":6.1,\"height\":6.4,\"wall\":\"#8b948a\",\"roof\":{\"type\":\"hip\",\"ridge\":\"u\",\"pitch\":0.15,\"maxH\":0.18,\"overhang\":0.15}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Squat, nearly square gray utility shed",
+   "Flat roof with thin raised edging",
+   "Muted metal siding and pale corner trim",
+   "Sparse high openings on the east wall",
+   "Two low capped rooftop ventilators"
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4"
+  ],
+  "uncertainties": [
+   "West-side personnel and vehicle entries are inferred, not clearly resolved in SV2; their positions and sizes are approximate.",
+   "High east-wall openings may be louvers rather than windows; roof-vent positions are approximate.",
+   "No aerial image was supplied. Image #3 is an unlocated hardware close-up and was excluded as uncorroborated."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "-u",
+    "role": "principal personnel entry, provisional",
+    "evidence": [
+     "MAP",
+     "SV2",
+     "SV1",
+     "SV3",
+     "SV4"
+    ],
+    "confidence": "inferred"
+   },
+   {
+    "volume": "main",
+    "face": "-u",
+    "role": "secondary vehicle/service entry, provisional",
+    "evidence": [
+     "MAP",
+     "SV2"
+    ],
+    "confidence": "inferred"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author/response.json",
+ "started_at": 1789958052.127645,
+ "finished_at": 1789958091.0008209,
+ "elapsed_seconds": 38.873175859451294,
+ "duration": 38.873175859451294,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006608080/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006608080/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/10006608080/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608080/20260920-213412-a3831f-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006608080",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "f7b67f8624989adb3ded439027b8e6383182da15b371b8e8530dceef72261eef",
+ "frame": "cf2fb81e903060ce04936cda5f0c53c1e96fb9e160cd5d4b49cfe7b12b35feb0",
+ "timestamp": 1789958091.0028338,
+ "blueprint": {
+  "wall": "#aeb2ad",
+  "wallMaterial": "siding",
+  "trim": "#d0d0c5",
+  "roofColor": "#747c79",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -10.5,
+     10.5
+    ],
+    "v": [
+     -9.9,
+     9.9
+    ],
+    "bottom": 0,
+    "height": 6.1,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.18,
+     "overhang": 0.12,
+     "color": "#888f89",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.25,
+     "color": "#999a8f"
+    },
+    "beltCourses": [
+     {
+      "y": 2.5,
+      "height": 0.09,
+      "color": "#969e98"
+     },
+     {
+      "y": 4.9,
+      "height": 0.12,
+      "color": "#969e98"
+     }
+    ],
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 2.9,
+        "windows": {
+         "type": "rect",
+         "w": 1.25,
+         "h": 1.5,
+         "at": [
+          0.66,
+          0.77
+         ],
+         "trim": "#bdbfb2",
+         "glass": "#959f9b",
+         "interior": false
+        }
+       }
+      ],
+      "pilasters": {
+       "at": [
+        0.015,
+        0.49,
+        0.985
+       ],
+       "w": 0.22,
+       "d": 0.12,
+       "height": 6.1,
+       "color": "#babdb4",
+       "cap": "#bfc1b7"
+      }
+     },
+     "-u": {
+      "doors": [
+       {
+        "at": 0.38,
+        "type": "garage",
+        "w": 4.5,
+        "h": 4.3,
+        "color": "#a3aba5"
+       },
+       {
+        "at": 0.79,
+        "type": "rect",
+        "w": 1.1,
+        "h": 2.2,
+        "color": "#6d7c73",
+        "surround": "#c3c5b9",
+        "surroundW": 0.1
+       }
+      ]
+     },
+     "+v": {
+      "pilasters": {
+       "at": [
+        0.02,
+        0.98
+       ],
+       "w": 0.2,
+       "d": 0.1,
+       "height": 6.1,
+       "color": "#bfc1b8",
+       "cap": "#bfc1b8"
+      }
+     },
+     "-v": {}
+    }
+   },
+   {
+    "id": "roof_vent_south",
+    "u": [
+     -1.1,
+     1.1
+    ],
+    "v": [
+     3.8,
+     5.1
+    ],
+    "bottom": 6.1,
+    "height": 6.4,
+    "wall": "#8b948a",
+    "roof": {
+     "type": "hip",
+     "ridge": "u",
+     "pitch": 0.15,
+     "maxH": 0.18,
+     "overhang": 0.15
+    }
+   },
+   {
+    "id": "roof_vent_north",
+    "u": [
+     -1.1,
+     1.1
+    ],
+    "v": [
+     -3.8,
+     -2.5
+    ],
+    "bottom": 6.1,
+    "height": 6.4,
+    "wall": "#8b948a",
+    "roof": {
+     "type": "hip",
+     "ridge": "u",
+     "pitch": 0.15,
+     "maxH": 0.18,
+     "overhang": 0.15
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Squat, nearly square gray utility shed",
+  "Flat roof with thin raised edging",
+  "Muted metal siding and pale corner trim",
+  "Sparse high openings on the east wall",
+  "Two low capped rooftop ventilators"
+ ],
+ "uncertainties": [
+  "West-side personnel and vehicle entries are inferred, not clearly resolved in SV2; their positions and sizes are approximate.",
+  "High east-wall openings may be louvers rather than windows; roof-vent positions are approximate.",
+  "No aerial image was supplied. Image #3 is an unlocated hardware close-up and was excluded as uncorroborated."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "-u",
+   "role": "principal personnel entry, provisional",
+   "evidence": [
+    "MAP",
+    "SV2",
+    "SV1",
+    "SV3",
+    "SV4"
+   ],
+   "confidence": "inferred"
+  },
+  {
+   "volume": "main",
+   "face": "-u",
+   "role": "secondary vehicle/service entry, provisional",
+   "evidence": [
+    "MAP",
+    "SV2"
+   ],
+   "confidence": "inferred"
+  }
+ ],
+ "draft_hash": "2c0647e2c5d427db014af5c6607c6603a86ec3a2576249bd18a2cbac1b48c4af"
+}

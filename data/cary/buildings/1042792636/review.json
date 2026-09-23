@@ -1,0 +1,40 @@
+{
+ "draft_hash": "b44d2805d552067c6de69a5438b99c2a4a8d02a96ba83a844f7d642b7f46c834",
+ "frame": "f94018e2620999913fd681e3fd066177c22a5d6d92b7d0beadbf6713149b409f",
+ "passed": true,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "ready",
+  "summary": "Recognizable and coherent miniature: the low brown-brick block, restrained flat parapet, pale-framed dark entrance, blue AT&T plaque, small right-side opening, and two offset rooftop boxes capture the supplied references. No obvious visible defects or duplicate principal portals are present.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The geolocated SV2 view is north of the building and looks south, directly showing the principal entrance on the north-facing -u facade. SV4 provides an oblique corroborating view of that same north/east corner. The labeled render places the pale-framed dark double entrance and AT&T plaque on -u, and the actual inventory confirms exactly one double door on -u with outward bearing 0\u00b0 north. The other rendered faces contain no competing principal entrance."
+  },
+  "issues": []
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789959463.284118,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215724-312b40-review",
+  "usage": {
+   "input_tokens": 12457,
+   "cached_input_tokens": 3200,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 521,
+   "reasoning_output_tokens": 339,
+   "total_tokens": 12978
+  },
+  "usage_complete": true,
+  "duration": 18.609275102615356,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/1042792636/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/1042792636/renders/repaired-faces.jpg"
+ }
+}

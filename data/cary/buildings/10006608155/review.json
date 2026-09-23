@@ -1,0 +1,79 @@
+{
+ "draft_hash": "374546a824e05f7b9ffbd94c0ea45e86ea38cd9a2b07670596452265aba6cd89",
+ "frame": "811c4cac4368d3e9a6e6c088f0993e6448738be3462127c98de7c4e1e27de3df",
+ "passed": false,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "west_spine/central_wing/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "west_spine/south_workshop/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "central_wing/south_workshop/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "central_wing/south_workshop/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "south_workshop/east_return/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "repair",
+  "summary": "The stepped low-shed silhouette, muted metal palette, flat roofs, and yellow south garage bay are recognizable and stylistically coherent. The east personnel entrance\u2014the strongest principal-entry evidence\u2014is not legible enough in the model, so it is not ready.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The located SV3 looks west almost head-on at the east-facing -v facade and shows a full-height rust-brown personnel door beside a pale window. The inventory places the sole personnel door on -v, while +u correctly carries only three garage/service doors corresponding to the southwest SV1/SV2 side. No duplicate personnel portal is inventoried; placement is therefore correct, though its rendering is defective."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "On the -v face render, the principal rust-brown personnel door reads as another small pale window and does not visibly extend to grade, contradicting SV3.",
+    "fix": "Make the -v portal clearly full-height and ground-reaching, restore its rust-brown color, and retain the adjacent pale window."
+   },
+   {
+    "severity": "minor",
+    "problem": "The +u labeled face view is largely blocked by an extreme roof close-up, preventing useful facade inspection.",
+    "fix": "Move the +u camera outward and downward so all three south-facing garage bays are visible."
+   },
+   {
+    "severity": "minor",
+    "problem": "The exterior appears unusually clean and horizontally banded compared with the reference shed\u2019s weathered corrugated-metal character.",
+    "fix": "Use subtler corrugated metal ribs and restrained gray/rust weathering while preserving the simplified miniature style."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 2,
+ "timestamp": 1789959374.41952,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006608155/20260920-215540-fd5606-review",
+  "usage": {
+   "input_tokens": 12850,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 1336,
+   "reasoning_output_tokens": 1003,
+   "total_tokens": 14186
+  },
+  "usage_complete": true,
+  "duration": 34.29470419883728,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006608155/renders/repaired-2-overview.png",
+  "faces": "data/cary/buildings/10006608155/renders/repaired-2-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}
