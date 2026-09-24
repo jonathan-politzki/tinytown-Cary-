@@ -1,0 +1,326 @@
+{
+ "version": 3,
+ "id": "10006607672",
+ "name": "130 Crystal Street",
+ "location": "Cary, Illinois",
+ "address": "130 Crystal Street",
+ "source_tags": {
+  "building": "retail",
+  "occupancy": "Retail Trade"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 34.752,
+  "depth_v": 29.735,
+  "footprint_uv": [
+   [
+    -6.2,
+    -0.0
+   ],
+   [
+    5.0,
+    -0.0
+   ],
+   [
+    4.9,
+    -7.4
+   ],
+   [
+    17.3,
+    -7.4
+   ],
+   [
+    17.4,
+    14.9
+   ],
+   [
+    -8.6,
+    14.9
+   ],
+   [
+    -8.7,
+    1.2
+   ],
+   [
+    -17.3,
+    1.2
+   ],
+   [
+    -17.4,
+    -14.9
+   ],
+   [
+    -6.2,
+    -14.9
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 125,
+    "compass": "SE",
+    "left_bearing": 215,
+    "right_bearing": 35,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 305,
+    "compass": "NW",
+    "left_bearing": 35,
+    "right_bearing": 215,
+    "nearest_road_outward": {
+     "name": "Borden Avenue",
+     "circular": false,
+     "distance_m": 71.7
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 215,
+    "compass": "SW",
+    "left_bearing": 305,
+    "right_bearing": 125,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 15.5
+    },
+    "nearest_road_hint": true
+   },
+   "-v": {
+    "bearing": 35,
+    "compass": "NE",
+    "left_bearing": 125,
+    "right_bearing": 305,
+    "nearest_road_outward": {
+     "name": "Park Avenue",
+     "circular": false,
+     "distance_m": 115.7
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2097612,
+    "lon": -88.2416331,
+    "position_xz": [
+     -10.97,
+     -84.74
+    ],
+    "position_uv": [
+     40.24,
+     3.12
+    ],
+    "looking_bearing": 313.0,
+    "looking_compass": "NW",
+    "image_left_bearing": 223.0,
+    "image_right_bearing": 43.0,
+    "target_center_offset_deg": -3.1,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 8,
+    "fov": 78,
+    "tilt": 96,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 26.4
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2097612,-88.2416331,250a,78y,313h,96t/data=!3m7!1e1!3m5!1sZRCSniLgJN45WbHmUqn9gw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-6%26panoid%3DZRCSniLgJN45WbHmUqn9gw%26yaw%3D313!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "ZRCSniLgJN45WbHmUqn9gw",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "72641a7d0b5ed64dd9d8c36bd764367064caf717dbb6db9ddcb990b1f8649b2c"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.210128,
+    "lon": -88.2422027,
+    "position_xz": [
+     -57.94,
+     -125.57
+    ],
+    "position_uv": [
+     -21.71,
+     -2.89
+    ],
+    "looking_bearing": 159.0,
+    "looking_compass": "SSE",
+    "image_left_bearing": 69.0,
+    "image_right_bearing": 249.0,
+    "target_center_offset_deg": -26.0,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 34,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 33.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.210128,-88.2422027,250a,80y,159h,100t/data=!3m7!1e1!3m5!1speLhpca6hAmb6LgNIAhopA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3DpeLhpca6hAmb6LgNIAhopA%26yaw%3D159!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "peLhpca6hAmb6LgNIAhopA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "cf7b4717c314baed67b92f538ca6109946ee0e94cdb9b26b0ecd72509a064e8b"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2097425,
+    "lon": -88.242246,
+    "position_xz": [
+     -61.51,
+     -82.66
+    ],
+    "position_uv": [
+     0.28,
+     34.14
+    ],
+    "looking_bearing": 35.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 305.0,
+    "image_right_bearing": 125.0,
+    "target_center_offset_deg": -0.0,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 1,
+    "fov": 80,
+    "tilt": 97,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 3.8
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2097425,-88.242246,250a,80y,35h,97t/data=!3m7!1e1!3m5!1sWS7vkMQjdAI8NQTgXPJtiQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-7%26panoid%3DWS7vkMQjdAI8NQTgXPJtiQ%26yaw%3D35!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "WS7vkMQjdAI8NQTgXPJtiQ",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "dd4c1a197efdd4f71086ff89fd12a4bcdaa972ac48e57105d2f2354d3922392f"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.210215,
+    "lon": -88.2420196,
+    "position_xz": [
+     -42.84,
+     -135.25
+    ],
+    "position_uv": [
+     -15.03,
+     -19.53
+    ],
+    "looking_bearing": 143.0,
+    "looking_compass": "SE",
+    "image_left_bearing": 53.0,
+    "image_right_bearing": 233.0,
+    "target_center_offset_deg": 34.9,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 73,
+    "fov": 80,
+    "tilt": 99,
+    "near_road": {
+     "name": "Short Street",
+     "circular": false,
+     "distance_m": 48.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.210215,-88.2420196,249a,80y,143h,99t/data=!3m7!1e1!3m5!1snQebOQNpzEq4cswyssjFYA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-9%26panoid%3DnQebOQNpzEq4cswyssjFYA%26yaw%3D143!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "nQebOQNpzEq4cswyssjFYA",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "1d420af00383017955eba5657f7c0efa1509833464517e841d0cdcf436f8de77"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "405542cf7e667fac32480ecbbaf5fee2f5c64a59d792133a77eae4574b82c85a"
+  }
+ ],
+ "search_query": "130 Crystal Street Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

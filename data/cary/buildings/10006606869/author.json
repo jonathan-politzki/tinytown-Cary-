@@ -1,0 +1,216 @@
+{
+ "thread_id": "01a0c1bc-4242-7e31-8905-27a062f51b3b",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12085,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 583,
+  "reasoning_output_tokens": 114,
+  "total_tokens": 12668
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#ad7560\",\"trim\":\"#e4d8bf\",\"roofColor\":\"#626460\",\"volumes\":[{\"id\":\"main\",\"u\":[-10.5,10.5],\"v\":[-9.9,9.9],\"height\":4.5,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.16,\"color\":\"#e4d8bf\",\"dentils\":false},\"plinth\":{\"height\":0.3,\"color\":\"#918b7d\"},\"faces\":{\"-v\":{\"storefronts\":[{\"range\":[0.08,0.41],\"y\":0.4,\"h\":2.7,\"frame\":\"#42594f\",\"kick\":\"#42594f\"},{\"range\":[0.59,0.92],\"y\":0.4,\"h\":2.7,\"frame\":\"#42594f\",\"kick\":\"#42594f\"}],\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.8,\"h\":2.7,\"color\":\"#42594f\",\"surround\":\"#e4d8bf\",\"surroundW\":0.12}]},\"+u\":{},\"-u\":{},\"+v\":{}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Mapped near-square footprint.",
+   "Provisional low, flat-roof retail silhouette.",
+   "Paired display windows framing one entrance.",
+   "Warm walls, cream cornice and muted green trim."
+  ],
+  "references_used": [
+   "10006606869"
+  ],
+  "uncertainties": [
+   "All three supplied image files were unavailable; no photographed architectural features could be verified.",
+   "Height, roof, palette and glazing are conservative design assumptions, not observed characteristics.",
+   "The principal entrance is provisionally placed on -v; camera metadata establishes viewing directions but cannot corroborate an entrance. No secondary entries are invented."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "-v",
+    "role": "principal",
+    "evidence": [
+     "10006606869: retail use only; no available visual evidence establishes the entrance face."
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author/response.json",
+ "started_at": 1789956735.4714618,
+ "finished_at": 1789956756.6523468,
+ "elapsed_seconds": 21.180885076522827,
+ "duration": 21.180885076522827,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-211215-a735d7-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006606869",
+ "model_alias": "astra",
+ "run": "20260920-210821-86d5e3",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "9da07991e4a0bec752b1d5483d36415248388246d19c04362ddb7cc18b1f6ddd",
+ "frame": "af101062681afe1f4c0bd36d183b0807bf470f7f6b9e50732575015c3fa67e9f",
+ "timestamp": 1789956756.6531289,
+ "blueprint": {
+  "wall": "#ad7560",
+  "trim": "#e4d8bf",
+  "roofColor": "#626460",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -10.5,
+     10.5
+    ],
+    "v": [
+     -9.9,
+     9.9
+    ],
+    "height": 4.5,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.16,
+     "color": "#e4d8bf",
+     "dentils": false
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#918b7d"
+    },
+    "faces": {
+     "-v": {
+      "storefronts": [
+       {
+        "range": [
+         0.08,
+         0.41
+        ],
+        "y": 0.4,
+        "h": 2.7,
+        "frame": "#42594f",
+        "kick": "#42594f"
+       },
+       {
+        "range": [
+         0.59,
+         0.92
+        ],
+        "y": 0.4,
+        "h": 2.7,
+        "frame": "#42594f",
+        "kick": "#42594f"
+       }
+      ],
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.8,
+        "h": 2.7,
+        "color": "#42594f",
+        "surround": "#e4d8bf",
+        "surroundW": 0.12
+       }
+      ]
+     },
+     "+u": {},
+     "-u": {},
+     "+v": {}
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Mapped near-square footprint.",
+  "Provisional low, flat-roof retail silhouette.",
+  "Paired display windows framing one entrance.",
+  "Warm walls, cream cornice and muted green trim."
+ ],
+ "uncertainties": [
+  "All three supplied image files were unavailable; no photographed architectural features could be verified.",
+  "Height, roof, palette and glazing are conservative design assumptions, not observed characteristics.",
+  "The principal entrance is provisionally placed on -v; camera metadata establishes viewing directions but cannot corroborate an entrance. No secondary entries are invented."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "-v",
+   "role": "principal",
+   "evidence": [
+    "10006606869: retail use only; no available visual evidence establishes the entrance face."
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "d569e98b4a301dbba15c812ea8792fbd0f89e8df1d991634a418325bf50ab25c"
+}

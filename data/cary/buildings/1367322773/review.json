@@ -1,0 +1,18 @@
+{
+ "draft_hash": "f0f7c557b3f7962cd41522df42ce9a8519eec06f9cba7f77784fb2aba494db05",
+ "frame": "cfc733881c684b51b33ee233e8cb5ebbde87de7a817ce746915db12c6aeddc0d",
+ "passed": true,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "south_block/north_block/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": null,
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": null,
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789955905.107413
+}

@@ -1,0 +1,49 @@
+{
+ "draft_hash": "4523738fb9f64250a88225d00140c09e93e11bc06894c19a86032a43c325ebbb",
+ "frame": "ba28c380b6fd54e3d39c2e89ef6386fae000ac69c69904c02b3e776835bc6764",
+ "passed": true,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "front_hall/rear_block/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "front_hall/side_projection/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "ready",
+  "summary": "Recognizable and charming caricature: the broad flat-roofed brick hall, offset rear mass, burgundy awnings, pale entry piers, arched dark portal, sign band, rear parapet, and timber balcony capture the source well. The simplified proportions and materials remain coherent at miniature scale, with no obvious broken geometry or duplicated principal portal.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The located SV1 camera southwest of the building looks NE and therefore observes the SW-outward +u face; it clearly shows the arched principal portal between burgundy awnings. The labeled +u render places that same unique portal and sign composition on +u. Door inventory confirms one arched door on +u, while the rectangular -u door corresponds to SV2 beneath the rear balcony and the rectangular -v door corresponds to the service opening seen in SV4. Camera headings have not been treated as face bearings, and the principal entrance is not inferred merely from the nearby road."
+  },
+  "issues": []
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789959785.38535,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245222/20260920-220243-ccc2f3-review",
+  "usage": {
+   "input_tokens": 12850,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 561,
+   "reasoning_output_tokens": 341,
+   "total_tokens": 13411
+  },
+  "usage_complete": true,
+  "duration": 21.727943897247314,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/1396245222/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/1396245222/renders/repaired-faces.jpg"
+ }
+}

@@ -7,7 +7,7 @@ import importlib
 import json
 from pathlib import Path
 
-from .paths import ROOT, SITE_NAME
+from .paths import ROOT, SITE_NAME, SitePaths
 
 
 def _read(path):
@@ -65,6 +65,20 @@ def root_site(target, root=ROOT):
 
 def sites_for_target(target, root=ROOT):
     return sorted({name for name, _ in placements(target, root)})
+
+
+def viewer_settings(name, root=ROOT):
+    """What the viewer needs to know about a site before it fetches anything.
+
+    Derived where it can be — a site streams as soon as `town bake` has
+    prepared its chunks — and authored where it is taste: a `viewer` block in
+    site.json ({"opening_view": {...}}) overrides any derived default. The
+    settings travel to the browser in one meta tag, so adding a miniature
+    never means editing the viewer.
+    """
+    settings = dict(site_config(name, root).get('viewer') or {})
+    settings.setdefault('stream', SitePaths(name, root).stream_manifest.is_file())
+    return settings
 
 
 def plugin(name, root=ROOT):

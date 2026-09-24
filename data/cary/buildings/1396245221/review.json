@@ -1,0 +1,66 @@
+{
+ "draft_hash": "82b523d7dd53d99c34686c320d5baded10185c35755a1d73aeb9de92216dcabb",
+ "frame": "9457e07e8e8e06c85865f13226f4a074063ac1c8cc2aa32eca373973e579a7c8",
+ "passed": true,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "tavern/upper_core/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "tavern/red_storefront/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "tavern/red_storefront/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "ready",
+  "summary": "Recognizable, charming tavern miniature with the oversized brown mansard, red storefront, centered sign and doorway, cream siding, upper windows, and exposed rear stair/service area all reading clearly. The simplified forms and materials are coherent at diorama scale, with no obvious broken geometry or duplicated principal portals.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The located SV2 view faces the -u/SW side and shows the signed red storefront with its single central public entrance; the model places exactly one door there. Located SV1 faces +u/NE and shows the covered rear service door and exterior stair, which the model reproduces as a separate secondary entrance. SV4 supports the three-window cream -v/NW elevation, while SV3 supports the comparatively plain +v/SE side. Thus the labeled face renders and actual two-door inventory agree with the geolocated views, independent of the nearest-road hint."
+  },
+  "issues": []
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 2,
+ "timestamp": 1789957544.777554,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212530-faf423-review",
+  "usage": {
+   "input_tokens": 12619,
+   "cached_input_tokens": 3200,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 450,
+   "reasoning_output_tokens": 244,
+   "total_tokens": 13069
+  },
+  "usage_complete": true,
+  "duration": 14.249040126800537,
+  "run": "20260920-211711-9833ef",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/1396245221/renders/repaired-2-overview.png",
+  "faces": "data/cary/buildings/1396245221/renders/repaired-2-faces.jpg"
+ },
+ "scene_review": {
+  "id": "1396245221",
+  "verdict": "ready",
+  "summary": "The oversized brown mansard, red signed storefront, cream side, broad rear mass, and exterior stair make the tavern recognizable at miniature scale. Materials and proportions suit the scene; the four-face sheet shows no obvious duplicate geometry or failed repair.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The source-supported principal storefront is on -u/SW, and the inventory has exactly one central door there beneath the TIPSY GOAT TAVERN sign. The only other door is the expected +u/NE rear service entrance associated with the stair, so the principal entrance is neither duplicated nor misplaced."
+  },
+  "draft_hash": "82b523d7dd53d99c34686c320d5baded10185c35755a1d73aeb9de92216dcabb",
+  "model": "sol",
+  "run": "20260920-211711-9833ef",
+  "timestamp": 1789957885.800687
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "draft_hash": "b56abe213574f71864e90ceaeb17b14ee4639dc721e120dd59289a08be832a36",
+ "frame": "b720476173bd87e7a16f8248a6d7d6c0574c78edf05b3b82755fc9680e6f87f4",
+ "passed": false,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "house-core/front-gable/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "house-core/side-gable/v-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "side-gable/side-entry/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  },
+  {
+   "id": "side-entry/rear-annex/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "repair",
+  "summary": "The connected blue-gray house, burgundy gable, cream addition, and mustard service wing form a coherent miniature, but the most recognizable DQ sign and main roof silhouette are not yet convincing.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The door inventory agrees with the geolocated views and labeled faces: SV1 supports the house/retail side entry on +u (SE); SV3 shows the highway-facing +v (SW) shop frontage; and SV4 shows the raised mustard-wing service door on -v (NE). The +v shop door and +u house door serve distinct volumes rather than duplicating one principal portal."
+  },
+  "issues": [
+   {
+    "severity": "broken",
+    "problem": "The prominent upright blue DQ rooftop sign from SV2 is rendered as a large dark, roof-like slab, while the readable DQ mark appears on an invented horizontal fascia.",
+    "fix": "Make the rooftop element an unmistakable upright blue sign with a pale base and readable DQ branding; reduce or remove the competing fascia logo."
+   },
+   {
+    "severity": "major",
+    "problem": "The blue-gray house\u2019s characteristic steep, narrow front-gabled silhouette in SV3 is diluted by an overly broad facade and a confusing pileup of intersecting roof masses.",
+    "fix": "Emphasize the tall front gable and simplify/lower the surrounding roofs so the house profile reads clearly from +v and in overview."
+   },
+   {
+    "severity": "minor",
+    "problem": "The shop and entry additions are overly blank and boxy compared with the vents, trim, steps, patio edge, and service character visible in SV2 and SV4.",
+    "fix": "Add a few bold miniature-scale details\u2014gable trim, wall vent, raised steps/landing, and a compact patio cue\u2014without chasing exact counts."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 2,
+ "timestamp": 1789958799.494553,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006607672/20260920-214558-f63e7c-review",
+  "usage": {
+   "input_tokens": 13043,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 1403,
+   "reasoning_output_tokens": 1034,
+   "total_tokens": 14446
+  },
+  "usage_complete": true,
+  "duration": 41.353158950805664,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006607672/renders/repaired-2-overview.png",
+  "faces": "data/cary/buildings/10006607672/renders/repaired-2-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

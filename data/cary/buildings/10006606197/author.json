@@ -1,0 +1,466 @@
+{
+ "thread_id": "01a0c186-405d-7e03-b0cd-a82e25ce3149",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 12247,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1729,
+  "reasoning_output_tokens": 464,
+  "total_tokens": 13976
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#ad7960\",\"trim\":\"#ded2bb\",\"roofColor\":\"#626565\",\"volumes\":[{\"id\":\"rear_end\",\"u\":[-9.2,19.3],\"v\":[-38.3,-27.0],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true}},{\"id\":\"rear_step\",\"u\":[-15.4,24.3],\"v\":[-27.2,-12.3],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true}},{\"id\":\"central\",\"u\":[-21.7,26.7],\"v\":[-12.4,0.0],\"height\":5.1,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.15,\"color\":\"#ded2bb\",\"dentils\":false},\"faces\":{\"+v\":{\"doors\":[{\"at\":0.46,\"type\":\"double\",\"w\":2.0,\"h\":2.7,\"color\":\"#405653\",\"surround\":\"#ded2bb\",\"surroundW\":0.16}],\"storefronts\":[{\"range\":[0.32,0.40],\"y\":0.45,\"h\":2.5,\"frame\":\"#405653\",\"kick\":\"#405653\"},{\"range\":[0.51,0.60],\"y\":0.45,\"h\":2.5,\"frame\":\"#405653\",\"kick\":\"#405653\"}],\"awnings\":[{\"range\":[0.32,0.60],\"y\":3.2,\"depth\":1.0,\"color\":\"#52635d\"}]}}},{\"id\":\"left_link\",\"u\":[-21.7,-6.8],\"v\":[-0.1,6.3],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true}},{\"id\":\"left_middle\",\"u\":[-29.2,-6.8],\"v\":[6.2,21.1],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"+u\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.1,\"h\":2.0,\"at\":[0.2,0.5,0.8],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]}}},{\"id\":\"left_end\",\"u\":[-36.6,-6.9],\"v\":[21.0,38.3],\"height\":5.1,\"roof\":{\"type\":\"flat\",\"lip\":true},\"cornice\":{\"height\":0.22,\"overhang\":0.15,\"color\":\"#ded2bb\",\"dentils\":false},\"faces\":{\"+v\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.5,\"h\":2.1,\"at\":[0.14,0.32,0.5,0.68,0.86],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]},\"+u\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.1,\"h\":2.0,\"at\":[0.2,0.5,0.8],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]}}},{\"id\":\"right_wing\",\"u\":[8.0,26.7],\"v\":[-0.1,28.4],\"height\":4.8,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"-u\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.3,\"h\":2.0,\"at\":[0.14,0.38,0.62,0.86],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]},\"+v\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.4,\"h\":2.0,\"at\":[0.2,0.5,0.8],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]}}},{\"id\":\"side_projection\",\"u\":[26.6,36.6],\"v\":[5.0,22.3],\"height\":4.5,\"roof\":{\"type\":\"flat\",\"lip\":true},\"faces\":{\"+u\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":2.2,\"h\":2.0,\"at\":[0.2,0.5,0.8],\"trim\":\"#ded2bb\",\"glass\":\"#7c9393\"}}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Deep open recess between unequal wings.",
+   "Broad stepped rear mass.",
+   "Longer, outward-stepped left wing.",
+   "Rectangular projection on the +u side."
+  ],
+  "references_used": [
+   "10006606197: supplied footprint_uv and frame",
+   "10006606197: source_tags"
+  ],
+  "uncertainties": [
+   "All reference images were unavailable; this is a footprint-based approximation, not a verified photographic likeness.",
+   "Single-storey heights, flat roofs, warm wall palette and glazing are inferred.",
+   "Principal entry is provisionally placed at the inner recess; camera metadata alone cannot establish its actual position. Secondary entries are unknown.",
+   "Small perimeter offsets are simplified."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "central",
+    "face": "+v",
+    "role": "principal, provisional",
+    "evidence": [
+     "10006606197: footprint_uv establishes the open recess, but supplies no entrance evidence"
+    ],
+    "confidence": "unknown"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author/response.json",
+ "started_at": 1789953195.679051,
+ "finished_at": 1789953251.909508,
+ "elapsed_seconds": 56.230457067489624,
+ "duration": 56.230457067489624,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606197/20260920-201315-8bcdae-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "10006606197",
+ "model_alias": "astra",
+ "run": "20260920-194654-13161b",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "de429a259eb6f7112dd7c1887ecc8fb4bc217d2b26e176fcab1fcf3d53fadd4b",
+ "frame": "457c074caf0963721a47c0a6c9fb7e9bd9c9a500e1ff4f222045e7ebc92dcde8",
+ "timestamp": 1789953251.911415,
+ "blueprint": {
+  "wall": "#ad7960",
+  "trim": "#ded2bb",
+  "roofColor": "#626565",
+  "volumes": [
+   {
+    "id": "rear_end",
+    "u": [
+     -9.2,
+     19.3
+    ],
+    "v": [
+     -38.3,
+     -27.0
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    }
+   },
+   {
+    "id": "rear_step",
+    "u": [
+     -15.4,
+     24.3
+    ],
+    "v": [
+     -27.2,
+     -12.3
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    }
+   },
+   {
+    "id": "central",
+    "u": [
+     -21.7,
+     26.7
+    ],
+    "v": [
+     -12.4,
+     0.0
+    ],
+    "height": 5.1,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.15,
+     "color": "#ded2bb",
+     "dentils": false
+    },
+    "faces": {
+     "+v": {
+      "doors": [
+       {
+        "at": 0.46,
+        "type": "double",
+        "w": 2.0,
+        "h": 2.7,
+        "color": "#405653",
+        "surround": "#ded2bb",
+        "surroundW": 0.16
+       }
+      ],
+      "storefronts": [
+       {
+        "range": [
+         0.32,
+         0.4
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#405653",
+        "kick": "#405653"
+       },
+       {
+        "range": [
+         0.51,
+         0.6
+        ],
+        "y": 0.45,
+        "h": 2.5,
+        "frame": "#405653",
+        "kick": "#405653"
+       }
+      ],
+      "awnings": [
+       {
+        "range": [
+         0.32,
+         0.6
+        ],
+        "y": 3.2,
+        "depth": 1.0,
+        "color": "#52635d"
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "left_link",
+    "u": [
+     -21.7,
+     -6.8
+    ],
+    "v": [
+     -0.1,
+     6.3
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    }
+   },
+   {
+    "id": "left_middle",
+    "u": [
+     -29.2,
+     -6.8
+    ],
+    "v": [
+     6.2,
+     21.1
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.1,
+         "h": 2.0,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "left_end",
+    "u": [
+     -36.6,
+     -6.9
+    ],
+    "v": [
+     21.0,
+     38.3
+    ],
+    "height": 5.1,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "cornice": {
+     "height": 0.22,
+     "overhang": 0.15,
+     "color": "#ded2bb",
+     "dentils": false
+    },
+    "faces": {
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.5,
+         "h": 2.1,
+         "at": [
+          0.14,
+          0.32,
+          0.5,
+          0.68,
+          0.86
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     },
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.1,
+         "h": 2.0,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "right_wing",
+    "u": [
+     8.0,
+     26.7
+    ],
+    "v": [
+     -0.1,
+     28.4
+    ],
+    "height": 4.8,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.3,
+         "h": 2.0,
+         "at": [
+          0.14,
+          0.38,
+          0.62,
+          0.86
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.4,
+         "h": 2.0,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "side_projection",
+    "u": [
+     26.6,
+     36.6
+    ],
+    "v": [
+     5.0,
+     22.3
+    ],
+    "height": 4.5,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 2.2,
+         "h": 2.0,
+         "at": [
+          0.2,
+          0.5,
+          0.8
+         ],
+         "trim": "#ded2bb",
+         "glass": "#7c9393"
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Deep open recess between unequal wings.",
+  "Broad stepped rear mass.",
+  "Longer, outward-stepped left wing.",
+  "Rectangular projection on the +u side."
+ ],
+ "uncertainties": [
+  "All reference images were unavailable; this is a footprint-based approximation, not a verified photographic likeness.",
+  "Single-storey heights, flat roofs, warm wall palette and glazing are inferred.",
+  "Principal entry is provisionally placed at the inner recess; camera metadata alone cannot establish its actual position. Secondary entries are unknown.",
+  "Small perimeter offsets are simplified."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "central",
+   "face": "+v",
+   "role": "principal, provisional",
+   "evidence": [
+    "10006606197: footprint_uv establishes the open recess, but supplies no entrance evidence"
+   ],
+   "confidence": "unknown"
+  }
+ ],
+ "draft_hash": "e9d213e481bc8ad118091a5d3643c694247cfff6ba891583981e14bf38932bf0"
+}

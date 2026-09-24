@@ -10,12 +10,13 @@ building formats are in [STYLE_SCHEMA.md](STYLE_SCHEMA.md) and
 
 | Path | Written by | Contents |
 | --- | --- | --- |
-| `source/site_request.json` | `town fetch` | `{"center": {"lat", "lon"}, "size_m": {"w", "h"}, "bounds": {north, south, east, west}, "title"?}`. Re-fetching with different coordinates errors unless `--force`. |
+| `source/site_request.json` | `town fetch` | `{"center": {"lat", "lon"}, "size_m": {"w", "h"}, "bounds": {north, south, east, west}, "title"?, "structures"?}`. Re-fetching with different coordinates errors unless `--force`. A first fetch that loses one service keeps the others and this record, so `town fetch <site>` resumes. |
 | `source/osm.json` | `town fetch` | Overpass JSON: buildings, roads, footways, rails, water, land cover, trees, POIs for the box scaled by 1.25. |
 | `source/elevation.json` | `town fetch` | USGS 3DEP grid: `{"cols", "rows", "bounds", "order", "units", "values": [m, …]}`, row-major from the north-west corner (96 × 96 by default). |
 | `source/satellite.json` | `town fetch` | `{"z", "px": [w, h], "bounds", "source": "Esri World Imagery"}` describing the mosaic. |
 | `source/satellite.jpg` | `town fetch` | The Esri mosaic itself. **Gitignored**; refetched on demand. Needed for aerial crops. |
 | `source/<name>-osm.json` | `town fetch` | Extra Overpass extracts a plugin asked for through `extra_sources()` (Chautauqua: `lake-osm.json`, `barriers-osm.json`). |
+| `source/structures.json` | `town fetch --structures` | FEMA/ORNL USA Structures footprints for the OSM box as OSM-shaped building ways: `{"source", "url", "bounds", "id_base": 10000000000, "elements": [{"type": "way", "id": id_base + BUILD_ID, "tags": {"building", "addr:*"?, "occupancy"?, "height"?, "ref:usa_structures"}, "geometry", "source": "usa-structures"}]}`. `town build` adds the ones no mapped OSM building covers (centroid-in-ring either way) and marks them `"source": "usa-structures"` in `site.json`. The choice is recorded in `site_request.json` as `"structures"`, so a bare resume refetches it. |
 | `source/sv_index.json` | `town refs` | Street View panorama index built while capturing (pano ids, positions, dates). |
 | `source/composition.json` | `town scope --source` / migration | Provenance of a composed site: bounds, structure counts, which ids were imported and from where. |
 | `overrides.json` | you, `town accept`, `town scope` | **The authored truth** (below). |
@@ -81,13 +82,13 @@ stored: `unreferenced`, `referenced`, `drafted`, `needs-repair`, `reviewed`,
 
 | File | Contents |
 | --- | --- |
-| `site.json` | `title`, `description` (both required to deploy), `domain`, `deploy` placements (`[{"target", "route", "aliases"?}]`), `plugin` (module name under `tinytown/plugins/`), `scope` (scope file name), `landmarks` and `outline` (sidecar file names, relative to this directory; `../avon/landmarks.json` shares a sidecar), `social_image` (`alt`, `width`, `height`). |
+| `site.json` | `title`, `description` (both required to deploy), `domain`, `deploy` placements (`[{"target", "route", "aliases"?}]`), `plugin` (module name under `tinytown/plugins/`), `scope` (scope file name), `landmarks` and `outline` (sidecar file names, relative to this directory; `../avon/landmarks.json` shares a sidecar), `social_image` (`alt`, `width`, `height`), `icon` (`letter`, `ground`, `ink`, `font` for `town brand`), `viewer` (settings the document hands the viewer: `opening_view` — `target` `[x, z]`, `lift`, `azimuth`, `distance`, `aspect` `[w, h]` of its reference image — and `stream`, which otherwise follows whether the site's chunks are baked). |
 | `scope.json` | Frozen `building_ids`, optional `exclusions`, `bounds`, `title`, plus whatever notes the author keeps (Chautauqua records `practice_ids`, `gates`, a `source_map`). Maintained by `town scope`; honoured by `town build` and checked by `town stage`. |
 | `labels.json` | `{id: name}` known names for structures OSM does not name; `town author` uses it by default. |
 | `web-references.json` | `{id: [{url, page_url, title, provider?}]}` curated web images for the packet. |
 | `landmarks.json` | Geographic (`[lon, lat]`) landmark features the plugin projects into the local frame ([landmarks.md](landmarks.md)). |
 | `outline.json` | `{"name", "coordinates": [[lon, lat], …]}` non-rectangular physical outline for the diorama. |
-| `favicon.*`, `apple-touch-icon.png`, `social-preview.jpg` | Optional per-site icons and preview; the repository root files are the fallback. |
+| `favicon.*`, `apple-touch-icon.png`, `social-preview.jpg` | The town's own mark and social card, written by `town brand`. A site with any icon of its own links only its own; a site with none links the repository's default mark (the root `favicon.*`, `apple-touch-icon.png`). No preview falls back: a social card is one town's photograph. |
 
 `sites/deploy.json` maps deploy targets to their dist directory and Wrangler
 config: `{"avon": {"dist": "dist/avon", "wrangler": "wrangler.avon.jsonc"}, …}`.

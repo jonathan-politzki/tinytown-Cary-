@@ -20,6 +20,11 @@ through the middle four independently of every other structure.
 | 7 | Build the scene and bake assets | `town build`, `town bake` | `source/`, `overrides.json`, the renderer in headless Chromium | `data/<site>/site.json`, `surfaces*.bin.gz`, `stream/` |
 | 8 | Stage and deploy | `town stage`, `town verify`, `town serve` | scenes, `sites/`, `index.html`, `src/` | `dist/<target>/` |
 
+Beside stage 8, `town brand <site>` draws the identity a site's documents
+link — its icons and, with `--preview`, its social card — from
+`sites/<site>/site.json`. It is not part of the pipeline: a site keeps the
+repository's default mark until it is run.
+
 `town author` runs stages 3 through 6 for many buildings in one command. It is
 idempotent: status is derived from files on disk, so re-running it resumes.
 There is no campaign ledger, no separate resume tool, and no supervisor.
@@ -67,6 +72,7 @@ and imports a module only when one of its verbs runs.
 | `model.py` | the model adapter (Codex CLI today); usage accounting; `BudgetExhausted` | | `miniature_model`, `model_runner`, the model parts of `fidelity_runner` |
 | `author.py` | per-building author/review/repair state machine; concurrency; budgets; scene critique; accept | `author`, `accept` | `miniature_pipeline`, `fidelity_runner`, `run_diorama`, `expand_diorama`, `expansion_queue`, `publish_*`, `merge_blueprints`, `production_baseline`, `renderer_snapshot` |
 | `bake.py` + `web/` | terrain/pavement surfaces, streaming chunks, viewer version stamping | `bake` | `precompute_surfaces`, `precompute.html`, `prepare_streaming.mjs`, `stream-export.*`, `stream-asset-limits.mjs`, `version_viewer` |
+| `brand.py` | a site's icons and social card, drawn from its config | `brand` | |
 | `deploy.py` | route documents, dist staging per target, dev server, live verification | `stage`, `serve`, `verify` | `build_routes`, `build_deployment`, `site_routes`, `verify_deployment`, `serve.py` |
 | `migrate.py` | one-time move from the pre-2026-09 layout | `migrate` | |
 
@@ -107,6 +113,7 @@ data/<site>/
     site_request.json      centre, size, title as requested
     osm.json  elevation.json  satellite.json  (satellite.jpg is gitignored)
     <name>-osm.json        extra OSM extracts a plugin asks for (lake, barriers)
+    structures.json        USA Structures footprints (fetch --structures) for thinly mapped places
     sv_index.json          Street View pano index built while capturing
     composition.json       provenance: bounds, structure counts, imported ids
   overrides.json           the authored truth: buildings, blueprints, blueprint_frames,
@@ -133,7 +140,7 @@ sites/<site>/
   scope.json               frozen structure ids, exclusions, bounds (optional)
   labels.json  web-references.json   known names and curated web images (optional)
   landmarks.json  outline.json        geographic sidecars a plugin projects (optional)
-  favicon.*  apple-touch-icon.png  social-preview.jpg   (optional; falls back to repo root)
+  favicon.*  apple-touch-icon.png  social-preview.jpg   (town brand; icons fall back to the repo's default mark)
 ```
 
 Status of a building, derived by `state.building_status(paths, bid)`:
@@ -165,13 +172,19 @@ Status of a building, derived by `state.building_status(paths, bid)`:
   "scope": "scope.json",
   "landmarks": "landmarks.json",
   "outline": "outline.json",
-  "social_image": {"alt": "...", "width": 1200, "height": 630}
+  "social_image": {"alt": "...", "width": 1200, "height": 630},
+  "viewer": {"opening_view": {"target": [35, 37], "lift": 6, "azimuth": -2.2,
+                              "distance": 280, "aspect": [1440, 1726]}}
 }
 ```
 
 `scope`, `landmarks` and `outline` name sidecar files relative to
 `sites/<site>/` (for example, `landmarks.json`). `title` and
-`description` are required to deploy. `sites/deploy.json` maps targets to
+`description` are required to deploy. `viewer` is what the document tells the
+viewer before it fetches anything (`config.viewer_settings`, carried as
+`<meta name="town-viewer">`): the opening view, and whether to stream — which
+otherwise follows whether `town bake` has written the site's chunks, so
+`src/*.js` never names a site. `sites/deploy.json` maps targets to
 dist directories and Wrangler configs:
 
 ```json
@@ -198,6 +211,13 @@ def scope_filter(elements, request) -> list[dict]    # which mapped buildings `s
 ## Interfaces other modules rely on
 
 ```python
+# config.py
+def viewer_settings(site, root=ROOT) -> dict   # what <meta name="town-viewer"> carries:
+                                               # {'stream': bool, 'opening_view': {...}?}
+
+# deploy.py
+def icon_set(site, root=ROOT) -> tuple[list[str], bool]   # (icon file names, they are the site's own)
+
 # paths.py
 ROOT: Path
 class SitePaths:

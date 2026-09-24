@@ -23,7 +23,7 @@ import { takeSurfaceAsset } from './site-data.js';
 import { loadingProgress } from './loading-progress.js';
 import { P } from './palette.js';
 import { GRAIN } from './kit.js';
-import { params, siteName, siteRequest, streamEnabled, streamDirectory } from './site-data.js';
+import { params, siteName, siteSettings, siteRequest, streamEnabled, streamDirectory } from './site-data.js';
 import { renderQuality } from './quality.js';
 import { installContextRecovery } from './context-recovery.js';
 import { createLighting, DAY, NIGHT_SCENE } from './lighting.js';
@@ -65,13 +65,15 @@ camera.layers.enable(1); // transparent lamplight is visible only in the color p
 // camera over the ground (down = forward). ?free=1 swaps in a free
 // orbit camera for debugging (shooting a render from a photo's viewpoint).
 const FREE_CAMERA = params.has('free');
-// Open on each town's gathering place, framed from the selected reference views.
-// Both Avon maps share the same world origin and circle.
-const AVON_OPENING_VIEW = { target: [-25, 25], lift: 3, azimuth: 2, distance: 320, aspect: 1752 / 1408 };
-const OPENING_VIEW = !FREE_CAMERA && !params.has('focus') ? {
-  'avon-extended': AVON_OPENING_VIEW,
-  chautauqua: { target: [35, 37], lift: 6, azimuth: -2.2, distance: 280, aspect: 1440 / 1726 },
-}[siteName] : null;
+// Open on the town's gathering place, framed from its selected reference view:
+// `viewer.opening_view` in sites/<site>/site.json ({target: [x, z], lift,
+// azimuth, distance, aspect: [w, h] of the reference image}). A miniature
+// without one opens on the fitted overview instead.
+const openingView = siteSettings.opening_view;
+const OPENING_VIEW = !FREE_CAMERA && !params.has('focus') && openingView ? {
+  ...openingView,
+  aspect: Array.isArray(openingView.aspect) ? openingView.aspect[0] / openingView.aspect[1] : openingView.aspect ?? 1,
+} : null;
 const VIEW_AZIMUTH = OPENING_VIEW?.azimuth ?? Math.PI / 4;
 const VIEW_ELEVATION = THREE.MathUtils.degToRad(35.264);
 let controls;

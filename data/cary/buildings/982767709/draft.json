@@ -1,0 +1,194 @@
+{
+ "wall": "#a9977a",
+ "wallMaterial": "brick",
+ "trim": "#d2cab5",
+ "roofColor": "#54564a",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -10.6,
+    5.5
+   ],
+   "v": [
+    -10.6,
+    10.6
+   ],
+   "height": 3.9,
+   "roof": {
+    "type": "hip",
+    "ridge": "v",
+    "pitch": 0.18,
+    "maxH": 2.0,
+    "overhang": 0.4
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#bdb8a5"
+   },
+   "faces": {
+    "-u": {},
+    "+v": {
+     "storeys": [
+      {
+       "y": 1.0,
+       "windows": {
+        "type": "rect",
+        "w": 1.4,
+        "h": 1.7,
+        "at": [
+         0.25,
+         0.65
+        ],
+        "trim": "#555b4b",
+        "glass": "#64716b",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-v": {
+     "storeys": [
+      {
+       "y": 1.0,
+       "windows": {
+        "type": "rect",
+        "w": 1.4,
+        "h": 1.7,
+        "at": [
+         0.3,
+         0.72
+        ],
+        "trim": "#555b4b",
+        "glass": "#64716b",
+        "interior": false
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "front_wing",
+   "u": [
+    4.9,
+    9.8
+   ],
+   "v": [
+    -9.7,
+    9.7
+   ],
+   "height": 3.9,
+   "roof": {
+    "type": "hip",
+    "ridge": "v",
+    "pitch": 0.2,
+    "maxH": 1.0,
+    "overhang": 0.4
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#bdb8a5"
+   },
+   "faces": {
+    "+u": {
+     "storeys": [
+      {
+       "y": 0.8,
+       "windows": {
+        "type": "rect",
+        "w": 1.9,
+        "h": 2.0,
+        "at": [
+         0.12,
+         0.88
+        ],
+        "trim": "#555b4b",
+        "glass": "#63736c",
+        "interior": false
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "entry",
+   "u": [
+    8.7,
+    10.5
+   ],
+   "v": [
+    -4.4,
+    4.5
+   ],
+   "height": 5.3,
+   "wall": "#c0bba7",
+   "wallMaterial": "stone",
+   "roof": {
+    "type": "flat",
+    "lip": false
+   },
+   "cornice": {
+    "height": 0.15,
+    "overhang": 0.12,
+    "color": "#646759",
+    "dentils": false
+   },
+   "faces": {
+    "+u": {
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.9,
+       "h": 2.7,
+       "color": "#34433c",
+       "surround": "#d2cbb8",
+       "surroundW": 0.15
+      }
+     ],
+     "storeys": [
+      {
+       "y": 0.65,
+       "windows": {
+        "type": "shop",
+        "w": 1.4,
+        "h": 2.1,
+        "at": [
+         0.19,
+         0.81
+        ],
+        "trim": "#414d43",
+        "glass": "#687972",
+        "interior": false
+       }
+      }
+     ],
+     "awnings": [
+      {
+       "range": [
+        0.21,
+        0.79
+       ],
+       "y": 3.35,
+       "depth": 0.85,
+       "color": "#334b63"
+      }
+     ],
+     "signs": [
+      {
+       "text": "CARY GROVE ANIMAL HOSPITAL",
+       "style": "navy",
+       "at": 0.5,
+       "y": 4.55,
+       "w": 8.1,
+       "h": 1.0
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "details": []
+}

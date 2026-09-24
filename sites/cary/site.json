@@ -1,4 +1,33 @@
 {
   "title": "Cary, Illinois",
-  "description": "Explore a miniature of Cary, Illinois, from the Main Street depot and Northwest Highway out through the village."
+  "description": "Explore a miniature of Cary, Illinois, from the Main Street depot and Northwest Highway out through the village.",
+  "domain": "https://cary-brown.vercel.app",
+  "social_image": {
+    "alt": "Main Street, the Union Pacific tracks and the village centre in the miniature of Cary, Illinois.",
+    "width": 1200,
+    "height": 630
+  },
+  "viewer": {
+    "opening_view": {
+      "target": [
+        0,
+        0
+      ],
+      "lift": 3,
+      "azimuth": 2,
+      "distance": 260,
+      "aspect": [
+        1200,
+        630
+      ]
+    }
+  },
+  "deploy": [
+    {
+      "target": "cary",
+      "route": "/"
+    }
+  ],
+  "plugin": "cary",
+  "landmarks": "landmarks.json"
 }

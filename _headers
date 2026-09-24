@@ -1,14 +1,6 @@
 # Fingerprinted assets can be reused; site/manifest updates still revalidate.
-/
-  Cache-Control: no-cache
-/index.html
-  Cache-Control: no-cache
-/avon
-  Cache-Control: no-cache
-/avon-extended
-  Cache-Control: no-cache
-/chautauqua
-  Cache-Control: no-cache
+# The no-cache rules for each route document are generated per deploy target by
+# `town stage` from sites/*/site.json, and land above these lines.
 /data/:site/surfaces-*.bin.gz
   Cache-Control: public, max-age=31536000, immutable
   Content-Type: application/octet-stream

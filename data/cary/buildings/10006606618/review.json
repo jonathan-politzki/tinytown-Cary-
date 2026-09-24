@@ -1,0 +1,63 @@
+{
+ "draft_hash": "fa8bc7474d7c96c6102505f9653aed7643543a6a2eb85f2efd7144c8e83bea03",
+ "frame": "d04a0c9fef32b0fdfc832bfe17acdbc4c50af13ed3e5ba05650c762214dbb657",
+ "passed": false,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "main/rear_wing/u-coplanar",
+   "finding": "Wall planes coincide over a shared extent; inspect exposed faces for z-fighting."
+  }
+ ],
+ "report": {
+  "verdict": "insufficient-evidence",
+  "summary": "The model is a coherent, pleasant miniature with the mapped L-shaped massing, warm walls, charcoal roof, and a restrained storefront. However, it remains generic and the missing map/Street View/aerial references prevent confirmation of the defining facade and entrance.",
+  "orientation": {
+   "status": "uncertain",
+   "summary": "The actual inventory contains one double door on the -u/south face, centered between two display windows. The labeled sheet shows that storefront on -u toward West Main Street, while the other rendered faces show no apparent principal portal. This is internally consistent and avoids duplication, but neither proximity to West Main Street nor the author plan proves that -u is the real principal-entry face. The geolocated SV2 pose targets -u, but its unavailable photograph leaves the placement unverified."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "Principal-entry orientation cannot be validated from the supplied visible evidence.",
+    "fix": "Provide the missing orientation map and geolocated Street View atlas, especially SV2, then verify that the real entrance is on -u; relocate the sole principal door if the imagery identifies another face."
+   },
+   {
+    "severity": "minor",
+    "problem": "The miniature is highly generic: plain wall planes and nearly featureless roofs leave little beyond the storefront and L footprint to identify 218 West Main Street.",
+    "fix": "Add two or three source-supported signature elements from the facade imagery, such as its distinctive trim, sign band, masonry divisions, canopy, or roof-edge treatment."
+   },
+   {
+    "severity": "minor",
+    "problem": "The four-face sheet poorly documents the model: the -u and -v views are heavily blocked by neighboring buildings, making doors and facade details difficult to audit.",
+    "fix": "Regenerate isolated, centered orthographic face views with nearby buildings hidden or clipped."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789956694.014876,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606618/20260920-211116-f3bfbc-review",
+  "usage": {
+   "input_tokens": 9754,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 509,
+   "reasoning_output_tokens": 135,
+   "total_tokens": 10263
+  },
+  "usage_complete": true,
+  "duration": 17.288766860961914,
+  "run": "20260920-210821-86d5e3",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006606618/renders/initial-overview.png",
+  "faces": "data/cary/buildings/10006606618/renders/initial-faces.jpg"
+ },
+ "repairs_exhausted": true,
+ "repair_limit": 2
+}

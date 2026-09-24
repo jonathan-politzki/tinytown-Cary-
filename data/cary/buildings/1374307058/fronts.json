@@ -1,0 +1,121 @@
+{
+ "id": "1374307058",
+ "addr": null,
+ "name": "Cary Ale House",
+ "frame": "d700b7071a489ef893459ea3963c13cf148afb7962d80338d79e8f45793b9c2e",
+ "faces": {
+  "+u": {
+   "bearing": 182,
+   "width": 16.1,
+   "road": true,
+   "photos": [
+    {
+     "face": "+u",
+     "file": "fronts/+u.png",
+     "pano": "r3-7BUCXWkJSTf9-YQ43ew",
+     "dist": 11.9,
+     "off_axis_deg": 14,
+     "fov": 80,
+     "tilt": 100,
+     "heading": 16,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2088088,-88.2430833,3a,80y,16h,100t/data=!3m7!1e1!3m5!1sr3-7BUCXWkJSTf9-YQ43ew!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3Dr3-7BUCXWkJSTf9-YQ43ew%26yaw%3D16!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2088088,
+      "lon": -88.2430833
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-u": {
+   "bearing": 2,
+   "width": 16.1,
+   "road": false,
+   "photos": [
+    {
+     "face": "-u",
+     "file": "fronts/-u.png",
+     "pano": "-i87ut6_D3eofWU0u0SQeg",
+     "dist": 23.0,
+     "off_axis_deg": 1,
+     "fov": 55,
+     "tilt": 96,
+     "heading": 183,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2093273,-88.2430211,3a,55y,183h,96t/data=!3m7!1e1!3m5!1s-i87ut6_D3eofWU0u0SQeg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-6%26panoid%3D-i87ut6_D3eofWU0u0SQeg%26yaw%3D183!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2093273,
+      "lon": -88.2430211
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "+v": {
+   "bearing": 272,
+   "width": 23.4,
+   "road": false,
+   "photos": [
+    {
+     "face": "+v",
+     "file": "fronts/+v.png",
+     "pano": "ZaWBQj_Nr2vXUwtdSyzAxA",
+     "dist": 10.0,
+     "off_axis_deg": 21,
+     "fov": 80,
+     "tilt": 100,
+     "heading": 113,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2090539,-88.243247,3a,80y,113h,100t/data=!3m7!1e1!3m5!1sZaWBQj_Nr2vXUwtdSyzAxA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3DZaWBQj_Nr2vXUwtdSyzAxA%26yaw%3D113!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2090539,
+      "lon": -88.243247
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  },
+  "-v": {
+   "bearing": 92,
+   "width": 23.4,
+   "road": false,
+   "photos": [
+    {
+     "face": "-v",
+     "file": "fronts/-v.png",
+     "pano": "PpfgWSWKlTQtgPPb4n3pVg",
+     "dist": 25.3,
+     "off_axis_deg": 14,
+     "fov": 61,
+     "tilt": 95,
+     "heading": 286,
+     "date": "Sep 2022",
+     "coverage": true,
+     "url": "https://www.google.com/maps/@42.2089526,-88.2426454,3a,61y,286h,95t/data=!3m7!1e1!3m5!1sPpfgWSWKlTQtgPPb4n3pVg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5%26panoid%3DPpfgWSWKlTQtgPPb4n3pVg%26yaw%3D286!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+     "position": {
+      "lat": 42.2089526,
+      "lon": -88.2426454
+     }
+    }
+   ],
+   "coverage": true,
+   "status": "complete",
+   "attempts": 3,
+   "photo_limit": 1
+  }
+ },
+ "captured": "2026-09-20 21:34"
+}

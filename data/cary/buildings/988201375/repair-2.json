@@ -1,0 +1,1020 @@
+{
+ "thread_id": "01a0c1f1-e52e-7411-83ba-a0288e0cd5d6",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 20745,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1446,
+  "reasoning_output_tokens": 516,
+  "total_tokens": 22191
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "",
+  "patch_json": "{\"base_hash\":\"c2bb6aa5081a3a535033ee0a3a738c8748298101b793c6eea8e85beb697d09c3\",\"operations\":[{\"op\":\"replace\",\"path\":\"/volumes/@core_upper/roof\",\"value\":{\"type\":\"hip\",\"ridge\":\"u\",\"pitch\":0.17,\"maxH\":1.45,\"overhang\":0.3}},{\"op\":\"replace\",\"path\":\"/volumes/@west_dormer_north/bottom\",\"value\":6.85},{\"op\":\"replace\",\"path\":\"/volumes/@west_dormer_north/height\",\"value\":7.9},{\"op\":\"replace\",\"path\":\"/volumes/@west_dormer_south/bottom\",\"value\":6.85},{\"op\":\"replace\",\"path\":\"/volumes/@west_dormer_south/height\",\"value\":7.9},{\"op\":\"remove\",\"path\":\"/volumes/@south_dormer_east\"},{\"op\":\"replace\",\"path\":\"/volumes/@south_dormer_west/bottom\",\"value\":6.8},{\"op\":\"replace\",\"path\":\"/volumes/@south_dormer_west/height\",\"value\":7.85},{\"op\":\"replace\",\"path\":\"/volumes/@core_lower/faces/+u/storeys/0/windows/at\",\"value\":[0.49,0.78]},{\"op\":\"remove\",\"path\":\"/volumes/@core_lower/faces/+u/pilasters\"},{\"op\":\"replace\",\"path\":\"/volumes/@core_upper/faces/+u/storeys/0/windows/at\",\"value\":[0.49,0.78]},{\"op\":\"add\",\"path\":\"/volumes/-\",\"value\":{\"id\":\"north_masonry_bay\",\"u\":[15.8,17.15],\"v\":[3.15,6.35],\"bottom\":0,\"height\":6.6,\"wall\":\"#925c49\",\"wallMaterial\":\"brick\",\"roof\":{\"type\":\"gable\",\"ridge\":\"u\",\"pitch\":0.3,\"maxH\":0.95,\"overhang\":0.25,\"gableColor\":\"#687372\"},\"plinth\":{\"height\":0.3,\"color\":\"#c9c5b3\"},\"faces\":{\"+u\":{\"pilasters\":{\"at\":[0.1,0.9],\"w\":0.65,\"d\":0.15,\"height\":6.6,\"color\":\"#c9c5b3\",\"cap\":\"#eee9d9\"},\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":0.95,\"h\":1.9,\"at\":[0.5]}},{\"y\":4.45,\"windows\":{\"type\":\"rect\",\"w\":0.95,\"h\":1.75,\"at\":[0.5]}}]}}}}]}",
+  "cues": [
+   "Two dominant cross-gabled wings with a lower connecting roof.",
+   "Warm brick, gray-green siding and cream trim.",
+   "Repeated west balconies above red residential doors.",
+   "Tall pale masonry bay with a small north-facing gable.",
+   "Off-center south entrance in a pale gabled surround."
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4 sticking?"
+  ],
+  "uncertainties": [
+   "North bay depth is approximate beneath tree cover.",
+   "South dormers simplified to one to retain the ten-volume limit.",
+   "Obstructed south/east review cameras require renderer-side changes; blueprint edits cannot reposition them."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "north_wing_lower",
+    "face": "-v",
+    "role": "principal residential entries",
+    "evidence": [
+     "MAP",
+     "SV4"
+    ],
+    "confidence": "observed"
+   },
+   {
+    "volume": "south_wing_lower",
+    "face": "-v",
+    "role": "principal residential entries",
+    "evidence": [
+     "MAP",
+     "SV4"
+    ],
+    "confidence": "observed"
+   },
+   {
+    "volume": "core_lower",
+    "face": "-u",
+    "role": "secondary south portal",
+    "evidence": [
+     "MAP",
+     "SV2"
+    ],
+    "confidence": "observed"
+   },
+   {
+    "volume": "north_wing_lower",
+    "face": "+v",
+    "role": "secondary residential entry",
+    "evidence": [
+     "MAP",
+     "SV3"
+    ],
+    "confidence": "inferred"
+   },
+   {
+    "volume": "south_wing_lower",
+    "face": "+v",
+    "role": "secondary residential entry",
+    "evidence": [
+     "MAP",
+     "SV3"
+    ],
+    "confidence": "observed"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair/response.json",
+ "started_at": 1789960250.5823638,
+ "finished_at": 1789960301.3925362,
+ "elapsed_seconds": 50.81017231941223,
+ "duration": 50.81017231941223,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/988201375/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/988201375/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/988201375/images/reference-5.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/988201375/renders/repaired-overview.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/988201375/renders/repaired-faces.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201375/20260920-221050-ea1e59-repair/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "repair",
+ "building": "988201375",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 2,
+ "packet_hash": "e24818a9d6c8d3c339986e5821b8a1ce47d6d8e48054a65d236f7d5684f5bb52",
+ "frame": "0c27dfad4ccb0769b4213e6dcaca57ebb3fb2ab2c72cb0ed638fe209d8714108",
+ "timestamp": 1789960301.3941782,
+ "base_hash": "c2bb6aa5081a3a535033ee0a3a738c8748298101b793c6eea8e85beb697d09c3",
+ "blueprint": {
+  "wall": "#925c49",
+  "wallMaterial": "brick",
+  "trim": "#eee9d9",
+  "roofColor": "#797565",
+  "volumes": [
+   {
+    "id": "core_lower",
+    "u": [
+     -16.7,
+     16.7
+    ],
+    "v": [
+     -8.6,
+     8.6
+    ],
+    "bottom": 0,
+    "height": 4.1,
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "plinth": {
+     "height": 0.28,
+     "color": "#b6ae98"
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 1.1,
+         "h": 1.9,
+         "at": [
+          0.49,
+          0.78
+         ]
+        }
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 1.1,
+         "h": 1.35,
+         "at": [
+          0.13,
+          0.3,
+          0.58
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "at": 0.81,
+        "w": 3.2,
+        "d": 0.7,
+        "height": 4.8,
+        "pitch": 0.25,
+        "wall": "#c9c5b3",
+        "roofColor": "#797565",
+        "door": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 2.5,
+         "color": "#a44638",
+         "surround": "#ded9c8",
+         "surroundW": 0.18
+        }
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.7,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.8,
+         "at": [
+          0.46,
+          0.54
+         ]
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.7,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.8,
+         "at": [
+          0.46,
+          0.54
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "core_upper",
+    "u": [
+     -16.7,
+     16.7
+    ],
+    "v": [
+     -8.6,
+     8.6
+    ],
+    "bottom": 4.1,
+    "height": 6.6,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "hip",
+     "ridge": "u",
+     "pitch": 0.17,
+     "maxH": 1.45,
+     "overhang": 0.3
+    },
+    "beltCourses": [
+     {
+      "y": 0.05,
+      "height": 0.16,
+      "color": "#eee9d9"
+     }
+    ],
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.35,
+        "windows": {
+         "type": "rect",
+         "w": 1.15,
+         "h": 1.75,
+         "at": [
+          0.49,
+          0.78
+         ]
+        }
+       }
+      ]
+     },
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.35,
+        "windows": {
+         "type": "rect",
+         "w": 1.15,
+         "h": 1.75,
+         "at": [
+          0.13,
+          0.3,
+          0.58
+         ]
+        }
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.35,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.6,
+         "at": [
+          0.46,
+          0.54
+         ]
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.35,
+        "windows": {
+         "type": "rect",
+         "w": 1.3,
+         "h": 1.6,
+         "at": [
+          0.46,
+          0.54
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "north_wing_lower",
+    "u": [
+     2.7,
+     13.4
+    ],
+    "v": [
+     -10.5,
+     10.3
+    ],
+    "bottom": 0,
+    "height": 4.1,
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "plinth": {
+     "height": 0.28,
+     "color": "#b6ae98"
+    },
+    "faces": {
+     "-v": {
+      "doors": [
+       {
+        "at": 0.19,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       },
+       {
+        "at": 0.81,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.65,
+        "windows": {
+         "type": "rect",
+         "w": 1,
+         "h": 1.9,
+         "at": [
+          0.43,
+          0.57
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "style": "open",
+        "at": 0.19,
+        "w": 3.5,
+        "d": 1.45,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "shed",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       },
+       {
+        "style": "open",
+        "at": 0.81,
+        "w": 3.5,
+        "d": 1.45,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "shed",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       }
+      ]
+     },
+     "+v": {
+      "doors": [
+       {
+        "at": 0.22,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.65,
+        "windows": {
+         "type": "rect",
+         "w": 1.2,
+         "h": 1.9,
+         "at": [
+          0.55,
+          0.79
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "style": "open",
+        "at": 0.22,
+        "w": 3.5,
+        "d": 1.4,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "gable",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "north_wing_upper",
+    "u": [
+     2.7,
+     13.4
+    ],
+    "v": [
+     -10.5,
+     10.3
+    ],
+    "bottom": 4.1,
+    "height": 6.6,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.3,
+     "maxH": 2.4,
+     "overhang": 0.4
+    },
+    "beltCourses": [
+     {
+      "y": 0.05,
+      "height": 0.16,
+      "color": "#eee9d9"
+     }
+    ],
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.3,
+        "windows": {
+         "type": "rect",
+         "w": 0.95,
+         "h": 1.7,
+         "at": [
+          0.19,
+          0.43,
+          0.57,
+          0.81
+         ]
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.05,
+         "h": 1.7,
+         "at": [
+          0.22,
+          0.55,
+          0.79
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "south_wing_lower",
+    "u": [
+     -13.4,
+     -2.7
+    ],
+    "v": [
+     -10.3,
+     10.4
+    ],
+    "bottom": 0,
+    "height": 4.1,
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "plinth": {
+     "height": 0.28,
+     "color": "#b6ae98"
+    },
+    "faces": {
+     "-v": {
+      "doors": [
+       {
+        "at": 0.19,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       },
+       {
+        "at": 0.81,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.65,
+        "windows": {
+         "type": "rect",
+         "w": 1,
+         "h": 1.9,
+         "at": [
+          0.43,
+          0.57
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "style": "open",
+        "at": 0.19,
+        "w": 3.5,
+        "d": 1.45,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "shed",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       },
+       {
+        "style": "open",
+        "at": 0.81,
+        "w": 3.5,
+        "d": 1.45,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "shed",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       }
+      ]
+     },
+     "+v": {
+      "doors": [
+       {
+        "at": 0.78,
+        "w": 1,
+        "h": 2.35,
+        "color": "#a44638"
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.65,
+        "windows": {
+         "type": "rect",
+         "w": 1.2,
+         "h": 1.9,
+         "at": [
+          0.21,
+          0.45
+         ]
+        }
+       }
+      ],
+      "porches": [
+       {
+        "style": "open",
+        "at": 0.78,
+        "w": 3.5,
+        "d": 1.4,
+        "floorH": 3.1,
+        "floorThickness": 0.22,
+        "height": 2.9,
+        "posts": 2,
+        "postColor": "#eee9d9",
+        "floorColor": "#a59b84",
+        "roof": "gable",
+        "pitch": 0.3,
+        "roofColor": "#797565",
+        "railing": true
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "south_wing_upper",
+    "u": [
+     -13.4,
+     -2.7
+    ],
+    "v": [
+     -10.3,
+     10.4
+    ],
+    "bottom": 4.1,
+    "height": 6.6,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.3,
+     "maxH": 2.4,
+     "overhang": 0.4
+    },
+    "beltCourses": [
+     {
+      "y": 0.05,
+      "height": 0.16,
+      "color": "#eee9d9"
+     }
+    ],
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.3,
+        "windows": {
+         "type": "rect",
+         "w": 0.95,
+         "h": 1.7,
+         "at": [
+          0.19,
+          0.43,
+          0.57,
+          0.81
+         ]
+        }
+       }
+      ]
+     },
+     "+v": {
+      "storeys": [
+       {
+        "y": 0.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.05,
+         "h": 1.7,
+         "at": [
+          0.21,
+          0.45,
+          0.78
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "west_dormer_north",
+    "u": [
+     0.65,
+     2.05
+    ],
+    "v": [
+     -6.8,
+     -4.4
+    ],
+    "bottom": 6.85,
+    "height": 7.9,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.35,
+     "maxH": 0.5,
+     "overhang": 0.15
+    },
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.12,
+        "windows": {
+         "type": "rect",
+         "w": 0.8,
+         "h": 0.85,
+         "at": [
+          0.5
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "west_dormer_south",
+    "u": [
+     -2.05,
+     -0.65
+    ],
+    "v": [
+     -6.8,
+     -4.4
+    ],
+    "bottom": 6.85,
+    "height": 7.9,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "gable",
+     "ridge": "v",
+     "pitch": 0.35,
+     "maxH": 0.5,
+     "overhang": 0.15
+    },
+    "faces": {
+     "-v": {
+      "storeys": [
+       {
+        "y": 0.12,
+        "windows": {
+         "type": "rect",
+         "w": 0.8,
+         "h": 0.85,
+         "at": [
+          0.5
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "south_dormer_west",
+    "u": [
+     -14.9,
+     -12.7
+    ],
+    "v": [
+     -3.6,
+     -2.2
+    ],
+    "bottom": 6.8,
+    "height": 7.85,
+    "wall": "#687372",
+    "wallMaterial": "siding",
+    "roof": {
+     "type": "gable",
+     "ridge": "u",
+     "pitch": 0.35,
+     "maxH": 0.5,
+     "overhang": 0.15
+    },
+    "faces": {
+     "-u": {
+      "storeys": [
+       {
+        "y": 0.12,
+        "windows": {
+         "type": "rect",
+         "w": 0.8,
+         "h": 0.85,
+         "at": [
+          0.5
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "north_masonry_bay",
+    "u": [
+     15.8,
+     17.15
+    ],
+    "v": [
+     3.15,
+     6.35
+    ],
+    "bottom": 0,
+    "height": 6.6,
+    "wall": "#925c49",
+    "wallMaterial": "brick",
+    "roof": {
+     "type": "gable",
+     "ridge": "u",
+     "pitch": 0.3,
+     "maxH": 0.95,
+     "overhang": 0.25,
+     "gableColor": "#687372"
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#c9c5b3"
+    },
+    "faces": {
+     "+u": {
+      "pilasters": {
+       "at": [
+        0.1,
+        0.9
+       ],
+       "w": 0.65,
+       "d": 0.15,
+       "height": 6.6,
+       "color": "#c9c5b3",
+       "cap": "#eee9d9"
+      },
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 0.95,
+         "h": 1.9,
+         "at": [
+          0.5
+         ]
+        }
+       },
+       {
+        "y": 4.45,
+        "windows": {
+         "type": "rect",
+         "w": 0.95,
+         "h": 1.75,
+         "at": [
+          0.5
+         ]
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Two dominant cross-gabled wings with a lower connecting roof.",
+  "Warm brick, gray-green siding and cream trim.",
+  "Repeated west balconies above red residential doors.",
+  "Tall pale masonry bay with a small north-facing gable.",
+  "Off-center south entrance in a pale gabled surround."
+ ],
+ "uncertainties": [
+  "North bay depth is approximate beneath tree cover.",
+  "South dormers simplified to one to retain the ten-volume limit.",
+  "Obstructed south/east review cameras require renderer-side changes; blueprint edits cannot reposition them."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "north_wing_lower",
+   "face": "-v",
+   "role": "principal residential entries",
+   "evidence": [
+    "MAP",
+    "SV4"
+   ],
+   "confidence": "observed"
+  },
+  {
+   "volume": "south_wing_lower",
+   "face": "-v",
+   "role": "principal residential entries",
+   "evidence": [
+    "MAP",
+    "SV4"
+   ],
+   "confidence": "observed"
+  },
+  {
+   "volume": "core_lower",
+   "face": "-u",
+   "role": "secondary south portal",
+   "evidence": [
+    "MAP",
+    "SV2"
+   ],
+   "confidence": "observed"
+  },
+  {
+   "volume": "north_wing_lower",
+   "face": "+v",
+   "role": "secondary residential entry",
+   "evidence": [
+    "MAP",
+    "SV3"
+   ],
+   "confidence": "inferred"
+  },
+  {
+   "volume": "south_wing_lower",
+   "face": "+v",
+   "role": "secondary residential entry",
+   "evidence": [
+    "MAP",
+    "SV3"
+   ],
+   "confidence": "observed"
+  }
+ ],
+ "draft_hash": "c8c1ff02a028bd54557f6111f4feaed1a7787807fa3e0ce0e098d1568c112bc6"
+}

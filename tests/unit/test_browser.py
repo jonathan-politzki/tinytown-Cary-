@@ -111,9 +111,9 @@ class PrivateBrowser(unittest.TestCase):
             self.assertEqual(request.call_args.kwargs['browserContextId'], 'context')
             b.close_tab(lease); b.close_tab(lease)
         self.assertEqual(request.call_count, 4)
-        # The page is closed before its context is disposed, and disposal gets the long timeout.
+        # The page is closed before its context is disposed; both get the long timeout.
         self.assertEqual(request.call_args_list[2].args[1:], ('Target.closeTarget',))
-        self.assertEqual(request.call_args_list[2].kwargs, {'targetId': 'target'})
+        self.assertEqual(request.call_args_list[2].kwargs, {'timeout': b.DISPOSE_SECONDS, 'targetId': 'target'})
         self.assertEqual(request.call_args.args[1], 'Target.disposeBrowserContext')
         self.assertEqual(request.call_args.kwargs, {'timeout': b.DISPOSE_SECONDS, 'browserContextId': 'context'})
         self.assertFalse(b.lease_path(lease).exists())
@@ -124,6 +124,21 @@ class PrivateBrowser(unittest.TestCase):
                                                      RuntimeError('Failed to find context with id context')]) as request:
             b.close_tab(self.lease)
         self.assertEqual(request.call_count, 2); self.assertFalse(b.lease_path(self.lease).exists())
+
+    def test_dispose_tolerates_chromes_no_target_found_wording_and_a_slow_page_close(self):
+        # Chrome answers closeTarget for a page that already went away with a
+        # different sentence than getTargetInfo does; and a loaded WebGL page can
+        # outlast the socket timeout while closing. Neither is a failure.
+        self.save_lease()
+        with patch.object(b, 'request', side_effect=[RuntimeError("{'code': -32602, 'message': 'No target found for targetId'}"),
+                                                     {}]) as request:
+            b.close_tab(self.lease)
+        self.assertEqual(request.call_count, 2); self.assertFalse(b.lease_path(self.lease).exists())
+        self.save_lease()
+        with patch.object(b, 'request', side_effect=[websocket.WebSocketTimeoutException('Connection timed out'), {}]) as request:
+            b.close_tab(self.lease)
+        self.assertEqual(request.call_args.args[1], 'Target.disposeBrowserContext')
+        self.assertFalse(b.lease_path(self.lease).exists())
 
     def test_slow_dispose_is_verified_against_the_browser(self):
         # The renderer of a loaded WebGL scene takes seconds to exit: a socket timeout

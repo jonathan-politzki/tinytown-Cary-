@@ -1,9 +1,11 @@
 """Stage 8: route documents, dist staging per deploy target, the dev server, live verification.
 
-A deploy target (sites/deploy.json) is one Cloudflare Worker serving one dist
-directory. Its routes come from the `deploy` placements in sites/*/site.json:
-the site at `/` is the target's root; other sites get `/<route>.html`
-documents that pin the shared viewer to their scene.
+A deploy target (sites/deploy.json) is one static host serving one dist
+directory: a Cloudflare Worker (`wrangler`: its config, which reads `_headers`)
+or a Vercel project (`vercel`: a headers file staged as dist/<target>/vercel.json).
+Its routes come from the `deploy` placements in sites/*/site.json: the site at
+`/` is the target's root; other sites get `/<route>.html` documents that pin the
+shared viewer to their scene.
 
 Standard library only: Cloudflare runs `python3 -m tinytown stage` with bare python3.
 """
@@ -28,7 +30,15 @@ from . import config
 from .bake import bake, stamp_viewer, versioned_html
 from .paths import ROOT, SITE_NAME, SitePaths
 
-ICONS = ('favicon.ico', 'favicon.png', 'favicon.svg', 'apple-touch-icon.png')
+# The icon set a document links, with the attributes each file is served under.
+ICON_LINKS = {
+    'favicon.ico': '<link rel="icon" href="{href}" sizes="16x16 32x32 48x48" />',
+    'favicon.png': '<link rel="icon" href="{href}" type="image/png" sizes="64x64" />',
+    'favicon.svg': '<link rel="icon" href="{href}" type="image/svg+xml" sizes="any" />',
+    'apple-touch-icon.png': '<link rel="apple-touch-icon" href="{href}" sizes="180x180" />',
+}
+ICONS = tuple(ICON_LINKS)
+ICON_LINK = re.compile(r'\n *<link rel="(?:icon|apple-touch-icon)"[^>]*>')
 SOCIAL_PREVIEW = 'social-preview.jpg'
 SITE_ASSETS = ICONS + (SOCIAL_PREVIEW,)
 HEADERS = '_headers'
@@ -46,6 +56,20 @@ def site_asset(site, name, root=ROOT):
         if path.is_file():
             return path
     return None
+
+
+def icon_set(site, root=ROOT):
+    """(icon names, whether they are the site's own) for the documents of `site`.
+
+    One town's mark is never mixed with another's: a site with any icon of its
+    own links only the ones it has, and a site with none falls back to the
+    repository's default mark as a whole set. `town brand <site>` writes a
+    complete set.
+    """
+    own = [name for name in ICONS if (SitePaths(site, root).site_dir / name).is_file()]
+    if own:
+        return own, True
+    return [name for name in ICONS if (Path(root) / name).is_file()], False
 
 
 def _origin(domain):
@@ -76,7 +100,11 @@ def render_document(site, root=ROOT, *, domain=None, page_path='/', asset_prefix
     esc = partial(html_escape.escape, quote=True)
     title, description = esc(settings['title']), esc(settings['description'])
     document = re.sub(r'<title>.*?</title>', lambda _: f'<title>{title}</title>', document)
-    document = document.replace('<head>', f'<head>\n  <meta name="town-site" content="{site}" />')
+    # The site the viewer loads, and what it needs to know before it fetches
+    # anything (config.viewer_settings): no site name is hard-coded in src/.
+    viewer = esc(json.dumps(config.viewer_settings(site, root), sort_keys=True, separators=(',', ':')))
+    document = document.replace('<head>', f'<head>\n  <meta name="town-site" content="{site}" />'
+                                          f'\n  <meta name="town-viewer" content="{viewer}" />')
     # Replace the viewer's default social metadata. Absolute canonical URLs
     # are emitted only when a deployment domain is configured.
     document = re.sub(r'^.*<(?:meta (?:name="(?:description|twitter:[^"]+)"|property="og:[^"]+")|link rel="canonical")[^>]*>\s*\n',
@@ -107,11 +135,11 @@ def render_document(site, root=ROOT, *, domain=None, page_path='/', asset_prefix
         for dimension in ('width', 'height'):
             if dimension in image:
                 tags.append(f'<meta property="og:image:{dimension}" content="{int(image[dimension])}" />')
+    icons, own = icon_set(site, root)
+    icon_prefix = asset_prefix if own else ''
+    tags += [ICON_LINKS[name].format(href=f'{icon_prefix}/{name}') for name in icons]
+    document = ICON_LINK.sub('', document)
     document = document.replace('</title>', '</title>\n  ' + '\n  '.join(tags), 1)
-    if asset_prefix:
-        for name in ICONS:
-            if (paths.site_dir / name).is_file():
-                document = document.replace(f'href="/{name}"', f'href="{asset_prefix}/{name}"')
     return document
 
 
@@ -157,8 +185,9 @@ def preview_document(url, root=ROOT, target=None):
     """The dev server's document for a request URL, or None to serve a file.
 
     Named routes serve their route document; `/?site=<name>` keeps query-based
-    authoring previews (a route document without the site pin for deployed
-    sites, the plain viewer for anything else).
+    authoring previews: a route document without the site pin for a site this
+    target deploys, its own document (title, icons, viewer settings) for any
+    other configured site, and the plain viewer for a name with no site.json.
     """
     root = Path(root)
     try:
@@ -181,9 +210,39 @@ def preview_document(url, root=ROOT, target=None):
                 raise ValueError('Invalid authoring site name')
             if site in table.values():
                 return route_document(site, root, target, fixed_site=False)
-            return versioned_html(root)[1].replace('<head>', '<head>\n  <base href="/" />', 1)
+            document = (render_document(site, root, asset_prefix='/sites/' + site)
+                        if site in config.all_sites(root) else versioned_html(root)[1])
+            return document.replace('<head>', '<head>\n  <base href="/" />', 1)
     site = table.get(path)
     return route_document(site, root, target) if site else None
+
+
+# --- cache rules --------------------------------------------------------------
+# Every document a target serves must revalidate; the fingerprinted assets
+# beside them are immutable. The document rules are generated from the target's
+# routes, so a new miniature (or a new alias) can never be left out of them,
+# and the checked-in headers file holds only the rules for baked assets.
+
+def document_routes(table):
+    """The URLs whose documents a host must not cache, for one route table."""
+    return ['/', '/index.html'] + sorted(route for route in table if route != '/')
+
+
+def headers_file(table, shared):
+    """`_headers` (Cloudflare): generated document rules above the shared asset rules."""
+    rules = ''.join(f'{route}\n  Cache-Control: no-cache\n' for route in document_routes(table))
+    return ('# Route documents, generated by `town stage` from sites/*/site.json.\n'
+            + rules + shared.decode()).encode()
+
+
+def vercel_file(table, shared):
+    """`vercel.json` (Vercel ignores `_headers`): the same rules in its own schema."""
+    document = json.loads(shared)
+    rules = [{'source': route, 'headers': [{'key': 'Cache-Control', 'value': 'no-cache'}]}
+             for route in document_routes(table)]
+    document['headers'] = rules + [rule for rule in document.get('headers', [])
+                                   if rule.get('source') not in set(document_routes(table))]
+    return (json.dumps(document, indent=2) + '\n').encode()
 
 
 # --- dist staging -------------------------------------------------------------
@@ -262,7 +321,8 @@ def precheck(sites, root=ROOT):
 def build(target, root=ROOT, check=True):
     """Stage dist/<target> for one deploy target; returns the destination directory."""
     root = Path(root).resolve()
-    destination = root / config.deploy_targets(root)[target]['dist']
+    target_config = config.deploy_targets(root)[target]
+    destination = root / target_config['dist']
     table = config.routes(target, root)
     root_name = table['/']
     sites = config.sites_for_target(target, root)
@@ -286,6 +346,9 @@ def build(target, root=ROOT, check=True):
             (staged / name).write_text(route_document(site, root, target))
         for site in sites:
             copy_scene(root, staged, site)
+            if not icon_set(site, root)[1]:
+                print(f'{site}: no mark of its own; its documents link the default one '
+                      f'(town brand {site})')
             for name in SITE_ASSETS:
                 source = site_asset(site, name, root)
                 if source is None:
@@ -299,7 +362,10 @@ def build(target, root=ROOT, check=True):
         headers = site_asset(root_name, HEADERS, root)
         if headers is None:
             raise FileNotFoundError(HEADERS)
-        (staged / HEADERS).write_bytes(headers.read_bytes())
+        (staged / HEADERS).write_bytes(headers_file(table, headers.read_bytes()))
+        if target_config.get('vercel'):
+            # Vercel ignores _headers; the target's headers file travels as vercel.json.
+            (staged / 'vercel.json').write_bytes(vercel_file(table, (root / target_config['vercel']).read_bytes()))
         previous = Path(tmp) / 'previous'
         if destination.exists():
             destination.rename(previous)
@@ -331,11 +397,29 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-Length', str(len(content)))
             self.end_headers()
             return io.BytesIO(content)
+        # The root site's own icons and preview are published at the dist root;
+        # serve them there in development too, so the document a browser gets
+        # here is byte-for-byte the one `town stage` writes.
+        asset = self.root_site_asset(root, urlsplit(self.path).path.lstrip('/'))
+        if asset is not None:
+            self.path = '/' + Path(asset).relative_to(root).as_posix()
         # Match the deployment host's clean paths when serving a dist directory.
         path = urlsplit(self.path).path.rstrip('/')
         if path and not Path(path).suffix and Path(self.translate_path(path + '.html')).is_file():
             self.path = path + '.html'
         return super().send_head()
+
+    @staticmethod
+    def root_site_asset(root, name):
+        """sites/<root site>/<name> for an identity file requested at the root, else None."""
+        if name not in SITE_ASSETS:
+            return None
+        try:
+            site = config.root_site(default_target(root), root)
+        except (FileNotFoundError, KeyError, StopIteration, ValueError):
+            return None
+        own = SitePaths(site, root).site_dir / name
+        return own if own.is_file() else None
 
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')

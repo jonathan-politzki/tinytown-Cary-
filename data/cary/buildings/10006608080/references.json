@@ -1,0 +1,304 @@
+{
+ "version": 3,
+ "id": "10006608080",
+ "name": "340 West Krenz Avenue",
+ "location": "Cary, Illinois",
+ "address": "340 West Krenz Avenue",
+ "source_tags": {
+  "building": "yes"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 21.015,
+  "depth_v": 19.847,
+  "footprint_uv": [
+   [
+    10.5,
+    9.9
+   ],
+   [
+    -10.5,
+    9.9
+   ],
+   [
+    -10.5,
+    -9.9
+   ],
+   [
+    10.5,
+    -9.9
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 88,
+    "compass": "E",
+    "left_bearing": 178,
+    "right_bearing": 358,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 166.6
+    },
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 268,
+    "compass": "W",
+    "left_bearing": 358,
+    "right_bearing": 178,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 178,
+    "compass": "S",
+    "left_bearing": 268,
+    "right_bearing": 88,
+    "nearest_road_outward": {
+     "name": "Krenz Avenue",
+     "circular": false,
+     "distance_m": 95.6
+    },
+    "nearest_road_hint": true
+   },
+   "-v": {
+    "bearing": 358,
+    "compass": "N",
+    "left_bearing": 88,
+    "right_bearing": 268,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 120.3
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2104692,
+    "lon": -88.2455352,
+    "position_xz": [
+     -332.72,
+     -163.55
+    ],
+    "position_uv": [
+     32.05,
+     4.61
+    ],
+    "looking_bearing": 280.0,
+    "looking_compass": "W",
+    "image_left_bearing": 190.0,
+    "image_right_bearing": 10.0,
+    "target_center_offset_deg": -3.5,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 12,
+    "fov": 61,
+    "tilt": 92,
+    "near_road": {
+     "name": "North Seebert Street",
+     "circular": false,
+     "distance_m": 82.6
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2104692,-88.2455352,251a,61y,280h,92t/data=!3m7!1e1!3m5!1sYkJwFejqQ2qqd-NaLRUDJw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-2%26panoid%3DYkJwFejqQ2qqd-NaLRUDJw%26yaw%3D280!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "YkJwFejqQ2qqd-NaLRUDJw",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "ae6b8c44bdd1fe52abc95f3aa4432e81c49cd9bfaf440d706fd3bce5f2f20a64"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2101271,
+    "lon": -88.246591,
+    "position_xz": [
+     -419.78,
+     -125.47
+    ],
+    "position_uv": [
+     -56.11,
+     40.06
+    ],
+    "looking_bearing": 47.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 317.0,
+    "image_right_bearing": 137.0,
+    "target_center_offset_deg": 5.8,
+    "geometrically_facing_camera": [
+     "-u",
+     "+v"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 41,
+    "fov": 55,
+    "tilt": 90,
+    "near_road": {
+     "name": "North Praire Street",
+     "circular": false,
+     "distance_m": 17.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2101271,-88.246591,252a,55y,47h,90t/data=!3m7!1e1!3m5!1syAU8iMwv1-um3DwF5cVTdA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DyAU8iMwv1-um3DwF5cVTdA%26yaw%3D47!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "yAU8iMwv1-um3DwF5cVTdA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "2dada1926a361ad6810059758849099b5d7f680753331f4b6cc0bf179b26d817"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2102919,
+    "lon": -88.245512,
+    "position_xz": [
+     -330.81,
+     -143.81
+    ],
+    "position_uv": [
+     33.37,
+     24.39
+    ],
+    "looking_bearing": 292.0,
+    "looking_compass": "WNW",
+    "image_left_bearing": 202.0,
+    "image_right_bearing": 22.0,
+    "target_center_offset_deg": 12.4,
+    "geometrically_facing_camera": [
+     "+u",
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 67,
+    "fov": 55,
+    "tilt": 91,
+    "near_road": {
+     "name": "North Seebert Street",
+     "circular": false,
+     "distance_m": 70.1
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2102919,-88.245512,252a,55y,292h,91t/data=!3m7!1e1!3m5!1sH2opd2l1cIA3v_I4uoXkDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DH2opd2l1cIA3v_I4uoXkDw%26yaw%3D292!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "H2opd2l1cIA3v_I4uoXkDw",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "7b41c1fca62c8558dfb6da1781ca36ae7e295c62e220a6c7e814492fcb918f19"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2107462,
+    "lon": -88.245556,
+    "position_xz": [
+     -334.44,
+     -194.39
+    ],
+    "position_uv": [
+     31.26,
+     -26.27
+    ],
+    "looking_bearing": 241.0,
+    "looking_compass": "WSW",
+    "image_left_bearing": 151.0,
+    "image_right_bearing": 331.0,
+    "target_center_offset_deg": -12.8,
+    "geometrically_facing_camera": [
+     "+u",
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 62,
+    "fov": 55,
+    "tilt": 91,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 64.1
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2107462,-88.245556,252a,55y,241h,91t/data=!3m7!1e1!3m5!1sXfqnd-NNGIcSh8v8ViY_Ww!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DXfqnd-NNGIcSh8v8ViY_Ww%26yaw%3D241!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "Xfqnd-NNGIcSh8v8ViY_Ww",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "048ff868c37631e17c33e84215cdbf67202b858a9b6b0c87ad2145c7113b466b"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "ecf9c858b5185d44fa1b23b3bdec48459686a6cf506e59aa28f9f03201ab1242"
+  }
+ ],
+ "search_query": "340 West Krenz Avenue Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

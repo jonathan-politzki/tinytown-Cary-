@@ -162,10 +162,11 @@ class FakeReferences:
     def packet(self, paths, building, name, location, web_records, *, image_search='bing', max_web=1, extra_views=0):
         bid = str(building['id'])
         b = paths.building(bid)
-        image = b.dir / 'reference-1.jpg'
+        # Paths are relative to the building's directory, as references.packet writes them.
+        image = b.dir / 'images' / 'reference-1.jpg'
         image.parent.mkdir(parents=True, exist_ok=True)
         image.write_bytes(b'jpg')
-        record = {'id': 'SV1', 'kind': 'street-view', 'path': paths.relative(image), 'caption': 'SV1: requested face -v',
+        record = {'id': 'SV1', 'kind': 'street-view', 'path': 'images/reference-1.jpg', 'caption': 'SV1: requested face -v',
                   'camera': {'status': 'located'}}
         return {'version': 3, 'id': bid, 'name': name, 'location': location, 'address': building.get('addr'),
                 'source_tags': building.get('tags', {}),
@@ -314,6 +315,9 @@ class Authoring(Fixture):
         # the review saw the reference image, then the overview and the four-face sheet
         review_call = next(c for c in self.model.calls if c['role'] == 'review')
         self.assertEqual([Path(p).name for p in review_call['images']], ['reference-1.jpg', 'initial-overview.png', 'initial-faces.jpg'])
+        # Every attached image exists: the packet's building-relative paths resolve, and
+        # the model is never handed a path the Codex CLI would silently ignore.
+        self.assertTrue(all(Path(p).is_file() for p in review_call['images']), review_call['images'])
         self.assertIn('"actual_doors"', review_call['prompt'])
         self.assertEqual(result['accepted'], ['1'])
         self.assertEqual(result['buildings']['1']['status'], 'accepted')
@@ -666,3 +670,26 @@ class Accepting(Fixture):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class PacketImages(unittest.TestCase):
+    def test_image_path_prefers_the_building_directory_and_describe_refuses_missing_attachments(self):
+        from tinytown import author as A
+        from tinytown.paths import SitePaths
+        import tempfile
+        with tempfile.TemporaryDirectory() as temp:
+            paths = SitePaths('trial', Path(temp))
+            b = paths.building('7')
+            (b.dir / 'images').mkdir(parents=True)
+            (b.dir / 'images' / 'orientation.png').write_bytes(b'png')
+            self.assertEqual(A.image_path(paths, 'images/orientation.png', b), b.dir / 'images' / 'orientation.png')
+            self.assertEqual(A.image_path(paths, 'images/absent.png', b), b.dir / 'images' / 'absent.png')
+            run = A.Run.__new__(A.Run)
+            run.paths = paths
+            packet = {'id': '7', 'attachments': [{'id': 'MAP', 'kind': 'orientation-map', 'path': 'images/orientation.png', 'caption': 'map'}]}
+            description, images = run.describe(packet)
+            self.assertEqual(images, [b.dir / 'images' / 'orientation.png'])
+            self.assertIn('"attached_references":[{"id":"MAP"', description)
+            packet['attachments'].append({'id': 'STREET-VIEWS', 'kind': 'street-view-atlas', 'path': 'images/street-views.jpg', 'caption': 'sheet'})
+            with self.assertRaises(FileNotFoundError):
+                run.describe(packet)

@@ -87,15 +87,16 @@ function previewDocument(root, url) {
   });
 }
 
-export async function withBrowser(root, run, { route, width = 1440, height = 960 } = {}) {
+// url -> the document `town serve` would answer with ({document} or {error}),
+// or null when the request is an ordinary file. Resolved once per (path,
+// ?site=) and only where the dev server would: a checkout with the deploy
+// stage and its target table. Any test server can serve the real documents
+// through this, so a page under test carries the metadata a visitor's does.
+export function routeDocuments(root) {
   root = resolve(root);
-  let record, ws;
-  const pending = new Map();
-  // Route documents are resolved once per (path, ?site=) and only where the dev
-  // server would: a checkout with the deploy stage and its target table.
   const checkout = existsSync(resolve(root, 'tinytown/deploy.py')) && existsSync(resolve(root, 'sites/deploy.json'));
   const documents = new Map();
-  const routeDocument = url => {
+  return url => {
     const clean = url.pathname.replace(/\/$/, '') || '/';
     if (!checkout || (extname(clean) && !clean.endsWith('.html'))) return null;
     const site = url.searchParams.get('site');
@@ -103,6 +104,13 @@ export async function withBrowser(root, run, { route, width = 1440, height = 960
     if (!documents.has(key)) documents.set(key, previewDocument(root, site === null ? clean : `${clean}?site=${encodeURIComponent(site)}`));
     return documents.get(key);
   };
+}
+
+export async function withBrowser(root, run, { route, width = 1440, height = 960 } = {}) {
+  root = resolve(root);
+  let record, ws;
+  const pending = new Map();
+  const routeDocument = routeDocuments(root);
   const server = createServer(async (req, res) => {
     try {
       if (route && await route(req, res)) return;

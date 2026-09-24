@@ -1,0 +1,194 @@
+{
+ "version": 3,
+ "id": "1374307058",
+ "name": "Cary Ale House",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "commercial",
+  "building:levels": "2"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 23.365,
+  "depth_v": 16.058,
+  "footprint_uv": [
+   [
+    -11.5,
+    -8.0
+   ],
+   [
+    11.7,
+    -8.0
+   ],
+   [
+    11.4,
+    7.8
+   ],
+   [
+    -11.7,
+    8.0
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 182,
+    "compass": "S",
+    "left_bearing": 272,
+    "right_bearing": 92,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 30.8
+    },
+    "nearest_road_hint": true
+   },
+   "-u": {
+    "bearing": 2,
+    "compass": "N",
+    "left_bearing": 92,
+    "right_bearing": 272,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 115.5
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 272,
+    "compass": "W",
+    "left_bearing": 2,
+    "right_bearing": 182,
+    "nearest_road_outward": {
+     "name": "North Seebert Street",
+     "circular": false,
+     "distance_m": 129.5
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 92,
+    "compass": "E",
+    "left_bearing": 182,
+    "right_bearing": 2,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 191.9
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: orientation unverified. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "5818b7c1280b38504c4f1d1e284662625e1c0c4e2f44109f1a35fc42f370520b"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "e06be900551123bafef239414dafbeda08cf12126714cc5f3097a9b3ae84b323"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "65b292ca7c29b9f0e44552a3c09947fced6eb9b25cedd4805b5d445538ed4c3c"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "bec78d31413b55cceb7b0c43f4584b4dc1a15b69bcea4bae79b2b363fad734ac"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": null,
+   "caption": "Aerial: orientation unverified. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "4a42d2cbef47cda9f98f1741acaf5e9b58154d1f352a4f4fb1215258a2cdbb07"
+  }
+ ],
+ "search_query": "Cary Ale House Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

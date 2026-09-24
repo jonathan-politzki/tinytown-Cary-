@@ -1,0 +1,313 @@
+{
+ "version": 3,
+ "id": "1367322773",
+ "name": "Structure 1367322773",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "commercial"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 63.603,
+  "depth_v": 19.452,
+  "footprint_uv": [
+   [
+    31.3,
+    5.3
+   ],
+   [
+    -4.1,
+    4.9
+   ],
+   [
+    -4.6,
+    9.1
+   ],
+   [
+    -31.8,
+    9.7
+   ],
+   [
+    -31.2,
+    -9.7
+   ],
+   [
+    31.8,
+    -9.7
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 359,
+    "compass": "N",
+    "left_bearing": 89,
+    "right_bearing": 269,
+    "nearest_road_outward": {
+     "name": "East Pearl Street",
+     "circular": false,
+     "distance_m": 74.3
+    },
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 179,
+    "compass": "S",
+    "left_bearing": 269,
+    "right_bearing": 89,
+    "nearest_road_outward": {
+     "name": "South Northwest Highway",
+     "circular": false,
+     "distance_m": 68.1
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 89,
+    "compass": "E",
+    "left_bearing": 179,
+    "right_bearing": 359,
+    "nearest_road_outward": {
+     "name": "North 2nd Street",
+     "circular": false,
+     "distance_m": 101.8
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 269,
+    "compass": "W",
+    "left_bearing": 359,
+    "right_bearing": 179,
+    "nearest_road_outward": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 31.3
+    },
+    "nearest_road_hint": true
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2098486,
+    "lon": -88.238027,
+    "position_xz": [
+     286.36,
+     -94.47
+    ],
+    "position_uv": [
+     19.99,
+     -20.51
+    ],
+    "looking_bearing": 59.0,
+    "looking_compass": "ENE",
+    "image_left_bearing": 329.0,
+    "image_right_bearing": 149.0,
+    "target_center_offset_deg": 74.3,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 120,
+    "fov": 57,
+    "tilt": 96,
+    "near_road": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 20.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2098486,-88.238027,251a,57y,59h,96t/data=!3m7!1e1!3m5!1sZjyJqMjU2Szr7mjhsW1xKA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-6%26panoid%3DZjyJqMjU2Szr7mjhsW1xKA%26yaw%3D59!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "ZjyJqMjU2Szr7mjhsW1xKA",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "66d7c7ee37d30fd12e55a3e5986c57ddc11d2160bc9f3efa54ddebc53033235e"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2093692,
+    "lon": -88.2378006,
+    "position_xz": [
+     305.03,
+     -41.1
+    ],
+    "position_uv": [
+     -33.69,
+     -2.77
+    ],
+    "looking_bearing": 55.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 325.0,
+    "image_right_bearing": 145.0,
+    "target_center_offset_deg": -51.3,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 56,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 38.5
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2093692,-88.2378006,250a,80y,55h,100t/data=!3m7!1e1!3m5!1sNpCgt_4-zKDX-zm8Ze_tFg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3DNpCgt_4-zKDX-zm8Ze_tFg%26yaw%3D55!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "NpCgt_4-zKDX-zm8Ze_tFg",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "f8e87ca4e756a7f2406254074b8968fe67212c5105948ea31b1f40b5a63d9af3"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2097167,
+    "lon": -88.2376283,
+    "position_xz": [
+     319.24,
+     -79.78
+    ],
+    "position_uv": [
+     4.75,
+     12.11
+    ],
+    "looking_bearing": 206.0,
+    "looking_compass": "SSW",
+    "image_left_bearing": 116.0,
+    "image_right_bearing": 296.0,
+    "target_center_offset_deg": 41.6,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 63,
+    "fov": 80,
+    "tilt": 100,
+    "near_road": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 53.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2097167,-88.2376283,250a,80y,206h,100t/data=!3m7!1e1!3m5!1sbBqSpAbgpUD3mIegcjGRsw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10%26panoid%3DbBqSpAbgpUD3mIegcjGRsw%26yaw%3D206!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "bBqSpAbgpUD3mIegcjGRsw",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "bd03d3b3144eb78086f587b2dcac78eafdac7f41016094e7136b204a0372a903"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2097113,
+    "lon": -88.2382911,
+    "position_xz": [
+     264.59,
+     -79.18
+    ],
+    "position_uv": [
+     5.09,
+     -42.55
+    ],
+    "looking_bearing": 98.0,
+    "looking_compass": "E",
+    "image_left_bearing": 8.0,
+    "image_right_bearing": 188.0,
+    "target_center_offset_deg": -2.2,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 9,
+    "fov": 80,
+    "tilt": 94,
+    "near_road": {
+     "name": "North 1st Street",
+     "circular": false,
+     "distance_m": 1.7
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2097113,-88.2382911,250a,80y,98h,94t/data=!3m7!1e1!3m5!1suowzwVq8iQu31FVSWlsxVg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4%26panoid%3DuowzwVq8iQu31FVSWlsxVg%26yaw%3D98!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "uowzwVq8iQu31FVSWlsxVg",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "d24b8f947cb6345a86a6b73334946a8a64b41ed3c631aadf8ba854bc36eb49e9"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "ab536d171156ecc6a8d3bdd9c2d5ba7de35c9bd4e5dc78dc538cbf218fc65a24"
+  }
+ ],
+ "search_query": "Structure 1367322773 Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

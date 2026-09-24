@@ -1,0 +1,322 @@
+{
+ "version": 3,
+ "id": "751189889",
+ "name": "Structure 751189889",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "yes"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 60.846,
+  "depth_v": 29.615,
+  "footprint_uv": [
+   [
+    30.4,
+    4.6
+   ],
+   [
+    30.4,
+    11.2
+   ],
+   [
+    -1.7,
+    11.3
+   ],
+   [
+    -1.7,
+    14.8
+   ],
+   [
+    -30.4,
+    14.8
+   ],
+   [
+    -30.4,
+    -14.8
+   ],
+   [
+    9.6,
+    -14.8
+   ],
+   [
+    9.6,
+    4.7
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 2,
+    "compass": "N",
+    "left_bearing": 92,
+    "right_bearing": 272,
+    "nearest_road_outward": {
+     "name": "Park Avenue",
+     "circular": false,
+     "distance_m": 108.2
+    },
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 182,
+    "compass": "S",
+    "left_bearing": 272,
+    "right_bearing": 92,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 29.1
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 92,
+    "compass": "E",
+    "left_bearing": 182,
+    "right_bearing": 2,
+    "nearest_road_outward": {
+     "name": "Park Avenue",
+     "circular": false,
+     "distance_m": 190.6
+    },
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 272,
+    "compass": "W",
+    "left_bearing": 2,
+    "right_bearing": 182,
+    "nearest_road_outward": {
+     "name": "Borden Avenue",
+     "circular": false,
+     "distance_m": 15.5
+    },
+    "nearest_road_hint": true
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2109529,
+    "lon": -88.2428434,
+    "position_xz": [
+     -110.77,
+     -217.4
+    ],
+    "position_uv": [
+     53.3,
+     -28.14
+    ],
+    "looking_bearing": 131.0,
+    "looking_compass": "SE",
+    "image_left_bearing": 41.0,
+    "image_right_bearing": 221.0,
+    "target_center_offset_deg": 22.8,
+    "geometrically_facing_camera": [
+     "+u",
+     "-v"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 51,
+    "fov": 56,
+    "tilt": 91,
+    "near_road": {
+     "name": "Borden Avenue",
+     "circular": false,
+     "distance_m": 2.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2109529,-88.2428434,3a,56y,131h,91t/data=!3m7!1e1!3m5!1s1E7lMXeO4lq5220LEHlFHQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3D1E7lMXeO4lq5220LEHlFHQ%26yaw%3D131!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "1E7lMXeO4lq5220LEHlFHQ",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "4d4bb6a63eb5fb66a4da23f3c1f191e8820d335679ca7cba0b918682746a453d"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2099785,
+    "lon": -88.2425042,
+    "position_xz": [
+     -82.8,
+     -108.93
+    ],
+    "position_uv": [
+     -54.32,
+     2.94
+    ],
+    "looking_bearing": 355.0,
+    "looking_compass": "N",
+    "image_left_bearing": 265.0,
+    "image_right_bearing": 85.0,
+    "target_center_offset_deg": 3.6,
+    "geometrically_facing_camera": [
+     "-u"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 7,
+    "fov": 75,
+    "tilt": 91,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 6.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2099785,-88.2425042,3a,75y,355h,91t/data=!3m7!1e1!3m5!1s3a0tevaPqKLLjNALWc_TUQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3D3a0tevaPqKLLjNALWc_TUQ%26yaw%3D355!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "3a0tevaPqKLLjNALWc_TUQ",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "804c2b4162c1bebaf7c7e6934068283a895373ea305a41b85a465f4a56cb8950"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.210215,
+    "lon": -88.2420196,
+    "position_xz": [
+     -42.84,
+     -135.25
+    ],
+    "position_uv": [
+     -26.85,
+     42.12
+    ],
+    "looking_bearing": 316.0,
+    "looking_compass": "NW",
+    "image_left_bearing": 226.0,
+    "image_right_bearing": 46.0,
+    "target_center_offset_deg": -11.8,
+    "geometrically_facing_camera": [
+     "+v"
+    ],
+    "requested_face": "+v",
+    "off_axis_deg": 45,
+    "fov": 80,
+    "tilt": 91,
+    "near_road": {
+     "name": "Short Street",
+     "circular": false,
+     "distance_m": 48.0
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.210215,-88.2420196,3a,80y,316h,91t/data=!3m7!1e1!3m5!1snQebOQNpzEq4cswyssjFYA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DnQebOQNpzEq4cswyssjFYA%26yaw%3D316!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "nQebOQNpzEq4cswyssjFYA",
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "4ed3d9d71622acc6f5e49501128d830cb415fc446d04764fe9700d4b887d951a"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2104862,
+    "lon": -88.2428376,
+    "position_xz": [
+     -110.29,
+     -165.44
+    ],
+    "position_uv": [
+     1.38,
+     -26.17
+    ],
+    "looking_bearing": 99.0,
+    "looking_compass": "E",
+    "image_left_bearing": 9.0,
+    "image_right_bearing": 189.0,
+    "target_center_offset_deg": -4.3,
+    "geometrically_facing_camera": [
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 7,
+    "fov": 80,
+    "tilt": 93,
+    "near_road": {
+     "name": "Borden Avenue",
+     "circular": false,
+     "distance_m": 4.2
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2104862,-88.2428376,3a,80y,99h,93t/data=!3m7!1e1!3m5!1soJFfYaamQ1idQBhezpA6mw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-3%26panoid%3DoJFfYaamQ1idQBhezpA6mw%26yaw%3D99!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "oJFfYaamQ1idQBhezpA6mw",
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "b722d7ab3b3c4b855cf9387ecf4fb68d8ed6250992c97318f65debc0e1a05557"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "4865b0b9c3c5ceaff6b9f80948709401f9e847f06ef9ad0609228491ad874fe3"
+  }
+ ],
+ "search_query": "Structure 751189889 Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

@@ -270,15 +270,18 @@ def status(paths, bid, overrides=None, max_repairs=MAX_REPAIRS):
     return base
 
 
-def image_path(paths, name):
-    """A packet image path: absolute, or relative to data/<site>/ (falling back to the repo root)."""
+def image_path(paths, name, building=None):
+    """A packet image path: absolute, or relative to the building's directory
+    (how references.packet writes them: images/orientation.png), then
+    data/<site>/, then the repo root."""
     path = Path(name)
     if path.is_absolute():
         return path
-    for base in (paths.data, paths.root):
+    bases = ([building.dir] if building is not None else []) + [paths.data, paths.root]
+    for base in bases:
         if (base / path).exists():
             return base / path
-    return paths.data / path
+    return bases[0] / path
 
 
 def render_record(image):
@@ -496,7 +499,15 @@ class Run:
                                               for r in attachments]
         description['photo_evidence'] = [{k: r[k] for k in ('id', 'kind', 'caption', 'camera', 'north_up', 'page_url') if k in r}
                                          for r in packet.get('images', [])]
-        return json.dumps(description, separators=(',', ':')), [image_path(self.paths, r['path']) for r in attachments]
+        b = self.paths.building(str(packet['id'])) if packet.get('id') is not None else None
+        images = [image_path(self.paths, r['path'], b) for r in attachments]
+        # The Codex CLI ignores an --image path that does not exist, and the
+        # model then judges a packet that promises a map and a Street View
+        # atlas it never received. Fail here instead of spending the call.
+        missing = [str(path) for path in images if not path.is_file()]
+        if missing:
+            raise FileNotFoundError('reference packet attachments missing on disk: ' + ', '.join(missing))
+        return json.dumps(description, separators=(',', ':')), images
 
     def orientation(self, bid, packet, blueprint):
         last = last_response(self.paths.building(bid), self.max_repairs) or {}

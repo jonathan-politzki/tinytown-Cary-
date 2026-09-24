@@ -1,0 +1,149 @@
+{
+ "wall": "#887057",
+ "wallMaterial": "brick",
+ "trim": "#baa98a",
+ "roofColor": "#85877b",
+ "volumes": [
+  {
+   "id": "main",
+   "u": [
+    -9.25,
+    9.25
+   ],
+   "v": [
+    -13.3,
+    13.3
+   ],
+   "height": 4.4,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "plinth": {
+    "height": 0.22,
+    "color": "#a39a84"
+   },
+   "cornice": {
+    "height": 0.14,
+    "overhang": 0.06,
+    "color": "#82765f",
+    "dentils": false
+   },
+   "faces": {
+    "-u": {
+     "doors": [
+      {
+       "at": 0.235,
+       "type": "double",
+       "w": 1.85,
+       "h": 3.15,
+       "color": "#263633",
+       "surround": "#c4b496",
+       "surroundW": 0.25
+      }
+     ],
+     "storeys": [
+      {
+       "y": 0.25,
+       "windows": {
+        "type": "shop",
+        "w": 1.45,
+        "h": 2.9,
+        "at": [
+         0.15,
+         0.32
+        ],
+        "trim": "#c4b496",
+        "glass": "#293a37",
+        "mullions": false,
+        "interior": false
+       }
+      },
+      {
+       "y": 1.3,
+       "windows": {
+        "type": "rect",
+        "w": 1.15,
+        "h": 1.6,
+        "at": [
+         0.875
+        ],
+        "trim": "#796a53",
+        "glass": "#343c36",
+        "mullions": false,
+        "interior": false
+       }
+      }
+     ],
+     "signs": [
+      {
+       "text": "AT&T",
+       "style": "navy",
+       "at": 0.49,
+       "y": 2.75,
+       "w": 2.9,
+       "h": 0.85
+      }
+     ],
+     "pilasters": {
+      "at": [
+       0.105,
+       0.365
+      ],
+      "w": 0.32,
+      "d": 0.18,
+      "height": 3.55,
+      "color": "#bba887",
+      "cap": "#c9b99a"
+     }
+    },
+    "+u": {},
+    "+v": {},
+    "-v": {}
+   }
+  },
+  {
+   "id": "roof-unit-west",
+   "u": [
+    1.3,
+    3.8
+   ],
+   "v": [
+    2.9,
+    5.8
+   ],
+   "bottom": 4.4,
+   "height": 5.25,
+   "wall": "#a3aaa0",
+   "wallMaterial": "plaster",
+   "roof": {
+    "type": "flat",
+    "lip": false,
+    "color": "#626e68"
+   },
+   "faces": {}
+  },
+  {
+   "id": "roof-unit-east",
+   "u": [
+    -3.5,
+    -1.7
+   ],
+   "v": [
+    -6.8,
+    -4.7
+   ],
+   "bottom": 4.4,
+   "height": 5.05,
+   "wall": "#a3aaa0",
+   "wallMaterial": "plaster",
+   "roof": {
+    "type": "flat",
+    "lip": false,
+    "color": "#626e68"
+   },
+   "faces": {}
+  }
+ ],
+ "details": []
+}

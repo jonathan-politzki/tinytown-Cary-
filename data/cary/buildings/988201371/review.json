@@ -1,0 +1,40 @@
+{
+ "draft_hash": "e6b25fbbd868230722b319905e4eef4af363a6c621e09cf36d0b4b6d61d4c85a",
+ "frame": "a31946d8ae2eb51305a0da08cb25f6a69db2fca414beb6e034456e177e621519",
+ "passed": true,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "ready",
+  "summary": "Recognizable and charming apartment miniature: the broad hipped roof, paired brick entrance projections, stacked central balconies, twin north-facing dormers, and brick/siding/cream-trim palette form a coherent caricature. No obvious visible construction defect compromises the model.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The map defines the west facade as -u. Located SV2 views that face and shows the characteristic west-side red-door entrance groups; SV3 supports the southern end of the same frontage. The rendered inventory places all five doors on -u\u2014two on each projecting entrance wing plus central balcony access\u2014and none on +u, +v, or -v. The labeled -u render is partly obstructed, but its visible frontage and the overview agree with this placement, while -v correctly carries the twin north-facing dormers."
+  },
+  "issues": []
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789960128.705529,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/988201371/20260920-220822-18560c-review",
+  "usage": {
+   "input_tokens": 13358,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 1119,
+   "reasoning_output_tokens": 929,
+   "total_tokens": 14477
+  },
+  "usage_complete": true,
+  "duration": 26.025015115737915,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/988201371/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/988201371/renders/repaired-faces.jpg"
+ }
+}

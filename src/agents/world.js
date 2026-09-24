@@ -15,6 +15,7 @@
 // Nothing here calls a model. Swap `planDay` and the town starts improvising.
 
 import { makeRng } from '../rng.js';
+import { crossesAt } from './traffic.js';
 
 const DAY = 1440; // minutes
 const FIRST = ['Ada','Beth','Cal','Dora','Eli','Faye','Gus','Hana','Ira','Jude','Kit','Lena',
@@ -30,6 +31,12 @@ const TRAITS = ['early-rising','talkative','solitary','punctual','restless','eas
 const WORK_CATEGORIES = ['commerce', 'shop', 'eatery', 'civic', 'school'];
 // Somewhere to go that isn't home or work.
 const THIRD_PLACES = ['eatery', 'shop', 'leisure', 'worship', 'civic'];
+
+// A bar is where the evening goes: it is staffed, its shift runs late, and it
+// draws a bigger share of after-work outings than a florist does.
+const BAR_KINDS = new Set(['bar', 'pub']);
+const isBar = (place) => Boolean(place && BAR_KINDS.has(place.poi));
+const BAR_PULL = 4; // a bar counts this many times in the haunt draw
 
 // Not everyone unemployed is retired; a 29-year-old should not be.
 const UNWAGED = [[65, 'retired'], [30, 'keeping house'], [0, 'between jobs']];
@@ -61,6 +68,23 @@ export function planDay(agent, { places, rng, day }) {
   };
   const wake = agent.wakeMin;
   const home = agent.homeId, work = agent.workId;
+  const finish = () => blocks.filter((b) => b.endMin > b.startMin).sort((a, b) => a.startMin - b.startMin)
+    .map((b, i) => ({ ...b, index: i, day }));
+
+  // The cast keep their hours whatever the dice say.
+  if (agent.role === 'bartender' && work != null) {
+    at(0, 9 * 60 + 30, home, 'asleep');
+    at(9 * 60 + 30, 11 * 60, work, 'opening up');
+    at(11 * 60, DAY, work, 'at work as a bartender');
+    return finish();
+  }
+  if (agent.role === 'regular' && agent.regularAt != null) {
+    at(0, 9 * 60 + 45, home, 'asleep');
+    at(9 * 60 + 45, 11 * 60 + 15, home, 'getting ready');
+    at(11 * 60 + 15, 23 * 60 + 40, agent.regularAt, 'holding court at the bar');
+    at(23 * 60 + 40, DAY, home, 'home late');
+    return finish();
+  }
 
   at(0, wake, home, 'asleep');
   at(wake, wake + 75, home, 'getting ready');
@@ -70,10 +94,12 @@ export function planDay(agent, { places, rng, day }) {
     at(wake + 75, start, work, 'heading in early');
     at(start, end, work, `at work as a ${agent.occupation}`);
     let cursor = end;
-    // An errand most evenings, and a second one for the restless.
+    // An errand most evenings, and a second one for the restless. After five
+    // the bar, if they have one, wins half the time.
     const errands = rng.chance(0.65) ? (rng.chance(0.2) ? 2 : 1) : 0;
+    const bars = agent.haunts.filter((id) => isBar(places.get(id)));
     for (let i = 0; i < errands; i++) {
-      const spot = rng.pick(agent.haunts);
+      const spot = (cursor >= 17 * 60 && bars.length && rng.chance(0.5)) ? rng.pick(bars) : rng.pick(agent.haunts);
       if (!spot) break;
       const dwell = rng.int(35, 80);
       at(cursor, cursor + dwell, spot, i === 0 ? 'running an errand' : 'lingering out');
@@ -95,20 +121,31 @@ export function planDay(agent, { places, rng, day }) {
     at(Math.min(cursor, DAY - 60), DAY, home, 'at home');
   }
 
-  const clean = blocks.filter((b) => b.endMin > b.startMin).sort((a, b) => a.startMin - b.startMin);
+  // A night out: most people with a local go some evenings, usually to the
+  // local, and stay a while. It goes in last so it overrides "home for the evening".
+  const bars = agent.haunts.filter((id) => isBar(places.get(id)));
+  if (bars.length && rng.chance(agent.nightOut ?? 0.7)) {
+    const start = rng.int(18 * 60 + 15, 20 * 60 + 30);
+    const dwell = rng.int(90, 180);
+    const where = agent.localId != null && rng.chance(0.75) ? agent.localId : rng.pick(bars);
+    for (const b of blocks) if (b.startMin < start && b.endMin > start) b.endMin = start;
+    blocks.push({ startMin: start, endMin: Math.min(DAY, start + dwell), placeId: where, activity: 'out at the bar' });
+    blocks.push({ startMin: Math.min(DAY, start + dwell), endMin: DAY, placeId: home, activity: 'home late' });
+  }
+
   // Hand the plan back with a stable id per block so events can cite it.
-  return clean.map((b, i) => ({ ...b, index: i, day }));
+  return finish();
 }
 
 /**
  * Create a world over a site's places and walkable graph.
  *
  * options.planner  replaces planDay (the LLM seam)
- * options.timeScale  simulated minutes per real second (1 = real time)
+ * options.timeScale  simulated seconds per real one (1 = real time)
  */
 export function createWorld({
   places, graph, seed = 'town', population = 40,
-  startMin = 7 * 60, timeScale = 4, planner = planDay, maxEvents = 4000,
+  startMin = 7 * 60, timeScale = 4, planner = planDay, maxEvents = 4000, cast = [],
 } = {}) {
   const rng = makeRng(`world:${seed}`);
   const homes = places.of('residence').filter((p) => p.node >= 0);
@@ -162,14 +199,80 @@ export function createWorld({
       plan: null, planDay: -1, blockIndex: -1, metresWalked: 0,
     };
     // Three or four regular haunts, so the town has its own habits instead of
-    // everyone wandering everywhere.
-    const pool = thirds.length ? thirds : workplaces;
+    // everyone wandering everywhere. Bars are over-represented in the draw.
+    const base = thirds.length ? thirds : workplaces;
+    const pool = base.concat(...Array.from({ length: BAR_PULL - 1 }, () => base.filter(isBar)));
     for (let k = 0; k < rng.int(2, 4) && pool.length; k++) {
       const spot = rng.pick(pool);
       if (spot && !agent.haunts.includes(spot.id)) agent.haunts.push(spot.id);
     }
     if (work) agent.haunts.push(work.id);
+    // Your local: the bar nearest home. Most nights out go there.
+    const bars = thirds.filter(isBar);
+    if (bars.length) {
+      const local = bars.reduce((best, b) => {
+        const d = Math.hypot(b.centroid[0] - home.centroid[0], b.centroid[1] - home.centroid[1]);
+        return d < best.d ? { b, d } : best;
+      }, { b: null, d: Infinity }).b;
+      agent.localId = local.id;
+      if (!agent.haunts.includes(local.id)) agent.haunts.push(local.id);
+    } else agent.localId = null;
     agents.push(agent);
+  }
+
+  // The cast: rename generated villagers into the people the site names, and
+  // give them their fixed roles. A bartender lives upstairs from the bar.
+  const castable = agents.slice();
+  for (const member of cast) {
+    const at = places.get(member.at);
+    if (!at || !castable.length) continue;
+    const agent = castable.shift();
+    agent.name = member.name;
+    agent.role = member.role;
+    if (member.age) agent.age = member.age;
+    if (member.traits) agent.traits = member.traits.slice();
+    if (member.seat) agent.seat = member.seat;
+    if (member.persona) agent.persona = member.persona;
+    if (member.lines) agent.lines = member.lines.slice();
+    agent.localId = at.id;
+    if (!agent.haunts.includes(at.id)) agent.haunts.push(at.id);
+    if (member.role === 'friend') {
+      agent.occupation = member.occupation || agent.occupation;
+      if (agent.workId == null && workplaces.length) agent.workId = rng.pick(workplaces).id;
+      agent.nightOut = member.nightOut ?? 0.9;
+    }
+    if (member.role === 'bartender') {
+      agent.workId = at.id; agent.homeId = at.id; agent.occupation = 'bartender';
+      agent.x = at.door[0]; agent.z = at.door[1]; agent.placeId = at.id;
+    } else if (member.role === 'regular') {
+      agent.workId = null; agent.regularAt = at.id;
+      agent.occupation = member.occupation || UNWAGED.find(([floor]) => agent.age >= floor)[1];
+    }
+  }
+
+  // Every bar has somebody behind it. Borrow from a workplace with two or more
+  // staff, else hire an unemployed adult; either way the shift is the evening.
+  for (const bar of workplaces.filter(isBar)) {
+    if (!agents.some((a) => a.workId === bar.id)) {
+      const staffCount = new Map();
+      for (const a of agents) if (a.workId != null) staffCount.set(a.workId, (staffCount.get(a.workId) || 0) + 1);
+      // Never poach someone the site named: the Tipsy Goat's own bartender was
+      // being hired away to another bar because he counted as spare staff.
+      const hire = agents.find((a) => !a.role && a.workId != null && staffCount.get(a.workId) > 1 && a.age >= 21)
+        || agents.find((a) => !a.role && a.workId == null && a.age >= 21 && a.age < 66);
+      if (!hire) continue;
+      hire.workId = bar.id;
+      if (!hire.haunts.includes(bar.id)) hire.haunts.push(bar.id);
+    }
+  }
+  for (const a of agents) {
+    const work = a.workId != null ? places.get(a.workId) : null;
+    if (!isBar(work) || a.role) continue;
+    const staff = agents.filter((o) => o.workId === work.id);
+    a.occupation = staff.some((o) => o.role === 'bartender') ? rng.pick(['barback', 'server'])
+      : staff.indexOf(a) === 0 ? 'bartender' : rng.pick(['barback', 'server']);
+    a.workStartMin = rng.int(15 * 60, 17 * 60);
+    a.workMinutes = Math.min(rng.int(6 * 60, 8 * 60), DAY - 30 - a.workStartMin);
   }
 
   const byId = new Map(agents.map((a) => [a.id, a]));
@@ -181,6 +284,7 @@ export function createWorld({
     places,
     graph,
     events: [],
+    barriers: [],
     agent: (id) => byId.get(id) || null,
     clock: () => hhmm(world.minutes),
   };
@@ -209,20 +313,31 @@ export function createWorld({
     return true;
   }
 
+  // Closed stop lines on foot: the same list the traffic holds at, filled by
+  // whatever owns them (the railroad's level crossings). Somebody already over
+  // the line walks clear rather than freezing on the rails.
+  function barred(from, to) {
+    for (const b of world.barriers) if (b.closed && crossesAt(from, to, b) !== null) return true;
+    return false;
+  }
+
   function advance(agent, seconds) {
     let remaining = agent.speed * seconds;
     const path = agent.path;
+    const gates = world.barriers.some((b) => b.closed);
     while (remaining > 0 && agent.leg < path.length - 1) {
       const a = path[agent.leg], b = path[agent.leg + 1];
       const legLen = Math.hypot(b[0] - a[0], b[1] - a[1]);
       if (legLen <= 1e-6) { agent.leg++; agent.legT = 0; continue; }
       const step = Math.min(remaining, legLen - agent.legT);
+      const t = (agent.legT + step) / legLen;
+      const nx = a[0] + (b[0] - a[0]) * t, nz = a[1] + (b[1] - a[1]) * t;
+      if (gates && barred([agent.x, agent.z], [nx, nz])) break;
       agent.legT += step;
       remaining -= step;
       agent.metresWalked += step;
-      const t = agent.legT / legLen;
-      agent.x = a[0] + (b[0] - a[0]) * t;
-      agent.z = a[1] + (b[1] - a[1]) * t;
+      agent.x = nx;
+      agent.z = nz;
       agent.heading = Math.atan2(b[0] - a[0], b[1] - a[1]);
       if (agent.legT >= legLen - 1e-6) { agent.leg++; agent.legT = 0; }
     }
@@ -310,6 +425,36 @@ export function createWorld({
   };
 
   /**
+   * Move the clock to a time of day and put every villager where their plan
+   * says they are at that time — no walking across town, no replayed day.
+   * For the "Evening" chip: instant, and the town is already mid-evening.
+   */
+  world.jumpTo = function jumpTo(minutes) {
+    const target = ((minutes % DAY) + DAY) % DAY;
+    world.minutes = target;
+    for (const agent of agents) {
+      if (agent.planDay !== world.day || !agent.plan) {
+        agent.plan = planner(agent, { places, rng, day: world.day, world });
+        agent.planDay = world.day;
+      }
+      let active = null;
+      for (const block of agent.plan) { if (block.startMin <= target) active = block; else break; }
+      if (!active) active = agent.plan[0];
+      const place = active ? places.get(active.placeId) : null;
+      agent.blockIndex = active ? active.index : -1;
+      agent.activity = active ? active.activity : agent.activity;
+      agent.path = null; agent.leg = 0; agent.legT = 0;
+      agent.state = 'dwell';
+      agent.targetId = null;
+      agent.rideCar = null;
+      agent.indoors = false; agent.smoking = false;
+      if (place) { agent.placeId = place.id; agent.x = place.door[0]; agent.z = place.door[1]; }
+    }
+    together = new Set();
+    return world;
+  };
+
+  /**
    * An agent's situation as prose: what a model would be handed as context.
    * Kept here so the prompt and the simulation can never drift apart.
    */
@@ -319,7 +464,9 @@ export function createWorld({
     const home = places.get(agent.homeId), work = agent.workId ? places.get(agent.workId) : null;
     const where = agent.state === 'travel'
       ? `walking to ${places.get(agent.targetId)?.name || 'somewhere'}`
-      : `at ${places.get(agent.placeId)?.name || 'no particular place'}`;
+      : agent.state === 'ride'
+        ? `driving to ${places.get(agent.targetId)?.name || 'somewhere'}`
+        : `at ${places.get(agent.placeId)?.name || 'no particular place'}`;
     const company = agents.filter((o) => o.id !== agent.id && o.state === 'dwell'
       && o.placeId === agent.placeId && agent.placeId != null);
     const log = world.events.filter((e) => e.agentId === agent.id || e.withId === agent.id)
@@ -334,6 +481,7 @@ export function createWorld({
       });
     return [
       `${agent.name}, ${agent.age}, ${agent.occupation}. ${agent.traits.join(', ')}.`,
+      agent.persona || '',
       `Lives at ${home?.name || 'unknown'}${home?.street ? ` on ${home.street}` : ''}.`,
       work ? `Works at ${work.name}${work.street ? ` on ${work.street}` : ''}.` : 'Not employed.',
       `It is ${hhmm(world.minutes)} on day ${world.day + 1}. ${agent.name} is ${where}, ${agent.activity}.`,

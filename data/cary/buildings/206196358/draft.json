@@ -1,0 +1,143 @@
+{
+ "wall": "#aa7960",
+ "wallMaterial": "brick",
+ "trim": "#e2d6bf",
+ "roofColor": "#58635d",
+ "volumes": [
+  {
+   "id": "station",
+   "u": [
+    -18.2,
+    18.2
+   ],
+   "v": [
+    -2.75,
+    2.75
+   ],
+   "height": 3.4,
+   "bottom": -0.3,
+   "roof": {
+    "type": "gable",
+    "ridge": "u",
+    "pitch": 0.28,
+    "maxH": 1.55,
+    "overhang": 0.5
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#999286"
+   },
+   "faces": {
+    "-v": {
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.8,
+       "h": 2.45,
+       "color": "#405950",
+       "surround": "#e2d6bf",
+       "surroundW": 0.14
+      }
+     ],
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.65,
+        "h": 1.75,
+        "at": [
+         0.09,
+         0.2,
+         0.31,
+         0.4,
+         0.6,
+         0.69,
+         0.8,
+         0.91
+        ],
+        "trim": "#e2d6bf",
+        "glass": "#758b8c",
+        "interior": false
+       }
+      }
+     ],
+     "signs": [
+      {
+       "text": "CARY",
+       "style": "green",
+       "at": 0.5,
+       "y": 2.85,
+       "w": 3.8,
+       "h": 0.6
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.65,
+        "h": 1.75,
+        "at": [
+         0.1,
+         0.23,
+         0.36,
+         0.5,
+         0.64,
+         0.77,
+         0.9
+        ],
+        "trim": "#e2d6bf",
+        "glass": "#758b8c",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.1,
+        "h": 1.75,
+        "at": [
+         0.3,
+         0.7
+        ],
+        "trim": "#e2d6bf",
+        "glass": "#758b8c",
+        "interior": false
+       }
+      }
+     ]
+    },
+    "-u": {
+     "storeys": [
+      {
+       "y": 0.85,
+       "windows": {
+        "type": "rect",
+        "w": 1.1,
+        "h": 1.75,
+        "at": [
+         0.3,
+         0.7
+        ],
+        "trim": "#e2d6bf",
+        "glass": "#758b8c",
+        "interior": false
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "details": []
+}

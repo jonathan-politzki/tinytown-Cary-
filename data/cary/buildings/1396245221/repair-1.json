@@ -1,0 +1,171 @@
+{
+ "thread_id": "01a0c1c5-533b-7c13-9dd4-b4aff906c0a8",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 18952,
+  "cached_input_tokens": 3584,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 723,
+  "reasoning_output_tokens": 516,
+  "total_tokens": 19675
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "",
+  "patch_json": "{\"base_hash\":\"4ad7c6b4bd81eebf37bc10c9595cadac3f3e9730dd0e5b6724e5ce6eb33ef81d1\",\"operations\":[]}",
+  "cues": [
+   "Red tavern storefront with a central entrance",
+   "Oversized brown mansard and broad flat rooftop",
+   "Cream siding and shuttered upper windows",
+   "Covered rear service entrance with exterior stair"
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4"
+  ],
+  "uncertainties": [
+   "Exact roof junctions are partly concealed."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "red_storefront",
+    "face": "-u",
+    "role": "principal",
+    "evidence": [
+     "MAP",
+     "SV2"
+    ],
+    "confidence": "observed"
+   },
+   {
+    "volume": "tavern",
+    "face": "+u",
+    "role": "secondary service entrance",
+    "evidence": [
+     "MAP",
+     "SV1"
+    ],
+    "confidence": "observed"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair/response.json",
+ "started_at": 1789957329.6361449,
+ "finished_at": 1789957355.711173,
+ "elapsed_seconds": 26.07502818107605,
+ "duration": 26.07502818107605,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1396245221/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1396245221/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1396245221/images/reference-5.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1396245221/renders/initial-overview.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1396245221/renders/initial-faces.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1396245221/20260920-212209-86e898-repair/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "repair",
+ "building": "1396245221",
+ "model_alias": "astra",
+ "run": "20260920-211711-9833ef",
+ "attempts": [],
+ "number": 1,
+ "packet_hash": "953f1a3bfecb375aabd4de2477496527f49736535bd16d9b1255595d56eaadbd",
+ "frame": "9457e07e8e8e06c85865f13226f4a074063ac1c8cc2aa32eca373973e579a7c8",
+ "timestamp": 1789957355.712054,
+ "base_hash": "4ad7c6b4bd81eebf37bc10c9595cadac3f3e9730dd0e5b6724e5e6eb33ef81d1",
+ "blueprint": null,
+ "validation_errors": [
+  "patch belongs to a different artifact; use current-artifacts.json hashes"
+ ],
+ "cues": [
+  "Red tavern storefront with a central entrance",
+  "Oversized brown mansard and broad flat rooftop",
+  "Cream siding and shuttered upper windows",
+  "Covered rear service entrance with exterior stair"
+ ],
+ "uncertainties": [
+  "Exact roof junctions are partly concealed."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "red_storefront",
+   "face": "-u",
+   "role": "principal",
+   "evidence": [
+    "MAP",
+    "SV2"
+   ],
+   "confidence": "observed"
+  },
+  {
+   "volume": "tavern",
+   "face": "+u",
+   "role": "secondary service entrance",
+   "evidence": [
+    "MAP",
+    "SV1"
+   ],
+   "confidence": "observed"
+  }
+ ]
+}

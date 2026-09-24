@@ -1,0 +1,51 @@
+{
+ "draft_hash": "396127e4f500db58a5818f431dcd914ea8b3ea21efc19aec6a2a0ac861cc9928",
+ "frame": "eac4154e4d39ddea0f3778d1dfc1b4a1e6d3b003813c2cf36ca0030f8803f62d",
+ "passed": true,
+ "findings": [],
+ "geometry": [
+  {
+   "id": "entry/+v/capital-roof",
+   "finding": "Pilaster capitals extend into the roof; lower them or use fitUnderEave."
+  }
+ ],
+ "report": {
+  "verdict": "ready",
+  "summary": "Recognizable and charming caricature: the broad low hipped roof, warm tan walls with dark trim, centered gabled vestibule, and small red-and-pale rooftop feature closely match the clearest street view. No duplicated principal portal or major visible modeling defect is evident.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The located SV3 camera looks NNE directly toward the +v face and clearly shows the centered principal entrance beneath the small gable and rooftop feature. The labeled +v render reproduces that composition, and the door inventory confirms one double door only on +v, outward SSW toward Northwest Highway. SV1/SV2 are heavily screened, while SV4 is off-axis and geometrically faces -u, so they do not contradict this placement."
+  },
+  "issues": [
+   {
+    "severity": "minor",
+    "problem": "The labeled -u panel is blocked by a neighboring two-story building and does not visibly document the target rear face.",
+    "fix": "Re-render the -u validation view from a closer or elevated unobstructed camera aimed at the target."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 1,
+ "timestamp": 1789959012.632684,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006609138/20260920-214950-6ff071-review",
+  "usage": {
+   "input_tokens": 12417,
+   "cached_input_tokens": 0,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 747,
+   "reasoning_output_tokens": 516,
+   "total_tokens": 13164
+  },
+  "usage_complete": true,
+  "duration": 22.598856925964355,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006609138/renders/repaired-overview.png",
+  "faces": "data/cary/buildings/10006609138/renders/repaired-faces.jpg"
+ }
+}

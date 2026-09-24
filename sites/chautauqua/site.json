@@ -7,6 +7,21 @@
     "width": 1200,
     "height": 630
   },
+  "viewer": {
+    "opening_view": {
+      "target": [
+        35,
+        37
+      ],
+      "lift": 6,
+      "azimuth": -2.2,
+      "distance": 280,
+      "aspect": [
+        1440,
+        1726
+      ]
+    }
+  },
   "deploy": [
     {
       "target": "chautauqua",

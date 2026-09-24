@@ -1,0 +1,343 @@
+{
+ "thread_id": "01a0c1e5-e799-74a2-830b-6d8ae659c36e",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 14624,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1238,
+  "reasoning_output_tokens": 371,
+  "total_tokens": 15862
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#a9977a\",\"wallMaterial\":\"brick\",\"trim\":\"#d2cab5\",\"roofColor\":\"#54564a\",\"volumes\":[{\"id\":\"main\",\"u\":[-10.6,5.5],\"v\":[-10.6,10.6],\"height\":3.9,\"roof\":{\"type\":\"hip\",\"ridge\":\"v\",\"pitch\":0.18,\"maxH\":2.0,\"overhang\":0.4},\"plinth\":{\"height\":0.3,\"color\":\"#bdb8a5\"},\"faces\":{\"-u\":{},\"+v\":{\"storeys\":[{\"y\":1.0,\"windows\":{\"type\":\"rect\",\"w\":1.4,\"h\":1.7,\"at\":[0.25,0.65],\"trim\":\"#555b4b\",\"glass\":\"#64716b\",\"interior\":false}}]},\"-v\":{\"storeys\":[{\"y\":1.0,\"windows\":{\"type\":\"rect\",\"w\":1.4,\"h\":1.7,\"at\":[0.3,0.72],\"trim\":\"#555b4b\",\"glass\":\"#64716b\",\"interior\":false}}]}}},{\"id\":\"front_wing\",\"u\":[4.9,9.8],\"v\":[-9.7,9.7],\"height\":3.9,\"roof\":{\"type\":\"hip\",\"ridge\":\"v\",\"pitch\":0.2,\"maxH\":1.0,\"overhang\":0.4},\"plinth\":{\"height\":0.3,\"color\":\"#bdb8a5\"},\"faces\":{\"+u\":{\"storeys\":[{\"y\":0.8,\"windows\":{\"type\":\"rect\",\"w\":1.9,\"h\":2.0,\"at\":[0.12,0.88],\"trim\":\"#555b4b\",\"glass\":\"#63736c\",\"interior\":false}}]}}},{\"id\":\"entry\",\"u\":[8.7,10.5],\"v\":[-4.4,4.5],\"height\":5.3,\"wall\":\"#c0bba7\",\"wallMaterial\":\"stone\",\"roof\":{\"type\":\"flat\",\"lip\":false},\"cornice\":{\"height\":0.15,\"overhang\":0.12,\"color\":\"#646759\",\"dentils\":false},\"faces\":{\"+u\":{\"doors\":[{\"at\":0.5,\"type\":\"double\",\"w\":1.9,\"h\":2.7,\"color\":\"#34433c\",\"surround\":\"#d2cbb8\",\"surroundW\":0.15}],\"storeys\":[{\"y\":0.65,\"windows\":{\"type\":\"shop\",\"w\":1.4,\"h\":2.1,\"at\":[0.19,0.81],\"trim\":\"#414d43\",\"glass\":\"#687972\",\"interior\":false}}],\"awnings\":[{\"range\":[0.21,0.79],\"y\":3.35,\"depth\":0.85,\"color\":\"#334b63\"}],\"signs\":[{\"text\":\"CARY GROVE ANIMAL HOSPITAL\",\"style\":\"navy\",\"at\":0.5,\"y\":4.55,\"w\":8.1,\"h\":1.0}]}}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Low, broad animal hospital with muted hipped roofs.",
+   "Warm tan masonry and pale stone entrance surround.",
+   "Raised central entrance with a navy hospital sign.",
+   "Blue entrance canopy and dark-framed glazing."
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV3",
+   "AERIAL"
+  ],
+  "uncertainties": [
+   "SV2 shows unrelated townhouses and was excluded.",
+   "Hidden elevations and window spacing are simplified; no secondary entrance is established.",
+   "Roof intersections and entrance height are approximate."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "entry",
+    "face": "+u",
+    "role": "principal",
+    "evidence": [
+     "MAP",
+     "SV1",
+     "SV3"
+    ],
+    "confidence": "observed"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author/response.json",
+ "started_at": 1789959464.777066,
+ "finished_at": 1789959506.997921,
+ "elapsed_seconds": 42.22085499763489,
+ "duration": 42.22085499763489,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/982767709/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/982767709/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/982767709/images/reference-4.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/982767709/20260920-215744-502c5c-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "982767709",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "48a35ff48ce3539c576200648d71fd756d8f595034445615116e03b68fc9ed5e",
+ "frame": "6d9657b872c4e4ec81b41ebf1460dcc2378aaf123a7798200e7d175fa00afab4",
+ "timestamp": 1789959506.9986591,
+ "blueprint": {
+  "wall": "#a9977a",
+  "wallMaterial": "brick",
+  "trim": "#d2cab5",
+  "roofColor": "#54564a",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -10.6,
+     5.5
+    ],
+    "v": [
+     -10.6,
+     10.6
+    ],
+    "height": 3.9,
+    "roof": {
+     "type": "hip",
+     "ridge": "v",
+     "pitch": 0.18,
+     "maxH": 2.0,
+     "overhang": 0.4
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#bdb8a5"
+    },
+    "faces": {
+     "-u": {},
+     "+v": {
+      "storeys": [
+       {
+        "y": 1.0,
+        "windows": {
+         "type": "rect",
+         "w": 1.4,
+         "h": 1.7,
+         "at": [
+          0.25,
+          0.65
+         ],
+         "trim": "#555b4b",
+         "glass": "#64716b",
+         "interior": false
+        }
+       }
+      ]
+     },
+     "-v": {
+      "storeys": [
+       {
+        "y": 1.0,
+        "windows": {
+         "type": "rect",
+         "w": 1.4,
+         "h": 1.7,
+         "at": [
+          0.3,
+          0.72
+         ],
+         "trim": "#555b4b",
+         "glass": "#64716b",
+         "interior": false
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "front_wing",
+    "u": [
+     4.9,
+     9.8
+    ],
+    "v": [
+     -9.7,
+     9.7
+    ],
+    "height": 3.9,
+    "roof": {
+     "type": "hip",
+     "ridge": "v",
+     "pitch": 0.2,
+     "maxH": 1.0,
+     "overhang": 0.4
+    },
+    "plinth": {
+     "height": 0.3,
+     "color": "#bdb8a5"
+    },
+    "faces": {
+     "+u": {
+      "storeys": [
+       {
+        "y": 0.8,
+        "windows": {
+         "type": "rect",
+         "w": 1.9,
+         "h": 2.0,
+         "at": [
+          0.12,
+          0.88
+         ],
+         "trim": "#555b4b",
+         "glass": "#63736c",
+         "interior": false
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "id": "entry",
+    "u": [
+     8.7,
+     10.5
+    ],
+    "v": [
+     -4.4,
+     4.5
+    ],
+    "height": 5.3,
+    "wall": "#c0bba7",
+    "wallMaterial": "stone",
+    "roof": {
+     "type": "flat",
+     "lip": false
+    },
+    "cornice": {
+     "height": 0.15,
+     "overhang": 0.12,
+     "color": "#646759",
+     "dentils": false
+    },
+    "faces": {
+     "+u": {
+      "doors": [
+       {
+        "at": 0.5,
+        "type": "double",
+        "w": 1.9,
+        "h": 2.7,
+        "color": "#34433c",
+        "surround": "#d2cbb8",
+        "surroundW": 0.15
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.65,
+        "windows": {
+         "type": "shop",
+         "w": 1.4,
+         "h": 2.1,
+         "at": [
+          0.19,
+          0.81
+         ],
+         "trim": "#414d43",
+         "glass": "#687972",
+         "interior": false
+        }
+       }
+      ],
+      "awnings": [
+       {
+        "range": [
+         0.21,
+         0.79
+        ],
+        "y": 3.35,
+        "depth": 0.85,
+        "color": "#334b63"
+       }
+      ],
+      "signs": [
+       {
+        "text": "CARY GROVE ANIMAL HOSPITAL",
+        "style": "navy",
+        "at": 0.5,
+        "y": 4.55,
+        "w": 8.1,
+        "h": 1.0
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Low, broad animal hospital with muted hipped roofs.",
+  "Warm tan masonry and pale stone entrance surround.",
+  "Raised central entrance with a navy hospital sign.",
+  "Blue entrance canopy and dark-framed glazing."
+ ],
+ "uncertainties": [
+  "SV2 shows unrelated townhouses and was excluded.",
+  "Hidden elevations and window spacing are simplified; no secondary entrance is established.",
+  "Roof intersections and entrance height are approximate."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "entry",
+   "face": "+u",
+   "role": "principal",
+   "evidence": [
+    "MAP",
+    "SV1",
+    "SV3"
+   ],
+   "confidence": "observed"
+  }
+ ],
+ "draft_hash": "cb598627ba2adcbe28cce5076356d66eb4d9f22260faa8df6235f8fc98de335b"
+}

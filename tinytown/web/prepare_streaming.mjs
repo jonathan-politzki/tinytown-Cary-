@@ -54,14 +54,21 @@ async function currentManifest() {
   } catch { return null; }
 }
 if (process.argv.includes('--check')) {
-  const manifest = JSON.parse(await readFile(join(output,'manifest.json')));
-  assertStreamAssetSizes(manifest);
-  if (JSON.stringify(inputs) !== JSON.stringify({inputSha256:manifest.inputSha256,sourceSha256:manifest.sourceSha256})) throw new Error('Streaming assets need rebuilding');
-  for (const record of streamAssetRecords(manifest)) {
-    const bytes = await readFile(join(output,record.file));
-    if (digest(bytes)!==record.sha256 || bytes.length!==record.bytes) throw new Error(`Invalid asset ${record.file}`);
+  // A stale or damaged export is a one-line verdict, like the surfaces check, not a stack trace.
+  const site = relative(join(root,'data'), directory);
+  try {
+    const manifest = JSON.parse(await readFile(join(output,'manifest.json')));
+    assertStreamAssetSizes(manifest);
+    if (JSON.stringify(inputs) !== JSON.stringify({inputSha256:manifest.inputSha256,sourceSha256:manifest.sourceSha256})) throw new Error('need rebuilding');
+    for (const record of streamAssetRecords(manifest)) {
+      const bytes = await readFile(join(output,record.file));
+      if (digest(bytes)!==record.sha256 || bytes.length!==record.bytes) throw new Error(`invalid asset ${record.file}`);
+    }
+    console.log(`Streaming assets current: ${manifest.tiles.length} tiles`);
+  } catch (error) {
+    console.error(`${site}: streams are stale (${error.code === 'ENOENT' ? 'no export yet' : error.message}); run town bake ${site}`);
+    process.exit(1);
   }
-  console.log(`Streaming assets current: ${manifest.tiles.length} tiles`);
 } else if (!process.argv.includes('--force') && await currentManifest()) {
   console.log(`Streaming assets current: ${(await currentManifest()).tiles.length} tiles (pass --force to re-export)`);
 } else {

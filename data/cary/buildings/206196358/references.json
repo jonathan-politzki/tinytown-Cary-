@@ -1,0 +1,218 @@
+{
+ "version": 3,
+ "id": "206196358",
+ "name": "Cary Metra Station",
+ "location": "Cary, Illinois",
+ "address": "100 West Main Street",
+ "source_tags": {
+  "building": "train_station"
+ },
+ "street_view_counts": {
+  "directional": 4,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 36.765,
+  "depth_v": 5.535,
+  "footprint_uv": [
+   [
+    -18.0,
+    2.7
+   ],
+   [
+    -18.4,
+    -2.8
+   ],
+   [
+    18.2,
+    -2.8
+   ],
+   [
+    18.4,
+    2.8
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 305,
+    "compass": "NW",
+    "left_bearing": 35,
+    "right_bearing": 215,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "-u": {
+    "bearing": 125,
+    "compass": "SE",
+    "left_bearing": 215,
+    "right_bearing": 35,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 51.7
+    },
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 35,
+    "compass": "NE",
+    "left_bearing": 125,
+    "right_bearing": 305,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 11.7
+    },
+    "nearest_road_hint": true
+   },
+   "-v": {
+    "bearing": 215,
+    "compass": "SW",
+    "left_bearing": 305,
+    "right_bearing": 125,
+    "nearest_road_outward": {
+     "name": "West Main Street",
+     "circular": false,
+     "distance_m": 51.7
+    },
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3",
+    "SV4"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-5.jpg",
+   "caption": "Aerial: orientation unverified. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  },
+  {
+   "id": "WEB1",
+   "kind": "web-image",
+   "path": "images/reference-6.jpg",
+   "caption": "Downtown Cary, IL: Culinary Delights and Metra Convenience (unlocated detail reference; verify identity and locate the facade using geolocated photographs before placing features)"
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "449dfb18aa5a04ed66e8e1e24b5fece4f3230aa43c9ee499bb566b2cc84b475d"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "704c2f20d64c500f72c93139db1ae641e351b10c8053c363f5cc3d751c0b7a82"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/+v.png",
+   "kind": "street-view",
+   "face": "+v",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV3: requested face +v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "3133d35c4552a439e5f2089aa6853eab005f90c09977db6b0315fd169cad2ef6"
+  },
+  {
+   "id": "SV4",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Missing or incompatible capture metadata."
+   },
+   "capture_url": null,
+   "pano": null,
+   "additional_view": false,
+   "caption": "SV4: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-4.jpg",
+   "sha256": "0e22fc8b8a2891410a54952a92867ac495b932e12845e9361fc191789ed6ff98"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": null,
+   "caption": "Aerial: orientation unverified. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-5.jpg",
+   "sha256": "278857fe5dd9372643fd4b720476b9d24cebcbcfd933f93d946f1a33cf1e6cdd"
+  },
+  {
+   "url": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_588,q_65,w_639/v1/clients/mchenryil/DJI_20240901091813_0318_D_3e0f6738-0e2f-4b70-af72-78c74dffe629.jpg",
+   "page_url": "https://www.naturallymchenrycounty.com/things-to-do/downtowns/downtown-cary/",
+   "title": "Downtown Cary, IL: Culinary Delights and Metra Convenience",
+   "query": "Cary Metra Station Cary, Illinois building exterior",
+   "provider": "bing-images",
+   "id": "WEB1",
+   "source_path": "images/web-original-b13db3a1be188ede",
+   "kind": "web-image",
+   "camera": {
+    "status": "unlocated",
+    "reason": "Web photo has no verified capture pose."
+   },
+   "caption": "Downtown Cary, IL: Culinary Delights and Metra Convenience (unlocated detail reference; verify identity and locate the facade using geolocated photographs before placing features)",
+   "path": "images/reference-6.jpg",
+   "sha256": "bb0aacde9e5fc49c62f6cb2749eaf6cd79f966a9d340da144cb2e34497e5719e"
+  }
+ ],
+ "search_query": "Cary Metra Station Cary, Illinois building exterior",
+ "search_candidates": [
+  {
+   "url": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_588,q_65,w_639/v1/clients/mchenryil/DJI_20240901091813_0318_D_3e0f6738-0e2f-4b70-af72-78c74dffe629.jpg",
+   "page_url": "https://www.naturallymchenrycounty.com/things-to-do/downtowns/downtown-cary/",
+   "title": "Downtown Cary, IL: Culinary Delights and Metra Convenience",
+   "query": "Cary Metra Station Cary, Illinois building exterior",
+   "provider": "bing-images"
+  }
+ ],
+ "warnings": []
+}

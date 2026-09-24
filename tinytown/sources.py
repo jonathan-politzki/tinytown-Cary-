@@ -3,11 +3,13 @@
     town fetch avon --center 42.91201,-77.74548 --size 340,380 --title "avon.town"
     town fetch avon                      # resume: fetch whatever source/ still lacks
     town fetch avon --aerials 123 456    # then crop aerial references for two buildings
+    town fetch cary --center 42.209,-88.2415 --size 900,900 --structures   # thin OSM: add USA Structures
 
 `fetch(paths, center, size_m)` pulls, for a box of `size_m` metres (east-west,
 north-south) around `center`, into data/<site>/source/:
 
-  site_request.json   {"center": {"lat", "lon"}, "size_m": {"w", "h"}, "bounds": {...}, "title"?}
+  site_request.json   {"center": {"lat", "lon"}, "size_m": {"w", "h"}, "bounds": {...}, "title"?,
+                       "structures"?: "usa-structures"}
   osm.json            Overpass JSON: buildings, roads, rails, water, land cover, trees, POIs
   elevation.json      {"cols", "rows", "bounds", "order", "units", "values": [m, ...]}
                       row-major from the north-west corner
@@ -16,6 +18,11 @@ north-south) around `center`, into data/<site>/source/:
   <name>-osm.json     any extra Overpass extract a site plugin asks for
                       (`plugins/<site>.py: extra_sources(request) -> {name: query}`;
                       the token {{bbox}} in a query becomes "south,west,north,east")
+  structures.json     with --structures: every FEMA/ORNL USA Structures footprint in
+                      the OSM box as an OSM-shaped building way ({"type": "way",
+                      "id": 10_000_000_000 + BUILD_ID, "tags", "geometry", "source"}),
+                      for places OSM has barely mapped; `town build` adds the ones
+                      no mapped building already covers
 
 Everything is public and keyless. Re-running skips files that already exist
 and errors when the recorded request has different coordinates or size;
@@ -23,8 +30,10 @@ pass --force to refetch. Individual HTTP responses are cached for 30 days in
 data/.town-cache/ (shared by adjacent sites; imagery tiles overlap) and only
 validated responses enter the cache. Downloads are staged in source/.fetch-*
 and moved into place at the end, so a failed refresh leaves the previous
-cache and its request record intact. Independent services run concurrently;
-Overpass gets one request at a time with a pause between queries.
+cache and its request record intact; a first fetch of a box keeps whatever
+did download and records the request, so `town fetch <site>` resumes the
+rest. Independent services run concurrently; Overpass gets one request at a
+time with a pause between queries.
 
 `crop_aerials(paths, ids)` needs a built scene (site.json) and the satellite
 mosaic. For every building it writes buildings/<id>/aerial.png (the crop),
@@ -79,10 +88,28 @@ USER_AGENT = "tiny-town/0.2 (+https://github.com/koomen/tinytown)"
 HEADERS = {"User-Agent": USER_AGENT}
 
 OVERPASS_HOSTS = ("https://overpass-api.de/api/interpreter",
-                  "https://overpass.kumi.systems/api/interpreter")
+                  "https://overpass.kumi.systems/api/interpreter",
+                  "https://overpass.private.coffee/api/interpreter")
 ELEVATION_URL = "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
 IMAGERY_TILE = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 IMAGERY_SOURCE = "Esri World Imagery"
+# FEMA/ORNL USA Structures: nationwide ML footprints with occupancy, address and (where lidar
+# exists) height. Keyless ArcGIS feature service, paged by resultOffset.
+STRUCTURES_URL = ("https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/"
+                  "USA_Structures_View/FeatureServer/0/query")
+STRUCTURES_SOURCE = "usa-structures"
+STRUCTURES_FIELDS = "BUILD_ID,UUID,OCC_CLS,PRIM_OCC,PROP_ADDR,OUTBLDG,HEIGHT"
+STRUCTURES_PAGE = 2000
+STRUCTURE_ID_BASE = 10_000_000_000   # + BUILD_ID: clear of every OSM way id, sorts after them
+# PRIM_OCC keyword -> OSM building value (first match wins); OCC_CLS is the fallback.
+STRUCTURE_OCCUPANCY = (("single family", "house"), ("multi", "apartments"), ("mobile", "house"),
+                       ("retail", "retail"), ("religious", "church"), ("school", "school"),
+                       ("college", "university"), ("hospital", "hospital"), ("medical", "hospital"),
+                       ("hotel", "hotel"), ("lodging", "hotel"), ("warehouse", "warehouse"),
+                       ("manufactur", "industrial"), ("agricultur", "barn"))
+STRUCTURE_CLASSES = {"Residential": "house", "Commercial": "commercial", "Industrial": "industrial",
+                     "Education": "school", "Government": "civic", "Assembly": "civic",
+                     "Agriculture": "barn", "Utility and Misc": "industrial"}
 
 # Each service gets a slightly more generous box than the miniature itself so
 # roads run off the edge cleanly, terrain covers the margin, and aerial crops
@@ -202,6 +229,12 @@ def valid_osm(raw):
         raise ValueError("Overpass returned an incomplete result")
 
 
+def valid_structures(raw):
+    value = json.loads(raw)
+    if not isinstance(value, dict) or value.get("error") or not isinstance(value.get("features"), list):
+        raise ValueError("USA Structures returned an incomplete result")
+
+
 def valid_image(raw):
     from PIL import Image
     with Image.open(io.BytesIO(raw)) as image:
@@ -274,6 +307,72 @@ def fetch_extra(name, query, bb, out, cache=NO_CACHE, log=print):
     atomic_json(out, raw, compact=True)
     log(f"  {name}: {len(raw['elements'])} elements")
     return raw
+
+
+def _ring_area(ring):
+    return sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:] + ring[:1])) / 2
+
+
+def _street_case(text):
+    """'W MAIN STREET' -> 'W Main Street'; ordinals stay '2nd', not '2Nd'."""
+    return " ".join(w.lower() if w[:1].isdigit() else w.capitalize() for w in text.split())
+
+
+def _address_tags(text):
+    """'319 HIGH ROAD' -> {'addr:housenumber': '319', 'addr:street': 'High Road'}."""
+    parts = " ".join((text or "").split()).split(" ", 1)
+    if len(parts) != 2 or not parts[0][:1].isdigit():
+        return {}
+    return {"addr:housenumber": parts[0], "addr:street": _street_case(parts[1])}
+
+
+def structure_element(feature):
+    """One USA Structures feature as an OSM-shaped building way, or None without a usable ring."""
+    props = feature.get("properties") or {}
+    geometry = feature.get("geometry") or {}
+    rings = geometry.get("coordinates") or []
+    if geometry.get("type") == "MultiPolygon":
+        rings = max(rings, key=lambda polygon: abs(_ring_area(polygon[0])) if polygon else 0, default=[])
+    ring = rings[0] if rings else []
+    build_id = props.get("BUILD_ID")
+    if len(ring) < 4 or isinstance(build_id, bool) or not isinstance(build_id, int):
+        return None
+    primary, cls = props.get("PRIM_OCC") or "", props.get("OCC_CLS") or ""
+    building = next((value for key, value in STRUCTURE_OCCUPANCY if key in primary.lower()), None)
+    if props.get("OUTBLDG"):
+        building = "shed"
+    tags = {"building": building or STRUCTURE_CLASSES.get(cls, "yes"), **_address_tags(props.get("PROP_ADDR"))}
+    if primary and primary != "Unclassified":
+        tags["occupancy"] = primary
+    height = props.get("HEIGHT")
+    if isinstance(height, (int, float)) and not isinstance(height, bool) and height > 0:
+        tags["height"] = str(round(height, 1))
+    if props.get("UUID"):
+        tags["ref:usa_structures"] = str(props["UUID"]).strip("{}")
+    return {"type": "way", "id": STRUCTURE_ID_BASE + build_id, "tags": tags, "source": STRUCTURES_SOURCE,
+            "geometry": [{"lat": p[1], "lon": p[0]} for p in ring]}
+
+
+def fetch_structures(bb, out, cache=NO_CACHE, log=print):
+    """Every USA Structures footprint in `bb` as building ways, written to `out`."""
+    elements, offset = [], 0
+    while True:
+        url = STRUCTURES_URL + "?" + urllib.parse.urlencode({
+            "geometry": f"{bb['west']},{bb['south']},{bb['east']},{bb['north']}",
+            "geometryType": "esriGeometryEnvelope", "inSR": "4326", "spatialRel": "esriSpatialRelIntersects",
+            "outFields": STRUCTURES_FIELDS, "outSR": "4326", "resultOffset": offset,
+            "resultRecordCount": STRUCTURES_PAGE, "f": "geojson"})
+        page = json.loads(get(url, timeout=180, validate=valid_structures, cache=cache))
+        features = page["features"]
+        elements.extend(e for e in map(structure_element, features) if e)
+        offset += len(features)
+        if not features or (len(features) < STRUCTURES_PAGE and not page.get("exceededTransferLimit")):
+            break
+    record = {"source": "USA Structures (FEMA/ORNL)", "url": STRUCTURES_URL, "bounds": bb,
+              "id_base": STRUCTURE_ID_BASE, "elements": elements}
+    atomic_json(out, record, compact=True)
+    log(f"  structures: {len(elements)} USA Structures footprints")
+    return record
 
 
 def fetch_elevation(bb, out, grid=ELEVATION_GRID, cache=NO_CACHE, log=print):
@@ -350,7 +449,7 @@ def fetch_satellite(bb, out_image, out_meta, z=SATELLITE_ZOOM, cache=NO_CACHE, l
 
 # --- stage 1 ------------------------------------------------------------------
 
-def _request(paths, center, size_m, title, force):
+def _request(paths, center, size_m, title, force, structures=False):
     """The request record to write, reconciled with the one already on disk."""
     previous = read_json(paths.request)
     if isinstance(previous, dict) and not ("center" in previous and "size_m" in previous):
@@ -376,6 +475,8 @@ def _request(paths, center, size_m, title, force):
         request.setdefault("bounds", bbox_for(lat, lon, w, h))
     if title:
         request["title"] = title
+    if structures:
+        request["structures"] = STRUCTURES_SOURCE
     return request, previous
 
 
@@ -384,18 +485,21 @@ def _cached_files(paths):
 
 
 def fetch(paths, center=None, size_m=None, *, margin=1.0, satellite=True, elevation=True, extra_sources=None,
-          title=None, force=False, zoom=SATELLITE_ZOOM, grid=ELEVATION_GRID, cache=None, log=print):
+          title=None, structures=False, force=False, zoom=SATELLITE_ZOOM, grid=ELEVATION_GRID, cache=None,
+          log=print):
     """Fetch every missing source file for `paths` (a SitePaths) and return the request record.
 
     `center` is (lat, lon) or 'lat,lon'; `size_m` is (w, h) metres or 'w,h'.
     Omit both to resume the request recorded in site_request.json. `margin`
     scales every service box (each service also keeps its own generosity).
     `extra_sources` is {name: overpass_query} or a callable request -> that
-    dict; each is written to source/<name>-osm.json. Existing files are kept
-    unless `force`; a different request than the recorded one needs `force`.
+    dict; each is written to source/<name>-osm.json. `structures` also pulls
+    USA Structures footprints into source/structures.json and records the
+    choice, so later resumes keep it. Existing files are kept unless `force`;
+    a different request than the recorded one needs `force`.
     """
     paths = paths if isinstance(paths, SitePaths) else site_paths(paths)
-    request, previous = _request(paths, center, size_m, title, force)
+    request, previous = _request(paths, center, size_m, title, force, structures)
     if previous is None and _cached_files(paths) and not force:
         raise RequestMismatch(f"{paths.source} holds data with an unknown request; use --force to refetch")
     if cache is None:
@@ -409,7 +513,9 @@ def fetch(paths, center=None, size_m=None, *, margin=1.0, satellite=True, elevat
     paths.source.mkdir(parents=True, exist_ok=True)
     log(f"site {paths.name}: {lat},{lon} {w:.0f}x{h:.0f} m -> {paths.source}")
     osm_box = bbox_for(lat, lon, w, h, margin * OSM_MARGIN)
-    # A failed refresh must leave both the old metadata and old data intact.
+    same_box = previous is None or (previous["center"] == request["center"] and previous["size_m"] == request["size_m"])
+    # A failed refresh of a different box must leave both the old metadata and old
+    # data intact; within the same box every completed download is kept.
     with tempfile.TemporaryDirectory(prefix=".fetch-", dir=paths.source) as temp:
         stage = Path(temp)
 
@@ -422,7 +528,7 @@ def fetch(paths, center=None, size_m=None, *, margin=1.0, satellite=True, elevat
 
         jobs = []
         # Independent services run concurrently; Overpass itself gets one request at a time.
-        with ThreadPoolExecutor(max_workers=3) as pool:
+        with ThreadPoolExecutor(max_workers=4) as pool:
             jobs.append(pool.submit(osm_jobs))
             if elevation and (force or not paths.elevation.exists()):
                 jobs.append(pool.submit(fetch_elevation, bbox_for(lat, lon, w, h, margin * ELEVATION_MARGIN),
@@ -430,8 +536,17 @@ def fetch(paths, center=None, size_m=None, *, margin=1.0, satellite=True, elevat
             if satellite and (force or not (paths.satellite.exists() and paths.satellite_meta.exists())):
                 jobs.append(pool.submit(fetch_satellite, bbox_for(lat, lon, w, h, margin * SATELLITE_MARGIN),
                                         stage / paths.satellite.name, stage / paths.satellite_meta.name, zoom, cache, log))
-            for job in jobs:
-                job.result()
+            if request.get("structures") and (force or not paths.structures.exists()):
+                jobs.append(pool.submit(fetch_structures, osm_box, stage / paths.structures.name, cache, log))
+        failures = [job.exception() for job in jobs if job.exception() is not None]
+        if failures and not same_box:
+            raise failures[0]
+        if failures:
+            for path in stage.iterdir():
+                os.replace(path, paths.source / path.name)
+            if previous is None:
+                atomic_json(paths.request, request)
+            raise failures[0]
         # A resized preview must not retain imagery from the previous extent.
         if force and not satellite and previous is not None and (
                 previous["center"] != request["center"] or previous["size_m"] != request["size_m"]):
@@ -574,7 +689,7 @@ def run_fetch(args):
     try:
         fetch(paths, args.center, args.size, margin=args.margin, satellite=not args.no_satellite,
               elevation=not args.no_elevation, extra_sources=_plugin_sources(paths.name),
-              title=args.title, force=args.force, zoom=args.zoom, cache=cache)
+              title=args.title, structures=args.structures, force=args.force, zoom=args.zoom, cache=cache)
     except (RequestMismatch, ValueError) as error:
         raise SystemExit(f"town fetch: {error}")
     if args.aerials is not None:
@@ -598,6 +713,9 @@ def register(subparsers):
     parser.add_argument("--zoom", type=int, default=SATELLITE_ZOOM, help=f"imagery tile zoom (default {SATELLITE_ZOOM})")
     parser.add_argument("--no-satellite", action="store_true", help="skip imagery for a fast terrain/roads/buildings preview")
     parser.add_argument("--no-elevation", action="store_true", help="skip the elevation grid")
+    parser.add_argument("--structures", action="store_true",
+                        help="also fetch FEMA/ORNL USA Structures footprints (source/structures.json) where OSM "
+                             "has few buildings; remembered by later resumes")
     parser.add_argument("--force", action="store_true", help="refetch existing files and bypass cached responses")
     parser.add_argument("--cache-days", type=float, default=CACHE_MAX_AGE / 86400,
                         help="maximum age of cached HTTP responses; 0 disables reuse")

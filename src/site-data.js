@@ -4,13 +4,27 @@
 import { loadSurfaceAsset, surfaceKey } from './surface-assets.js';
 import { useStreaming } from './stream-policy.js';
 export const params = new URLSearchParams(location.search);
-const requestedSite = params.get('site') || document.querySelector('meta[name="town-site"]')?.content || 'avon-extended';
-export const siteName = requestedSite === 'avon' ? 'avon-extended' : requestedSite;
-// Published miniatures stream by default; authoring and unprepared sites need
-// the original blueprints. ?stream=0 explicitly selects the original loader.
+// `town stage` and the dev server name the scene in the document; a page opened
+// as a bare file (no server) falls back to the repository's own miniature.
+const FALLBACK_SITE = 'avon-extended';
+const ALIASES = { avon: 'avon-extended' };  // the route /avon kept from the compact map
+const resolve = name => (name && ALIASES[name]) || name;
+const documentSite = resolve(document.querySelector('meta[name="town-site"]')?.content);
+export const siteName = resolve(params.get('site')) || documentSite || FALLBACK_SITE;
+// What the document says about this site (config.viewer_settings): whether its
+// streaming chunks are baked, and the opening view. Only trusted when the
+// document describes the scene being loaded — ?site= can ask for another one.
+export const siteSettings = (() => {
+  if (siteName !== documentSite) return {};
+  try { return JSON.parse(document.querySelector('meta[name="town-viewer"]')?.content || '{}'); }
+  catch { return {}; }
+})();
+// Miniatures whose chunks are baked stream by default; authoring views and
+// sites without a prepared stream need the original blueprints. ?stream=0
+// explicitly selects the original loader, ?stream=1 asks for chunks anyway.
 // Older Safari and HTTP previews over a phone's LAN may lack the decoder or
 // secure-context checksum API. They can still use the original scene builder.
-export const streamEnabled = useStreaming(params,siteName) && typeof Worker==='function'
+export const streamEnabled = useStreaming(params,siteSettings.stream) && typeof Worker==='function'
   && typeof DecompressionStream==='function' && !!globalThis.crypto?.subtle;
 document.getElementById('loading')?.setAttribute('data-loader',streamEnabled?'streaming':'original');
 export const streamDirectory = `./data/${encodeURIComponent(siteName)}/stream`;

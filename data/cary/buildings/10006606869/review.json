@@ -1,0 +1,56 @@
+{
+ "draft_hash": "d569e98b4a301dbba15c812ea8792fbd0f89e8df1d991634a418325bf50ab25c",
+ "frame": "af101062681afe1f4c0bd36d183b0807bf470f7f6b9e50732575015c3fa67e9f",
+ "passed": false,
+ "findings": [],
+ "geometry": [],
+ "report": {
+  "verdict": "repair",
+  "summary": "The model is a generic, bulky red-brick shop rather than a recognizable miniature of the low beige Marathon convenience store. Entry placement is supported, but the massing and signature roadside features need substantial revision.",
+  "orientation": {
+   "status": "correct",
+   "summary": "The single double principal door is on the -v/SW face. SV4, taken southwest of the building looking ENE, shows the glazed customer frontage with red awnings on this face. SV2 views the -u/SE gable-end and comparatively service-like side, supporting that it is not the entrance face. The labeled -v render and actual inventory agree, with no duplicated principal portal."
+  },
+  "issues": [
+   {
+    "severity": "major",
+    "problem": "The silhouette is wrong: the model has a large near-pyramidal roof and tall, boxy mass, while the references show a low one-story store with mostly low rooflines and a prominent shallow gabled frontage.",
+    "fix": "Rebuild the roof and elevations as a low convenience-store mass, emphasizing the shallow front gable and subordinate flat/low roof sections visible in SV1\u2013SV4 and the aerial."
+   },
+   {
+    "severity": "major",
+    "problem": "The red-brick walls, generic repeated windows and largely blank elevations do not match the beige/tan stucco, cream trim, broad storefront glazing and red awnings that characterize the source.",
+    "fix": "Use warm beige walls with cream bands, place the broad glazed storefront and red awnings on -v, and simplify the side/rear openings to match the street views."
+   },
+   {
+    "severity": "major",
+    "problem": "The miniature omits the Marathon forecourt identity\u2014especially the large white canopy with red/blue fascia and pumps\u2014making the property difficult to recognize.",
+    "fix": "Add a simplified adjacent fuel canopy, a few blue-and-white pumps and restrained Marathon-colored fascia/signage as the key site-defining accessories."
+   }
+  ]
+ },
+ "renderer_signature": "c12ec51aae768a0faedc060d155237515d01869f69c8482deaa3165dd4e51520",
+ "model": "sol",
+ "stage": "detail",
+ "repairs": 0,
+ "timestamp": 1789960347.832566,
+ "call": {
+  "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/10006606869/20260920-221157-ca4a3a-review",
+  "usage": {
+   "input_tokens": 12487,
+   "cached_input_tokens": 3200,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 1197,
+   "reasoning_output_tokens": 804,
+   "total_tokens": 13684
+  },
+  "usage_complete": true,
+  "duration": 29.999382734298706,
+  "run": "20260920-213304-747792",
+  "model": "gpt-5.6-sol"
+ },
+ "renders": {
+  "overview": "data/cary/buildings/10006606869/renders/initial-overview.png",
+  "faces": "data/cary/buildings/10006606869/renders/initial-faces.jpg"
+ }
+}

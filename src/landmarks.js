@@ -8,6 +8,8 @@ import { buildPlaygroundEquipment } from './playground.js';
 import { buildPerimeter } from './perimeter.js';
 import { buildBaseball } from './baseball.js';
 import { buildParkSign } from './park-sign.js';
+import { buildCaryDepotShelter } from './cary-depot-shelter.js';
+import { buildCaryLetters } from './cary-letters.js';
 import { buildAmphitheaterGarden } from './amphitheater-garden.js';
 import { buildOrnamentalPaving } from './ornamental-paving.js';
 import { buildSchoolSign, buildSchoolForecourt } from './school-entrance.js';
@@ -104,6 +106,8 @@ export function buildLandmarks(features = [], {grade = () => 0, grid = null,
     }
     if(f.kind==='barrier') g.add(buildPerimeter(f,grade));
     if(f.kind==='park-sign') g.add(buildParkSign(f,grade));
+    if(f.kind==='depot-shelter') g.add(buildCaryDepotShelter(f,grade));
+    if(f.kind==='town-letters') g.add(buildCaryLetters(f,grade));
     if(f.kind==='school-sign') g.add(buildSchoolSign(f,grade));
     if(f.kind==='school-forecourt') g.add(buildSchoolForecourt(f,grade,grid));
     if(f.kind==='andriaccios-ground') g.add(buildAndriacciosGround(f,grade,grid));

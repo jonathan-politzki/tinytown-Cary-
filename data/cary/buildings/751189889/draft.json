@@ -1,0 +1,254 @@
+{
+ "wall": "#ac7962",
+ "trim": "#ded4bf",
+ "roofColor": "#626663",
+ "volumes": [
+  {
+   "id": "south-block",
+   "u": [
+    -30.4,
+    -1.7
+   ],
+   "v": [
+    -14.8,
+    14.8
+   ],
+   "height": 4.5,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.15,
+    "color": "#ded4bf",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#928a7b"
+   },
+   "faces": {
+    "-u": {
+     "doors": [
+      {
+       "at": 0.5,
+       "type": "double",
+       "w": 1.8,
+       "h": 2.5,
+       "color": "#425954",
+       "surround": "#ded4bf",
+       "surroundW": 0.15
+      }
+     ],
+     "storeys": [
+      {
+       "y": 1,
+       "windows": {
+        "type": "rect",
+        "w": 2.1,
+        "h": 1.65,
+        "at": [
+         0.15,
+         0.3,
+         0.7,
+         0.85
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    },
+    "-v": {
+     "storeys": [
+      {
+       "y": 1,
+       "windows": {
+        "type": "rect",
+        "w": 2.1,
+        "h": 1.65,
+        "at": [
+         0.15,
+         0.38,
+         0.62,
+         0.85
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 1,
+       "windows": {
+        "type": "rect",
+        "w": 1.8,
+        "h": 1.65,
+        "at": [
+         0.18,
+         0.5,
+         0.82
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "central-block",
+   "u": [
+    -1.8,
+    9.6
+   ],
+   "v": [
+    -14.8,
+    11.25
+   ],
+   "height": 4.5,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.22,
+    "overhang": 0.15,
+    "color": "#ded4bf",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#928a7b"
+   },
+   "faces": {
+    "-v": {
+     "storeys": [
+      {
+       "y": 1,
+       "windows": {
+        "type": "rect",
+        "w": 2.1,
+        "h": 1.65,
+        "at": [
+         0.25,
+         0.75
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    },
+    "+u": {
+     "storeys": [
+      {
+       "y": 1.2,
+       "windows": {
+        "type": "rect",
+        "w": 1.6,
+        "h": 1.4,
+        "at": [
+         0.4,
+         0.65,
+         0.85
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "north-east-wing",
+   "u": [
+    9.5,
+    30.4
+   ],
+   "v": [
+    4.6,
+    11.2
+   ],
+   "height": 3.8,
+   "roof": {
+    "type": "flat",
+    "lip": true
+   },
+   "cornice": {
+    "height": 0.2,
+    "overhang": 0.12,
+    "color": "#ded4bf",
+    "dentils": false
+   },
+   "plinth": {
+    "height": 0.3,
+    "color": "#928a7b"
+   },
+   "faces": {
+    "+u": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.5,
+        "h": 1.5,
+        "at": [
+         0.5
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    },
+    "+v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.6,
+        "h": 1.5,
+        "at": [
+         0.2,
+         0.5,
+         0.8
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    },
+    "-v": {
+     "storeys": [
+      {
+       "y": 1.1,
+       "windows": {
+        "type": "rect",
+        "w": 1.6,
+        "h": 1.5,
+        "at": [
+         0.2,
+         0.5,
+         0.8
+        ],
+        "trim": "#ded4bf",
+        "glass": "#7b9194"
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "details": []
+}

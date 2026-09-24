@@ -1,0 +1,282 @@
+{
+ "version": 3,
+ "id": "982767709",
+ "name": "Structure 982767709",
+ "location": "Cary, Illinois",
+ "address": null,
+ "source_tags": {
+  "building": "yes"
+ },
+ "street_view_counts": {
+  "directional": 3,
+  "additional": 0
+ },
+ "frame": {
+  "width_u": 21.209,
+  "depth_v": 21.149,
+  "footprint_uv": [
+   [
+    5.3,
+    9.7
+   ],
+   [
+    5.3,
+    10.6
+   ],
+   [
+    -10.5,
+    10.5
+   ],
+   [
+    -10.6,
+    -10.6
+   ],
+   [
+    5.5,
+    -10.6
+   ],
+   [
+    5.5,
+    -9.7
+   ],
+   [
+    9.9,
+    -9.7
+   ],
+   [
+    9.8,
+    -4.4
+   ],
+   [
+    10.6,
+    -4.4
+   ],
+   [
+    10.4,
+    4.5
+   ],
+   [
+    9.7,
+    4.5
+   ],
+   [
+    9.8,
+    9.7
+   ]
+  ],
+  "faces": {
+   "+u": {
+    "bearing": 215,
+    "compass": "SW",
+    "left_bearing": 305,
+    "right_bearing": 125,
+    "nearest_road_outward": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 39.2
+    },
+    "nearest_road_hint": true
+   },
+   "-u": {
+    "bearing": 35,
+    "compass": "NE",
+    "left_bearing": 125,
+    "right_bearing": 305,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "+v": {
+    "bearing": 305,
+    "compass": "NW",
+    "left_bearing": 35,
+    "right_bearing": 215,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   },
+   "-v": {
+    "bearing": 125,
+    "compass": "SE",
+    "left_bearing": 215,
+    "right_bearing": 35,
+    "nearest_road_outward": null,
+    "nearest_road_hint": false
+   }
+  },
+  "rule": "Face names describe outward normals, camera heading looks inward. The nearest-road hint and postal address do not establish the principal entrance."
+ },
+ "attachments": [
+  {
+   "id": "MAP",
+   "kind": "orientation-map",
+   "path": "images/orientation.png",
+   "caption": "North-up map: footprint, blueprint face normals, named roads, numbered Street View camera positions and viewing arrows."
+  },
+  {
+   "id": "STREET-VIEWS",
+   "kind": "street-view-atlas",
+   "path": "images/street-views.jpg",
+   "caption": "Labeled camera views; SV numbers match the orientation map.",
+   "members": [
+    "SV1",
+    "SV2",
+    "SV3"
+   ]
+  },
+  {
+   "id": "AERIAL",
+   "kind": "aerial",
+   "path": "images/reference-4.jpg",
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone."
+  }
+ ],
+ "images": [
+  {
+   "id": "SV1",
+   "source_path": "fronts/+u.png",
+   "kind": "street-view",
+   "face": "+u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.212335,
+    "lon": -88.2470794,
+    "position_xz": [
+     -460.05,
+     -371.25
+    ],
+    "position_uv": [
+     42.35,
+     4.77
+    ],
+    "looking_bearing": 43.0,
+    "looking_compass": "NE",
+    "image_left_bearing": 313.0,
+    "image_right_bearing": 133.0,
+    "target_center_offset_deg": -1.8,
+    "geometrically_facing_camera": [
+     "+u"
+    ],
+    "requested_face": "+u",
+    "off_axis_deg": 9,
+    "fov": 55,
+    "tilt": 91,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 7.9
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.212335,-88.2470794,251a,55y,43h,91t/data=!3m7!1e1!3m5!1stRywbSO6LWJel4Fuy06wug!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DtRywbSO6LWJel4Fuy06wug%26yaw%3D43!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "tRywbSO6LWJel4Fuy06wug",
+   "additional_view": false,
+   "caption": "SV1: requested face +u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-1.jpg",
+   "sha256": "5da2f5ba73c7866d0aa46be7cf10aa34c96ef2956793e94efceb612c752de133"
+  },
+  {
+   "id": "SV2",
+   "source_path": "fronts/-u.png",
+   "kind": "street-view",
+   "face": "-u",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2133478,
+    "lon": -88.2467518,
+    "position_xz": [
+     -433.04,
+     -484.0
+    ],
+    "position_uv": [
+     -65.69,
+     46.8
+    ],
+    "looking_bearing": 174.0,
+    "looking_compass": "S",
+    "image_left_bearing": 84.0,
+    "image_right_bearing": 264.0,
+    "target_center_offset_deg": 5.3,
+    "geometrically_facing_camera": [
+     "-u",
+     "+v"
+    ],
+    "requested_face": "-u",
+    "off_axis_deg": 40,
+    "fov": 55,
+    "tilt": 90,
+    "near_road": {
+     "name": "Park Avenue",
+     "circular": false,
+     "distance_m": 123.4
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2133478,-88.2467518,251a,55y,174h,90t/data=!3m7!1e1!3m5!1s_gFGa3zAKaDTTtd9p4AZYA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D_gFGa3zAKaDTTtd9p4AZYA%26yaw%3D174!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "_gFGa3zAKaDTTtd9p4AZYA",
+   "additional_view": false,
+   "caption": "SV2: requested face -u; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-2.jpg",
+   "sha256": "b287e0c138a2ea17f7228e5b246287fcd5abf24463c8f78ace2cda93dd3ae1a8"
+  },
+  {
+   "id": "SV3",
+   "source_path": "fronts/-v.png",
+   "kind": "street-view",
+   "face": "-v",
+   "camera": {
+    "status": "located",
+    "source": "resolved-panorama-url",
+    "lat": 42.2121774,
+    "lon": -88.2467803,
+    "position_xz": [
+     -435.39,
+     -353.71
+    ],
+    "position_uv": [
+     42.72,
+     -25.5
+    ],
+    "looking_bearing": 15.0,
+    "looking_compass": "NNE",
+    "image_left_bearing": 285.0,
+    "image_right_bearing": 105.0,
+    "target_center_offset_deg": -11.1,
+    "geometrically_facing_camera": [
+     "+u",
+     "-v"
+    ],
+    "requested_face": "-v",
+    "off_axis_deg": 71,
+    "fov": 55,
+    "tilt": 91,
+    "near_road": {
+     "name": "Northwest Highway",
+     "circular": false,
+     "distance_m": 7.4
+    },
+    "limitation": "Approximate panorama pose; facing-camera sides are not proof of visibility, identity or lack of occlusion."
+   },
+   "capture_url": "https://www.google.com/maps/@42.2121774,-88.2467803,250a,55y,15h,91t/data=!3m7!1e1!3m5!1sOxA-pTtF_w6W9ZzuTTThpg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1%26panoid%3DOxA-pTtF_w6W9ZzuTTThpg%26yaw%3D15!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+   "pano": "OxA-pTtF_w6W9ZzuTTThpg",
+   "additional_view": false,
+   "caption": "SV3: requested face -v; use resolved camera, not filename, to interpret visible sides.",
+   "path": "images/reference-3.jpg",
+   "sha256": "02a4560107f409a11927da6674073916414c2e1021ffe0a1195756b4f410b582"
+  },
+  {
+   "id": "AERIAL",
+   "source_path": "aerial.png",
+   "kind": "aerial",
+   "north_up": true,
+   "caption": "Aerial: north up. Match roof wings to the separate labeled footprint map; no facade orientation can be inferred from image-left alone.",
+   "path": "images/reference-4.jpg",
+   "sha256": "80ea2e35e6a5922ce2789b554bfead935eae9af2ccc5165f3255f40335ddb6ad"
+  }
+ ],
+ "search_query": "Structure 982767709 Cary, Illinois building exterior",
+ "search_candidates": [],
+ "warnings": [
+  "No useful image-search candidates; using available Street View/aerial evidence."
+ ]
+}

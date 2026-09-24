@@ -107,7 +107,7 @@ def read(path):
 
 REQUEST_SECONDS = 5           # ordinary browser-level CDP calls
 DISPOSE_SECONDS = 30          # disposing a context tears down its renderer; a WebGL scene takes ~6s
-GONE = ('failed to find context', 'cannot find context', 'not found', 'no target with given id')
+GONE = ('failed to find context', 'cannot find context', 'not found', 'no target found', 'no target with given id')
 
 
 def request(record, method, timeout=REQUEST_SECONDS, **params):
@@ -279,10 +279,15 @@ def dispose_context(record):
     """
     if record.get('target_id'):
         try:
-            request(record, 'Target.closeTarget', targetId=record['target_id'])
+            # A loaded WebGL page can take longer than an ordinary call to close;
+            # a slow or already-closed target is not a failure, disposing the
+            # context below is what actually frees it.
+            request(record, 'Target.closeTarget', timeout=DISPOSE_SECONDS, targetId=record['target_id'])
         except RuntimeError as exc:
             if not _gone(exc):
                 raise
+        except (*_websocket_errors(), OSError):
+            pass
     try:
         request(record, 'Target.disposeBrowserContext', timeout=DISPOSE_SECONDS, browserContextId=record['context_id'])
     except RuntimeError as exc:

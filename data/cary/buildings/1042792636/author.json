@@ -1,0 +1,290 @@
+{
+ "thread_id": "01a0c1df-038a-7b60-873c-5676c3d21050",
+ "completed_turns": 1,
+ "failed": false,
+ "usage": {
+  "input_tokens": 14815,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 884,
+  "reasoning_output_tokens": 169,
+  "total_tokens": 15699
+ },
+ "usage_complete": true,
+ "response": {
+  "blueprint_json": "{\"wall\":\"#8f795b\",\"wallMaterial\":\"brick\",\"trim\":\"#baa98a\",\"roofColor\":\"#85877b\",\"volumes\":[{\"id\":\"main\",\"u\":[-9.25,9.25],\"v\":[-13.3,13.3],\"height\":4.4,\"roof\":{\"type\":\"flat\",\"lip\":true},\"plinth\":{\"height\":0.22,\"color\":\"#a39a84\"},\"cornice\":{\"height\":0.14,\"overhang\":0.06,\"color\":\"#82765f\",\"dentils\":false},\"faces\":{\"-u\":{\"doors\":[{\"at\":0.235,\"type\":\"double\",\"w\":1.65,\"h\":2.85,\"color\":\"#343d39\",\"surround\":\"#b4a183\",\"surroundW\":0.22}],\"storeys\":[{\"y\":0.45,\"windows\":{\"type\":\"rect\",\"w\":1.35,\"h\":2.4,\"at\":[0.15,0.32],\"trim\":\"#a39173\",\"glass\":\"#3e4945\",\"mullions\":false,\"interior\":false}},{\"y\":1.3,\"windows\":{\"type\":\"rect\",\"w\":1.15,\"h\":1.6,\"at\":[0.875],\"trim\":\"#796a53\",\"glass\":\"#343c36\",\"mullions\":false,\"interior\":false}}],\"signs\":[{\"text\":\"AT&T\",\"style\":\"board\",\"at\":0.49,\"y\":2.75,\"w\":2.7,\"h\":0.7}]},\"+u\":{},\"+v\":{},\"-v\":{}}},{\"id\":\"roof-unit-west\",\"u\":[1.3,3.8],\"v\":[2.9,5.8],\"bottom\":4.4,\"height\":5.25,\"wall\":\"#a3aaa0\",\"wallMaterial\":\"plaster\",\"roofColor\":\"#626e68\",\"roof\":{\"type\":\"flat\",\"lip\":false},\"faces\":{}},{\"id\":\"roof-unit-east\",\"u\":[-3.5,-1.7],\"v\":[-6.8,-4.7],\"bottom\":4.4,\"height\":5.05,\"wall\":\"#a3aaa0\",\"wallMaterial\":\"plaster\",\"roofColor\":\"#626e68\",\"roof\":{\"type\":\"flat\",\"lip\":false},\"faces\":{}}],\"details\":[]}",
+  "patch_json": "",
+  "cues": [
+   "Low rectangular brown-brick block with a flat parapet roof.",
+   "Tall dark entrance glazing grouped toward the east end of the north facade.",
+   "Pale masonry entrance trim and compact AT&T identification.",
+   "Mostly solid walls with sparse dark openings.",
+   "Two understated rooftop equipment boxes."
+  ],
+  "references_used": [
+   "MAP",
+   "SV1",
+   "SV2",
+   "SV3",
+   "SV4\u88cfAERIAL"
+  ],
+  "uncertainties": [
+   "South and west elevations are heavily screened by vegetation; concealed walls are simplified.",
+   "North entrance placement is visible, but its principal role is inferred.",
+   "Heights, rooftop equipment dimensions and sign appearance are approximate."
+  ],
+  "entrance_plan": [
+   {
+    "volume": "main",
+    "face": "-u",
+    "role": "principal",
+    "evidence": [
+     "MAP",
+     "SV2",
+     "SV4"
+    ],
+    "confidence": "inferred"
+   }
+  ]
+ },
+ "error": null,
+ "raw": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author/response.json",
+ "started_at": 1789959013.155334,
+ "finished_at": 1789959050.099673,
+ "elapsed_seconds": 36.94433903694153,
+ "duration": 36.94433903694153,
+ "model": "gpt-6-astra",
+ "effort": "medium",
+ "directory": "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author",
+ "command": [
+  "codex",
+  "exec",
+  "--ignore-user-config",
+  "--json",
+  "-m",
+  "gpt-6-astra",
+  "-s",
+  "read-only",
+  "--skip-git-repo-check",
+  "-C",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author",
+  "-c",
+  "model_reasoning_effort=\"medium\"",
+  "-c",
+  "approval_policy=\"never\"",
+  "-c",
+  "model_instructions_file=\"/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author/instructions.txt\"",
+  "-c",
+  "project_doc_max_bytes=0",
+  "-c",
+  "web_search=\"disabled\"",
+  "-c",
+  "tools.view_image=false",
+  "-c",
+  "features.shell_tool=false",
+  "-c",
+  "features.unified_exec=false",
+  "-c",
+  "features.apps=false",
+  "-c",
+  "features.plugins=false",
+  "-c",
+  "features.multi_agent=false",
+  "-c",
+  "features.image_generation=false",
+  "-c",
+  "features.browser_use=false",
+  "-c",
+  "features.computer_use=false",
+  "-c",
+  "features.sleep_tool=false",
+  "-c",
+  "features.shell_snapshot=false",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1042792636/images/orientation.png",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1042792636/images/street-views.jpg",
+  "--image",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/data/cary/buildings/1042792636/images/reference-5.jpg",
+  "--output-schema",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author/schema.json",
+  "-o",
+  "/Users/jonathanpolitzki/Desktop/Coding/tinytown-Cary-/runs/model-calls/cary/1042792636/20260920-215013-fba803-author/response.json",
+  "-"
+ ],
+ "returncode": 0,
+ "role": "author",
+ "building": "1042792636",
+ "model_alias": "astra",
+ "run": "20260920-213304-747792",
+ "attempts": [],
+ "number": 0,
+ "packet_hash": "858f6e56e6c3959a038559aa2ae1a64533008a8a072fdc6f17a4571a73e86382",
+ "frame": "f94018e2620999913fd681e3fd066177c22a5d6d92b7d0beadbf6713149b409f",
+ "timestamp": 1789959050.100559,
+ "blueprint": {
+  "wall": "#8f795b",
+  "wallMaterial": "brick",
+  "trim": "#baa98a",
+  "roofColor": "#85877b",
+  "volumes": [
+   {
+    "id": "main",
+    "u": [
+     -9.25,
+     9.25
+    ],
+    "v": [
+     -13.3,
+     13.3
+    ],
+    "height": 4.4,
+    "roof": {
+     "type": "flat",
+     "lip": true
+    },
+    "plinth": {
+     "height": 0.22,
+     "color": "#a39a84"
+    },
+    "cornice": {
+     "height": 0.14,
+     "overhang": 0.06,
+     "color": "#82765f",
+     "dentils": false
+    },
+    "faces": {
+     "-u": {
+      "doors": [
+       {
+        "at": 0.235,
+        "type": "double",
+        "w": 1.65,
+        "h": 2.85,
+        "color": "#343d39",
+        "surround": "#b4a183",
+        "surroundW": 0.22
+       }
+      ],
+      "storeys": [
+       {
+        "y": 0.45,
+        "windows": {
+         "type": "rect",
+         "w": 1.35,
+         "h": 2.4,
+         "at": [
+          0.15,
+          0.32
+         ],
+         "trim": "#a39173",
+         "glass": "#3e4945",
+         "mullions": false,
+         "interior": false
+        }
+       },
+       {
+        "y": 1.3,
+        "windows": {
+         "type": "rect",
+         "w": 1.15,
+         "h": 1.6,
+         "at": [
+          0.875
+         ],
+         "trim": "#796a53",
+         "glass": "#343c36",
+         "mullions": false,
+         "interior": false
+        }
+       }
+      ],
+      "signs": [
+       {
+        "text": "AT&T",
+        "style": "board",
+        "at": 0.49,
+        "y": 2.75,
+        "w": 2.7,
+        "h": 0.7
+       }
+      ]
+     },
+     "+u": {},
+     "+v": {},
+     "-v": {}
+    }
+   },
+   {
+    "id": "roof-unit-west",
+    "u": [
+     1.3,
+     3.8
+    ],
+    "v": [
+     2.9,
+     5.8
+    ],
+    "bottom": 4.4,
+    "height": 5.25,
+    "wall": "#a3aaa0",
+    "wallMaterial": "plaster",
+    "roof": {
+     "type": "flat",
+     "lip": false,
+     "color": "#626e68"
+    },
+    "faces": {}
+   },
+   {
+    "id": "roof-unit-east",
+    "u": [
+     -3.5,
+     -1.7
+    ],
+    "v": [
+     -6.8,
+     -4.7
+    ],
+    "bottom": 4.4,
+    "height": 5.05,
+    "wall": "#a3aaa0",
+    "wallMaterial": "plaster",
+    "roof": {
+     "type": "flat",
+     "lip": false,
+     "color": "#626e68"
+    },
+    "faces": {}
+   }
+  ],
+  "details": []
+ },
+ "validation_errors": [],
+ "cues": [
+  "Low rectangular brown-brick block with a flat parapet roof.",
+  "Tall dark entrance glazing grouped toward the east end of the north facade.",
+  "Pale masonry entrance trim and compact AT&T identification.",
+  "Mostly solid walls with sparse dark openings.",
+  "Two understated rooftop equipment boxes."
+ ],
+ "uncertainties": [
+  "South and west elevations are heavily screened by vegetation; concealed walls are simplified.",
+  "North entrance placement is visible, but its principal role is inferred.",
+  "Heights, rooftop equipment dimensions and sign appearance are approximate."
+ ],
+ "entrance_plan": [
+  {
+   "volume": "main",
+   "face": "-u",
+   "role": "principal",
+   "evidence": [
+    "MAP",
+    "SV2",
+    "SV4"
+   ],
+   "confidence": "inferred"
+  }
+ ],
+ "draft_hash": "f7ef9c5c27f8eafdaef66039f1810252af037b0b680fe03a94ef96fd425d3ba6"
+}
